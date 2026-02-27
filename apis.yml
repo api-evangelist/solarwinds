@@ -1,0 +1,130 @@
+name: SolarWinds APIs
+description: A collection of APIs provided by SolarWinds for IT infrastructure management, monitoring, and observability
+image: https://www.solarwinds.com/sites/all/themes/solarwinds_theme/logo.png
+created: '2024'
+modified: '2024'
+specificationVersion: '0.18'
+url: https://www.solarwinds.com/apis.json
+apis:
+- name: SolarWinds Orion API
+  description: RESTful API for managing and monitoring network devices, servers, and applications through the Orion Platform
+  image: https://www.solarwinds.com/sites/default/files/orion-platform-icon.png
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://[orion-server]:17778/SolarWinds/InformationService/v3
+  tags:
+  - Network Monitoring
+  - Infrastructure Management
+  - SWIS
+  - Orion
+  properties:
+  - type: Documentation
+    url: https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: OpenAPI
+    url: https://[orion-server]:17778/SolarWinds/InformationService/v3/Json/Query
+  - type: Authentication
+    url: https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  contact:
+  - type: Support
+    url: https://support.solarwinds.com
+- name: SolarWinds Service Desk API
+  description: API for IT service management, ticketing, and help desk operations
+  humanURL: https://www.solarwinds.com/service-desk
+  baseURL: https://[instance].samanage.com/api
+  tags:
+  - ITSM
+  - Service Desk
+  - Ticketing
+  - Help Desk
+  properties:
+  - type: Documentation
+    url: https://documentation.solarwinds.com/en/success_center/servicedesk/default.htm#cshid=api-intro
+  - type: API Reference
+    url: https://help.samanage.com/s/article/API-Documentation-1536640825373
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  contact:
+  - type: Support
+    url: https://support.solarwinds.com
+- name: SolarWinds Observability API
+  description: Cloud-native observability API for logs, metrics, and distributed tracing
+  humanURL: https://www.solarwinds.com/solarwinds-observability
+  baseURL: https://api.na-01.cloud.solarwinds.com
+  tags:
+  - Observability
+  - APM
+  - Monitoring
+  - Cloud
+  - Logs
+  - Metrics
+  - Tracing
+  properties:
+  - type: Documentation
+    url: https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: OpenAPI
+    url: https://api.na-01.cloud.solarwinds.com/v1/openapi.json
+  - type: Authentication
+    url: https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  contact:
+  - type: Support
+    url: https://support.solarwinds.com
+- name: SolarWinds Database Performance Analyzer API
+  description: API for database monitoring and performance analysis
+  humanURL: https://www.solarwinds.com/database-performance-analyzer
+  baseURL: https://[dpa-server]:8124/iwc/api
+  tags:
+  - Database
+  - Performance
+  - Monitoring
+  - SQL
+  properties:
+  - type: Documentation
+    url: https://documentation.solarwinds.com/en/success_center/dpa/content/dpa-integrate-api.htm
+  - type: API Guide
+    url: https://documentation.solarwinds.com/en/success_center/dpa/default.htm
+  contact:
+  - type: Support
+    url: https://support.solarwinds.com
+- name: SolarWinds NPM REST API
+  description: Network Performance Monitor REST API for network device monitoring
+  humanURL: https://www.solarwinds.com/network-performance-monitor
+  baseURL: https://[npm-server]:17778/SolarWinds/InformationService/v3
+  tags:
+  - Network
+  - Performance
+  - Monitoring
+  - SNMP
+  properties:
+  - type: Documentation
+    url: https://documentation.solarwinds.com/en/success_center/npm/content/core-npm-rest-api.htm
+  - type: SDK
+    url: https://github.com/solarwinds/OrionSDK
+  contact:
+  - type: Support
+    url: https://support.solarwinds.com
+common:
+- type: Portal
+  url: https://www.solarwinds.com
+- type: Documentation
+  url: https://documentation.solarwinds.com
+- type: Support
+  url: https://support.solarwinds.com
+- type: Blog
+  url: https://www.solarwinds.com/blog
+- type: GitHub
+  url: https://github.com/solarwinds
+- type: Community
+  url: https://thwack.solarwinds.com
+- type: Status
+  url: https://status.solarwinds.com
+maintainers:
+- name: SolarWinds
+  email: support@solarwinds.com
+  url: https://www.solarwinds.com
+tags:
+- IT Management
+- Network Monitoring
+- Infrastructure
+- Observability
+- ITSM
