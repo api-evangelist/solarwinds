@@ -1,0 +1,680 @@
+openapi: 3.1.0
+info:
+  title: SolarWinds Pingdom API
+  description: >-
+    API for website uptime monitoring, performance monitoring, and transaction
+    checks. Enables automated management of checks, contacts, teams, and
+    reporting for Pingdom monitoring services.
+  version: '3.1'
+  contact:
+    name: SolarWinds Support
+    url: https://support.solarwinds.com
+  termsOfService: https://www.solarwinds.com/legal/terms
+externalDocs:
+  description: Pingdom API Documentation
+  url: https://docs.pingdom.com/api/
+servers:
+  - url: https://api.pingdom.com/api/3.1
+    description: Pingdom API Production Server
+tags:
+  - name: Checks
+    description: Manage uptime and transaction checks
+  - name: Results
+    description: Retrieve check results and performance data
+  - name: Actions
+    description: Manage alert actions and integrations
+  - name: Contacts
+    description: Manage alert contacts
+  - name: Teams
+    description: Manage alert teams
+  - name: Summary
+    description: Retrieve performance and outage summaries
+  - name: Maintenance
+    description: Manage maintenance windows
+  - name: ProbeServers
+    description: List available probe servers
+security:
+  - bearerAuth: []
+paths:
+  /checks:
+    get:
+      operationId: listChecks
+      summary: List all checks
+      description: >-
+        Returns a list of all checks configured in the Pingdom account.
+      tags:
+        - Checks
+      parameters:
+        - name: limit
+          in: query
+          description: Maximum number of checks to return
+          schema:
+            type: integer
+            default: 25000
+        - name: offset
+          in: query
+          description: Offset for pagination
+          schema:
+            type: integer
+            default: 0
+        - name: tags
+          in: query
+          description: Filter by comma-separated tag names
+          schema:
+            type: string
+        - name: type
+          in: query
+          description: Filter by check type
+          schema:
+            type: string
+            enum:
+              - http
+              - httpcustom
+              - tcp
+              - ping
+              - dns
+              - udp
+              - smtp
+              - pop3
+              - imap
+      responses:
+        '200':
+          description: List of checks
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckList'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createCheck
+      summary: Create a new check
+      description: >-
+        Creates a new uptime check with the specified configuration.
+      tags:
+        - Checks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckCreate'
+      responses:
+        '200':
+          description: Check created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Check'
+        '400':
+          description: Invalid check configuration
+        '401':
+          description: Unauthorized
+  /checks/{checkid}:
+    get:
+      operationId: getCheck
+      summary: Get detailed check information
+      description: >-
+        Returns detailed information about a specific check including
+        its configuration and current status.
+      tags:
+        - Checks
+      parameters:
+        - $ref: '#/components/parameters/CheckId'
+      responses:
+        '200':
+          description: Check details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckDetail'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Check not found
+    put:
+      operationId: updateCheck
+      summary: Update a check
+      description: >-
+        Updates the configuration of an existing check.
+      tags:
+        - Checks
+      parameters:
+        - $ref: '#/components/parameters/CheckId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckUpdate'
+      responses:
+        '200':
+          description: Check updated successfully
+        '400':
+          description: Invalid check configuration
+        '401':
+          description: Unauthorized
+        '404':
+          description: Check not found
+    delete:
+      operationId: deleteCheck
+      summary: Delete a check
+      description: >-
+        Permanently deletes a check and all associated data.
+      tags:
+        - Checks
+      parameters:
+        - $ref: '#/components/parameters/CheckId'
+      responses:
+        '200':
+          description: Check deleted successfully
+        '401':
+          description: Unauthorized
+        '404':
+          description: Check not found
+  /results/{checkid}:
+    get:
+      operationId: getResults
+      summary: Get raw check results
+      description: >-
+        Returns raw test results for a specific check within a time range.
+      tags:
+        - Results
+      parameters:
+        - $ref: '#/components/parameters/CheckId'
+        - name: to
+          in: query
+          description: End of period (Unix timestamp)
+          schema:
+            type: integer
+        - name: from
+          in: query
+          description: Start of period (Unix timestamp)
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of results
+          schema:
+            type: integer
+            default: 100
+        - name: offset
+          in: query
+          description: Offset for pagination
+          schema:
+            type: integer
+            default: 0
+        - name: probes
+          in: query
+          description: Filter by comma-separated probe IDs
+          schema:
+            type: string
+        - name: status
+          in: query
+          description: Filter by result status
+          schema:
+            type: string
+            enum:
+              - up
+              - down
+              - unconfirmed_down
+              - unknown
+      responses:
+        '200':
+          description: Check results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultList'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Check not found
+  /summary.average/{checkid}:
+    get:
+      operationId: getSummaryAverage
+      summary: Get average response time summary
+      description: >-
+        Returns average response time and uptime data for a check
+        over a specified time period.
+      tags:
+        - Summary
+      parameters:
+        - $ref: '#/components/parameters/CheckId'
+        - name: from
+          in: query
+          description: Start of period (Unix timestamp)
+          schema:
+            type: integer
+        - name: to
+          in: query
+          description: End of period (Unix timestamp)
+          schema:
+            type: integer
+        - name: includeuptime
+          in: query
+          description: Include uptime information
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: Average summary data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryAverage'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Check not found
+  /summary.outage/{checkid}:
+    get:
+      operationId: getSummaryOutage
+      summary: Get outage summary
+      description: >-
+        Returns a list of outage periods for a specific check.
+      tags:
+        - Summary
+      parameters:
+        - $ref: '#/components/parameters/CheckId'
+        - name: from
+          in: query
+          description: Start of period (Unix timestamp)
+          schema:
+            type: integer
+        - name: to
+          in: query
+          description: End of period (Unix timestamp)
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Outage summary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummaryOutage'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Check not found
+  /alerting/contacts:
+    get:
+      operationId: listContacts
+      summary: List alert contacts
+      description: >-
+        Returns all alert contacts configured in the account.
+      tags:
+        - Contacts
+      responses:
+        '200':
+          description: List of contacts
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactList'
+        '401':
+          description: Unauthorized
+  /alerting/teams:
+    get:
+      operationId: listTeams
+      summary: List alert teams
+      description: >-
+        Returns all alert teams configured in the account.
+      tags:
+        - Teams
+      responses:
+        '200':
+          description: List of teams
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamList'
+        '401':
+          description: Unauthorized
+  /maintenance:
+    get:
+      operationId: listMaintenanceWindows
+      summary: List maintenance windows
+      description: >-
+        Returns all maintenance windows configured in the account.
+      tags:
+        - Maintenance
+      responses:
+        '200':
+          description: List of maintenance windows
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MaintenanceList'
+        '401':
+          description: Unauthorized
+  /probes:
+    get:
+      operationId: listProbes
+      summary: List probe servers
+      description: >-
+        Returns a list of all Pingdom probe servers with their locations.
+      tags:
+        - ProbeServers
+      parameters:
+        - name: onlyactive
+          in: query
+          description: Return only active probes
+          schema:
+            type: boolean
+            default: false
+      responses:
+        '200':
+          description: List of probe servers
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProbeList'
+        '401':
+          description: Unauthorized
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token authentication using Pingdom API token
+  parameters:
+    CheckId:
+      name: checkid
+      in: path
+      required: true
+      description: Unique identifier for the check
+      schema:
+        type: integer
+  schemas:
+    CheckList:
+      type: object
+      properties:
+        checks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Check'
+        counts:
+          type: object
+          properties:
+            total:
+              type: integer
+            limited:
+              type: integer
+            filtered:
+              type: integer
+    Check:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique check identifier
+        name:
+          type: string
+          description: Check name
+        type:
+          type: string
+          description: Check type
+          enum:
+            - http
+            - httpcustom
+            - tcp
+            - ping
+            - dns
+            - udp
+            - smtp
+            - pop3
+            - imap
+        hostname:
+          type: string
+          description: Target hostname
+        status:
+          type: string
+          description: Current check status
+          enum:
+            - up
+            - down
+            - unconfirmed_down
+            - unknown
+            - paused
+        resolution:
+          type: integer
+          description: Check interval in minutes
+        lastresponsetime:
+          type: integer
+          description: Last response time in milliseconds
+        lasttesttime:
+          type: integer
+          description: Last test timestamp (Unix)
+        created:
+          type: integer
+          description: Creation timestamp (Unix)
+        tags:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              count:
+                type: integer
+    CheckDetail:
+      type: object
+      properties:
+        check:
+          allOf:
+            - $ref: '#/components/schemas/Check'
+            - type: object
+              properties:
+                encryption:
+                  type: boolean
+                  description: Use SSL/TLS
+                port:
+                  type: integer
+                  description: Target port
+                sendnotificationwhendown:
+                  type: integer
+                  description: Number of failed tests before notification
+                notifyagainevery:
+                  type: integer
+                  description: Notification repeat interval
+                notifywhenbackup:
+                  type: boolean
+                  description: Notify when check recovers
+    CheckCreate:
+      type: object
+      required:
+        - name
+        - host
+        - type
+      properties:
+        name:
+          type: string
+          description: Check name
+        host:
+          type: string
+          description: Target hostname or IP
+        type:
+          type: string
+          description: Check type
+          enum:
+            - http
+            - httpcustom
+            - tcp
+            - ping
+            - dns
+            - udp
+            - smtp
+            - pop3
+            - imap
+        resolution:
+          type: integer
+          description: Check interval in minutes
+          enum:
+            - 1
+            - 5
+            - 15
+            - 30
+            - 60
+        paused:
+          type: boolean
+          description: Whether the check is paused
+        encryption:
+          type: boolean
+          description: Use SSL/TLS
+    CheckUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        host:
+          type: string
+        resolution:
+          type: integer
+        paused:
+          type: boolean
+    ResultList:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Result'
+    Result:
+      type: object
+      properties:
+        probeid:
+          type: integer
+          description: Probe server ID
+        time:
+          type: integer
+          description: Test timestamp (Unix)
+        status:
+          type: string
+          description: Result status
+        responsetime:
+          type: integer
+          description: Response time in milliseconds
+        statusdesc:
+          type: string
+          description: Status description
+        statusdesclong:
+          type: string
+          description: Detailed status description
+    SummaryAverage:
+      type: object
+      properties:
+        summary:
+          type: object
+          properties:
+            responsetime:
+              type: object
+              properties:
+                avgresponse:
+                  type: integer
+                  description: Average response time in milliseconds
+            status:
+              type: object
+              properties:
+                totalup:
+                  type: integer
+                  description: Total uptime in seconds
+                totaldown:
+                  type: integer
+                  description: Total downtime in seconds
+                totalunknown:
+                  type: integer
+                  description: Total unknown time in seconds
+    SummaryOutage:
+      type: object
+      properties:
+        summary:
+          type: object
+          properties:
+            states:
+              type: array
+              items:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  timefrom:
+                    type: integer
+                  timeto:
+                    type: integer
+    ContactList:
+      type: object
+      properties:
+        contacts:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              notification_targets:
+                type: object
+    TeamList:
+      type: object
+      properties:
+        teams:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              members:
+                type: array
+                items:
+                  type: object
+    MaintenanceList:
+      type: object
+      properties:
+        maintenance:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              description:
+                type: string
+              from:
+                type: integer
+              to:
+                type: integer
+              checks:
+                type: object
+    ProbeList:
+      type: object
+      properties:
+        probes:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              country:
+                type: string
+              city:
+                type: string
+              name:
+                type: string
+              active:
+                type: boolean
+              hostname:
+                type: string
+              ip:
+                type: string
+              ipv6:
+                type: string

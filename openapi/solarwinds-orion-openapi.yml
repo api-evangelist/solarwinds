@@ -1,0 +1,357 @@
+openapi: 3.1.0
+info:
+  title: SolarWinds Orion Platform API
+  description: >-
+    RESTful API for managing and monitoring network devices, servers, and
+    applications through the SolarWinds Orion Platform. Provides access to the
+    SolarWinds Information Service (SWIS) using SWQL queries and CRUD
+    operations on monitored entities via REST/JSON endpoints.
+  version: '3'
+  contact:
+    name: SolarWinds Support
+    url: https://support.solarwinds.com
+  termsOfService: https://www.solarwinds.com/legal/terms
+externalDocs:
+  description: SolarWinds Orion Platform API Documentation
+  url: https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+servers:
+  - url: https://{orion-server}:17774/SolarWinds/InformationService/v3/Json
+    description: Orion Platform Server (port 17774 since 2023.1 release)
+    variables:
+      orion-server:
+        default: localhost
+        description: Hostname or IP of your Orion server
+tags:
+  - name: Query
+    description: Execute SWQL queries against the SolarWinds Information Service
+  - name: CRUD
+    description: Create, read, update, and delete operations on SWIS entities
+  - name: Invoke
+    description: Invoke verbs (methods) on SWIS entities
+  - name: BulkOperations
+    description: Perform bulk create, update, and delete operations
+security:
+  - basicAuth: []
+paths:
+  /Query:
+    get:
+      operationId: querySwis
+      summary: Execute a SWQL query
+      description: >-
+        Executes a SolarWinds Query Language (SWQL) query against the
+        SolarWinds Information Service and returns the results as JSON.
+        SWQL is a read-only SQL-like language for querying monitored entities.
+      tags:
+        - Query
+      parameters:
+        - $ref: '#/components/parameters/SwqlQuery'
+        - $ref: '#/components/parameters/SwqlParameters'
+      responses:
+        '200':
+          description: Query executed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+        '400':
+          description: Invalid SWQL query syntax
+        '401':
+          description: Authentication required
+    post:
+      operationId: querySwisPost
+      summary: Execute a SWQL query via POST
+      description: >-
+        Executes a SWQL query using a POST request body. Useful for longer
+        queries that exceed URL length limits.
+      tags:
+        - Query
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+      responses:
+        '200':
+          description: Query executed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResult'
+        '400':
+          description: Invalid SWQL query syntax
+        '401':
+          description: Authentication required
+  /Create/{entityType}:
+    post:
+      operationId: createEntity
+      summary: Create a new SWIS entity
+      description: >-
+        Creates a new entity of the specified type in the SolarWinds
+        Information Service. The request body contains the property values
+        for the new entity.
+      tags:
+        - CRUD
+      parameters:
+        - $ref: '#/components/parameters/EntityType'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Entity created successfully
+          content:
+            application/json:
+              schema:
+                type: string
+                description: URI of the newly created entity
+        '400':
+          description: Invalid entity data
+        '401':
+          description: Authentication required
+        '404':
+          description: Entity type not found
+  /{entityUri}:
+    get:
+      operationId: readEntity
+      summary: Read a SWIS entity
+      description: >-
+        Retrieves the properties of a specific entity identified by its
+        SWIS URI. Returns all properties of the entity as JSON.
+      tags:
+        - CRUD
+      parameters:
+        - name: entityUri
+          in: path
+          required: true
+          description: SWIS URI of the entity to read
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Entity retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '401':
+          description: Authentication required
+        '404':
+          description: Entity not found
+    post:
+      operationId: updateEntity
+      summary: Update a SWIS entity
+      description: >-
+        Updates the properties of an existing entity identified by its
+        SWIS URI. Only the properties included in the request body are updated.
+      tags:
+        - CRUD
+      parameters:
+        - name: entityUri
+          in: path
+          required: true
+          description: SWIS URI of the entity to update
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: Entity updated successfully
+        '400':
+          description: Invalid update data
+        '401':
+          description: Authentication required
+        '404':
+          description: Entity not found
+    delete:
+      operationId: deleteEntity
+      summary: Delete a SWIS entity
+      description: >-
+        Deletes an entity identified by its SWIS URI from the SolarWinds
+        Information Service.
+      tags:
+        - CRUD
+      parameters:
+        - name: entityUri
+          in: path
+          required: true
+          description: SWIS URI of the entity to delete
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Entity deleted successfully
+        '401':
+          description: Authentication required
+        '404':
+          description: Entity not found
+  /Invoke/{entityType}/{verb}:
+    post:
+      operationId: invokeVerb
+      summary: Invoke a verb on an entity type
+      description: >-
+        Invokes a named verb (method) on the specified entity type.
+        Verbs provide operations like Unmanage, Remanage, PollNow,
+        and other management actions on monitored objects.
+      tags:
+        - Invoke
+      parameters:
+        - $ref: '#/components/parameters/EntityType'
+        - name: verb
+          in: path
+          required: true
+          description: Name of the verb to invoke
+          schema:
+            type: string
+          example: Unmanage
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+              description: Arguments to pass to the verb
+      responses:
+        '200':
+          description: Verb invoked successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+        '400':
+          description: Invalid verb arguments
+        '401':
+          description: Authentication required
+        '404':
+          description: Entity type or verb not found
+  /BulkDelete:
+    post:
+      operationId: bulkDelete
+      summary: Delete multiple entities
+      description: >-
+        Deletes multiple SWIS entities in a single operation. Provide an
+        array of SWIS URIs to delete.
+      tags:
+        - BulkOperations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkDeleteRequest'
+      responses:
+        '200':
+          description: Entities deleted successfully
+        '401':
+          description: Authentication required
+  /BulkUpdate:
+    post:
+      operationId: bulkUpdate
+      summary: Update multiple entities
+      description: >-
+        Updates properties on multiple SWIS entities in a single operation.
+      tags:
+        - BulkOperations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkUpdateRequest'
+      responses:
+        '200':
+          description: Entities updated successfully
+        '401':
+          description: Authentication required
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: HTTP Basic authentication using Orion Platform credentials
+  parameters:
+    SwqlQuery:
+      name: query
+      in: query
+      required: true
+      description: SWQL query string
+      schema:
+        type: string
+      example: SELECT NodeID, Caption, IPAddress FROM Orion.Nodes
+    SwqlParameters:
+      name: parameters
+      in: query
+      required: false
+      description: Parameterized query values
+      schema:
+        type: string
+    EntityType:
+      name: entityType
+      in: path
+      required: true
+      description: Fully qualified SWIS entity type name
+      schema:
+        type: string
+      example: Orion.Nodes
+  schemas:
+    QueryRequest:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          description: SWQL query string to execute
+          example: SELECT NodeID, Caption, IPAddress FROM Orion.Nodes WHERE Status = 1
+        parameters:
+          type: object
+          description: Named parameters for parameterized queries
+          additionalProperties: true
+    QueryResult:
+      type: object
+      properties:
+        results:
+          type: array
+          description: Array of result rows
+          items:
+            type: object
+            additionalProperties: true
+    BulkDeleteRequest:
+      type: object
+      required:
+        - uris
+      properties:
+        uris:
+          type: array
+          description: Array of SWIS URIs to delete
+          items:
+            type: string
+    BulkUpdateRequest:
+      type: object
+      required:
+        - uris
+        - properties
+      properties:
+        uris:
+          type: array
+          description: Array of SWIS URIs to update
+          items:
+            type: string
+        properties:
+          type: object
+          description: Properties to set on all specified entities
+          additionalProperties: true

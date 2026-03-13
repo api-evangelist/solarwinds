@@ -1,0 +1,259 @@
+openapi: 3.1.0
+info:
+  title: SolarWinds Loggly API
+  description: >-
+    RESTful API for cloud-based log management including event submission,
+    event retrieval, search, and account management. Supports sending events
+    over HTTP/S and retrieving log data via paginating event retrieval endpoints.
+  version: '2'
+  contact:
+    name: SolarWinds Support
+    url: https://support.solarwinds.com
+  termsOfService: https://www.solarwinds.com/legal/terms
+externalDocs:
+  description: Loggly API Documentation
+  url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+servers:
+  - url: https://{subdomain}.loggly.com/apiv2
+    description: Loggly API Server
+    variables:
+      subdomain:
+        default: logs-01
+        description: Your Loggly subdomain
+tags:
+  - name: Search
+    description: Search and retrieve log events
+  - name: Events
+    description: Send log events to Loggly
+  - name: Account
+    description: Account information and management
+security:
+  - bearerAuth: []
+paths:
+  /search:
+    get:
+      operationId: searchEvents
+      summary: Initiate a search query
+      description: >-
+        Initiates a search query against log events. Returns a search ID
+        (RSID) that can be used with the events endpoint to retrieve results.
+      tags:
+        - Search
+      parameters:
+        - name: q
+          in: query
+          required: true
+          description: Search query string using Loggly search syntax
+          schema:
+            type: string
+          example: '*'
+        - name: from
+          in: query
+          description: Start time for search (ISO 8601 or relative like -24h)
+          schema:
+            type: string
+          example: '-2h'
+        - name: until
+          in: query
+          description: End time for search
+          schema:
+            type: string
+          example: 'now'
+        - name: size
+          in: query
+          description: Maximum number of events to return
+          schema:
+            type: integer
+            default: 10
+            maximum: 5000
+        - name: order
+          in: query
+          description: Sort order
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+      responses:
+        '200':
+          description: Search initiated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '401':
+          description: Unauthorized
+  /events:
+    get:
+      operationId: getEvents
+      summary: Retrieve search results
+      description: >-
+        Retrieves events for a previously initiated search using the RSID
+        returned by the search endpoint.
+      tags:
+        - Search
+      parameters:
+        - name: rsid
+          in: query
+          required: true
+          description: Result Set ID from the search endpoint
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventsResponse'
+        '401':
+          description: Unauthorized
+  /events/iterate:
+    get:
+      operationId: iterateEvents
+      summary: Iterate through search results
+      description: >-
+        Paginating event retrieval API for iterating through large result
+        sets. Returns events and a next pointer for pagination.
+      tags:
+        - Search
+      parameters:
+        - name: rsid
+          in: query
+          required: true
+          description: Result Set ID from the search endpoint
+          schema:
+            type: string
+        - name: next
+          in: query
+          description: Pagination cursor for next page
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Paginated event results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IterateResponse'
+        '401':
+          description: Unauthorized
+  /customer:
+    get:
+      operationId: getAccountInfo
+      summary: Get account information
+      description: >-
+        Returns customer account information including the customer token
+        and a list of active Loggly users.
+      tags:
+        - Account
+      responses:
+        '200':
+          description: Account information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountInfo'
+        '401':
+          description: Unauthorized
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication via Authorization Bearer header
+    customerToken:
+      type: apiKey
+      in: path
+      name: token
+      description: Customer token for event submission endpoints
+  schemas:
+    SearchResponse:
+      type: object
+      properties:
+        rsid:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Result Set ID for retrieving events
+            status:
+              type: string
+              description: Search status
+    EventsResponse:
+      type: object
+      properties:
+        total_events:
+          type: integer
+          description: Total number of matching events
+        page:
+          type: integer
+          description: Current page number
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/LogEvent'
+    IterateResponse:
+      type: object
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/LogEvent'
+        next:
+          type: string
+          description: Cursor for next page of results
+    LogEvent:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique event identifier
+        timestamp:
+          type: integer
+          description: Event timestamp in milliseconds
+        logmsg:
+          type: string
+          description: Raw log message
+        logtypes:
+          type: array
+          description: Detected log types
+          items:
+            type: string
+        event:
+          type: object
+          description: Parsed event fields
+          additionalProperties: true
+        tags:
+          type: array
+          description: Tags associated with the event
+          items:
+            type: string
+    AccountInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Account ID
+        subdomain:
+          type: string
+          description: Account subdomain
+        tokens:
+          type: array
+          items:
+            type: string
+          description: Customer tokens
+        subscription:
+          type: object
+          properties:
+            plan_name:
+              type: string
+        users:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              email:
+                type: string

@@ -1,0 +1,165 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "sw": "https://solarwinds.com/ns/",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+
+    "MonitoredNode": {
+      "@id": "sw:MonitoredNode",
+      "@context": {
+        "nodeId": "sw:nodeId",
+        "caption": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "ipAddress": {
+          "@id": "sw:ipAddress",
+          "@type": "xsd:string"
+        },
+        "status": "sw:status",
+        "statusDescription": "sw:statusDescription",
+        "machineType": "sw:machineType",
+        "vendor": {
+          "@id": "schema:manufacturer",
+          "@type": "xsd:string"
+        },
+        "location": {
+          "@id": "schema:location",
+          "@type": "xsd:string"
+        },
+        "contact": {
+          "@id": "schema:contactPoint",
+          "@type": "xsd:string"
+        },
+        "cpuLoad": "sw:cpuLoad",
+        "memoryUsed": "sw:memoryUsed",
+        "responseTime": "sw:responseTime",
+        "packetLoss": "sw:packetLoss",
+        "lastBoot": {
+          "@id": "sw:lastBoot",
+          "@type": "xsd:dateTime"
+        },
+        "uri": {
+          "@id": "sw:entityUri",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Alert": {
+      "@id": "sw:Alert",
+      "@context": {
+        "alertId": "sw:alertId",
+        "alertName": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "severity": "sw:severity",
+        "triggeredAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "resetAt": {
+          "@id": "sw:resetAt",
+          "@type": "xsd:dateTime"
+        },
+        "acknowledged": "sw:acknowledged",
+        "message": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "entityType": "sw:entityType",
+        "entityUri": {
+          "@id": "sw:entityUri",
+          "@type": "@id"
+        }
+      }
+    },
+
+    "Incident": {
+      "@id": "sw:Incident",
+      "@context": {
+        "incidentId": "sw:incidentId",
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "description": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "state": "sw:state",
+        "priority": "sw:priority",
+        "assignee": {
+          "@id": "sw:assignee",
+          "@type": "@id"
+        },
+        "requester": {
+          "@id": "sw:requester",
+          "@type": "@id"
+        },
+        "createdAt": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "updatedAt": {
+          "@id": "dcterms:modified",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "UptimeCheck": {
+      "@id": "sw:UptimeCheck",
+      "@context": {
+        "checkId": "sw:checkId",
+        "name": {
+          "@id": "schema:name",
+          "@type": "xsd:string"
+        },
+        "hostname": {
+          "@id": "schema:url",
+          "@type": "xsd:string"
+        },
+        "checkType": "sw:checkType",
+        "status": "sw:status",
+        "resolution": "sw:resolution",
+        "lastResponseTime": "sw:lastResponseTime",
+        "created": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "tags": {
+          "@id": "schema:keywords",
+          "@container": "@set"
+        }
+      }
+    },
+
+    "LogEvent": {
+      "@id": "sw:LogEvent",
+      "@context": {
+        "eventId": "sw:eventId",
+        "timestamp": {
+          "@id": "dcterms:created",
+          "@type": "xsd:dateTime"
+        },
+        "message": {
+          "@id": "schema:description",
+          "@type": "xsd:string"
+        },
+        "hostname": "sw:hostname",
+        "program": "sw:program",
+        "severity": "sw:severity",
+        "facility": "sw:facility",
+        "sourceIp": "sw:sourceIp",
+        "tags": {
+          "@id": "schema:keywords",
+          "@container": "@set"
+        }
+      }
+    }
+  }
+}

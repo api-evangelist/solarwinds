@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solarwinds.com/schemas/solarwinds/alert.json",
+  "title": "SolarWinds Alert",
+  "description": "Schema for a SolarWinds monitoring alert triggered by threshold violations or status changes on monitored entities.",
+  "type": "object",
+  "required": [
+    "alertId",
+    "alertName",
+    "severity",
+    "triggeredAt"
+  ],
+  "properties": {
+    "alertId": {
+      "type": "integer",
+      "description": "Unique identifier for the alert instance"
+    },
+    "alertName": {
+      "type": "string",
+      "description": "Display name of the alert definition"
+    },
+    "severity": {
+      "type": "string",
+      "description": "Alert severity level",
+      "enum": [
+        "Information",
+        "Warning",
+        "Critical",
+        "Serious",
+        "Notice"
+      ]
+    },
+    "triggeredAt": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the alert was triggered"
+    },
+    "resetAt": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp when the alert was reset, null if still active"
+    },
+    "acknowledged": {
+      "type": "boolean",
+      "description": "Whether the alert has been acknowledged by an operator",
+      "default": false
+    },
+    "acknowledgedBy": {
+      "type": ["string", "null"],
+      "description": "Username of the operator who acknowledged the alert"
+    },
+    "message": {
+      "type": "string",
+      "description": "Alert message with details about the triggering condition"
+    },
+    "entityType": {
+      "type": "string",
+      "description": "Type of the monitored entity that triggered the alert",
+      "examples": [
+        "Orion.Nodes",
+        "Orion.Volumes",
+        "Orion.NPM.Interfaces"
+      ]
+    },
+    "entityUri": {
+      "type": "string",
+      "description": "SWIS URI of the entity that triggered the alert"
+    },
+    "entityCaption": {
+      "type": "string",
+      "description": "Display name of the triggering entity"
+    },
+    "triggerCondition": {
+      "$ref": "#/$defs/TriggerCondition"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Additional notes or annotations on the alert"
+    }
+  },
+  "$defs": {
+    "TriggerCondition": {
+      "type": "object",
+      "description": "Condition that caused the alert to trigger",
+      "properties": {
+        "property": {
+          "type": "string",
+          "description": "Name of the monitored property"
+        },
+        "operator": {
+          "type": "string",
+          "description": "Comparison operator",
+          "enum": [
+            "Greater Than",
+            "Less Than",
+            "Equal To",
+            "Not Equal To",
+            "Greater Than or Equal To",
+            "Less Than or Equal To"
+          ]
+        },
+        "threshold": {
+          "type": "number",
+          "description": "Threshold value that was exceeded"
+        },
+        "currentValue": {
+          "type": "number",
+          "description": "Current value of the monitored property"
+        },
+        "duration": {
+          "type": "integer",
+          "description": "Duration in seconds the condition must persist before triggering",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://solarwinds.com/schemas/solarwinds/node.json",
+  "title": "SolarWinds Monitored Node",
+  "description": "Schema for a monitored node (network device, server, or virtual machine) in the SolarWinds Orion Platform.",
+  "type": "object",
+  "required": [
+    "Caption",
+    "IPAddress"
+  ],
+  "properties": {
+    "NodeID": {
+      "type": "integer",
+      "description": "Unique identifier for the node in Orion"
+    },
+    "Caption": {
+      "type": "string",
+      "description": "Display name of the node",
+      "maxLength": 255
+    },
+    "IPAddress": {
+      "type": "string",
+      "description": "Primary IP address of the node",
+      "format": "ipv4"
+    },
+    "IPAddressGUID": {
+      "type": "string",
+      "description": "GUID representation of the IP address"
+    },
+    "Status": {
+      "type": "integer",
+      "description": "Current monitoring status of the node",
+      "enum": [0, 1, 2, 3, 4, 9, 12, 14, 17, 22],
+      "examples": [1]
+    },
+    "StatusDescription": {
+      "type": "string",
+      "description": "Human-readable status description",
+      "enum": [
+        "Unknown",
+        "Up",
+        "Down",
+        "Warning",
+        "Shutdown",
+        "Unmanaged",
+        "Unreachable",
+        "Critical",
+        "Misconfigured",
+        "Could Not Poll"
+      ]
+    },
+    "MachineType": {
+      "type": "string",
+      "description": "Type of machine or device"
+    },
+    "Vendor": {
+      "type": "string",
+      "description": "Hardware or software vendor"
+    },
+    "ObjectSubType": {
+      "type": "string",
+      "description": "Node sub-type classification",
+      "enum": [
+        "SNMP",
+        "ICMP",
+        "WMI",
+        "Agent",
+        "External"
+      ]
+    },
+    "SysName": {
+      "type": "string",
+      "description": "SNMP sysName value"
+    },
+    "SysObjectID": {
+      "type": "string",
+      "description": "SNMP sysObjectID value"
+    },
+    "Location": {
+      "type": "string",
+      "description": "Physical location of the node"
+    },
+    "Contact": {
+      "type": "string",
+      "description": "Contact person for the node"
+    },
+    "Community": {
+      "type": "string",
+      "description": "SNMP community string"
+    },
+    "SNMPVersion": {
+      "type": "integer",
+      "description": "SNMP version used for polling",
+      "enum": [0, 1, 2, 3]
+    },
+    "EngineID": {
+      "type": "integer",
+      "description": "Polling engine responsible for this node"
+    },
+    "CPULoad": {
+      "type": "number",
+      "description": "Current CPU utilization percentage",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "PercentMemoryUsed": {
+      "type": "number",
+      "description": "Current memory utilization percentage",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "ResponseTime": {
+      "type": "integer",
+      "description": "Last ICMP response time in milliseconds",
+      "minimum": 0
+    },
+    "PercentLoss": {
+      "type": "number",
+      "description": "Packet loss percentage",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "LastBoot": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last boot timestamp"
+    },
+    "LastSync": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last synchronization timestamp"
+    },
+    "Uri": {
+      "type": "string",
+      "description": "SWIS URI for this node entity"
+    },
+    "CustomProperties": {
+      "type": "object",
+      "description": "Custom properties defined for this node",
+      "additionalProperties": true
+    }
+  }
+}

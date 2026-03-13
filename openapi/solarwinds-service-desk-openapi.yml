@@ -1,0 +1,543 @@
+openapi: 3.1.0
+info:
+  title: SolarWinds Service Desk API
+  description: >-
+    REST API for SolarWinds Service Desk (formerly Samanage) providing CRUD
+    access to IT service management resources including incidents, service
+    requests, changes, problems, releases, assets, and users.
+  version: '2.1'
+  contact:
+    name: SolarWinds Support
+    url: https://support.solarwinds.com
+  termsOfService: https://www.solarwinds.com/legal/terms
+externalDocs:
+  description: SolarWinds Service Desk API Documentation
+  url: https://apidoc.samanage.com/
+servers:
+  - url: https://api.samanage.com
+    description: SolarWinds Service Desk API Server
+tags:
+  - name: Incidents
+    description: Manage IT incidents
+  - name: ServiceRequests
+    description: Manage service requests
+  - name: Changes
+    description: Manage change requests
+  - name: Problems
+    description: Manage problem records
+  - name: Assets
+    description: Manage hardware and software assets
+  - name: Users
+    description: Manage user accounts
+  - name: Categories
+    description: Manage categories for incidents and requests
+security:
+  - bearerAuth: []
+paths:
+  /incidents.json:
+    get:
+      operationId: listIncidents
+      summary: List incidents
+      description: >-
+        Returns a paginated list of incidents in the service desk.
+      tags:
+        - Incidents
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: List of incidents
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Incident'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createIncident
+      summary: Create an incident
+      description: >-
+        Creates a new incident in the service desk.
+      tags:
+        - Incidents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IncidentCreate'
+      responses:
+        '200':
+          description: Incident created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Incident'
+        '400':
+          description: Invalid incident data
+        '401':
+          description: Unauthorized
+  /incidents/{id}.json:
+    get:
+      operationId: getIncident
+      summary: Get an incident
+      description: >-
+        Returns detailed information about a specific incident.
+      tags:
+        - Incidents
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Incident details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Incident'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Incident not found
+    put:
+      operationId: updateIncident
+      summary: Update an incident
+      description: >-
+        Updates the fields of an existing incident.
+      tags:
+        - Incidents
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IncidentUpdate'
+      responses:
+        '200':
+          description: Incident updated
+        '401':
+          description: Unauthorized
+        '404':
+          description: Incident not found
+    delete:
+      operationId: deleteIncident
+      summary: Delete an incident
+      description: >-
+        Permanently deletes an incident.
+      tags:
+        - Incidents
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Incident deleted
+        '401':
+          description: Unauthorized
+        '404':
+          description: Incident not found
+  /service_requests.json:
+    get:
+      operationId: listServiceRequests
+      summary: List service requests
+      description: >-
+        Returns a paginated list of service requests.
+      tags:
+        - ServiceRequests
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: List of service requests
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ServiceRequest'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createServiceRequest
+      summary: Create a service request
+      description: >-
+        Creates a new service request.
+      tags:
+        - ServiceRequests
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceRequestCreate'
+      responses:
+        '200':
+          description: Service request created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceRequest'
+        '401':
+          description: Unauthorized
+  /changes.json:
+    get:
+      operationId: listChanges
+      summary: List change requests
+      description: >-
+        Returns a paginated list of change requests.
+      tags:
+        - Changes
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: List of changes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Change'
+        '401':
+          description: Unauthorized
+  /problems.json:
+    get:
+      operationId: listProblems
+      summary: List problems
+      description: >-
+        Returns a paginated list of problem records.
+      tags:
+        - Problems
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: List of problems
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Problem'
+        '401':
+          description: Unauthorized
+  /hardwares.json:
+    get:
+      operationId: listAssets
+      summary: List hardware assets
+      description: >-
+        Returns a paginated list of hardware assets tracked in the CMDB.
+      tags:
+        - Assets
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: List of assets
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Asset'
+        '401':
+          description: Unauthorized
+  /users.json:
+    get:
+      operationId: listUsers
+      summary: List users
+      description: >-
+        Returns a paginated list of users in the service desk.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/Page'
+        - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized
+  /categories.json:
+    get:
+      operationId: listCategories
+      summary: List categories
+      description: >-
+        Returns all categories available for incidents and requests.
+      tags:
+        - Categories
+      responses:
+        '200':
+          description: List of categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+        '401':
+          description: Unauthorized
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        API token authentication via X-Samanage-Authorization header
+        with Bearer prefix
+  parameters:
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique identifier of the resource
+      schema:
+        type: integer
+    Page:
+      name: page
+      in: query
+      description: Page number for pagination
+      schema:
+        type: integer
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 25
+  schemas:
+    Incident:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique incident identifier
+        number:
+          type: integer
+          description: Human-readable incident number
+        name:
+          type: string
+          description: Incident title
+        description:
+          type: string
+          description: Incident description
+        state:
+          type: string
+          description: Current state
+          enum:
+            - New
+            - Assigned
+            - Awaiting Input
+            - In Progress
+            - On Hold
+            - Resolved
+            - Closed
+        priority:
+          type: string
+          description: Priority level
+          enum:
+            - None
+            - Low
+            - Medium
+            - High
+            - Critical
+        assignee:
+          $ref: '#/components/schemas/UserRef'
+        requester:
+          $ref: '#/components/schemas/UserRef'
+        category:
+          $ref: '#/components/schemas/CategoryRef'
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    IncidentCreate:
+      type: object
+      required:
+        - incident
+      properties:
+        incident:
+          type: object
+          required:
+            - name
+          properties:
+            name:
+              type: string
+              description: Incident title
+            description:
+              type: string
+              description: Incident description
+            priority:
+              type: string
+              description: Priority level
+            assignee:
+              $ref: '#/components/schemas/UserRef'
+            category:
+              $ref: '#/components/schemas/CategoryRef'
+    IncidentUpdate:
+      type: object
+      required:
+        - incident
+      properties:
+        incident:
+          type: object
+          properties:
+            name:
+              type: string
+            description:
+              type: string
+            state:
+              type: string
+            priority:
+              type: string
+            assignee:
+              $ref: '#/components/schemas/UserRef'
+    ServiceRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+        number:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        state:
+          type: string
+        priority:
+          type: string
+        requester:
+          $ref: '#/components/schemas/UserRef'
+        created_at:
+          type: string
+          format: date-time
+    ServiceRequestCreate:
+      type: object
+      required:
+        - service_request
+      properties:
+        service_request:
+          type: object
+          required:
+            - name
+          properties:
+            name:
+              type: string
+            description:
+              type: string
+            priority:
+              type: string
+    Change:
+      type: object
+      properties:
+        id:
+          type: integer
+        number:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        state:
+          type: string
+        priority:
+          type: string
+        change_type:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+    Problem:
+      type: object
+      properties:
+        id:
+          type: integer
+        number:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        state:
+          type: string
+        priority:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+    Asset:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        asset_type:
+          type: string
+        serial_number:
+          type: string
+        status:
+          type: string
+        user:
+          $ref: '#/components/schemas/UserRef'
+        created_at:
+          type: string
+          format: date-time
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        role:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+    UserRef:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+    CategoryRef:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string

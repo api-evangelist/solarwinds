@@ -1,0 +1,433 @@
+openapi: 3.1.0
+info:
+  title: SolarWinds Papertrail API
+  description: >-
+    HTTP API for cloud-based log management including searching logs,
+    managing systems, groups, saved searches, and user accounts. Provides
+    endpoints for log search, settings management, and system configuration.
+  version: '1'
+  contact:
+    name: SolarWinds Support
+    url: https://support.solarwinds.com
+  termsOfService: https://www.solarwinds.com/legal/terms
+externalDocs:
+  description: Papertrail HTTP API Documentation
+  url: https://www.papertrail.com/help/http-api/
+servers:
+  - url: https://papertrailapp.com/api/v1
+    description: Papertrail API Server
+tags:
+  - name: Events
+    description: Search and retrieve log events
+  - name: Systems
+    description: Manage log-sending systems
+  - name: Groups
+    description: Manage system groups
+  - name: SavedSearches
+    description: Manage saved searches
+  - name: Users
+    description: Manage user accounts
+security:
+  - apiToken: []
+paths:
+  /events/search.json:
+    get:
+      operationId: searchEvents
+      summary: Search log events
+      description: >-
+        Searches log events matching the specified criteria. Returns matching
+        events sorted by timestamp.
+      tags:
+        - Events
+      parameters:
+        - name: q
+          in: query
+          description: Search query string
+          schema:
+            type: string
+        - name: system_id
+          in: query
+          description: Limit results to a specific system
+          schema:
+            type: integer
+        - name: group_id
+          in: query
+          description: Limit results to a specific group
+          schema:
+            type: integer
+        - name: min_id
+          in: query
+          description: Return events after this event ID
+          schema:
+            type: string
+        - name: max_id
+          in: query
+          description: Return events before this event ID
+          schema:
+            type: string
+        - name: min_time
+          in: query
+          description: Start time (Unix timestamp)
+          schema:
+            type: integer
+        - name: max_time
+          in: query
+          description: End time (Unix timestamp)
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          description: Maximum number of events to return
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: Search results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EventSearchResult'
+        '401':
+          description: Unauthorized
+  /systems.json:
+    get:
+      operationId: listSystems
+      summary: List all systems
+      description: >-
+        Returns all systems (log senders) configured in the account.
+      tags:
+        - Systems
+      responses:
+        '200':
+          description: List of systems
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/System'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: registerSystem
+      summary: Register a new system
+      description: >-
+        Registers a new system to send logs to Papertrail.
+      tags:
+        - Systems
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SystemCreate'
+      responses:
+        '200':
+          description: System registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/System'
+        '401':
+          description: Unauthorized
+  /systems/{id}.json:
+    get:
+      operationId: getSystem
+      summary: Get system details
+      description: >-
+        Returns details of a specific system.
+      tags:
+        - Systems
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: System details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/System'
+        '401':
+          description: Unauthorized
+        '404':
+          description: System not found
+    put:
+      operationId: updateSystem
+      summary: Update a system
+      description: >-
+        Updates the configuration of a system.
+      tags:
+        - Systems
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SystemUpdate'
+      responses:
+        '200':
+          description: System updated
+        '401':
+          description: Unauthorized
+        '404':
+          description: System not found
+    delete:
+      operationId: deleteSystem
+      summary: Delete a system
+      description: >-
+        Removes a system from the account.
+      tags:
+        - Systems
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: System deleted
+        '401':
+          description: Unauthorized
+        '404':
+          description: System not found
+  /groups.json:
+    get:
+      operationId: listGroups
+      summary: List all groups
+      description: >-
+        Returns all system groups configured in the account.
+      tags:
+        - Groups
+      responses:
+        '200':
+          description: List of groups
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Group'
+        '401':
+          description: Unauthorized
+  /groups/{id}.json:
+    get:
+      operationId: getGroup
+      summary: Get group details
+      description: >-
+        Returns details of a specific group including its member systems.
+      tags:
+        - Groups
+      parameters:
+        - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Group details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Group not found
+  /searches.json:
+    get:
+      operationId: listSavedSearches
+      summary: List saved searches
+      description: >-
+        Returns all saved searches configured in the account.
+      tags:
+        - SavedSearches
+      responses:
+        '200':
+          description: List of saved searches
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SavedSearch'
+        '401':
+          description: Unauthorized
+  /users.json:
+    get:
+      operationId: listUsers
+      summary: List users
+      description: >-
+        Returns all users in the account.
+      tags:
+        - Users
+      responses:
+        '200':
+          description: List of users
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '401':
+          description: Unauthorized
+components:
+  securitySchemes:
+    apiToken:
+      type: apiKey
+      in: header
+      name: X-Papertrail-Token
+      description: Papertrail API token
+  parameters:
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: integer
+  schemas:
+    EventSearchResult:
+      type: object
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+        min_id:
+          type: string
+          description: Minimum event ID in results
+        max_id:
+          type: string
+          description: Maximum event ID in results
+        reached_beginning:
+          type: boolean
+          description: Whether results include the earliest matching event
+        min_time_at:
+          type: string
+          format: date-time
+    Event:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique event identifier
+        received_at:
+          type: string
+          format: date-time
+          description: When the event was received
+        generated_at:
+          type: string
+          format: date-time
+          description: When the event was generated
+        display_received_at:
+          type: string
+          description: Human-readable received timestamp
+        source_ip:
+          type: string
+          description: Source IP address
+        source_name:
+          type: string
+          description: Source system name
+        source_id:
+          type: integer
+          description: Source system ID
+        hostname:
+          type: string
+          description: Hostname
+        program:
+          type: string
+          description: Program name
+        severity:
+          type: string
+          description: Syslog severity
+        facility:
+          type: string
+          description: Syslog facility
+        message:
+          type: string
+          description: Log message content
+    System:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: System ID
+        name:
+          type: string
+          description: System name
+        last_event_at:
+          type: string
+          format: date-time
+        auto_delete:
+          type: boolean
+        ip_address:
+          type: string
+        hostname:
+          type: string
+        syslog:
+          type: object
+          properties:
+            hostname:
+              type: string
+            port:
+              type: integer
+    SystemCreate:
+      type: object
+      required:
+        - system
+      properties:
+        system:
+          type: object
+          required:
+            - name
+          properties:
+            name:
+              type: string
+            hostname:
+              type: string
+            ip_address:
+              type: string
+    SystemUpdate:
+      type: object
+      required:
+        - system
+      properties:
+        system:
+          type: object
+          properties:
+            name:
+              type: string
+            hostname:
+              type: string
+    Group:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        system_wildcard:
+          type: string
+        systems:
+          type: array
+          items:
+            $ref: '#/components/schemas/System'
+    SavedSearch:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        query:
+          type: string
+        group:
+          $ref: '#/components/schemas/Group'
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+          format: email
+        is_admin:
+          type: boolean
