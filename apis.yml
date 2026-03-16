@@ -2,7 +2,7 @@ name: SolarWinds APIs
 description: A collection of APIs provided by SolarWinds for IT infrastructure management, monitoring, and observability
 image: https://www.solarwinds.com/sites/all/themes/solarwinds_theme/logo.png
 created: '2024'
-modified: '2026-03-03'
+modified: '2026-03-16'
 specificationVersion: '0.18'
 url: https://www.solarwinds.com/apis.json
 apis:
