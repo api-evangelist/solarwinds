@@ -37,7 +37,7 @@ paths:
   /incidents.json:
     get:
       operationId: listIncidents
-      summary: List incidents
+      summary: SolarWinds List incidents
       description: >-
         Returns a paginated list of incidents in the service desk.
       tags:
@@ -58,7 +58,7 @@ paths:
           description: Unauthorized
     post:
       operationId: createIncident
-      summary: Create an incident
+      summary: SolarWinds Create an incident
       description: >-
         Creates a new incident in the service desk.
       tags:
@@ -83,7 +83,7 @@ paths:
   /incidents/{id}.json:
     get:
       operationId: getIncident
-      summary: Get an incident
+      summary: SolarWinds Get an incident
       description: >-
         Returns detailed information about a specific incident.
       tags:
@@ -103,7 +103,7 @@ paths:
           description: Incident not found
     put:
       operationId: updateIncident
-      summary: Update an incident
+      summary: SolarWinds Update an incident
       description: >-
         Updates the fields of an existing incident.
       tags:
@@ -125,7 +125,7 @@ paths:
           description: Incident not found
     delete:
       operationId: deleteIncident
-      summary: Delete an incident
+      summary: SolarWinds Delete an incident
       description: >-
         Permanently deletes an incident.
       tags:
@@ -142,7 +142,7 @@ paths:
   /service_requests.json:
     get:
       operationId: listServiceRequests
-      summary: List service requests
+      summary: SolarWinds List service requests
       description: >-
         Returns a paginated list of service requests.
       tags:
@@ -163,7 +163,7 @@ paths:
           description: Unauthorized
     post:
       operationId: createServiceRequest
-      summary: Create a service request
+      summary: SolarWinds Create a service request
       description: >-
         Creates a new service request.
       tags:
@@ -186,7 +186,7 @@ paths:
   /changes.json:
     get:
       operationId: listChanges
-      summary: List change requests
+      summary: SolarWinds List change requests
       description: >-
         Returns a paginated list of change requests.
       tags:
@@ -208,7 +208,7 @@ paths:
   /problems.json:
     get:
       operationId: listProblems
-      summary: List problems
+      summary: SolarWinds List problems
       description: >-
         Returns a paginated list of problem records.
       tags:
@@ -230,7 +230,7 @@ paths:
   /hardwares.json:
     get:
       operationId: listAssets
-      summary: List hardware assets
+      summary: SolarWinds List hardware assets
       description: >-
         Returns a paginated list of hardware assets tracked in the CMDB.
       tags:
@@ -252,7 +252,7 @@ paths:
   /users.json:
     get:
       operationId: listUsers
-      summary: List users
+      summary: SolarWinds List users
       description: >-
         Returns a paginated list of users in the service desk.
       tags:
@@ -274,7 +274,7 @@ paths:
   /categories.json:
     get:
       operationId: listCategories
-      summary: List categories
+      summary: SolarWinds List categories
       description: >-
         Returns all categories available for incidents and requests.
       tags:

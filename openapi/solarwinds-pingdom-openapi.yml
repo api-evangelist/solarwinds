@@ -39,7 +39,7 @@ paths:
   /checks:
     get:
       operationId: listChecks
-      summary: List all checks
+      summary: SolarWinds List all checks
       description: >-
         Returns a list of all checks configured in the Pingdom account.
       tags:
@@ -88,7 +88,7 @@ paths:
           description: Unauthorized
     post:
       operationId: createCheck
-      summary: Create a new check
+      summary: SolarWinds Create a new check
       description: >-
         Creates a new uptime check with the specified configuration.
       tags:
@@ -113,7 +113,7 @@ paths:
   /checks/{checkid}:
     get:
       operationId: getCheck
-      summary: Get detailed check information
+      summary: SolarWinds Get detailed check information
       description: >-
         Returns detailed information about a specific check including
         its configuration and current status.
@@ -134,7 +134,7 @@ paths:
           description: Check not found
     put:
       operationId: updateCheck
-      summary: Update a check
+      summary: SolarWinds Update a check
       description: >-
         Updates the configuration of an existing check.
       tags:
@@ -158,7 +158,7 @@ paths:
           description: Check not found
     delete:
       operationId: deleteCheck
-      summary: Delete a check
+      summary: SolarWinds Delete a check
       description: >-
         Permanently deletes a check and all associated data.
       tags:
@@ -175,7 +175,7 @@ paths:
   /results/{checkid}:
     get:
       operationId: getResults
-      summary: Get raw check results
+      summary: SolarWinds Get raw check results
       description: >-
         Returns raw test results for a specific check within a time range.
       tags:
@@ -233,7 +233,7 @@ paths:
   /summary.average/{checkid}:
     get:
       operationId: getSummaryAverage
-      summary: Get average response time summary
+      summary: SolarWinds Get average response time summary
       description: >-
         Returns average response time and uptime data for a check
         over a specified time period.
@@ -271,7 +271,7 @@ paths:
   /summary.outage/{checkid}:
     get:
       operationId: getSummaryOutage
-      summary: Get outage summary
+      summary: SolarWinds Get outage summary
       description: >-
         Returns a list of outage periods for a specific check.
       tags:
@@ -302,7 +302,7 @@ paths:
   /alerting/contacts:
     get:
       operationId: listContacts
-      summary: List alert contacts
+      summary: SolarWinds List alert contacts
       description: >-
         Returns all alert contacts configured in the account.
       tags:
@@ -319,7 +319,7 @@ paths:
   /alerting/teams:
     get:
       operationId: listTeams
-      summary: List alert teams
+      summary: SolarWinds List alert teams
       description: >-
         Returns all alert teams configured in the account.
       tags:
@@ -336,7 +336,7 @@ paths:
   /maintenance:
     get:
       operationId: listMaintenanceWindows
-      summary: List maintenance windows
+      summary: SolarWinds List maintenance windows
       description: >-
         Returns all maintenance windows configured in the account.
       tags:
@@ -353,7 +353,7 @@ paths:
   /probes:
     get:
       operationId: listProbes
-      summary: List probe servers
+      summary: SolarWinds List probe servers
       description: >-
         Returns a list of all Pingdom probe servers with their locations.
       tags:

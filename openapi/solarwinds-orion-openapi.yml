@@ -36,7 +36,7 @@ paths:
   /Query:
     get:
       operationId: querySwis
-      summary: Execute a SWQL query
+      summary: SolarWinds Execute a SWQL query
       description: >-
         Executes a SolarWinds Query Language (SWQL) query against the
         SolarWinds Information Service and returns the results as JSON.
@@ -59,7 +59,7 @@ paths:
           description: Authentication required
     post:
       operationId: querySwisPost
-      summary: Execute a SWQL query via POST
+      summary: SolarWinds Execute a SWQL query via POST
       description: >-
         Executes a SWQL query using a POST request body. Useful for longer
         queries that exceed URL length limits.
@@ -85,7 +85,7 @@ paths:
   /Create/{entityType}:
     post:
       operationId: createEntity
-      summary: Create a new SWIS entity
+      summary: SolarWinds Create a new SWIS entity
       description: >-
         Creates a new entity of the specified type in the SolarWinds
         Information Service. The request body contains the property values
@@ -118,7 +118,7 @@ paths:
   /{entityUri}:
     get:
       operationId: readEntity
-      summary: Read a SWIS entity
+      summary: SolarWinds Read a SWIS entity
       description: >-
         Retrieves the properties of a specific entity identified by its
         SWIS URI. Returns all properties of the entity as JSON.
@@ -145,7 +145,7 @@ paths:
           description: Entity not found
     post:
       operationId: updateEntity
-      summary: Update a SWIS entity
+      summary: SolarWinds Update a SWIS entity
       description: >-
         Updates the properties of an existing entity identified by its
         SWIS URI. Only the properties included in the request body are updated.
@@ -176,7 +176,7 @@ paths:
           description: Entity not found
     delete:
       operationId: deleteEntity
-      summary: Delete a SWIS entity
+      summary: SolarWinds Delete a SWIS entity
       description: >-
         Deletes an entity identified by its SWIS URI from the SolarWinds
         Information Service.
@@ -199,7 +199,7 @@ paths:
   /Invoke/{entityType}/{verb}:
     post:
       operationId: invokeVerb
-      summary: Invoke a verb on an entity type
+      summary: SolarWinds Invoke a verb on an entity type
       description: >-
         Invokes a named verb (method) on the specified entity type.
         Verbs provide operations like Unmanage, Remanage, PollNow,
@@ -241,7 +241,7 @@ paths:
   /BulkDelete:
     post:
       operationId: bulkDelete
-      summary: Delete multiple entities
+      summary: SolarWinds Delete multiple entities
       description: >-
         Deletes multiple SWIS entities in a single operation. Provide an
         array of SWIS URIs to delete.
@@ -261,7 +261,7 @@ paths:
   /BulkUpdate:
     post:
       operationId: bulkUpdate
-      summary: Update multiple entities
+      summary: SolarWinds Update multiple entities
       description: >-
         Updates properties on multiple SWIS entities in a single operation.
       tags:

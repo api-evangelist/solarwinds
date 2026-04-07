@@ -33,7 +33,7 @@ paths:
   /events/search.json:
     get:
       operationId: searchEvents
-      summary: Search log events
+      summary: SolarWinds Search log events
       description: >-
         Searches log events matching the specified criteria. Returns matching
         events sorted by timestamp.
@@ -93,7 +93,7 @@ paths:
   /systems.json:
     get:
       operationId: listSystems
-      summary: List all systems
+      summary: SolarWinds List all systems
       description: >-
         Returns all systems (log senders) configured in the account.
       tags:
@@ -111,7 +111,7 @@ paths:
           description: Unauthorized
     post:
       operationId: registerSystem
-      summary: Register a new system
+      summary: SolarWinds Register a new system
       description: >-
         Registers a new system to send logs to Papertrail.
       tags:
@@ -134,7 +134,7 @@ paths:
   /systems/{id}.json:
     get:
       operationId: getSystem
-      summary: Get system details
+      summary: SolarWinds Get system details
       description: >-
         Returns details of a specific system.
       tags:
@@ -154,7 +154,7 @@ paths:
           description: System not found
     put:
       operationId: updateSystem
-      summary: Update a system
+      summary: SolarWinds Update a system
       description: >-
         Updates the configuration of a system.
       tags:
@@ -176,7 +176,7 @@ paths:
           description: System not found
     delete:
       operationId: deleteSystem
-      summary: Delete a system
+      summary: SolarWinds Delete a system
       description: >-
         Removes a system from the account.
       tags:
@@ -193,7 +193,7 @@ paths:
   /groups.json:
     get:
       operationId: listGroups
-      summary: List all groups
+      summary: SolarWinds List all groups
       description: >-
         Returns all system groups configured in the account.
       tags:
@@ -212,7 +212,7 @@ paths:
   /groups/{id}.json:
     get:
       operationId: getGroup
-      summary: Get group details
+      summary: SolarWinds Get group details
       description: >-
         Returns details of a specific group including its member systems.
       tags:
@@ -233,7 +233,7 @@ paths:
   /searches.json:
     get:
       operationId: listSavedSearches
-      summary: List saved searches
+      summary: SolarWinds List saved searches
       description: >-
         Returns all saved searches configured in the account.
       tags:
@@ -252,7 +252,7 @@ paths:
   /users.json:
     get:
       operationId: listUsers
-      summary: List users
+      summary: SolarWinds List users
       description: >-
         Returns all users in the account.
       tags:

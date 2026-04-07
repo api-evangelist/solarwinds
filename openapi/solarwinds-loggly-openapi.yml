@@ -33,7 +33,7 @@ paths:
   /search:
     get:
       operationId: searchEvents
-      summary: Initiate a search query
+      summary: SolarWinds Initiate a search query
       description: >-
         Initiates a search query against log events. Returns a search ID
         (RSID) that can be used with the events endpoint to retrieve results.
@@ -86,7 +86,7 @@ paths:
   /events:
     get:
       operationId: getEvents
-      summary: Retrieve search results
+      summary: SolarWinds Retrieve search results
       description: >-
         Retrieves events for a previously initiated search using the RSID
         returned by the search endpoint.
@@ -111,7 +111,7 @@ paths:
   /events/iterate:
     get:
       operationId: iterateEvents
-      summary: Iterate through search results
+      summary: SolarWinds Iterate through search results
       description: >-
         Paginating event retrieval API for iterating through large result
         sets. Returns events and a next pointer for pagination.
@@ -141,7 +141,7 @@ paths:
   /customer:
     get:
       operationId: getAccountInfo
-      summary: Get account information
+      summary: SolarWinds Get account information
       description: >-
         Returns customer account information including the customer token
         and a list of active Loggly users.
