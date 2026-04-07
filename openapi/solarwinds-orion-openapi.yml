@@ -22,14 +22,14 @@ servers:
         default: localhost
         description: Hostname or IP of your Orion server
 tags:
-  - name: Query
-    description: Execute SWQL queries against the SolarWinds Information Service
+  - name: BulkOperations
+    description: Perform bulk create, update, and delete operations
   - name: CRUD
     description: Create, read, update, and delete operations on SWIS entities
   - name: Invoke
     description: Invoke verbs (methods) on SWIS entities
-  - name: BulkOperations
-    description: Perform bulk create, update, and delete operations
+  - name: Query
+    description: Execute SWQL queries against the SolarWinds Information Service
 security:
   - basicAuth: []
 paths:

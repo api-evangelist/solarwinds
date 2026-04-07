@@ -19,12 +19,12 @@ servers:
 tags:
   - name: Events
     description: Search and retrieve log events
-  - name: Systems
-    description: Manage log-sending systems
   - name: Groups
     description: Manage system groups
   - name: SavedSearches
     description: Manage saved searches
+  - name: Systems
+    description: Manage log-sending systems
   - name: Users
     description: Manage user accounts
 security:

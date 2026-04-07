@@ -17,20 +17,20 @@ servers:
   - url: https://api.samanage.com
     description: SolarWinds Service Desk API Server
 tags:
-  - name: Incidents
-    description: Manage IT incidents
-  - name: ServiceRequests
-    description: Manage service requests
-  - name: Changes
-    description: Manage change requests
-  - name: Problems
-    description: Manage problem records
   - name: Assets
     description: Manage hardware and software assets
-  - name: Users
-    description: Manage user accounts
   - name: Categories
     description: Manage categories for incidents and requests
+  - name: Changes
+    description: Manage change requests
+  - name: Incidents
+    description: Manage IT incidents
+  - name: Problems
+    description: Manage problem records
+  - name: ServiceRequests
+    description: Manage service requests
+  - name: Users
+    description: Manage user accounts
 security:
   - bearerAuth: []
 paths:

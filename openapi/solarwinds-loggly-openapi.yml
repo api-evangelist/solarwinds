@@ -21,12 +21,10 @@ servers:
         default: logs-01
         description: Your Loggly subdomain
 tags:
-  - name: Search
-    description: Search and retrieve log events
-  - name: Events
-    description: Send log events to Loggly
   - name: Account
     description: Account information and management
+  - name: Search
+    description: Search and retrieve log events
 security:
   - bearerAuth: []
 paths:

@@ -19,20 +19,18 @@ servers:
 tags:
   - name: Checks
     description: Manage uptime and transaction checks
-  - name: Results
-    description: Retrieve check results and performance data
-  - name: Actions
-    description: Manage alert actions and integrations
   - name: Contacts
     description: Manage alert contacts
-  - name: Teams
-    description: Manage alert teams
-  - name: Summary
-    description: Retrieve performance and outage summaries
   - name: Maintenance
     description: Manage maintenance windows
   - name: ProbeServers
     description: List available probe servers
+  - name: Results
+    description: Retrieve check results and performance data
+  - name: Summary
+    description: Retrieve performance and outage summaries
+  - name: Teams
+    description: Manage alert teams
 security:
   - bearerAuth: []
 paths:
