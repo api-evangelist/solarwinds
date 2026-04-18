@@ -1,0 +1,168 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "SolarWinds Service Desk API"
+  description: "REST API for IT service management including incidents, service requests, changes, problems, assets, and users."
+  tags:
+    - SolarWinds
+    - ITSM
+    - Service Desk
+    - Ticketing
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      SWSD_API_TOKEN: SWSD_API_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: service-desk
+      baseUri: https://api.samanage.com
+      description: "SolarWinds Service Desk REST API"
+      authentication:
+        type: bearer
+        token: "{{SWSD_API_TOKEN}}"
+      resources:
+        - name: incidents
+          path: /incidents.json
+          description: "Incident management"
+          operations:
+            - name: list-incidents
+              method: GET
+              description: "List incidents"
+              inputParameters:
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Page number"
+                - name: per_page
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Items per page"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-incident
+              method: POST
+              description: "Create an incident"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  incident:
+                    name: "{{tools.name}}"
+                    description: "{{tools.description}}"
+            - name: get-incident
+              method: GET
+              description: "Get incident details"
+              inputParameters:
+                - name: incidentId
+                  in: path
+                  type: integer
+                  required: true
+                  description: "Incident ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-incident
+              method: PUT
+              description: "Update an incident"
+              inputParameters:
+                - name: incidentId
+                  in: path
+                  type: integer
+                  required: true
+                  description: "Incident ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: service-requests
+          path: /service_requests.json
+          description: "Service request management"
+          operations:
+            - name: list-service-requests
+              method: GET
+              description: "List service requests"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-service-request
+              method: POST
+              description: "Create a service request"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: changes
+          path: /changes.json
+          description: "Change management"
+          operations:
+            - name: list-changes
+              method: GET
+              description: "List change requests"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: assets
+          path: /hardwares.json
+          description: "Asset management"
+          operations:
+            - name: list-assets
+              method: GET
+              description: "List hardware assets"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8101
+      namespace: service-desk-api
+      resources:
+        - path: /v1/incidents
+          name: incidents
+          description: "Incident management"
+          operations:
+            - method: GET
+              name: list-incidents
+              description: "List incidents"
+              call: "service-desk.list-incidents"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9101
+      namespace: service-desk-mcp
+      transport: http
+      tools:
+        - name: list-incidents
+          description: "List service desk incidents"
+          hints:
+            readOnly: true
+          call: "service-desk.list-incidents"
+          outputParameters:
+            - type: object
+              mapping: "$."

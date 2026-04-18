@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "LogEvent",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique event identifier"
+    },
+    "timestamp": {
+      "type": "integer",
+      "description": "Event timestamp in milliseconds"
+    },
+    "logmsg": {
+      "type": "string",
+      "description": "Raw log message"
+    },
+    "logtypes": {
+      "type": "array",
+      "description": "Detected log types"
+    },
+    "event": {
+      "type": "object",
+      "description": "Parsed event fields"
+    },
+    "tags": {
+      "type": "array",
+      "description": "Tags associated with the event"
+    }
+  }
+}

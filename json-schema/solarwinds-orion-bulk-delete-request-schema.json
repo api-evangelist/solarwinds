@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BulkDeleteRequest",
+  "type": "object",
+  "properties": {
+    "uris": {
+      "type": "array",
+      "description": "Array of SWIS URIs to delete"
+    }
+  }
+}

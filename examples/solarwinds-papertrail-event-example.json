@@ -1,0 +1,14 @@
+{
+  "id": "abc123",
+  "received_at": "2026-01-15T10:30:00Z",
+  "generated_at": "2026-01-15T10:30:00Z",
+  "display_received_at": "2026-01-15T10:30:00Z",
+  "source_ip": "example_value",
+  "source_name": "example_value",
+  "source_id": "500123",
+  "hostname": "example_value",
+  "program": "example_value",
+  "severity": "example_value",
+  "facility": "example_value",
+  "message": "example_value"
+}

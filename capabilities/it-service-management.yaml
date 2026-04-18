@@ -1,0 +1,144 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "SolarWinds IT Service Management"
+  description: "Workflow for IT service management combining Service Desk incident/change management with Orion infrastructure data for IT support and service delivery teams."
+  tags:
+    - SolarWinds
+    - ITSM
+    - Service Desk
+    - Incident Management
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      SWSD_API_TOKEN: SWSD_API_TOKEN
+      ORION_USERNAME: ORION_USERNAME
+      ORION_PASSWORD: ORION_PASSWORD
+
+capability:
+  consumes:
+    - import: service-desk
+      location: ./shared/service-desk.yaml
+    - import: orion
+      location: ./shared/orion.yaml
+
+  exposes:
+    - type: rest
+      port: 8082
+      namespace: itsm-api
+      description: "Unified REST API for SolarWinds IT service management."
+      resources:
+        - path: /v1/incidents
+          name: incidents
+          description: "Incident management"
+          operations:
+            - method: GET
+              name: list-incidents
+              description: "List incidents"
+              call: "service-desk.list-incidents"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/service-requests
+          name: service-requests
+          description: "Service request management"
+          operations:
+            - method: GET
+              name: list-service-requests
+              description: "List service requests"
+              call: "service-desk.list-service-requests"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/changes
+          name: changes
+          description: "Change management"
+          operations:
+            - method: GET
+              name: list-changes
+              description: "List change requests"
+              call: "service-desk.list-changes"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/assets
+          name: assets
+          description: "Asset management"
+          operations:
+            - method: GET
+              name: list-assets
+              description: "List hardware assets"
+              call: "service-desk.list-assets"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9092
+      namespace: itsm-mcp
+      transport: http
+      description: "MCP server for AI-assisted IT service management."
+      tools:
+        - name: list-incidents
+          description: "List service desk incidents"
+          hints:
+            readOnly: true
+          call: "service-desk.list-incidents"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-incident
+          description: "Get incident details"
+          hints:
+            readOnly: true
+          call: "service-desk.get-incident"
+          with:
+            incidentId: "tools.incidentId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-incident
+          description: "Create a new incident"
+          hints:
+            readOnly: false
+          call: "service-desk.create-incident"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-service-requests
+          description: "List service requests"
+          hints:
+            readOnly: true
+          call: "service-desk.list-service-requests"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-changes
+          description: "List change requests"
+          hints:
+            readOnly: true
+          call: "service-desk.list-changes"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-assets
+          description: "List hardware assets"
+          hints:
+            readOnly: true
+          call: "service-desk.list-assets"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: query-infrastructure
+          description: "Query Orion infrastructure data via SWQL"
+          hints:
+            readOnly: true
+          call: "orion.query-swis"
+          with:
+            query: "tools.query"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,149 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "SolarWinds Pingdom API"
+  description: "API for website uptime monitoring, performance monitoring, and transaction checks."
+  tags:
+    - SolarWinds
+    - Pingdom
+    - Uptime Monitoring
+    - Website Monitoring
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      PINGDOM_API_TOKEN: PINGDOM_API_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: pingdom
+      baseUri: https://api.pingdom.com/api/3.1
+      description: "Pingdom API for uptime and performance monitoring"
+      authentication:
+        type: bearer
+        token: "{{PINGDOM_API_TOKEN}}"
+      resources:
+        - name: checks
+          path: /checks
+          description: "Uptime and transaction checks"
+          operations:
+            - name: list-checks
+              method: GET
+              description: "List all checks"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-check
+              method: GET
+              description: "Get check details"
+              inputParameters:
+                - name: checkId
+                  in: path
+                  type: integer
+                  required: true
+                  description: "Check ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-check
+              method: POST
+              description: "Create a new check"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  name: "{{tools.name}}"
+                  host: "{{tools.host}}"
+                  type: "{{tools.type}}"
+            - name: delete-check
+              method: DELETE
+              description: "Delete a check"
+              inputParameters:
+                - name: checkId
+                  in: path
+                  type: integer
+                  required: true
+                  description: "Check ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: results
+          path: /results
+          description: "Check results and performance data"
+          operations:
+            - name: get-results
+              method: GET
+              description: "Get check results"
+              inputParameters:
+                - name: checkId
+                  in: path
+                  type: integer
+                  required: true
+                  description: "Check ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: summary
+          path: /summary.average
+          description: "Performance summaries"
+          operations:
+            - name: get-summary-average
+              method: GET
+              description: "Get average performance summary"
+              inputParameters:
+                - name: checkId
+                  in: path
+                  type: integer
+                  required: true
+                  description: "Check ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8102
+      namespace: pingdom-api
+      resources:
+        - path: /v1/checks
+          name: checks
+          description: "Monitoring checks"
+          operations:
+            - method: GET
+              name: list-checks
+              description: "List monitoring checks"
+              call: "pingdom.list-checks"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9102
+      namespace: pingdom-mcp
+      transport: http
+      tools:
+        - name: list-checks
+          description: "List Pingdom monitoring checks"
+          hints:
+            readOnly: true
+          call: "pingdom.list-checks"
+          outputParameters:
+            - type: object
+              mapping: "$."

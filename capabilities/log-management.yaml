@@ -1,0 +1,138 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "SolarWinds Log Management"
+  description: "Workflow for centralized log management combining Loggly cloud log aggregation with Papertrail log search and system management for DevOps and operations teams."
+  tags:
+    - SolarWinds
+    - Log Management
+    - Loggly
+    - Papertrail
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      LOGGLY_API_TOKEN: LOGGLY_API_TOKEN
+      PAPERTRAIL_API_TOKEN: PAPERTRAIL_API_TOKEN
+
+capability:
+  consumes:
+    - import: loggly
+      location: ./shared/loggly.yaml
+    - import: papertrail
+      location: ./shared/papertrail.yaml
+
+  exposes:
+    - type: rest
+      port: 8081
+      namespace: log-management-api
+      description: "Unified REST API for SolarWinds log management."
+      resources:
+        - path: /v1/loggly-search
+          name: loggly-search
+          description: "Loggly log search"
+          operations:
+            - method: GET
+              name: loggly-search-events
+              description: "Search Loggly log events"
+              call: "loggly.search-events"
+              with:
+                q: "rest.q"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/papertrail-search
+          name: papertrail-search
+          description: "Papertrail log search"
+          operations:
+            - method: GET
+              name: papertrail-search-events
+              description: "Search Papertrail log events"
+              call: "papertrail.search-events"
+              with:
+                q: "rest.q"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/systems
+          name: systems
+          description: "Papertrail system management"
+          operations:
+            - method: GET
+              name: list-systems
+              description: "List log-sending systems"
+              call: "papertrail.list-systems"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9091
+      namespace: log-management-mcp
+      transport: http
+      description: "MCP server for AI-assisted log management."
+      tools:
+        - name: loggly-search
+          description: "Search Loggly log events"
+          hints:
+            readOnly: true
+          call: "loggly.search-events"
+          with:
+            q: "tools.q"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: loggly-get-events
+          description: "Retrieve Loggly search results by RSID"
+          hints:
+            readOnly: true
+          call: "loggly.get-events"
+          with:
+            rsid: "tools.rsid"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: loggly-get-account-info
+          description: "Get Loggly account information"
+          hints:
+            readOnly: true
+          call: "loggly.get-account-info"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: papertrail-search
+          description: "Search Papertrail log events"
+          hints:
+            readOnly: true
+          call: "papertrail.search-events"
+          with:
+            q: "tools.q"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: papertrail-list-systems
+          description: "List Papertrail log-sending systems"
+          hints:
+            readOnly: true
+          call: "papertrail.list-systems"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: papertrail-list-groups
+          description: "List Papertrail system groups"
+          hints:
+            readOnly: true
+          call: "papertrail.list-groups"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: papertrail-list-saved-searches
+          description: "List Papertrail saved searches"
+          hints:
+            readOnly: true
+          call: "papertrail.list-saved-searches"
+          outputParameters:
+            - type: object
+              mapping: "$."

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Result",
+  "type": "object",
+  "properties": {
+    "probeid": {
+      "type": "integer"
+    },
+    "time": {
+      "type": "integer"
+    },
+    "status": {
+      "type": "string"
+    },
+    "responsetime": {
+      "type": "integer"
+    },
+    "statusdesc": {
+      "type": "string"
+    },
+    "statusdesclong": {
+      "type": "string"
+    }
+  }
+}

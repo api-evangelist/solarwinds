@@ -1,0 +1,8 @@
+{
+  "id": "abc123",
+  "timestamp": 10,
+  "logmsg": "example_value",
+  "logtypes": [],
+  "event": "example_value",
+  "tags": []
+}

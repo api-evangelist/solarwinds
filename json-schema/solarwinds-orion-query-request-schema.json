@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QueryRequest",
+  "type": "object",
+  "properties": {
+    "query": {
+      "type": "string",
+      "description": "SWQL query string to execute"
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Named parameters for parameterized queries"
+    }
+  }
+}

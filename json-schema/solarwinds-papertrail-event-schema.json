@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Event",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique event identifier"
+    },
+    "received_at": {
+      "type": "string",
+      "description": "When the event was received"
+    },
+    "generated_at": {
+      "type": "string",
+      "description": "When the event was generated"
+    },
+    "display_received_at": {
+      "type": "string",
+      "description": "Human-readable received timestamp"
+    },
+    "source_ip": {
+      "type": "string",
+      "description": "Source IP address"
+    },
+    "source_name": {
+      "type": "string",
+      "description": "Source system name"
+    },
+    "source_id": {
+      "type": "integer",
+      "description": "Source system ID"
+    },
+    "hostname": {
+      "type": "string",
+      "description": "Hostname"
+    },
+    "program": {
+      "type": "string",
+      "description": "Program name"
+    },
+    "severity": {
+      "type": "string",
+      "description": "Syslog severity"
+    },
+    "facility": {
+      "type": "string",
+      "description": "Syslog facility"
+    },
+    "message": {
+      "type": "string",
+      "description": "Log message content"
+    }
+  }
+}

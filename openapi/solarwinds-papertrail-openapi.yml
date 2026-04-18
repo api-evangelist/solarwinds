@@ -14,73 +14,81 @@ externalDocs:
   description: Papertrail HTTP API Documentation
   url: https://www.papertrail.com/help/http-api/
 servers:
-  - url: https://papertrailapp.com/api/v1
-    description: Papertrail API Server
+- url: https://papertrailapp.com/api/v1
+  description: Papertrail API Server
 tags:
-  - name: Events
-    description: Search and retrieve log events
-  - name: Groups
-    description: Manage system groups
-  - name: SavedSearches
-    description: Manage saved searches
-  - name: Systems
-    description: Manage log-sending systems
-  - name: Users
-    description: Manage user accounts
+- name: Events
+  description: Search and retrieve log events
+- name: Groups
+  description: Manage system groups
+- name: SavedSearches
+  description: Manage saved searches
+- name: Systems
+  description: Manage log-sending systems
+- name: Users
+  description: Manage user accounts
 security:
-  - apiToken: []
+- apiToken: []
 paths:
   /events/search.json:
     get:
       operationId: searchEvents
-      summary: SolarWinds Search log events
+      summary: Solarwinds Search Log Events
       description: >-
         Searches log events matching the specified criteria. Returns matching
         events sorted by timestamp.
       tags:
-        - Events
+      - Events
       parameters:
-        - name: q
-          in: query
-          description: Search query string
-          schema:
-            type: string
-        - name: system_id
-          in: query
-          description: Limit results to a specific system
-          schema:
-            type: integer
-        - name: group_id
-          in: query
-          description: Limit results to a specific group
-          schema:
-            type: integer
-        - name: min_id
-          in: query
-          description: Return events after this event ID
-          schema:
-            type: string
-        - name: max_id
-          in: query
-          description: Return events before this event ID
-          schema:
-            type: string
-        - name: min_time
-          in: query
-          description: Start time (Unix timestamp)
-          schema:
-            type: integer
-        - name: max_time
-          in: query
-          description: End time (Unix timestamp)
-          schema:
-            type: integer
-        - name: limit
-          in: query
-          description: Maximum number of events to return
-          schema:
-            type: integer
-            default: 50
+      - name: q
+        in: query
+        description: Search query string
+        schema:
+          type: string
+        example: example_value
+      - name: system_id
+        in: query
+        description: Limit results to a specific system
+        schema:
+          type: integer
+        example: '500123'
+      - name: group_id
+        in: query
+        description: Limit results to a specific group
+        schema:
+          type: integer
+        example: '500123'
+      - name: min_id
+        in: query
+        description: Return events after this event ID
+        schema:
+          type: string
+        example: '500123'
+      - name: max_id
+        in: query
+        description: Return events before this event ID
+        schema:
+          type: string
+        example: '500123'
+      - name: min_time
+        in: query
+        description: Start time (Unix timestamp)
+        schema:
+          type: integer
+        example: 10
+      - name: max_time
+        in: query
+        description: End time (Unix timestamp)
+        schema:
+          type: integer
+        example: 10
+      - name: limit
+        in: query
+        description: Maximum number of events to return
+        schema:
+          type: integer
+          default: 50
+        example: 10
       responses:
         '200':
           description: Search results
@@ -88,16 +96,41 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EventSearchResult'
+              examples:
+                Searchevents200Example:
+                  summary: Default searchEvents 200 response
+                  x-microcks-default: true
+                  value:
+                    events:
+                    - id: abc123
+                      received_at: '2026-01-15T10:30:00Z'
+                      generated_at: '2026-01-15T10:30:00Z'
+                      display_received_at: '2026-01-15T10:30:00Z'
+                      source_ip: example_value
+                      source_name: example_value
+                      source_id: '500123'
+                      hostname: example_value
+                      program: example_value
+                      severity: example_value
+                      facility: example_value
+                      message: example_value
+                    min_id: '500123'
+                    max_id: '500123'
+                    reached_beginning: true
+                    min_time_at: '2026-01-15T10:30:00Z'
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /systems.json:
     get:
       operationId: listSystems
-      summary: SolarWinds List all systems
+      summary: Solarwinds List All Systems
       description: >-
         Returns all systems (log senders) configured in the account.
       tags:
-        - Systems
+      - Systems
       responses:
         '200':
           description: List of systems
@@ -107,21 +140,47 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/System'
+              examples:
+                Listsystems200Example:
+                  summary: Default listSystems 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: abc123
+                    name: Example Title
+                    last_event_at: '2026-01-15T10:30:00Z'
+                    auto_delete: true
+                    ip_address: example_value
+                    hostname: example_value
+                    syslog:
+                      hostname: example_value
+                      port: 10
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: registerSystem
-      summary: SolarWinds Register a new system
+      summary: Solarwinds Register a New System
       description: >-
         Registers a new system to send logs to Papertrail.
       tags:
-        - Systems
+      - Systems
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/SystemCreate'
+            examples:
+              RegistersystemRequestExample:
+                summary: Default registerSystem request
+                x-microcks-default: true
+                value:
+                  system:
+                    name: Example Title
+                    hostname: example_value
+                    ip_address: example_value
       responses:
         '200':
           description: System registered
@@ -129,18 +188,35 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/System'
+              examples:
+                Registersystem200Example:
+                  summary: Default registerSystem 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    last_event_at: '2026-01-15T10:30:00Z'
+                    auto_delete: true
+                    ip_address: example_value
+                    hostname: example_value
+                    syslog:
+                      hostname: example_value
+                      port: 10
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /systems/{id}.json:
     get:
       operationId: getSystem
-      summary: SolarWinds Get system details
+      summary: Solarwinds Get System Details
       description: >-
         Returns details of a specific system.
       tags:
-        - Systems
+      - Systems
       parameters:
-        - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/ResourceId'
       responses:
         '200':
           description: System details
@@ -148,25 +224,50 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/System'
+              examples:
+                Getsystem200Example:
+                  summary: Default getSystem 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    last_event_at: '2026-01-15T10:30:00Z'
+                    auto_delete: true
+                    ip_address: example_value
+                    hostname: example_value
+                    syslog:
+                      hostname: example_value
+                      port: 10
         '401':
           description: Unauthorized
         '404':
           description: System not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     put:
       operationId: updateSystem
-      summary: SolarWinds Update a system
+      summary: Solarwinds Update a System
       description: >-
         Updates the configuration of a system.
       tags:
-        - Systems
+      - Systems
       parameters:
-        - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/ResourceId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/SystemUpdate'
+            examples:
+              UpdatesystemRequestExample:
+                summary: Default updateSystem request
+                x-microcks-default: true
+                value:
+                  system:
+                    name: Example Title
+                    hostname: example_value
       responses:
         '200':
           description: System updated
@@ -174,15 +275,18 @@ paths:
           description: Unauthorized
         '404':
           description: System not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteSystem
-      summary: SolarWinds Delete a system
+      summary: Solarwinds Delete a System
       description: >-
         Removes a system from the account.
       tags:
-        - Systems
+      - Systems
       parameters:
-        - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/ResourceId'
       responses:
         '200':
           description: System deleted
@@ -190,14 +294,17 @@ paths:
           description: Unauthorized
         '404':
           description: System not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /groups.json:
     get:
       operationId: listGroups
-      summary: SolarWinds List all groups
+      summary: Solarwinds List All Groups
       description: >-
         Returns all system groups configured in the account.
       tags:
-        - Groups
+      - Groups
       responses:
         '200':
           description: List of groups
@@ -207,18 +314,31 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Group'
+              examples:
+                Listgroups200Example:
+                  summary: Default listGroups 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: abc123
+                    name: Example Title
+                    system_wildcard: example_value
+                    systems:
+                    - {}
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /groups/{id}.json:
     get:
       operationId: getGroup
-      summary: SolarWinds Get group details
+      summary: Solarwinds Get Group Details
       description: >-
         Returns details of a specific group including its member systems.
       tags:
-        - Groups
+      - Groups
       parameters:
-        - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/ResourceId'
       responses:
         '200':
           description: Group details
@@ -226,18 +346,37 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Group'
+              examples:
+                Getgroup200Example:
+                  summary: Default getGroup 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    system_wildcard: example_value
+                    systems:
+                    - id: abc123
+                      name: Example Title
+                      last_event_at: '2026-01-15T10:30:00Z'
+                      auto_delete: true
+                      ip_address: example_value
+                      hostname: example_value
+                      syslog: {}
         '401':
           description: Unauthorized
         '404':
           description: Group not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /searches.json:
     get:
       operationId: listSavedSearches
-      summary: SolarWinds List saved searches
+      summary: Solarwinds List Saved Searches
       description: >-
         Returns all saved searches configured in the account.
       tags:
-        - SavedSearches
+      - SavedSearches
       responses:
         '200':
           description: List of saved searches
@@ -247,16 +386,32 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/SavedSearch'
+              examples:
+                Listsavedsearches200Example:
+                  summary: Default listSavedSearches 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: abc123
+                    name: Example Title
+                    query: example_value
+                    group:
+                      id: abc123
+                      name: Example Title
+                      system_wildcard: example_value
+                      systems: {}
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /users.json:
     get:
       operationId: listUsers
-      summary: SolarWinds List users
+      summary: Solarwinds List Users
       description: >-
         Returns all users in the account.
       tags:
-        - Users
+      - Users
       responses:
         '200':
           description: List of users
@@ -266,8 +421,19 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+              examples:
+                Listusers200Example:
+                  summary: Default listUsers 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: abc123
+                    email: user@example.com
+                    is_admin: true
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     apiToken:
@@ -291,77 +457,100 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Event'
+          example: []
         min_id:
           type: string
           description: Minimum event ID in results
+          example: '500123'
         max_id:
           type: string
           description: Maximum event ID in results
+          example: '500123'
         reached_beginning:
           type: boolean
           description: Whether results include the earliest matching event
+          example: true
         min_time_at:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
     Event:
       type: object
       properties:
         id:
           type: string
           description: Unique event identifier
+          example: abc123
         received_at:
           type: string
           format: date-time
           description: When the event was received
+          example: '2026-01-15T10:30:00Z'
         generated_at:
           type: string
           format: date-time
           description: When the event was generated
+          example: '2026-01-15T10:30:00Z'
         display_received_at:
           type: string
           description: Human-readable received timestamp
+          example: '2026-01-15T10:30:00Z'
         source_ip:
           type: string
           description: Source IP address
+          example: example_value
         source_name:
           type: string
           description: Source system name
+          example: example_value
         source_id:
           type: integer
           description: Source system ID
+          example: '500123'
         hostname:
           type: string
           description: Hostname
+          example: example_value
         program:
           type: string
           description: Program name
+          example: example_value
         severity:
           type: string
           description: Syslog severity
+          example: example_value
         facility:
           type: string
           description: Syslog facility
+          example: example_value
         message:
           type: string
           description: Log message content
+          example: example_value
     System:
       type: object
       properties:
         id:
           type: integer
           description: System ID
+          example: abc123
         name:
           type: string
           description: System name
+          example: Example Title
         last_event_at:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
         auto_delete:
           type: boolean
+          example: true
         ip_address:
           type: string
+          example: example_value
         hostname:
           type: string
+          example: example_value
         syslog:
           type: object
           properties:
@@ -369,15 +558,16 @@ components:
               type: string
             port:
               type: integer
+          example: example_value
     SystemCreate:
       type: object
       required:
-        - system
+      - system
       properties:
         system:
           type: object
           required:
-            - name
+          - name
           properties:
             name:
               type: string
@@ -385,10 +575,11 @@ components:
               type: string
             ip_address:
               type: string
+          example: example_value
     SystemUpdate:
       type: object
       required:
-        - system
+      - system
       properties:
         system:
           type: object
@@ -397,28 +588,36 @@ components:
               type: string
             hostname:
               type: string
+          example: example_value
     Group:
       type: object
       properties:
         id:
           type: integer
+          example: abc123
         name:
           type: string
+          example: Example Title
         system_wildcard:
           type: string
+          example: example_value
         systems:
           type: array
           items:
             $ref: '#/components/schemas/System'
+          example: []
     SavedSearch:
       type: object
       properties:
         id:
           type: integer
+          example: abc123
         name:
           type: string
+          example: Example Title
         query:
           type: string
+          example: example_value
         group:
           $ref: '#/components/schemas/Group'
     User:
@@ -426,8 +625,11 @@ components:
       properties:
         id:
           type: integer
+          example: abc123
         email:
           type: string
           format: email
+          example: user@example.com
         is_admin:
           type: boolean
+          example: true

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EventSearchResult",
+  "type": "object",
+  "properties": {
+    "events": {
+      "type": "array"
+    },
+    "min_id": {
+      "type": "string",
+      "description": "Minimum event ID in results"
+    },
+    "max_id": {
+      "type": "string",
+      "description": "Maximum event ID in results"
+    },
+    "reached_beginning": {
+      "type": "boolean",
+      "description": "Whether results include the earliest matching event"
+    },
+    "min_time_at": {
+      "type": "string"
+    }
+  }
+}

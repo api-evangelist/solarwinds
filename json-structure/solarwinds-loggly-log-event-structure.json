@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "LogEvent",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "integer"
+    },
+    "logmsg": {
+      "type": "string"
+    },
+    "logtypes": {
+      "type": "array"
+    },
+    "event": {
+      "type": "object"
+    },
+    "tags": {
+      "type": "array"
+    }
+  }
+}

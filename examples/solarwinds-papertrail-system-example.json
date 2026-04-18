@@ -1,0 +1,9 @@
+{
+  "id": "abc123",
+  "name": "Example Title",
+  "last_event_at": "2026-01-15T10:30:00Z",
+  "auto_delete": true,
+  "ip_address": "example_value",
+  "hostname": "example_value",
+  "syslog": "example_value"
+}

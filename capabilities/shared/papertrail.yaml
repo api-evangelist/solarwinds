@@ -1,0 +1,138 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "SolarWinds Papertrail API"
+  description: "HTTP API for cloud-based log management including log search, system management, and saved searches."
+  tags:
+    - SolarWinds
+    - Papertrail
+    - Log Management
+    - Search
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      PAPERTRAIL_API_TOKEN: PAPERTRAIL_API_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: papertrail
+      baseUri: https://papertrailapp.com/api/v1
+      description: "Papertrail HTTP API for log management"
+      authentication:
+        type: apikey
+        key: X-Papertrail-Token
+        value: "{{PAPERTRAIL_API_TOKEN}}"
+        placement: header
+      resources:
+        - name: events
+          path: /events/search.json
+          description: "Log event search"
+          operations:
+            - name: search-events
+              method: GET
+              description: "Search log events"
+              inputParameters:
+                - name: q
+                  in: query
+                  type: string
+                  required: false
+                  description: "Search query"
+                - name: system_id
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Filter by system"
+                - name: group_id
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Filter by group"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: systems
+          path: /systems.json
+          description: "System management"
+          operations:
+            - name: list-systems
+              method: GET
+              description: "List log-sending systems"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-system
+              method: POST
+              description: "Register a new system"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  system:
+                    name: "{{tools.name}}"
+        - name: groups
+          path: /groups.json
+          description: "Group management"
+          operations:
+            - name: list-groups
+              method: GET
+              description: "List system groups"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: saved-searches
+          path: /searches.json
+          description: "Saved search management"
+          operations:
+            - name: list-saved-searches
+              method: GET
+              description: "List saved searches"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8104
+      namespace: papertrail-api
+      resources:
+        - path: /v1/events
+          name: events
+          description: "Log event search"
+          operations:
+            - method: GET
+              name: search-events
+              description: "Search log events"
+              call: "papertrail.search-events"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9104
+      namespace: papertrail-mcp
+      transport: http
+      tools:
+        - name: search-events
+          description: "Search Papertrail log events"
+          hints:
+            readOnly: true
+          call: "papertrail.search-events"
+          outputParameters:
+            - type: object
+              mapping: "$."

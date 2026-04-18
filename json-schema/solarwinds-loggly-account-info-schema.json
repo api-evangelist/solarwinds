@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AccountInfo",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Account ID"
+    },
+    "subdomain": {
+      "type": "string",
+      "description": "Account subdomain"
+    },
+    "tokens": {
+      "type": "array",
+      "description": "Customer tokens"
+    },
+    "subscription": {
+      "type": "object"
+    },
+    "users": {
+      "type": "array"
+    }
+  }
+}

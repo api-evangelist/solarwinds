@@ -1,0 +1,12 @@
+{
+  "id": "abc123",
+  "name": "Example Title",
+  "type": "example_value",
+  "hostname": "example_value",
+  "status": "example_value",
+  "resolution": 10,
+  "lastresponsetime": 10,
+  "lasttesttime": 10,
+  "created": 10,
+  "tags": []
+}

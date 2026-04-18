@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "EventSearchResult",
+  "type": "object",
+  "properties": {
+    "events": {
+      "type": "array"
+    },
+    "min_id": {
+      "type": "string"
+    },
+    "max_id": {
+      "type": "string"
+    },
+    "reached_beginning": {
+      "type": "boolean"
+    },
+    "min_time_at": {
+      "type": "string"
+    }
+  }
+}

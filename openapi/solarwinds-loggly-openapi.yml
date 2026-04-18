@@ -14,64 +14,66 @@ externalDocs:
   description: Loggly API Documentation
   url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
 servers:
-  - url: https://{subdomain}.loggly.com/apiv2
-    description: Loggly API Server
-    variables:
-      subdomain:
-        default: logs-01
-        description: Your Loggly subdomain
+- url: https://{subdomain}.loggly.com/apiv2
+  description: Loggly API Server
+  variables:
+    subdomain:
+      default: logs-01
+      description: Your Loggly subdomain
 tags:
-  - name: Account
-    description: Account information and management
-  - name: Search
-    description: Search and retrieve log events
+- name: Account
+  description: Account information and management
+- name: Search
+  description: Search and retrieve log events
 security:
-  - bearerAuth: []
+- bearerAuth: []
 paths:
   /search:
     get:
       operationId: searchEvents
-      summary: SolarWinds Initiate a search query
+      summary: Solarwinds Initiate a Search Query
       description: >-
         Initiates a search query against log events. Returns a search ID
         (RSID) that can be used with the events endpoint to retrieve results.
       tags:
-        - Search
+      - Search
       parameters:
-        - name: q
-          in: query
-          required: true
-          description: Search query string using Loggly search syntax
-          schema:
-            type: string
-          example: '*'
-        - name: from
-          in: query
-          description: Start time for search (ISO 8601 or relative like -24h)
-          schema:
-            type: string
-          example: '-2h'
-        - name: until
-          in: query
-          description: End time for search
-          schema:
-            type: string
-          example: 'now'
-        - name: size
-          in: query
-          description: Maximum number of events to return
-          schema:
-            type: integer
-            default: 10
-            maximum: 5000
-        - name: order
-          in: query
-          description: Sort order
-          schema:
-            type: string
-            enum:
-              - asc
-              - desc
+      - name: q
+        in: query
+        required: true
+        description: Search query string using Loggly search syntax
+        schema:
+          type: string
+        example: '*'
+      - name: from
+        in: query
+        description: Start time for search (ISO 8601 or relative like -24h)
+        schema:
+          type: string
+        example: '-2h'
+      - name: until
+        in: query
+        description: End time for search
+        schema:
+          type: string
+        example: 'now'
+      - name: size
+        in: query
+        description: Maximum number of events to return
+        schema:
+          type: integer
+          default: 10
+          maximum: 5000
+        example: 10
+      - name: order
+        in: query
+        description: Sort order
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+        example: asc
       responses:
         '200':
           description: Search initiated
@@ -79,24 +81,36 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SearchResponse'
+              examples:
+                Searchevents200Example:
+                  summary: Default searchEvents 200 response
+                  x-microcks-default: true
+                  value:
+                    rsid:
+                      id: abc123
+                      status: example_value
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /events:
     get:
       operationId: getEvents
-      summary: SolarWinds Retrieve search results
+      summary: Solarwinds Retrieve Search Results
       description: >-
         Retrieves events for a previously initiated search using the RSID
         returned by the search endpoint.
       tags:
-        - Search
+      - Search
       parameters:
-        - name: rsid
-          in: query
-          required: true
-          description: Result Set ID from the search endpoint
-          schema:
-            type: string
+      - name: rsid
+        in: query
+        required: true
+        description: Result Set ID from the search endpoint
+        schema:
+          type: string
+        example: '500123'
       responses:
         '200':
           description: Event results
@@ -104,29 +118,48 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/EventsResponse'
+              examples:
+                Getevents200Example:
+                  summary: Default getEvents 200 response
+                  x-microcks-default: true
+                  value:
+                    total_events: 10
+                    page: 10
+                    events:
+                    - id: abc123
+                      timestamp: 10
+                      logmsg: example_value
+                      logtypes: {}
+                      event: example_value
+                      tags: {}
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /events/iterate:
     get:
       operationId: iterateEvents
-      summary: SolarWinds Iterate through search results
+      summary: Solarwinds Iterate Through Search Results
       description: >-
         Paginating event retrieval API for iterating through large result
         sets. Returns events and a next pointer for pagination.
       tags:
-        - Search
+      - Search
       parameters:
-        - name: rsid
-          in: query
-          required: true
-          description: Result Set ID from the search endpoint
-          schema:
-            type: string
-        - name: next
-          in: query
-          description: Pagination cursor for next page
-          schema:
-            type: string
+      - name: rsid
+        in: query
+        required: true
+        description: Result Set ID from the search endpoint
+        schema:
+          type: string
+        example: '500123'
+      - name: next
+        in: query
+        description: Pagination cursor for next page
+        schema:
+          type: string
+        example: example_value
       responses:
         '200':
           description: Paginated event results
@@ -134,17 +167,33 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/IterateResponse'
+              examples:
+                Iterateevents200Example:
+                  summary: Default iterateEvents 200 response
+                  x-microcks-default: true
+                  value:
+                    events:
+                    - id: abc123
+                      timestamp: 10
+                      logmsg: example_value
+                      logtypes: {}
+                      event: example_value
+                      tags: {}
+                    next: example_value
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /customer:
     get:
       operationId: getAccountInfo
-      summary: SolarWinds Get account information
+      summary: Solarwinds Get Account Information
       description: >-
         Returns customer account information including the customer token
         and a list of active Loggly users.
       tags:
-        - Account
+      - Account
       responses:
         '200':
           description: Account information
@@ -152,8 +201,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/AccountInfo'
+              examples:
+                Getaccountinfo200Example:
+                  summary: Default getAccountInfo 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    subdomain: example_value
+                    tokens:
+                    - example_value
+                    subscription:
+                      plan_name: example_value
+                    users:
+                    - id: abc123
+                      email: user@example.com
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     bearerAuth:
@@ -178,19 +244,23 @@ components:
             status:
               type: string
               description: Search status
+          example: '500123'
     EventsResponse:
       type: object
       properties:
         total_events:
           type: integer
           description: Total number of matching events
+          example: 10
         page:
           type: integer
           description: Current page number
+          example: 10
         events:
           type: array
           items:
             $ref: '#/components/schemas/LogEvent'
+          example: []
     IterateResponse:
       type: object
       properties:
@@ -198,54 +268,66 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LogEvent'
+          example: []
         next:
           type: string
           description: Cursor for next page of results
+          example: example_value
     LogEvent:
       type: object
       properties:
         id:
           type: string
           description: Unique event identifier
+          example: abc123
         timestamp:
           type: integer
           description: Event timestamp in milliseconds
+          example: 10
         logmsg:
           type: string
           description: Raw log message
+          example: example_value
         logtypes:
           type: array
           description: Detected log types
           items:
             type: string
+          example: []
         event:
           type: object
           description: Parsed event fields
           additionalProperties: true
+          example: example_value
         tags:
           type: array
           description: Tags associated with the event
           items:
             type: string
+          example: []
     AccountInfo:
       type: object
       properties:
         id:
           type: integer
           description: Account ID
+          example: abc123
         subdomain:
           type: string
           description: Account subdomain
+          example: example_value
         tokens:
           type: array
           items:
             type: string
           description: Customer tokens
+          example: []
         subscription:
           type: object
           properties:
             plan_name:
               type: string
+          example: example_value
         users:
           type: array
           items:
@@ -255,3 +337,4 @@ components:
                 type: integer
               email:
                 type: string
+          example: []

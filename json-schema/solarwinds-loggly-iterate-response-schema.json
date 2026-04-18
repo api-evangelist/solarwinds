@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IterateResponse",
+  "type": "object",
+  "properties": {
+    "events": {
+      "type": "array"
+    },
+    "next": {
+      "type": "string",
+      "description": "Cursor for next page of results"
+    }
+  }
+}

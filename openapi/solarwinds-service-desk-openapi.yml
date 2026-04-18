@@ -14,37 +14,37 @@ externalDocs:
   description: SolarWinds Service Desk API Documentation
   url: https://apidoc.samanage.com/
 servers:
-  - url: https://api.samanage.com
-    description: SolarWinds Service Desk API Server
+- url: https://api.samanage.com
+  description: SolarWinds Service Desk API Server
 tags:
-  - name: Assets
-    description: Manage hardware and software assets
-  - name: Categories
-    description: Manage categories for incidents and requests
-  - name: Changes
-    description: Manage change requests
-  - name: Incidents
-    description: Manage IT incidents
-  - name: Problems
-    description: Manage problem records
-  - name: ServiceRequests
-    description: Manage service requests
-  - name: Users
-    description: Manage user accounts
+- name: Assets
+  description: Manage hardware and software assets
+- name: Categories
+  description: Manage categories for incidents and requests
+- name: Changes
+  description: Manage change requests
+- name: Incidents
+  description: Manage IT incidents
+- name: Problems
+  description: Manage problem records
+- name: ServiceRequests
+  description: Manage service requests
+- name: Users
+  description: Manage user accounts
 security:
-  - bearerAuth: []
+- bearerAuth: []
 paths:
   /incidents.json:
     get:
       operationId: listIncidents
-      summary: SolarWinds List incidents
+      summary: Solarwinds List Incidents
       description: >-
         Returns a paginated list of incidents in the service desk.
       tags:
-        - Incidents
+      - Incidents
       parameters:
-        - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/PerPage'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
       responses:
         '200':
           description: List of incidents
@@ -54,21 +54,64 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Incident'
+              examples:
+                Listincidents200Example:
+                  summary: Default listIncidents 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: abc123
+                    number: 10
+                    name: Example Title
+                    description: A sample description.
+                    state: New
+                    priority: None
+                    assignee:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    requester:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    category:
+                      id: abc123
+                      name: Example Title
+                    created_at: '2026-01-15T10:30:00Z'
+                    updated_at: '2026-01-15T10:30:00Z'
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createIncident
-      summary: SolarWinds Create an incident
+      summary: Solarwinds Create an Incident
       description: >-
         Creates a new incident in the service desk.
       tags:
-        - Incidents
+      - Incidents
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/IncidentCreate'
+            examples:
+              CreateincidentRequestExample:
+                summary: Default createIncident request
+                x-microcks-default: true
+                value:
+                  incident:
+                    name: Example Title
+                    description: A sample description.
+                    priority: example_value
+                    assignee:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    category:
+                      id: abc123
+                      name: Example Title
       responses:
         '200':
           description: Incident created
@@ -76,20 +119,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Incident'
+              examples:
+                Createincident200Example:
+                  summary: Default createIncident 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    number: 10
+                    name: Example Title
+                    description: A sample description.
+                    state: New
+                    priority: None
+                    assignee:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    requester:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    category:
+                      id: abc123
+                      name: Example Title
+                    created_at: '2026-01-15T10:30:00Z'
+                    updated_at: '2026-01-15T10:30:00Z'
         '400':
           description: Invalid incident data
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /incidents/{id}.json:
     get:
       operationId: getIncident
-      summary: SolarWinds Get an incident
+      summary: Solarwinds Get an Incident
       description: >-
         Returns detailed information about a specific incident.
       tags:
-        - Incidents
+      - Incidents
       parameters:
-        - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/ResourceId'
       responses:
         '200':
           description: Incident details
@@ -97,25 +167,66 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Incident'
+              examples:
+                Getincident200Example:
+                  summary: Default getIncident 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    number: 10
+                    name: Example Title
+                    description: A sample description.
+                    state: New
+                    priority: None
+                    assignee:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    requester:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    category:
+                      id: abc123
+                      name: Example Title
+                    created_at: '2026-01-15T10:30:00Z'
+                    updated_at: '2026-01-15T10:30:00Z'
         '401':
           description: Unauthorized
         '404':
           description: Incident not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     put:
       operationId: updateIncident
-      summary: SolarWinds Update an incident
+      summary: Solarwinds Update an Incident
       description: >-
         Updates the fields of an existing incident.
       tags:
-        - Incidents
+      - Incidents
       parameters:
-        - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/ResourceId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/IncidentUpdate'
+            examples:
+              UpdateincidentRequestExample:
+                summary: Default updateIncident request
+                x-microcks-default: true
+                value:
+                  incident:
+                    name: Example Title
+                    description: A sample description.
+                    state: example_value
+                    priority: example_value
+                    assignee:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
       responses:
         '200':
           description: Incident updated
@@ -123,15 +234,18 @@ paths:
           description: Unauthorized
         '404':
           description: Incident not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteIncident
-      summary: SolarWinds Delete an incident
+      summary: Solarwinds Delete an Incident
       description: >-
         Permanently deletes an incident.
       tags:
-        - Incidents
+      - Incidents
       parameters:
-        - $ref: '#/components/parameters/ResourceId'
+      - $ref: '#/components/parameters/ResourceId'
       responses:
         '200':
           description: Incident deleted
@@ -139,17 +253,20 @@ paths:
           description: Unauthorized
         '404':
           description: Incident not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /service_requests.json:
     get:
       operationId: listServiceRequests
-      summary: SolarWinds List service requests
+      summary: Solarwinds List Service Requests
       description: >-
         Returns a paginated list of service requests.
       tags:
-        - ServiceRequests
+      - ServiceRequests
       parameters:
-        - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/PerPage'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
       responses:
         '200':
           description: List of service requests
@@ -159,21 +276,49 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ServiceRequest'
+              examples:
+                Listservicerequests200Example:
+                  summary: Default listServiceRequests 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: abc123
+                    number: 10
+                    name: Example Title
+                    description: A sample description.
+                    state: example_value
+                    priority: example_value
+                    requester:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    created_at: '2026-01-15T10:30:00Z'
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createServiceRequest
-      summary: SolarWinds Create a service request
+      summary: Solarwinds Create a Service Request
       description: >-
         Creates a new service request.
       tags:
-        - ServiceRequests
+      - ServiceRequests
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/ServiceRequestCreate'
+            examples:
+              CreateservicerequestRequestExample:
+                summary: Default createServiceRequest request
+                x-microcks-default: true
+                value:
+                  service_request:
+                    name: Example Title
+                    description: A sample description.
+                    priority: example_value
       responses:
         '200':
           description: Service request created
@@ -181,19 +326,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ServiceRequest'
+              examples:
+                Createservicerequest200Example:
+                  summary: Default createServiceRequest 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    number: 10
+                    name: Example Title
+                    description: A sample description.
+                    state: example_value
+                    priority: example_value
+                    requester:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    created_at: '2026-01-15T10:30:00Z'
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /changes.json:
     get:
       operationId: listChanges
-      summary: SolarWinds List change requests
+      summary: Solarwinds List Change Requests
       description: >-
         Returns a paginated list of change requests.
       tags:
-        - Changes
+      - Changes
       parameters:
-        - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/PerPage'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
       responses:
         '200':
           description: List of changes
@@ -203,19 +367,35 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Change'
+              examples:
+                Listchanges200Example:
+                  summary: Default listChanges 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: abc123
+                    number: 10
+                    name: Example Title
+                    description: A sample description.
+                    state: example_value
+                    priority: example_value
+                    change_type: example_value
+                    created_at: '2026-01-15T10:30:00Z'
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /problems.json:
     get:
       operationId: listProblems
-      summary: SolarWinds List problems
+      summary: Solarwinds List Problems
       description: >-
         Returns a paginated list of problem records.
       tags:
-        - Problems
+      - Problems
       parameters:
-        - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/PerPage'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
       responses:
         '200':
           description: List of problems
@@ -225,19 +405,34 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Problem'
+              examples:
+                Listproblems200Example:
+                  summary: Default listProblems 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: abc123
+                    number: 10
+                    name: Example Title
+                    description: A sample description.
+                    state: example_value
+                    priority: example_value
+                    created_at: '2026-01-15T10:30:00Z'
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /hardwares.json:
     get:
       operationId: listAssets
-      summary: SolarWinds List hardware assets
+      summary: Solarwinds List Hardware Assets
       description: >-
         Returns a paginated list of hardware assets tracked in the CMDB.
       tags:
-        - Assets
+      - Assets
       parameters:
-        - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/PerPage'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
       responses:
         '200':
           description: List of assets
@@ -247,19 +442,37 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Asset'
+              examples:
+                Listassets200Example:
+                  summary: Default listAssets 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: abc123
+                    name: Example Title
+                    asset_type: example_value
+                    serial_number: example_value
+                    status: example_value
+                    user:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    created_at: '2026-01-15T10:30:00Z'
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /users.json:
     get:
       operationId: listUsers
-      summary: SolarWinds List users
+      summary: Solarwinds List Users
       description: >-
         Returns a paginated list of users in the service desk.
       tags:
-        - Users
+      - Users
       parameters:
-        - $ref: '#/components/parameters/Page'
-        - $ref: '#/components/parameters/PerPage'
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
       responses:
         '200':
           description: List of users
@@ -269,16 +482,29 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/User'
+              examples:
+                Listusers200Example:
+                  summary: Default listUsers 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: abc123
+                    name: Example Title
+                    email: user@example.com
+                    role: example_value
+                    created_at: '2026-01-15T10:30:00Z'
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /categories.json:
     get:
       operationId: listCategories
-      summary: SolarWinds List categories
+      summary: Solarwinds List Categories
       description: >-
         Returns all categories available for incidents and requests.
       tags:
-        - Categories
+      - Categories
       responses:
         '200':
           description: List of categories
@@ -288,8 +514,19 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Category'
+              examples:
+                Listcategories200Example:
+                  summary: Default listCategories 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: abc123
+                    name: Example Title
+                    description: A sample description.
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     bearerAuth:
@@ -327,35 +564,41 @@ components:
         id:
           type: integer
           description: Unique incident identifier
+          example: abc123
         number:
           type: integer
           description: Human-readable incident number
+          example: 10
         name:
           type: string
           description: Incident title
+          example: Example Title
         description:
           type: string
           description: Incident description
+          example: A sample description.
         state:
           type: string
           description: Current state
           enum:
-            - New
-            - Assigned
-            - Awaiting Input
-            - In Progress
-            - On Hold
-            - Resolved
-            - Closed
+          - New
+          - Assigned
+          - Awaiting Input
+          - In Progress
+          - On Hold
+          - Resolved
+          - Closed
+          example: New
         priority:
           type: string
           description: Priority level
           enum:
-            - None
-            - Low
-            - Medium
-            - High
-            - Critical
+          - None
+          - Low
+          - Medium
+          - High
+          - Critical
+          example: None
         assignee:
           $ref: '#/components/schemas/UserRef'
         requester:
@@ -365,18 +608,20 @@ components:
         created_at:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
         updated_at:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
     IncidentCreate:
       type: object
       required:
-        - incident
+      - incident
       properties:
         incident:
           type: object
           required:
-            - name
+          - name
           properties:
             name:
               type: string
@@ -391,10 +636,11 @@ components:
               $ref: '#/components/schemas/UserRef'
             category:
               $ref: '#/components/schemas/CategoryRef'
+          example: example_value
     IncidentUpdate:
       type: object
       required:
-        - incident
+      - incident
       properties:
         incident:
           type: object
@@ -409,35 +655,43 @@ components:
               type: string
             assignee:
               $ref: '#/components/schemas/UserRef'
+          example: example_value
     ServiceRequest:
       type: object
       properties:
         id:
           type: integer
+          example: abc123
         number:
           type: integer
+          example: 10
         name:
           type: string
+          example: Example Title
         description:
           type: string
+          example: A sample description.
         state:
           type: string
+          example: example_value
         priority:
           type: string
+          example: example_value
         requester:
           $ref: '#/components/schemas/UserRef'
         created_at:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
     ServiceRequestCreate:
       type: object
       required:
-        - service_request
+      - service_request
       properties:
         service_request:
           type: object
           required:
-            - name
+          - name
           properties:
             name:
               type: string
@@ -445,99 +699,134 @@ components:
               type: string
             priority:
               type: string
+          example: example_value
     Change:
       type: object
       properties:
         id:
           type: integer
+          example: abc123
         number:
           type: integer
+          example: 10
         name:
           type: string
+          example: Example Title
         description:
           type: string
+          example: A sample description.
         state:
           type: string
+          example: example_value
         priority:
           type: string
+          example: example_value
         change_type:
           type: string
+          example: example_value
         created_at:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
     Problem:
       type: object
       properties:
         id:
           type: integer
+          example: abc123
         number:
           type: integer
+          example: 10
         name:
           type: string
+          example: Example Title
         description:
           type: string
+          example: A sample description.
         state:
           type: string
+          example: example_value
         priority:
           type: string
+          example: example_value
         created_at:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
     Asset:
       type: object
       properties:
         id:
           type: integer
+          example: abc123
         name:
           type: string
+          example: Example Title
         asset_type:
           type: string
+          example: example_value
         serial_number:
           type: string
+          example: example_value
         status:
           type: string
+          example: example_value
         user:
           $ref: '#/components/schemas/UserRef'
         created_at:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
     User:
       type: object
       properties:
         id:
           type: integer
+          example: abc123
         name:
           type: string
+          example: Example Title
         email:
           type: string
           format: email
+          example: user@example.com
         role:
           type: string
+          example: example_value
         created_at:
           type: string
           format: date-time
+          example: '2026-01-15T10:30:00Z'
     UserRef:
       type: object
       properties:
         id:
           type: integer
+          example: abc123
         name:
           type: string
+          example: Example Title
         email:
           type: string
+          example: user@example.com
     Category:
       type: object
       properties:
         id:
           type: integer
+          example: abc123
         name:
           type: string
+          example: Example Title
         description:
           type: string
+          example: A sample description.
     CategoryRef:
       type: object
       properties:
         id:
           type: integer
+          example: abc123
         name:
           type: string
+          example: Example Title

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CheckUpdate",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "host": {
+      "type": "string"
+    },
+    "resolution": {
+      "type": "integer"
+    },
+    "paused": {
+      "type": "boolean"
+    }
+  }
+}

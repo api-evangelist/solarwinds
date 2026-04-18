@@ -1,0 +1,31 @@
+name: solarwinds API Vocabulary
+provider: solarwinds
+created: '2026-04-18'
+modified: '2026-04-18'
+operations: 47
+schemas: 42
+tags:
+- Account
+- Assets
+- BulkOperations
+- CRUD
+- Categories
+- Changes
+- Checks
+- Contacts
+- Events
+- Groups
+- Incidents
+- Invoke
+- Maintenance
+- ProbeServers
+- Problems
+- Query
+- Results
+- SavedSearches
+- Search
+- ServiceRequests
+- Summary
+- Systems
+- Teams
+- Users

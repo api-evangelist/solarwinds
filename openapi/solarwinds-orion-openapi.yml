@@ -15,37 +15,37 @@ externalDocs:
   description: SolarWinds Orion Platform API Documentation
   url: https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
 servers:
-  - url: https://{orion-server}:17774/SolarWinds/InformationService/v3/Json
-    description: Orion Platform Server (port 17774 since 2023.1 release)
-    variables:
-      orion-server:
-        default: localhost
-        description: Hostname or IP of your Orion server
+- url: https://{orion-server}:17774/SolarWinds/InformationService/v3/Json
+  description: Orion Platform Server (port 17774 since 2023.1 release)
+  variables:
+    orion-server:
+      default: localhost
+      description: Hostname or IP of your Orion server
 tags:
-  - name: BulkOperations
-    description: Perform bulk create, update, and delete operations
-  - name: CRUD
-    description: Create, read, update, and delete operations on SWIS entities
-  - name: Invoke
-    description: Invoke verbs (methods) on SWIS entities
-  - name: Query
-    description: Execute SWQL queries against the SolarWinds Information Service
+- name: BulkOperations
+  description: Perform bulk create, update, and delete operations
+- name: CRUD
+  description: Create, read, update, and delete operations on SWIS entities
+- name: Invoke
+  description: Invoke verbs (methods) on SWIS entities
+- name: Query
+  description: Execute SWQL queries against the SolarWinds Information Service
 security:
-  - basicAuth: []
+- basicAuth: []
 paths:
   /Query:
     get:
       operationId: querySwis
-      summary: SolarWinds Execute a SWQL query
+      summary: Solarwinds Execute a Swql Query
       description: >-
         Executes a SolarWinds Query Language (SWQL) query against the
         SolarWinds Information Service and returns the results as JSON.
         SWQL is a read-only SQL-like language for querying monitored entities.
       tags:
-        - Query
+      - Query
       parameters:
-        - $ref: '#/components/parameters/SwqlQuery'
-        - $ref: '#/components/parameters/SwqlParameters'
+      - $ref: '#/components/parameters/SwqlQuery'
+      - $ref: '#/components/parameters/SwqlParameters'
       responses:
         '200':
           description: Query executed successfully
@@ -53,24 +53,41 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/QueryResult'
+              examples:
+                Queryswis200Example:
+                  summary: Default querySwis 200 response
+                  x-microcks-default: true
+                  value:
+                    results:
+                    - {}
         '400':
           description: Invalid SWQL query syntax
         '401':
           description: Authentication required
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: querySwisPost
-      summary: SolarWinds Execute a SWQL query via POST
+      summary: Solarwinds Execute a Swql Query via Post
       description: >-
         Executes a SWQL query using a POST request body. Useful for longer
         queries that exceed URL length limits.
       tags:
-        - Query
+      - Query
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/QueryRequest'
+            examples:
+              QueryswispostRequestExample:
+                summary: Default querySwisPost request
+                x-microcks-default: true
+                value:
+                  query: example_value
+                  parameters: example_value
       responses:
         '200':
           description: Query executed successfully
@@ -78,22 +95,32 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/QueryResult'
+              examples:
+                Queryswispost200Example:
+                  summary: Default querySwisPost 200 response
+                  x-microcks-default: true
+                  value:
+                    results:
+                    - {}
         '400':
           description: Invalid SWQL query syntax
         '401':
           description: Authentication required
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /Create/{entityType}:
     post:
       operationId: createEntity
-      summary: SolarWinds Create a new SWIS entity
+      summary: Solarwinds Create a New Swis Entity
       description: >-
         Creates a new entity of the specified type in the SolarWinds
         Information Service. The request body contains the property values
         for the new entity.
       tags:
-        - CRUD
+      - CRUD
       parameters:
-        - $ref: '#/components/parameters/EntityType'
+      - $ref: '#/components/parameters/EntityType'
       requestBody:
         required: true
         content:
@@ -101,6 +128,11 @@ paths:
             schema:
               type: object
               additionalProperties: true
+            examples:
+              CreateentityRequestExample:
+                summary: Default createEntity request
+                x-microcks-default: true
+                value: {}
       responses:
         '200':
           description: Entity created successfully
@@ -109,28 +141,37 @@ paths:
               schema:
                 type: string
                 description: URI of the newly created entity
+              examples:
+                Createentity200Example:
+                  summary: Default createEntity 200 response
+                  x-microcks-default: true
+                  value: example_value
         '400':
           description: Invalid entity data
         '401':
           description: Authentication required
         '404':
           description: Entity type not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /{entityUri}:
     get:
       operationId: readEntity
-      summary: SolarWinds Read a SWIS entity
+      summary: Solarwinds Read a Swis Entity
       description: >-
         Retrieves the properties of a specific entity identified by its
         SWIS URI. Returns all properties of the entity as JSON.
       tags:
-        - CRUD
+      - CRUD
       parameters:
-        - name: entityUri
-          in: path
-          required: true
-          description: SWIS URI of the entity to read
-          schema:
-            type: string
+      - name: entityUri
+        in: path
+        required: true
+        description: SWIS URI of the entity to read
+        schema:
+          type: string
+        example: example_value
       responses:
         '200':
           description: Entity retrieved successfully
@@ -139,25 +180,34 @@ paths:
               schema:
                 type: object
                 additionalProperties: true
+              examples:
+                Readentity200Example:
+                  summary: Default readEntity 200 response
+                  x-microcks-default: true
+                  value: {}
         '401':
           description: Authentication required
         '404':
           description: Entity not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: updateEntity
-      summary: SolarWinds Update a SWIS entity
+      summary: Solarwinds Update a Swis Entity
       description: >-
         Updates the properties of an existing entity identified by its
         SWIS URI. Only the properties included in the request body are updated.
       tags:
-        - CRUD
+      - CRUD
       parameters:
-        - name: entityUri
-          in: path
-          required: true
-          description: SWIS URI of the entity to update
-          schema:
-            type: string
+      - name: entityUri
+        in: path
+        required: true
+        description: SWIS URI of the entity to update
+        schema:
+          type: string
+        example: example_value
       requestBody:
         required: true
         content:
@@ -165,6 +215,11 @@ paths:
             schema:
               type: object
               additionalProperties: true
+            examples:
+              UpdateentityRequestExample:
+                summary: Default updateEntity request
+                x-microcks-default: true
+                value: {}
       responses:
         '200':
           description: Entity updated successfully
@@ -174,21 +229,25 @@ paths:
           description: Authentication required
         '404':
           description: Entity not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteEntity
-      summary: SolarWinds Delete a SWIS entity
+      summary: Solarwinds Delete a Swis Entity
       description: >-
         Deletes an entity identified by its SWIS URI from the SolarWinds
         Information Service.
       tags:
-        - CRUD
+      - CRUD
       parameters:
-        - name: entityUri
-          in: path
-          required: true
-          description: SWIS URI of the entity to delete
-          schema:
-            type: string
+      - name: entityUri
+        in: path
+        required: true
+        description: SWIS URI of the entity to delete
+        schema:
+          type: string
+        example: example_value
       responses:
         '200':
           description: Entity deleted successfully
@@ -196,25 +255,28 @@ paths:
           description: Authentication required
         '404':
           description: Entity not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /Invoke/{entityType}/{verb}:
     post:
       operationId: invokeVerb
-      summary: SolarWinds Invoke a verb on an entity type
+      summary: Solarwinds Invoke a Verb on an Entity Type
       description: >-
         Invokes a named verb (method) on the specified entity type.
         Verbs provide operations like Unmanage, Remanage, PollNow,
         and other management actions on monitored objects.
       tags:
-        - Invoke
+      - Invoke
       parameters:
-        - $ref: '#/components/parameters/EntityType'
-        - name: verb
-          in: path
-          required: true
-          description: Name of the verb to invoke
-          schema:
-            type: string
-          example: Unmanage
+      - $ref: '#/components/parameters/EntityType'
+      - name: verb
+        in: path
+        required: true
+        description: Name of the verb to invoke
+        schema:
+          type: string
+        example: Unmanage
       requestBody:
         required: false
         content:
@@ -224,6 +286,12 @@ paths:
               items:
                 type: object
               description: Arguments to pass to the verb
+            examples:
+              InvokeverbRequestExample:
+                summary: Default invokeVerb request
+                x-microcks-default: true
+                value:
+                - {}
       responses:
         '200':
           description: Verb invoked successfully
@@ -232,51 +300,80 @@ paths:
               schema:
                 type: object
                 additionalProperties: true
+              examples:
+                Invokeverb200Example:
+                  summary: Default invokeVerb 200 response
+                  x-microcks-default: true
+                  value: {}
         '400':
           description: Invalid verb arguments
         '401':
           description: Authentication required
         '404':
           description: Entity type or verb not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /BulkDelete:
     post:
       operationId: bulkDelete
-      summary: SolarWinds Delete multiple entities
+      summary: Solarwinds Delete Multiple Entities
       description: >-
         Deletes multiple SWIS entities in a single operation. Provide an
         array of SWIS URIs to delete.
       tags:
-        - BulkOperations
+      - BulkOperations
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/BulkDeleteRequest'
+            examples:
+              BulkdeleteRequestExample:
+                summary: Default bulkDelete request
+                x-microcks-default: true
+                value:
+                  uris:
+                  - example_value
       responses:
         '200':
           description: Entities deleted successfully
         '401':
           description: Authentication required
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /BulkUpdate:
     post:
       operationId: bulkUpdate
-      summary: SolarWinds Update multiple entities
+      summary: Solarwinds Update Multiple Entities
       description: >-
         Updates properties on multiple SWIS entities in a single operation.
       tags:
-        - BulkOperations
+      - BulkOperations
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/BulkUpdateRequest'
+            examples:
+              BulkupdateRequestExample:
+                summary: Default bulkUpdate request
+                x-microcks-default: true
+                value:
+                  uris:
+                  - example_value
+                  properties: example_value
       responses:
         '200':
           description: Entities updated successfully
         '401':
           description: Authentication required
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     basicAuth:
@@ -311,7 +408,7 @@ components:
     QueryRequest:
       type: object
       required:
-        - query
+      - query
       properties:
         query:
           type: string
@@ -321,6 +418,7 @@ components:
           type: object
           description: Named parameters for parameterized queries
           additionalProperties: true
+          example: example_value
     QueryResult:
       type: object
       properties:
@@ -330,28 +428,32 @@ components:
           items:
             type: object
             additionalProperties: true
+          example: []
     BulkDeleteRequest:
       type: object
       required:
-        - uris
+      - uris
       properties:
         uris:
           type: array
           description: Array of SWIS URIs to delete
           items:
             type: string
+          example: []
     BulkUpdateRequest:
       type: object
       required:
-        - uris
-        - properties
+      - uris
+      - properties
       properties:
         uris:
           type: array
           description: Array of SWIS URIs to update
           items:
             type: string
+          example: []
         properties:
           type: object
           description: Properties to set on all specified entities
           additionalProperties: true
+          example: example_value

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BulkUpdateRequest",
+  "type": "object",
+  "properties": {
+    "uris": {
+      "type": "array",
+      "description": "Array of SWIS URIs to update"
+    },
+    "properties": {
+      "type": "object",
+      "description": "Properties to set on all specified entities"
+    }
+  }
+}

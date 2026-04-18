@@ -14,67 +14,71 @@ externalDocs:
   description: Pingdom API Documentation
   url: https://docs.pingdom.com/api/
 servers:
-  - url: https://api.pingdom.com/api/3.1
-    description: Pingdom API Production Server
+- url: https://api.pingdom.com/api/3.1
+  description: Pingdom API Production Server
 tags:
-  - name: Checks
-    description: Manage uptime and transaction checks
-  - name: Contacts
-    description: Manage alert contacts
-  - name: Maintenance
-    description: Manage maintenance windows
-  - name: ProbeServers
-    description: List available probe servers
-  - name: Results
-    description: Retrieve check results and performance data
-  - name: Summary
-    description: Retrieve performance and outage summaries
-  - name: Teams
-    description: Manage alert teams
+- name: Checks
+  description: Manage uptime and transaction checks
+- name: Contacts
+  description: Manage alert contacts
+- name: Maintenance
+  description: Manage maintenance windows
+- name: ProbeServers
+  description: List available probe servers
+- name: Results
+  description: Retrieve check results and performance data
+- name: Summary
+  description: Retrieve performance and outage summaries
+- name: Teams
+  description: Manage alert teams
 security:
-  - bearerAuth: []
+- bearerAuth: []
 paths:
   /checks:
     get:
       operationId: listChecks
-      summary: SolarWinds List all checks
+      summary: Solarwinds List All Checks
       description: >-
         Returns a list of all checks configured in the Pingdom account.
       tags:
-        - Checks
+      - Checks
       parameters:
-        - name: limit
-          in: query
-          description: Maximum number of checks to return
-          schema:
-            type: integer
-            default: 25000
-        - name: offset
-          in: query
-          description: Offset for pagination
-          schema:
-            type: integer
-            default: 0
-        - name: tags
-          in: query
-          description: Filter by comma-separated tag names
-          schema:
-            type: string
-        - name: type
-          in: query
-          description: Filter by check type
-          schema:
-            type: string
-            enum:
-              - http
-              - httpcustom
-              - tcp
-              - ping
-              - dns
-              - udp
-              - smtp
-              - pop3
-              - imap
+      - name: limit
+        in: query
+        description: Maximum number of checks to return
+        schema:
+          type: integer
+          default: 25000
+        example: 10
+      - name: offset
+        in: query
+        description: Offset for pagination
+        schema:
+          type: integer
+          default: 0
+        example: 10
+      - name: tags
+        in: query
+        description: Filter by comma-separated tag names
+        schema:
+          type: string
+        example: example_value
+      - name: type
+        in: query
+        description: Filter by check type
+        schema:
+          type: string
+          enum:
+          - http
+          - httpcustom
+          - tcp
+          - ping
+          - dns
+          - udp
+          - smtp
+          - pop3
+          - imap
+        example: http
       responses:
         '200':
           description: List of checks
@@ -82,21 +86,55 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckList'
+              examples:
+                Listchecks200Example:
+                  summary: Default listChecks 200 response
+                  x-microcks-default: true
+                  value:
+                    checks:
+                    - id: abc123
+                      name: Example Title
+                      type: http
+                      hostname: example_value
+                      status: up
+                      resolution: 10
+                      lastresponsetime: 10
+                      lasttesttime: 10
+                      created: 10
+                      tags: {}
+                    counts:
+                      total: 10
+                      limited: 10
+                      filtered: 10
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     post:
       operationId: createCheck
-      summary: SolarWinds Create a new check
+      summary: Solarwinds Create a New Check
       description: >-
         Creates a new uptime check with the specified configuration.
       tags:
-        - Checks
+      - Checks
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CheckCreate'
+            examples:
+              CreatecheckRequestExample:
+                summary: Default createCheck request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  host: example_value
+                  type: http
+                  resolution: 1
+                  paused: true
+                  encryption: true
       responses:
         '200':
           description: Check created successfully
@@ -104,21 +142,42 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Check'
+              examples:
+                Createcheck200Example:
+                  summary: Default createCheck 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    type: http
+                    hostname: example_value
+                    status: up
+                    resolution: 10
+                    lastresponsetime: 10
+                    lasttesttime: 10
+                    created: 10
+                    tags:
+                    - name: Example Title
+                      type: example_value
+                      count: 10
         '400':
           description: Invalid check configuration
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /checks/{checkid}:
     get:
       operationId: getCheck
-      summary: SolarWinds Get detailed check information
+      summary: Solarwinds Get Detailed Check Information
       description: >-
         Returns detailed information about a specific check including
         its configuration and current status.
       tags:
-        - Checks
+      - Checks
       parameters:
-        - $ref: '#/components/parameters/CheckId'
+      - $ref: '#/components/parameters/CheckId'
       responses:
         '200':
           description: Check details
@@ -126,25 +185,43 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CheckDetail'
+              examples:
+                Getcheck200Example:
+                  summary: Default getCheck 200 response
+                  x-microcks-default: true
+                  value:
+                    check: example_value
         '401':
           description: Unauthorized
         '404':
           description: Check not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     put:
       operationId: updateCheck
-      summary: SolarWinds Update a check
+      summary: Solarwinds Update a Check
       description: >-
         Updates the configuration of an existing check.
       tags:
-        - Checks
+      - Checks
       parameters:
-        - $ref: '#/components/parameters/CheckId'
+      - $ref: '#/components/parameters/CheckId'
       requestBody:
         required: true
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/CheckUpdate'
+            examples:
+              UpdatecheckRequestExample:
+                summary: Default updateCheck request
+                x-microcks-default: true
+                value:
+                  name: Example Title
+                  host: example_value
+                  resolution: 10
+                  paused: true
       responses:
         '200':
           description: Check updated successfully
@@ -154,15 +231,18 @@ paths:
           description: Unauthorized
         '404':
           description: Check not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
     delete:
       operationId: deleteCheck
-      summary: SolarWinds Delete a check
+      summary: Solarwinds Delete a Check
       description: >-
         Permanently deletes a check and all associated data.
       tags:
-        - Checks
+      - Checks
       parameters:
-        - $ref: '#/components/parameters/CheckId'
+      - $ref: '#/components/parameters/CheckId'
       responses:
         '200':
           description: Check deleted successfully
@@ -170,53 +250,62 @@ paths:
           description: Unauthorized
         '404':
           description: Check not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /results/{checkid}:
     get:
       operationId: getResults
-      summary: SolarWinds Get raw check results
+      summary: Solarwinds Get Raw Check Results
       description: >-
         Returns raw test results for a specific check within a time range.
       tags:
-        - Results
+      - Results
       parameters:
-        - $ref: '#/components/parameters/CheckId'
-        - name: to
-          in: query
-          description: End of period (Unix timestamp)
-          schema:
-            type: integer
-        - name: from
-          in: query
-          description: Start of period (Unix timestamp)
-          schema:
-            type: integer
-        - name: limit
-          in: query
-          description: Maximum number of results
-          schema:
-            type: integer
-            default: 100
-        - name: offset
-          in: query
-          description: Offset for pagination
-          schema:
-            type: integer
-            default: 0
-        - name: probes
-          in: query
-          description: Filter by comma-separated probe IDs
-          schema:
-            type: string
-        - name: status
-          in: query
-          description: Filter by result status
-          schema:
-            type: string
-            enum:
-              - up
-              - down
-              - unconfirmed_down
-              - unknown
+      - $ref: '#/components/parameters/CheckId'
+      - name: to
+        in: query
+        description: End of period (Unix timestamp)
+        schema:
+          type: integer
+        example: 10
+      - name: from
+        in: query
+        description: Start of period (Unix timestamp)
+        schema:
+          type: integer
+        example: 10
+      - name: limit
+        in: query
+        description: Maximum number of results
+        schema:
+          type: integer
+          default: 100
+        example: 10
+      - name: offset
+        in: query
+        description: Offset for pagination
+        schema:
+          type: integer
+          default: 0
+        example: 10
+      - name: probes
+        in: query
+        description: Filter by comma-separated probe IDs
+        schema:
+          type: string
+        example: example_value
+      - name: status
+        in: query
+        description: Filter by result status
+        schema:
+          type: string
+          enum:
+          - up
+          - down
+          - unconfirmed_down
+          - unknown
+        example: up
       responses:
         '200':
           description: Check results
@@ -224,37 +313,55 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResultList'
+              examples:
+                Getresults200Example:
+                  summary: Default getResults 200 response
+                  x-microcks-default: true
+                  value:
+                    results:
+                    - probeid: '500123'
+                      time: 10
+                      status: example_value
+                      responsetime: 10
+                      statusdesc: example_value
+                      statusdesclong: example_value
         '401':
           description: Unauthorized
         '404':
           description: Check not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /summary.average/{checkid}:
     get:
       operationId: getSummaryAverage
-      summary: SolarWinds Get average response time summary
+      summary: Solarwinds Get Average Response Time Summary
       description: >-
         Returns average response time and uptime data for a check
         over a specified time period.
       tags:
-        - Summary
+      - Summary
       parameters:
-        - $ref: '#/components/parameters/CheckId'
-        - name: from
-          in: query
-          description: Start of period (Unix timestamp)
-          schema:
-            type: integer
-        - name: to
-          in: query
-          description: End of period (Unix timestamp)
-          schema:
-            type: integer
-        - name: includeuptime
-          in: query
-          description: Include uptime information
-          schema:
-            type: boolean
-            default: false
+      - $ref: '#/components/parameters/CheckId'
+      - name: from
+        in: query
+        description: Start of period (Unix timestamp)
+        schema:
+          type: integer
+        example: 10
+      - name: to
+        in: query
+        description: End of period (Unix timestamp)
+        schema:
+          type: integer
+        example: 10
+      - name: includeuptime
+        in: query
+        description: Include uptime information
+        schema:
+          type: boolean
+          default: false
+        example: true
       responses:
         '200':
           description: Average summary data
@@ -262,30 +369,47 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SummaryAverage'
+              examples:
+                Getsummaryaverage200Example:
+                  summary: Default getSummaryAverage 200 response
+                  x-microcks-default: true
+                  value:
+                    summary:
+                      responsetime:
+                        avgresponse: 10
+                      status:
+                        totalup: 10
+                        totaldown: 10
+                        totalunknown: 10
         '401':
           description: Unauthorized
         '404':
           description: Check not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /summary.outage/{checkid}:
     get:
       operationId: getSummaryOutage
-      summary: SolarWinds Get outage summary
+      summary: Solarwinds Get Outage Summary
       description: >-
         Returns a list of outage periods for a specific check.
       tags:
-        - Summary
+      - Summary
       parameters:
-        - $ref: '#/components/parameters/CheckId'
-        - name: from
-          in: query
-          description: Start of period (Unix timestamp)
-          schema:
-            type: integer
-        - name: to
-          in: query
-          description: End of period (Unix timestamp)
-          schema:
-            type: integer
+      - $ref: '#/components/parameters/CheckId'
+      - name: from
+        in: query
+        description: Start of period (Unix timestamp)
+        schema:
+          type: integer
+        example: 10
+      - name: to
+        in: query
+        description: End of period (Unix timestamp)
+        schema:
+          type: integer
+        example: 10
       responses:
         '200':
           description: Outage summary
@@ -293,18 +417,31 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SummaryOutage'
+              examples:
+                Getsummaryoutage200Example:
+                  summary: Default getSummaryOutage 200 response
+                  x-microcks-default: true
+                  value:
+                    summary:
+                      states:
+                      - status: example_value
+                        timefrom: 10
+                        timeto: 10
         '401':
           description: Unauthorized
         '404':
           description: Check not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /alerting/contacts:
     get:
       operationId: listContacts
-      summary: SolarWinds List alert contacts
+      summary: Solarwinds List Alert Contacts
       description: >-
         Returns all alert contacts configured in the account.
       tags:
-        - Contacts
+      - Contacts
       responses:
         '200':
           description: List of contacts
@@ -312,16 +449,28 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ContactList'
+              examples:
+                Listcontacts200Example:
+                  summary: Default listContacts 200 response
+                  x-microcks-default: true
+                  value:
+                    contacts:
+                    - id: abc123
+                      name: Example Title
+                      notification_targets: example_value
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /alerting/teams:
     get:
       operationId: listTeams
-      summary: SolarWinds List alert teams
+      summary: Solarwinds List Alert Teams
       description: >-
         Returns all alert teams configured in the account.
       tags:
-        - Teams
+      - Teams
       responses:
         '200':
           description: List of teams
@@ -329,16 +478,29 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/TeamList'
+              examples:
+                Listteams200Example:
+                  summary: Default listTeams 200 response
+                  x-microcks-default: true
+                  value:
+                    teams:
+                    - id: abc123
+                      name: Example Title
+                      members:
+                      - {}
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /maintenance:
     get:
       operationId: listMaintenanceWindows
-      summary: SolarWinds List maintenance windows
+      summary: Solarwinds List Maintenance Windows
       description: >-
         Returns all maintenance windows configured in the account.
       tags:
-        - Maintenance
+      - Maintenance
       responses:
         '200':
           description: List of maintenance windows
@@ -346,23 +508,38 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MaintenanceList'
+              examples:
+                Listmaintenancewindows200Example:
+                  summary: Default listMaintenanceWindows 200 response
+                  x-microcks-default: true
+                  value:
+                    maintenance:
+                    - id: abc123
+                      description: A sample description.
+                      from: 10
+                      to: 10
+                      checks: example_value
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
   /probes:
     get:
       operationId: listProbes
-      summary: SolarWinds List probe servers
+      summary: Solarwinds List Probe Servers
       description: >-
         Returns a list of all Pingdom probe servers with their locations.
       tags:
-        - ProbeServers
+      - ProbeServers
       parameters:
-        - name: onlyactive
-          in: query
-          description: Return only active probes
-          schema:
-            type: boolean
-            default: false
+      - name: onlyactive
+        in: query
+        description: Return only active probes
+        schema:
+          type: boolean
+          default: false
+        example: true
       responses:
         '200':
           description: List of probe servers
@@ -370,8 +547,25 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ProbeList'
+              examples:
+                Listprobes200Example:
+                  summary: Default listProbes 200 response
+                  x-microcks-default: true
+                  value:
+                    probes:
+                    - id: abc123
+                      country: example_value
+                      city: example_value
+                      name: Example Title
+                      active: true
+                      hostname: example_value
+                      ip: example_value
+                      ipv6: example_value
         '401':
           description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
 components:
   securitySchemes:
     bearerAuth:
@@ -394,6 +588,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Check'
+          example: []
         counts:
           type: object
           properties:
@@ -403,52 +598,62 @@ components:
               type: integer
             filtered:
               type: integer
+          example: example_value
     Check:
       type: object
       properties:
         id:
           type: integer
           description: Unique check identifier
+          example: abc123
         name:
           type: string
           description: Check name
+          example: Example Title
         type:
           type: string
           description: Check type
           enum:
-            - http
-            - httpcustom
-            - tcp
-            - ping
-            - dns
-            - udp
-            - smtp
-            - pop3
-            - imap
+          - http
+          - httpcustom
+          - tcp
+          - ping
+          - dns
+          - udp
+          - smtp
+          - pop3
+          - imap
+          example: http
         hostname:
           type: string
           description: Target hostname
+          example: example_value
         status:
           type: string
           description: Current check status
           enum:
-            - up
-            - down
-            - unconfirmed_down
-            - unknown
-            - paused
+          - up
+          - down
+          - unconfirmed_down
+          - unknown
+          - paused
+          example: up
         resolution:
           type: integer
           description: Check interval in minutes
+          example: 10
         lastresponsetime:
           type: integer
           description: Last response time in milliseconds
+          example: 10
         lasttesttime:
           type: integer
           description: Last test timestamp (Unix)
+          example: 10
         created:
           type: integer
           description: Creation timestamp (Unix)
+          example: 10
         tags:
           type: array
           items:
@@ -460,81 +665,93 @@ components:
                 type: string
               count:
                 type: integer
+          example: []
     CheckDetail:
       type: object
       properties:
         check:
           allOf:
-            - $ref: '#/components/schemas/Check'
-            - type: object
-              properties:
-                encryption:
-                  type: boolean
-                  description: Use SSL/TLS
-                port:
-                  type: integer
-                  description: Target port
-                sendnotificationwhendown:
-                  type: integer
-                  description: Number of failed tests before notification
-                notifyagainevery:
-                  type: integer
-                  description: Notification repeat interval
-                notifywhenbackup:
-                  type: boolean
-                  description: Notify when check recovers
+          - $ref: '#/components/schemas/Check'
+          - type: object
+            properties:
+              encryption:
+                type: boolean
+                description: Use SSL/TLS
+              port:
+                type: integer
+                description: Target port
+              sendnotificationwhendown:
+                type: integer
+                description: Number of failed tests before notification
+              notifyagainevery:
+                type: integer
+                description: Notification repeat interval
+              notifywhenbackup:
+                type: boolean
+                description: Notify when check recovers
+          example: example_value
     CheckCreate:
       type: object
       required:
-        - name
-        - host
-        - type
+      - name
+      - host
+      - type
       properties:
         name:
           type: string
           description: Check name
+          example: Example Title
         host:
           type: string
           description: Target hostname or IP
+          example: example_value
         type:
           type: string
           description: Check type
           enum:
-            - http
-            - httpcustom
-            - tcp
-            - ping
-            - dns
-            - udp
-            - smtp
-            - pop3
-            - imap
+          - http
+          - httpcustom
+          - tcp
+          - ping
+          - dns
+          - udp
+          - smtp
+          - pop3
+          - imap
+          example: http
         resolution:
           type: integer
           description: Check interval in minutes
           enum:
-            - 1
-            - 5
-            - 15
-            - 30
-            - 60
+          - 1
+          - 5
+          - 15
+          - 30
+          - 60
+          example: 1
         paused:
           type: boolean
           description: Whether the check is paused
+          example: true
         encryption:
           type: boolean
           description: Use SSL/TLS
+          example: true
     CheckUpdate:
       type: object
       properties:
         name:
           type: string
+          example: Example Title
         host:
           type: string
+          example: example_value
         resolution:
           type: integer
+          example: 10
         paused:
           type: boolean
+          example: true
     ResultList:
       type: object
       properties:
@@ -542,27 +759,34 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Result'
+          example: []
     Result:
       type: object
       properties:
         probeid:
           type: integer
           description: Probe server ID
+          example: '500123'
         time:
           type: integer
           description: Test timestamp (Unix)
+          example: 10
         status:
           type: string
           description: Result status
+          example: example_value
         responsetime:
           type: integer
           description: Response time in milliseconds
+          example: 10
         statusdesc:
           type: string
           description: Status description
+          example: example_value
         statusdesclong:
           type: string
           description: Detailed status description
+          example: example_value
     SummaryAverage:
       type: object
       properties:
@@ -587,6 +811,7 @@ components:
                 totalunknown:
                   type: integer
                   description: Total unknown time in seconds
+          example: example_value
     SummaryOutage:
       type: object
       properties:
@@ -604,6 +829,7 @@ components:
                     type: integer
                   timeto:
                     type: integer
+          example: example_value
     ContactList:
       type: object
       properties:
@@ -618,6 +844,7 @@ components:
                 type: string
               notification_targets:
                 type: object
+          example: []
     TeamList:
       type: object
       properties:
@@ -634,6 +861,7 @@ components:
                 type: array
                 items:
                   type: object
+          example: []
     MaintenanceList:
       type: object
       properties:
@@ -652,6 +880,7 @@ components:
                 type: integer
               checks:
                 type: object
+          example: []
     ProbeList:
       type: object
       properties:
@@ -676,3 +905,4 @@ components:
                 type: string
               ipv6:
                 type: string
+          example: []

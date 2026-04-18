@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CheckCreate",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Check name"
+    },
+    "host": {
+      "type": "string",
+      "description": "Target hostname or IP"
+    },
+    "type": {
+      "type": "string",
+      "description": "Check type"
+    },
+    "resolution": {
+      "type": "integer",
+      "description": "Check interval in minutes"
+    },
+    "paused": {
+      "type": "boolean",
+      "description": "Whether the check is paused"
+    },
+    "encryption": {
+      "type": "boolean",
+      "description": "Use SSL/TLS"
+    }
+  }
+}

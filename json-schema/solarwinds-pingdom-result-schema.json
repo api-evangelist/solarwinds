@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Result",
+  "type": "object",
+  "properties": {
+    "probeid": {
+      "type": "integer",
+      "description": "Probe server ID"
+    },
+    "time": {
+      "type": "integer",
+      "description": "Test timestamp (Unix)"
+    },
+    "status": {
+      "type": "string",
+      "description": "Result status"
+    },
+    "responsetime": {
+      "type": "integer",
+      "description": "Response time in milliseconds"
+    },
+    "statusdesc": {
+      "type": "string",
+      "description": "Status description"
+    },
+    "statusdesclong": {
+      "type": "string",
+      "description": "Detailed status description"
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "Example Title",
+  "host": "example_value",
+  "type": "example_value",
+  "resolution": 10,
+  "paused": true,
+  "encryption": true
+}

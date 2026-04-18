@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "System",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "last_event_at": {
+      "type": "string"
+    },
+    "auto_delete": {
+      "type": "boolean"
+    },
+    "ip_address": {
+      "type": "string"
+    },
+    "hostname": {
+      "type": "string"
+    },
+    "syslog": {
+      "type": "object"
+    }
+  }
+}

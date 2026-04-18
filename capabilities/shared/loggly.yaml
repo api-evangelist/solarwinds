@@ -1,0 +1,113 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "SolarWinds Loggly API"
+  description: "Cloud-based log management API for event submission, search, and retrieval."
+  tags:
+    - SolarWinds
+    - Loggly
+    - Log Management
+    - Search
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      LOGGLY_API_TOKEN: LOGGLY_API_TOKEN
+
+capability:
+  consumes:
+    - type: http
+      namespace: loggly
+      baseUri: https://logs-01.loggly.com/apiv2
+      description: "Loggly API for log search and retrieval"
+      authentication:
+        type: bearer
+        token: "{{LOGGLY_API_TOKEN}}"
+      resources:
+        - name: search
+          path: /search
+          description: "Log search"
+          operations:
+            - name: search-events
+              method: GET
+              description: "Initiate a log search query"
+              inputParameters:
+                - name: q
+                  in: query
+                  type: string
+                  required: true
+                  description: "Search query string"
+                - name: from
+                  in: query
+                  type: string
+                  required: false
+                  description: "Start time"
+                - name: until
+                  in: query
+                  type: string
+                  required: false
+                  description: "End time"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: get-events
+              method: GET
+              description: "Retrieve search results"
+              inputParameters:
+                - name: rsid
+                  in: path
+                  type: string
+                  required: true
+                  description: "Search result set ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: account
+          path: /customer
+          description: "Account management"
+          operations:
+            - name: get-account-info
+              method: GET
+              description: "Get account information"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8103
+      namespace: loggly-api
+      resources:
+        - path: /v1/search
+          name: search
+          description: "Log search"
+          operations:
+            - method: GET
+              name: search-events
+              description: "Search log events"
+              call: "loggly.search-events"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9103
+      namespace: loggly-mcp
+      transport: http
+      tools:
+        - name: search-events
+          description: "Search Loggly log events"
+          hints:
+            readOnly: true
+          call: "loggly.search-events"
+          outputParameters:
+            - type: object
+              mapping: "$."

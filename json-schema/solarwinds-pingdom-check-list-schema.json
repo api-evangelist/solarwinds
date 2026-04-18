@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CheckList",
+  "type": "object",
+  "properties": {
+    "checks": {
+      "type": "array"
+    },
+    "counts": {
+      "type": "object"
+    }
+  }
+}

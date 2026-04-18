@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "EventsResponse",
+  "type": "object",
+  "properties": {
+    "total_events": {
+      "type": "integer",
+      "description": "Total number of matching events"
+    },
+    "page": {
+      "type": "integer",
+      "description": "Current page number"
+    },
+    "events": {
+      "type": "array"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Check",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique check identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Check name"
+    },
+    "type": {
+      "type": "string",
+      "description": "Check type"
+    },
+    "hostname": {
+      "type": "string",
+      "description": "Target hostname"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current check status"
+    },
+    "resolution": {
+      "type": "integer",
+      "description": "Check interval in minutes"
+    },
+    "lastresponsetime": {
+      "type": "integer",
+      "description": "Last response time in milliseconds"
+    },
+    "lasttesttime": {
+      "type": "integer",
+      "description": "Last test timestamp (Unix)"
+    },
+    "created": {
+      "type": "integer",
+      "description": "Creation timestamp (Unix)"
+    },
+    "tags": {
+      "type": "array"
+    }
+  }
+}

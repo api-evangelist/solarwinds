@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "CheckCreate",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "host": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "resolution": {
+      "type": "integer"
+    },
+    "paused": {
+      "type": "boolean"
+    },
+    "encryption": {
+      "type": "boolean"
+    }
+  }
+}

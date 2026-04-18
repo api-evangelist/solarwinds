@@ -1,0 +1,153 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "SolarWinds Orion Platform API"
+  description: "REST API for the Orion Platform providing SWQL queries and CRUD operations on monitored network entities."
+  tags:
+    - SolarWinds
+    - Orion
+    - Network Monitoring
+    - SWIS
+  created: "2026-04-18"
+  modified: "2026-04-18"
+
+binds:
+  - namespace: env
+    keys:
+      ORION_USERNAME: ORION_USERNAME
+      ORION_PASSWORD: ORION_PASSWORD
+
+capability:
+  consumes:
+    - type: http
+      namespace: orion
+      baseUri: https://localhost:17774/SolarWinds/InformationService/v3/Json
+      description: "SolarWinds Orion Platform SWIS REST API"
+      authentication:
+        type: basic
+        username: "{{ORION_USERNAME}}"
+        password: "{{ORION_PASSWORD}}"
+      resources:
+        - name: query
+          path: /Query
+          description: "SWQL query execution"
+          operations:
+            - name: query-swis
+              method: GET
+              description: "Execute a SWQL query"
+              inputParameters:
+                - name: query
+                  in: query
+                  type: string
+                  required: true
+                  description: "SWQL query string"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: crud
+          path: /
+          description: "CRUD operations on SWIS entities"
+          operations:
+            - name: create-entity
+              method: POST
+              description: "Create a SWIS entity"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: read-entity
+              method: GET
+              description: "Read a SWIS entity"
+              inputParameters:
+                - name: uri
+                  in: path
+                  type: string
+                  required: true
+                  description: "SWIS entity URI"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: update-entity
+              method: POST
+              description: "Update a SWIS entity"
+              inputParameters:
+                - name: uri
+                  in: path
+                  type: string
+                  required: true
+                  description: "SWIS entity URI"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: delete-entity
+              method: DELETE
+              description: "Delete a SWIS entity"
+              inputParameters:
+                - name: uri
+                  in: path
+                  type: string
+                  required: true
+                  description: "SWIS entity URI"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: invoke-verb
+              method: POST
+              description: "Invoke a verb on a SWIS entity"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: bulk
+          path: /BulkDelete
+          description: "Bulk operations"
+          operations:
+            - name: bulk-delete
+              method: POST
+              description: "Delete multiple SWIS entities"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: orion-api
+      resources:
+        - path: /v1/query
+          name: query
+          description: "SWQL query execution"
+          operations:
+            - method: GET
+              name: query-swis
+              description: "Execute a SWQL query"
+              call: "orion.query-swis"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: orion-mcp
+      transport: http
+      tools:
+        - name: query-swis
+          description: "Execute a SWQL query against Orion"
+          hints:
+            readOnly: true
+          call: "orion.query-swis"
+          outputParameters:
+            - type: object
+              mapping: "$."

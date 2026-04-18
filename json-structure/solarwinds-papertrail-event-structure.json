@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-structure.org/draft/2020-12/schema",
+  "name": "Event",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "received_at": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "display_received_at": {
+      "type": "string"
+    },
+    "source_ip": {
+      "type": "string"
+    },
+    "source_name": {
+      "type": "string"
+    },
+    "source_id": {
+      "type": "integer"
+    },
+    "hostname": {
+      "type": "string"
+    },
+    "program": {
+      "type": "string"
+    },
+    "severity": {
+      "type": "string"
+    },
+    "facility": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    }
+  }
+}
