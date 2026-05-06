@@ -1,150 +1,341 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "SolarWinds Infrastructure Monitoring"
-  description: "Workflow for monitoring network infrastructure and website uptime combining Orion Platform SWQL queries with Pingdom synthetic monitoring for network and IT operations teams."
+  label: SolarWinds Infrastructure Monitoring
+  description: Workflow for monitoring network infrastructure and website uptime combining Orion Platform SWQL queries with
+    Pingdom synthetic monitoring for network and IT operations teams.
   tags:
-    - SolarWinds
-    - Infrastructure Monitoring
-    - Network Monitoring
-    - Uptime Monitoring
-  created: "2026-04-18"
-  modified: "2026-04-18"
-
+  - SolarWinds
+  - Infrastructure Monitoring
+  - Network Monitoring
+  - Uptime Monitoring
+  created: '2026-04-18'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      ORION_USERNAME: ORION_USERNAME
-      ORION_PASSWORD: ORION_PASSWORD
-      PINGDOM_API_TOKEN: PINGDOM_API_TOKEN
-
+- namespace: env
+  keys:
+    ORION_USERNAME: ORION_USERNAME
+    ORION_PASSWORD: ORION_PASSWORD
+    PINGDOM_API_TOKEN: PINGDOM_API_TOKEN
 capability:
   consumes:
-    - import: orion
-      location: ./shared/orion.yaml
-    - import: pingdom
-      location: ./shared/pingdom.yaml
-
+  - type: http
+    namespace: orion
+    baseUri: https://localhost:17774/SolarWinds/InformationService/v3/Json
+    description: SolarWinds Orion Platform SWIS REST API
+    authentication:
+      type: basic
+      username: '{{ORION_USERNAME}}'
+      password: '{{ORION_PASSWORD}}'
+    resources:
+    - name: query
+      path: /Query
+      description: SWQL query execution
+      operations:
+      - name: query-swis
+        method: GET
+        description: Execute a SWQL query
+        inputParameters:
+        - name: query
+          in: query
+          type: string
+          required: true
+          description: SWQL query string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: crud
+      path: /
+      description: CRUD operations on SWIS entities
+      operations:
+      - name: create-entity
+        method: POST
+        description: Create a SWIS entity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: read-entity
+        method: GET
+        description: Read a SWIS entity
+        inputParameters:
+        - name: uri
+          in: path
+          type: string
+          required: true
+          description: SWIS entity URI
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: update-entity
+        method: POST
+        description: Update a SWIS entity
+        inputParameters:
+        - name: uri
+          in: path
+          type: string
+          required: true
+          description: SWIS entity URI
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: delete-entity
+        method: DELETE
+        description: Delete a SWIS entity
+        inputParameters:
+        - name: uri
+          in: path
+          type: string
+          required: true
+          description: SWIS entity URI
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: invoke-verb
+        method: POST
+        description: Invoke a verb on a SWIS entity
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: bulk
+      path: /BulkDelete
+      description: Bulk operations
+      operations:
+      - name: bulk-delete
+        method: POST
+        description: Delete multiple SWIS entities
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  - type: http
+    namespace: pingdom
+    baseUri: https://api.pingdom.com/api/3.1
+    description: Pingdom API for uptime and performance monitoring
+    authentication:
+      type: bearer
+      token: '{{PINGDOM_API_TOKEN}}'
+    resources:
+    - name: checks
+      path: /checks
+      description: Uptime and transaction checks
+      operations:
+      - name: list-checks
+        method: GET
+        description: List all checks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-check
+        method: GET
+        description: Get check details
+        inputParameters:
+        - name: checkId
+          in: path
+          type: integer
+          required: true
+          description: Check ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: create-check
+        method: POST
+        description: Create a new check
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        body:
+          type: json
+          data:
+            name: '{{tools.name}}'
+            host: '{{tools.host}}'
+            type: '{{tools.type}}'
+      - name: delete-check
+        method: DELETE
+        description: Delete a check
+        inputParameters:
+        - name: checkId
+          in: path
+          type: integer
+          required: true
+          description: Check ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: results
+      path: /results
+      description: Check results and performance data
+      operations:
+      - name: get-results
+        method: GET
+        description: Get check results
+        inputParameters:
+        - name: checkId
+          in: path
+          type: integer
+          required: true
+          description: Check ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: summary
+      path: /summary.average
+      description: Performance summaries
+      operations:
+      - name: get-summary-average
+        method: GET
+        description: Get average performance summary
+        inputParameters:
+        - name: checkId
+          in: path
+          type: integer
+          required: true
+          description: Check ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: infra-monitoring-api
-      description: "Unified REST API for SolarWinds infrastructure monitoring."
-      resources:
-        - path: /v1/query
-          name: query
-          description: "SWQL query execution"
-          operations:
-            - method: GET
-              name: query-swis
-              description: "Execute a SWQL query"
-              call: "orion.query-swis"
-              with:
-                query: "rest.query"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/checks
-          name: checks
-          description: "Uptime monitoring checks"
-          operations:
-            - method: GET
-              name: list-checks
-              description: "List Pingdom checks"
-              call: "pingdom.list-checks"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-            - method: GET
-              name: get-check
-              description: "Get check details"
-              call: "pingdom.get-check"
-              with:
-                checkId: "rest.checkId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/results
-          name: results
-          description: "Check results"
-          operations:
-            - method: GET
-              name: get-results
-              description: "Get check results"
-              call: "pingdom.get-results"
-              with:
-                checkId: "rest.checkId"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: infra-monitoring-mcp
-      transport: http
-      description: "MCP server for AI-assisted infrastructure monitoring."
-      tools:
-        - name: query-orion
-          description: "Execute a SWQL query against Orion Platform"
-          hints:
-            readOnly: true
-          call: "orion.query-swis"
-          with:
-            query: "tools.query"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-orion-entity
-          description: "Create a monitored entity in Orion"
-          hints:
-            readOnly: false
-          call: "orion.create-entity"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-checks
-          description: "List Pingdom uptime monitoring checks"
-          hints:
-            readOnly: true
-          call: "pingdom.list-checks"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-check
-          description: "Get Pingdom check details"
-          hints:
-            readOnly: true
-          call: "pingdom.get-check"
-          with:
-            checkId: "tools.checkId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: create-check
-          description: "Create a new Pingdom monitoring check"
-          hints:
-            readOnly: false
-          call: "pingdom.create-check"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-check-results
-          description: "Get Pingdom check results"
-          hints:
-            readOnly: true
-          call: "pingdom.get-results"
-          with:
-            checkId: "tools.checkId"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-summary-average
-          description: "Get Pingdom performance summary"
-          hints:
-            readOnly: true
-          call: "pingdom.get-summary-average"
-          with:
-            checkId: "tools.checkId"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: infra-monitoring-api
+    description: Unified REST API for SolarWinds infrastructure monitoring.
+    resources:
+    - path: /v1/query
+      name: query
+      description: SWQL query execution
+      operations:
+      - method: GET
+        name: query-swis
+        description: Execute a SWQL query
+        call: orion.query-swis
+        with:
+          query: rest.query
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/checks
+      name: checks
+      description: Uptime monitoring checks
+      operations:
+      - method: GET
+        name: list-checks
+        description: List Pingdom checks
+        call: pingdom.list-checks
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: GET
+        name: get-check
+        description: Get check details
+        call: pingdom.get-check
+        with:
+          checkId: rest.checkId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/results
+      name: results
+      description: Check results
+      operations:
+      - method: GET
+        name: get-results
+        description: Get check results
+        call: pingdom.get-results
+        with:
+          checkId: rest.checkId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: infra-monitoring-mcp
+    transport: http
+    description: MCP server for AI-assisted infrastructure monitoring.
+    tools:
+    - name: query-orion
+      description: Execute a SWQL query against Orion Platform
+      hints:
+        readOnly: true
+      call: orion.query-swis
+      with:
+        query: tools.query
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-orion-entity
+      description: Create a monitored entity in Orion
+      hints:
+        readOnly: false
+      call: orion.create-entity
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-checks
+      description: List Pingdom uptime monitoring checks
+      hints:
+        readOnly: true
+      call: pingdom.list-checks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-check
+      description: Get Pingdom check details
+      hints:
+        readOnly: true
+      call: pingdom.get-check
+      with:
+        checkId: tools.checkId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: create-check
+      description: Create a new Pingdom monitoring check
+      hints:
+        readOnly: false
+      call: pingdom.create-check
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-check-results
+      description: Get Pingdom check results
+      hints:
+        readOnly: true
+      call: pingdom.get-results
+      with:
+        checkId: tools.checkId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-summary-average
+      description: Get Pingdom performance summary
+      hints:
+        readOnly: true
+      call: pingdom.get-summary-average
+      with:
+        checkId: tools.checkId
+      outputParameters:
+      - type: object
+        mapping: $.
