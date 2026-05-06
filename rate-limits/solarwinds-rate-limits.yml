@@ -4,150 +4,35 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: SolarWinds
 providerId: solarwinds
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Application Monitoring
-  - Database Monitoring
-  - Infrastructure
-  - IP Address Management
-  - IT Management
-  - ITSM
-  - Log Management
-  - Network Monitoring
   - Observability
+  - IT Management
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the SolarWinds API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
+description: SolarWinds spans a multi-product portfolio with both customer-deployed (Orion-based NPM,
+  NCM, IPAM, SAM, DPA, Web Help Desk) and SaaS (Observability, Service Desk, Pingdom, Loggly, Papertrail,
+  AppOptics) APIs. Rate limits vary per service and are documented in each product's developer reference
+  page; SolarWinds does not publish a single platform-wide rate-limit policy.
+sources:
+  - https://www.solarwinds.com/
+notes: SolarWinds documentation hosts (documentation.solarwinds.com, dev.solarwinds.com) returned 403/404
+  to automated retrieval, so per-service rate-limit numbers could not be reconciled. Customer-deployed
+  Orion-based products are bound by host capacity rather than a published per-second cap.
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - SolarWinds Orion API
-      - SolarWinds Service Desk API
-      - SolarWinds Observability API
-      - SolarWinds Database Performance Analyzer API
-      - SolarWinds NPM REST API
-      - SolarWinds Web Help Desk API
-      - SolarWinds Pingdom API
-      - SolarWinds Loggly API
-      - SolarWinds Papertrail API
-      - SolarWinds IPAM API
-      - SolarWinds NCM API
-      - SolarWinds SAM API
-      - SolarWinds AppOptics API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - SolarWinds Orion API
-      - SolarWinds Service Desk API
-      - SolarWinds Observability API
-      - SolarWinds Database Performance Analyzer API
-      - SolarWinds NPM REST API
-      - SolarWinds Web Help Desk API
-      - SolarWinds Pingdom API
-      - SolarWinds Loggly API
-      - SolarWinds Papertrail API
-      - SolarWinds IPAM API
-      - SolarWinds NCM API
-      - SolarWinds SAM API
-      - SolarWinds AppOptics API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - SolarWinds Orion API
-      - SolarWinds Service Desk API
-      - SolarWinds Observability API
-      - SolarWinds Database Performance Analyzer API
-      - SolarWinds NPM REST API
-      - SolarWinds Web Help Desk API
-      - SolarWinds Pingdom API
-      - SolarWinds Loggly API
-      - SolarWinds Papertrail API
-      - SolarWinds IPAM API
-      - SolarWinds NCM API
-      - SolarWinds SAM API
-      - SolarWinds AppOptics API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - SolarWinds Orion API
-      - SolarWinds Service Desk API
-      - SolarWinds Observability API
-      - SolarWinds Database Performance Analyzer API
-      - SolarWinds NPM REST API
-      - SolarWinds Web Help Desk API
-      - SolarWinds Pingdom API
-      - SolarWinds Loggly API
-      - SolarWinds Papertrail API
-      - SolarWinds IPAM API
-      - SolarWinds NCM API
-      - SolarWinds SAM API
-      - SolarWinds AppOptics API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - SolarWinds Orion API
-      - SolarWinds Service Desk API
-      - SolarWinds Observability API
-      - SolarWinds Database Performance Analyzer API
-      - SolarWinds NPM REST API
-      - SolarWinds Web Help Desk API
-      - SolarWinds Pingdom API
-      - SolarWinds Loggly API
-      - SolarWinds Papertrail API
-      - SolarWinds IPAM API
-      - SolarWinds NCM API
-      - SolarWinds SAM API
-      - SolarWinds AppOptics API
+  - name: Per-service SolarWinds API limits
+    scope: account/region/service
+    metric: varies
+    limit: 'see service-specific developer documentation'
+    notes: Each SolarWinds product (Observability, Service Desk, Pingdom, Loggly, Papertrail, Orion-based
+      products) publishes its own limits and headers in its developer docs.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Multi-product portfolio
+    description: Rate-limit numbers and headers vary materially by product. Pingdom and Loggly publish
+      tier-based throughput limits; Orion-based on-prem APIs are bound by the customer's Information Service
+      capacity. Reconcile against the specific product the consumer is calling.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
