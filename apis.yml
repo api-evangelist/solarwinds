@@ -374,6 +374,8 @@ common:
       - AWS CloudWatch
       - Azure Monitor
       - Splunk
+integrations:
+  - name: Global System Integrators & MSPs
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
