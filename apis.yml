@@ -16,7 +16,7 @@ tags:
   - Network Monitoring
   - Observability
 created: '2024-01-15'
-modified: '2026-04-18'
+modified: '2026-05-19'
 specificationVersion: '0.18'
 type: Index
 apis:
@@ -374,6 +374,9 @@ common:
       - AWS CloudWatch
       - Azure Monitor
       - Splunk
+  - name: Agent Skills
+    url: https://github.com/solarwinds/gns3-skills
+    type: AgentSkill
 integrations:
   - name: Global System Integrators & MSPs
 maintainers:
