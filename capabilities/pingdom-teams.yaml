@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SolarWinds Pingdom API — Teams
+  description: 'SolarWinds Pingdom API — Teams. 1 operations. Lead operation: Solarwinds List Alert Teams. Self-contained
+    Naftiko capability covering one Solarwinds business surface.'
+  tags:
+  - Solarwinds
+  - Teams
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SOLARWINDS_API_KEY: SOLARWINDS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: pingdom-teams
+    baseUri: https://api.pingdom.com/api/3.1
+    description: SolarWinds Pingdom API — Teams business capability. Self-contained, no shared references.
+    resources:
+    - name: alerting-teams
+      path: /alerting/teams
+      operations:
+      - name: listteams
+        method: GET
+        description: Solarwinds List Alert Teams
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SOLARWINDS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: pingdom-teams-rest
+    port: 8080
+    description: REST adapter for SolarWinds Pingdom API — Teams. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/alerting/teams
+      name: alerting-teams
+      description: REST surface for alerting-teams.
+      operations:
+      - method: GET
+        name: listteams
+        description: Solarwinds List Alert Teams
+        call: pingdom-teams.listteams
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: pingdom-teams-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SolarWinds Pingdom API — Teams. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: solarwinds-list-alert-teams
+      description: Solarwinds List Alert Teams
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pingdom-teams.listteams
+      outputParameters:
+      - type: object
+        mapping: $.

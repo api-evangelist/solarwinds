@@ -1,0 +1,88 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SolarWinds Orion Platform API — Invoke
+  description: 'SolarWinds Orion Platform API — Invoke. 1 operations. Lead operation: Solarwinds Invoke a Verb on an Entity
+    Type. Self-contained Naftiko capability covering one Solarwinds business surface.'
+  tags:
+  - Solarwinds
+  - Invoke
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SOLARWINDS_API_KEY: SOLARWINDS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: orion-invoke
+    baseUri: https://{orion-server}:17774/SolarWinds/InformationService/v3/Json
+    description: SolarWinds Orion Platform API — Invoke business capability. Self-contained, no shared references.
+    resources:
+    - name: Invoke-entityType-verb
+      path: /Invoke/{entityType}/{verb}
+      operations:
+      - name: invokeverb
+        method: POST
+        description: Solarwinds Invoke a Verb on an Entity Type
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: verb
+          in: path
+          type: string
+          description: Name of the verb to invoke
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    authentication:
+      type: basic
+      username: '{{env.SOLARWINDS_USER}}'
+      password: '{{env.SOLARWINDS_PASS}}'
+  exposes:
+  - type: rest
+    namespace: orion-invoke-rest
+    port: 8080
+    description: REST adapter for SolarWinds Orion Platform API — Invoke. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/invoke/{entitytype}/{verb}
+      name: invoke-entitytype-verb
+      description: REST surface for Invoke-entityType-verb.
+      operations:
+      - method: POST
+        name: invokeverb
+        description: Solarwinds Invoke a Verb on an Entity Type
+        call: orion-invoke.invokeverb
+        with:
+          verb: rest.verb
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: orion-invoke-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SolarWinds Orion Platform API — Invoke. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: solarwinds-invoke-verb-entity-type
+      description: Solarwinds Invoke a Verb on an Entity Type
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: orion-invoke.invokeverb
+      with:
+        verb: tools.verb
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

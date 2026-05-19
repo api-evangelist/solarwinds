@@ -1,0 +1,224 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SolarWinds Pingdom API — Checks
+  description: 'SolarWinds Pingdom API — Checks. 5 operations. Lead operation: Solarwinds List All Checks. Self-contained
+    Naftiko capability covering one Solarwinds business surface.'
+  tags:
+  - Solarwinds
+  - Checks
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SOLARWINDS_API_KEY: SOLARWINDS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: pingdom-checks
+    baseUri: https://api.pingdom.com/api/3.1
+    description: SolarWinds Pingdom API — Checks business capability. Self-contained, no shared references.
+    resources:
+    - name: checks
+      path: /checks
+      operations:
+      - name: listchecks
+        method: GET
+        description: Solarwinds List All Checks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: limit
+          in: query
+          type: integer
+          description: Maximum number of checks to return
+        - name: offset
+          in: query
+          type: integer
+          description: Offset for pagination
+        - name: tags
+          in: query
+          type: string
+          description: Filter by comma-separated tag names
+        - name: type
+          in: query
+          type: string
+          description: Filter by check type
+      - name: createcheck
+        method: POST
+        description: Solarwinds Create a New Check
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: checks-checkid
+      path: /checks/{checkid}
+      operations:
+      - name: getcheck
+        method: GET
+        description: Solarwinds Get Detailed Check Information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatecheck
+        method: PUT
+        description: Solarwinds Update a Check
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletecheck
+        method: DELETE
+        description: Solarwinds Delete a Check
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SOLARWINDS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: pingdom-checks-rest
+    port: 8080
+    description: REST adapter for SolarWinds Pingdom API — Checks. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/checks
+      name: checks
+      description: REST surface for checks.
+      operations:
+      - method: GET
+        name: listchecks
+        description: Solarwinds List All Checks
+        call: pingdom-checks.listchecks
+        with:
+          limit: rest.limit
+          offset: rest.offset
+          tags: rest.tags
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createcheck
+        description: Solarwinds Create a New Check
+        call: pingdom-checks.createcheck
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/checks/{checkid}
+      name: checks-checkid
+      description: REST surface for checks-checkid.
+      operations:
+      - method: GET
+        name: getcheck
+        description: Solarwinds Get Detailed Check Information
+        call: pingdom-checks.getcheck
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatecheck
+        description: Solarwinds Update a Check
+        call: pingdom-checks.updatecheck
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletecheck
+        description: Solarwinds Delete a Check
+        call: pingdom-checks.deletecheck
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: pingdom-checks-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SolarWinds Pingdom API — Checks. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: solarwinds-list-all-checks
+      description: Solarwinds List All Checks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pingdom-checks.listchecks
+      with:
+        limit: tools.limit
+        offset: tools.offset
+        tags: tools.tags
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: solarwinds-create-new-check
+      description: Solarwinds Create a New Check
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: pingdom-checks.createcheck
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: solarwinds-get-detailed-check-information
+      description: Solarwinds Get Detailed Check Information
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pingdom-checks.getcheck
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: solarwinds-update-check
+      description: Solarwinds Update a Check
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: pingdom-checks.updatecheck
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: solarwinds-delete-check
+      description: Solarwinds Delete a Check
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: pingdom-checks.deletecheck
+      outputParameters:
+      - type: object
+        mapping: $.

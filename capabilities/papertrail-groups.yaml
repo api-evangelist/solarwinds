@@ -1,0 +1,104 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SolarWinds Papertrail API — Groups
+  description: 'SolarWinds Papertrail API — Groups. 2 operations. Lead operation: Solarwinds List All Groups. Self-contained
+    Naftiko capability covering one Solarwinds business surface.'
+  tags:
+  - Solarwinds
+  - Groups
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SOLARWINDS_API_KEY: SOLARWINDS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: papertrail-groups
+    baseUri: https://papertrailapp.com/api/v1
+    description: SolarWinds Papertrail API — Groups business capability. Self-contained, no shared references.
+    resources:
+    - name: groups.json
+      path: /groups.json
+      operations:
+      - name: listgroups
+        method: GET
+        description: Solarwinds List All Groups
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: groups-id}.json
+      path: /groups/{id}.json
+      operations:
+      - name: getgroup
+        method: GET
+        description: Solarwinds Get Group Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: X-Papertrail-Token
+      value: '{{env.SOLARWINDS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: papertrail-groups-rest
+    port: 8080
+    description: REST adapter for SolarWinds Papertrail API — Groups. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/groups-json
+      name: groups-json
+      description: REST surface for groups.json.
+      operations:
+      - method: GET
+        name: listgroups
+        description: Solarwinds List All Groups
+        call: papertrail-groups.listgroups
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/groups/id-json
+      name: groups-id-json
+      description: REST surface for groups-id}.json.
+      operations:
+      - method: GET
+        name: getgroup
+        description: Solarwinds Get Group Details
+        call: papertrail-groups.getgroup
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: papertrail-groups-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SolarWinds Papertrail API — Groups. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: solarwinds-list-all-groups
+      description: Solarwinds List All Groups
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: papertrail-groups.listgroups
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: solarwinds-get-group-details
+      description: Solarwinds Get Group Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: papertrail-groups.getgroup
+      outputParameters:
+      - type: object
+        mapping: $.

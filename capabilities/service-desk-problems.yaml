@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SolarWinds Service Desk API — Problems
+  description: 'SolarWinds Service Desk API — Problems. 1 operations. Lead operation: Solarwinds List Problems. Self-contained
+    Naftiko capability covering one Solarwinds business surface.'
+  tags:
+  - Solarwinds
+  - Problems
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SOLARWINDS_API_KEY: SOLARWINDS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: service-desk-problems
+    baseUri: https://api.samanage.com
+    description: SolarWinds Service Desk API — Problems business capability. Self-contained, no shared references.
+    resources:
+    - name: problems.json
+      path: /problems.json
+      operations:
+      - name: listproblems
+        method: GET
+        description: Solarwinds List Problems
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SOLARWINDS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: service-desk-problems-rest
+    port: 8080
+    description: REST adapter for SolarWinds Service Desk API — Problems. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/problems-json
+      name: problems-json
+      description: REST surface for problems.json.
+      operations:
+      - method: GET
+        name: listproblems
+        description: Solarwinds List Problems
+        call: service-desk-problems.listproblems
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: service-desk-problems-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SolarWinds Service Desk API — Problems. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: solarwinds-list-problems
+      description: Solarwinds List Problems
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: service-desk-problems.listproblems
+      outputParameters:
+      - type: object
+        mapping: $.

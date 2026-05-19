@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SolarWinds Pingdom API — ProbeServers
+  description: 'SolarWinds Pingdom API — ProbeServers. 1 operations. Lead operation: Solarwinds List Probe Servers. Self-contained
+    Naftiko capability covering one Solarwinds business surface.'
+  tags:
+  - Solarwinds
+  - ProbeServers
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SOLARWINDS_API_KEY: SOLARWINDS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: pingdom-probeservers
+    baseUri: https://api.pingdom.com/api/3.1
+    description: SolarWinds Pingdom API — ProbeServers business capability. Self-contained, no shared references.
+    resources:
+    - name: probes
+      path: /probes
+      operations:
+      - name: listprobes
+        method: GET
+        description: Solarwinds List Probe Servers
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: onlyactive
+          in: query
+          type: boolean
+          description: Return only active probes
+    authentication:
+      type: bearer
+      token: '{{env.SOLARWINDS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: pingdom-probeservers-rest
+    port: 8080
+    description: REST adapter for SolarWinds Pingdom API — ProbeServers. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/probes
+      name: probes
+      description: REST surface for probes.
+      operations:
+      - method: GET
+        name: listprobes
+        description: Solarwinds List Probe Servers
+        call: pingdom-probeservers.listprobes
+        with:
+          onlyactive: rest.onlyactive
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: pingdom-probeservers-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SolarWinds Pingdom API — ProbeServers. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: solarwinds-list-probe-servers
+      description: Solarwinds List Probe Servers
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pingdom-probeservers.listprobes
+      with:
+        onlyactive: tools.onlyactive
+      outputParameters:
+      - type: object
+        mapping: $.

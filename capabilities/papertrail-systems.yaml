@@ -1,0 +1,199 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SolarWinds Papertrail API — Systems
+  description: 'SolarWinds Papertrail API — Systems. 5 operations. Lead operation: Solarwinds List All Systems. Self-contained
+    Naftiko capability covering one Solarwinds business surface.'
+  tags:
+  - Solarwinds
+  - Systems
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SOLARWINDS_API_KEY: SOLARWINDS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: papertrail-systems
+    baseUri: https://papertrailapp.com/api/v1
+    description: SolarWinds Papertrail API — Systems business capability. Self-contained, no shared references.
+    resources:
+    - name: systems.json
+      path: /systems.json
+      operations:
+      - name: listsystems
+        method: GET
+        description: Solarwinds List All Systems
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: registersystem
+        method: POST
+        description: Solarwinds Register a New System
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: systems-id}.json
+      path: /systems/{id}.json
+      operations:
+      - name: getsystem
+        method: GET
+        description: Solarwinds Get System Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatesystem
+        method: PUT
+        description: Solarwinds Update a System
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deletesystem
+        method: DELETE
+        description: Solarwinds Delete a System
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: X-Papertrail-Token
+      value: '{{env.SOLARWINDS_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: papertrail-systems-rest
+    port: 8080
+    description: REST adapter for SolarWinds Papertrail API — Systems. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/systems-json
+      name: systems-json
+      description: REST surface for systems.json.
+      operations:
+      - method: GET
+        name: listsystems
+        description: Solarwinds List All Systems
+        call: papertrail-systems.listsystems
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: registersystem
+        description: Solarwinds Register a New System
+        call: papertrail-systems.registersystem
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/systems/id-json
+      name: systems-id-json
+      description: REST surface for systems-id}.json.
+      operations:
+      - method: GET
+        name: getsystem
+        description: Solarwinds Get System Details
+        call: papertrail-systems.getsystem
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updatesystem
+        description: Solarwinds Update a System
+        call: papertrail-systems.updatesystem
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deletesystem
+        description: Solarwinds Delete a System
+        call: papertrail-systems.deletesystem
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: papertrail-systems-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SolarWinds Papertrail API — Systems. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: solarwinds-list-all-systems
+      description: Solarwinds List All Systems
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: papertrail-systems.listsystems
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: solarwinds-register-new-system
+      description: Solarwinds Register a New System
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: papertrail-systems.registersystem
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: solarwinds-get-system-details
+      description: Solarwinds Get System Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: papertrail-systems.getsystem
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: solarwinds-update-system
+      description: Solarwinds Update a System
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: papertrail-systems.updatesystem
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: solarwinds-delete-system
+      description: Solarwinds Delete a System
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: papertrail-systems.deletesystem
+      outputParameters:
+      - type: object
+        mapping: $.

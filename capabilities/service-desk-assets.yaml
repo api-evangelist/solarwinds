@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SolarWinds Service Desk API — Assets
+  description: 'SolarWinds Service Desk API — Assets. 1 operations. Lead operation: Solarwinds List Hardware Assets. Self-contained
+    Naftiko capability covering one Solarwinds business surface.'
+  tags:
+  - Solarwinds
+  - Assets
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SOLARWINDS_API_KEY: SOLARWINDS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: service-desk-assets
+    baseUri: https://api.samanage.com
+    description: SolarWinds Service Desk API — Assets business capability. Self-contained, no shared references.
+    resources:
+    - name: hardwares.json
+      path: /hardwares.json
+      operations:
+      - name: listassets
+        method: GET
+        description: Solarwinds List Hardware Assets
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SOLARWINDS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: service-desk-assets-rest
+    port: 8080
+    description: REST adapter for SolarWinds Service Desk API — Assets. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/hardwares-json
+      name: hardwares-json
+      description: REST surface for hardwares.json.
+      operations:
+      - method: GET
+        name: listassets
+        description: Solarwinds List Hardware Assets
+        call: service-desk-assets.listassets
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: service-desk-assets-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SolarWinds Service Desk API — Assets. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: solarwinds-list-hardware-assets
+      description: Solarwinds List Hardware Assets
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: service-desk-assets.listassets
+      outputParameters:
+      - type: object
+        mapping: $.

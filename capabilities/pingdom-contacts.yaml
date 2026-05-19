@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SolarWinds Pingdom API — Contacts
+  description: 'SolarWinds Pingdom API — Contacts. 1 operations. Lead operation: Solarwinds List Alert Contacts. Self-contained
+    Naftiko capability covering one Solarwinds business surface.'
+  tags:
+  - Solarwinds
+  - Contacts
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SOLARWINDS_API_KEY: SOLARWINDS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: pingdom-contacts
+    baseUri: https://api.pingdom.com/api/3.1
+    description: SolarWinds Pingdom API — Contacts business capability. Self-contained, no shared references.
+    resources:
+    - name: alerting-contacts
+      path: /alerting/contacts
+      operations:
+      - name: listcontacts
+        method: GET
+        description: Solarwinds List Alert Contacts
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SOLARWINDS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: pingdom-contacts-rest
+    port: 8080
+    description: REST adapter for SolarWinds Pingdom API — Contacts. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/alerting/contacts
+      name: alerting-contacts
+      description: REST surface for alerting-contacts.
+      operations:
+      - method: GET
+        name: listcontacts
+        description: Solarwinds List Alert Contacts
+        call: pingdom-contacts.listcontacts
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: pingdom-contacts-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SolarWinds Pingdom API — Contacts. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: solarwinds-list-alert-contacts
+      description: Solarwinds List Alert Contacts
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: pingdom-contacts.listcontacts
+      outputParameters:
+      - type: object
+        mapping: $.

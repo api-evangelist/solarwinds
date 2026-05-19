@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: SolarWinds Service Desk API — Users
+  description: 'SolarWinds Service Desk API — Users. 1 operations. Lead operation: Solarwinds List Users. Self-contained Naftiko
+    capability covering one Solarwinds business surface.'
+  tags:
+  - Solarwinds
+  - Users
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    SOLARWINDS_API_KEY: SOLARWINDS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: service-desk-users
+    baseUri: https://api.samanage.com
+    description: SolarWinds Service Desk API — Users business capability. Self-contained, no shared references.
+    resources:
+    - name: users.json
+      path: /users.json
+      operations:
+      - name: listusers
+        method: GET
+        description: Solarwinds List Users
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.SOLARWINDS_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: service-desk-users-rest
+    port: 8080
+    description: REST adapter for SolarWinds Service Desk API — Users. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/users-json
+      name: users-json
+      description: REST surface for users.json.
+      operations:
+      - method: GET
+        name: listusers
+        description: Solarwinds List Users
+        call: service-desk-users.listusers
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: service-desk-users-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for SolarWinds Service Desk API — Users. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: solarwinds-list-users
+      description: Solarwinds List Users
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: service-desk-users.listusers
+      outputParameters:
+      - type: object
+        mapping: $.
