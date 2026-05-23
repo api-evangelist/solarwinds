@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Group",
+  "title": "Group",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "example": "abc123"
+    },
+    "name": {
+      "type": "string",
+      "example": "Example Title"
+    },
+    "system_wildcard": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "systems": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/System"
+      },
+      "example": []
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IncidentCreate",
+  "title": "IncidentCreate",
+  "type": "object",
+  "required": [
+    "incident"
+  ],
+  "properties": {
+    "incident": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Incident title"
+        },
+        "description": {
+          "type": "string",
+          "description": "Incident description"
+        },
+        "priority": {
+          "type": "string",
+          "description": "Priority level"
+        },
+        "assignee": {
+          "$ref": "#/components/schemas/UserRef"
+        },
+        "category": {
+          "$ref": "#/components/schemas/CategoryRef"
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}

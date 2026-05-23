@@ -1,0 +1,19 @@
+{
+  "operationId": "querySwis",
+  "method": "GET",
+  "path": "/Query",
+  "summary": "Solarwinds Execute a Swql Query",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Queryswis200Example",
+      "example": {
+        "results": [
+          {}
+        ]
+      }
+    }
+  ]
+}

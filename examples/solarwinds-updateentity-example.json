@@ -1,0 +1,14 @@
+{
+  "operationId": "updateEntity",
+  "method": "POST",
+  "path": "/{entityUri}",
+  "summary": "Solarwinds Update a Swis Entity",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "UpdateentityRequestExample",
+      "example": {}
+    }
+  ],
+  "responseExamples": []
+}

@@ -1,0 +1,25 @@
+{
+  "operationId": "getSummaryOutage",
+  "method": "GET",
+  "path": "/summary.outage/{checkid}",
+  "summary": "Solarwinds Get Outage Summary",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getsummaryoutage200Example",
+      "example": {
+        "summary": {
+          "states": [
+            {
+              "status": "example_value",
+              "timefrom": 10,
+              "timeto": 10
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

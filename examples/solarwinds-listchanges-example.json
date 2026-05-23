@@ -1,0 +1,26 @@
+{
+  "operationId": "listChanges",
+  "method": "GET",
+  "path": "/changes.json",
+  "summary": "Solarwinds List Change Requests",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listchanges200Example",
+      "example": [
+        {
+          "id": "abc123",
+          "number": 10,
+          "name": "Example Title",
+          "description": "A sample description.",
+          "state": "example_value",
+          "priority": "example_value",
+          "change_type": "example_value",
+          "created_at": "2026-01-15T10:30:00Z"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccountInfo",
+  "title": "AccountInfo",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Account ID",
+      "example": "abc123"
+    },
+    "subdomain": {
+      "type": "string",
+      "description": "Account subdomain",
+      "example": "example_value"
+    },
+    "tokens": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Customer tokens",
+      "example": []
+    },
+    "subscription": {
+      "type": "object",
+      "properties": {
+        "plan_name": {
+          "type": "string"
+        }
+      },
+      "example": "example_value"
+    },
+    "users": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "example": []
+    }
+  }
+}

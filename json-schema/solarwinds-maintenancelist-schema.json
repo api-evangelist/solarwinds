@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MaintenanceList",
+  "title": "MaintenanceList",
+  "type": "object",
+  "properties": {
+    "maintenance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "from": {
+            "type": "integer"
+          },
+          "to": {
+            "type": "integer"
+          },
+          "checks": {
+            "type": "object"
+          }
+        }
+      },
+      "example": []
+    }
+  }
+}

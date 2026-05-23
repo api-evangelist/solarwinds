@@ -1,0 +1,19 @@
+{
+  "operationId": "updateSystem",
+  "method": "PUT",
+  "path": "/systems/{id}.json",
+  "summary": "Solarwinds Update a System",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "UpdatesystemRequestExample",
+      "example": {
+        "system": {
+          "name": "Example Title",
+          "hostname": "example_value"
+        }
+      }
+    }
+  ],
+  "responseExamples": []
+}

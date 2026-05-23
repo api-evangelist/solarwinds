@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Event",
+  "title": "Event",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique event identifier",
+      "example": "abc123"
+    },
+    "received_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the event was received",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the event was generated",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "display_received_at": {
+      "type": "string",
+      "description": "Human-readable received timestamp",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "source_ip": {
+      "type": "string",
+      "description": "Source IP address",
+      "example": "example_value"
+    },
+    "source_name": {
+      "type": "string",
+      "description": "Source system name",
+      "example": "example_value"
+    },
+    "source_id": {
+      "type": "integer",
+      "description": "Source system ID",
+      "example": "500123"
+    },
+    "hostname": {
+      "type": "string",
+      "description": "Hostname",
+      "example": "example_value"
+    },
+    "program": {
+      "type": "string",
+      "description": "Program name",
+      "example": "example_value"
+    },
+    "severity": {
+      "type": "string",
+      "description": "Syslog severity",
+      "example": "example_value"
+    },
+    "facility": {
+      "type": "string",
+      "description": "Syslog facility",
+      "example": "example_value"
+    },
+    "message": {
+      "type": "string",
+      "description": "Log message content",
+      "example": "example_value"
+    }
+  }
+}

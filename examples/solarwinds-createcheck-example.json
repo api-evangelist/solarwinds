@@ -1,0 +1,45 @@
+{
+  "operationId": "createCheck",
+  "method": "POST",
+  "path": "/checks",
+  "summary": "Solarwinds Create a New Check",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreatecheckRequestExample",
+      "example": {
+        "name": "Example Title",
+        "host": "example_value",
+        "type": "http",
+        "resolution": 1,
+        "paused": true,
+        "encryption": true
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Createcheck200Example",
+      "example": {
+        "id": "abc123",
+        "name": "Example Title",
+        "type": "http",
+        "hostname": "example_value",
+        "status": "up",
+        "resolution": 10,
+        "lastresponsetime": 10,
+        "lasttesttime": 10,
+        "created": 10,
+        "tags": [
+          {
+            "name": "Example Title",
+            "type": "example_value",
+            "count": 10
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/System",
+  "title": "System",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "System ID",
+      "example": "abc123"
+    },
+    "name": {
+      "type": "string",
+      "description": "System name",
+      "example": "Example Title"
+    },
+    "last_event_at": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "auto_delete": {
+      "type": "boolean",
+      "example": true
+    },
+    "ip_address": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "hostname": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "syslog": {
+      "type": "object",
+      "properties": {
+        "hostname": {
+          "type": "string"
+        },
+        "port": {
+          "type": "integer"
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}

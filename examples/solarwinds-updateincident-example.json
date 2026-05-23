@@ -1,0 +1,26 @@
+{
+  "operationId": "updateIncident",
+  "method": "PUT",
+  "path": "/incidents/{id}.json",
+  "summary": "Solarwinds Update an Incident",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "UpdateincidentRequestExample",
+      "example": {
+        "incident": {
+          "name": "Example Title",
+          "description": "A sample description.",
+          "state": "example_value",
+          "priority": "example_value",
+          "assignee": {
+            "id": "abc123",
+            "name": "Example Title",
+            "email": "user@example.com"
+          }
+        }
+      }
+    }
+  ],
+  "responseExamples": []
+}

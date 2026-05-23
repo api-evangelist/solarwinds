@@ -1,0 +1,19 @@
+{
+  "operationId": "bulkUpdate",
+  "method": "POST",
+  "path": "/BulkUpdate",
+  "summary": "Solarwinds Update Multiple Entities",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "BulkupdateRequestExample",
+      "example": {
+        "uris": [
+          "example_value"
+        ],
+        "properties": "example_value"
+      }
+    }
+  ],
+  "responseExamples": []
+}

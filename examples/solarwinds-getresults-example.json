@@ -1,0 +1,26 @@
+{
+  "operationId": "getResults",
+  "method": "GET",
+  "path": "/results/{checkid}",
+  "summary": "Solarwinds Get Raw Check Results",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getresults200Example",
+      "example": {
+        "results": [
+          {
+            "probeid": "500123",
+            "time": 10,
+            "status": "example_value",
+            "responsetime": 10,
+            "statusdesc": "example_value",
+            "statusdesclong": "example_value"
+          }
+        ]
+      }
+    }
+  ]
+}

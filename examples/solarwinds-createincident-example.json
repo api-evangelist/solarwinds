@@ -1,0 +1,59 @@
+{
+  "operationId": "createIncident",
+  "method": "POST",
+  "path": "/incidents.json",
+  "summary": "Solarwinds Create an Incident",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreateincidentRequestExample",
+      "example": {
+        "incident": {
+          "name": "Example Title",
+          "description": "A sample description.",
+          "priority": "example_value",
+          "assignee": {
+            "id": "abc123",
+            "name": "Example Title",
+            "email": "user@example.com"
+          },
+          "category": {
+            "id": "abc123",
+            "name": "Example Title"
+          }
+        }
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Createincident200Example",
+      "example": {
+        "id": "abc123",
+        "number": 10,
+        "name": "Example Title",
+        "description": "A sample description.",
+        "state": "New",
+        "priority": "None",
+        "assignee": {
+          "id": "abc123",
+          "name": "Example Title",
+          "email": "user@example.com"
+        },
+        "requester": {
+          "id": "abc123",
+          "name": "Example Title",
+          "email": "user@example.com"
+        },
+        "category": {
+          "id": "abc123",
+          "name": "Example Title"
+        },
+        "created_at": "2026-01-15T10:30:00Z",
+        "updated_at": "2026-01-15T10:30:00Z"
+      }
+    }
+  ]
+}

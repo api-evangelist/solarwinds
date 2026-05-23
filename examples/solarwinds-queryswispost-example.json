@@ -1,0 +1,28 @@
+{
+  "operationId": "querySwisPost",
+  "method": "POST",
+  "path": "/Query",
+  "summary": "Solarwinds Execute a Swql Query via Post",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "QueryswispostRequestExample",
+      "example": {
+        "query": "example_value",
+        "parameters": "example_value"
+      }
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Queryswispost200Example",
+      "example": {
+        "results": [
+          {}
+        ]
+      }
+    }
+  ]
+}

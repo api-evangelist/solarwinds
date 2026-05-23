@@ -1,0 +1,21 @@
+{
+  "operationId": "listUsers",
+  "method": "GET",
+  "path": "/users.json",
+  "summary": "Solarwinds List Users",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listusers200Example",
+      "example": [
+        {
+          "id": "abc123",
+          "email": "user@example.com",
+          "is_admin": true
+        }
+      ]
+    }
+  ]
+}

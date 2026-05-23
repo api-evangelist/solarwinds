@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SummaryAverage",
+  "title": "SummaryAverage",
+  "type": "object",
+  "properties": {
+    "summary": {
+      "type": "object",
+      "properties": {
+        "responsetime": {
+          "type": "object",
+          "properties": {
+            "avgresponse": {
+              "type": "integer",
+              "description": "Average response time in milliseconds"
+            }
+          }
+        },
+        "status": {
+          "type": "object",
+          "properties": {
+            "totalup": {
+              "type": "integer",
+              "description": "Total uptime in seconds"
+            },
+            "totaldown": {
+              "type": "integer",
+              "description": "Total downtime in seconds"
+            },
+            "totalunknown": {
+              "type": "integer",
+              "description": "Total unknown time in seconds"
+            }
+          }
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}

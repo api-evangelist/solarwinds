@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IterateResponse",
+  "title": "IterateResponse",
+  "type": "object",
+  "properties": {
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LogEvent"
+      },
+      "example": []
+    },
+    "next": {
+      "type": "string",
+      "description": "Cursor for next page of results",
+      "example": "example_value"
+    }
+  }
+}

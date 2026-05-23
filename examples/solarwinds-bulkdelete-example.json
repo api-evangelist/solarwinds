@@ -1,0 +1,18 @@
+{
+  "operationId": "bulkDelete",
+  "method": "POST",
+  "path": "/BulkDelete",
+  "summary": "Solarwinds Delete Multiple Entities",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "BulkdeleteRequestExample",
+      "example": {
+        "uris": [
+          "example_value"
+        ]
+      }
+    }
+  ],
+  "responseExamples": []
+}

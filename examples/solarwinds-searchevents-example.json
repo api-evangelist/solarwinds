@@ -1,0 +1,20 @@
+{
+  "operationId": "searchEvents",
+  "method": "GET",
+  "path": "/search",
+  "summary": "Solarwinds Initiate a Search Query",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Searchevents200Example",
+      "example": {
+        "rsid": {
+          "id": "abc123",
+          "status": "example_value"
+        }
+      }
+    }
+  ]
+}

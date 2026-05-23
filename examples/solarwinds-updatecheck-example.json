@@ -1,0 +1,19 @@
+{
+  "operationId": "updateCheck",
+  "method": "PUT",
+  "path": "/checks/{checkid}",
+  "summary": "Solarwinds Update a Check",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "UpdatecheckRequestExample",
+      "example": {
+        "name": "Example Title",
+        "host": "example_value",
+        "resolution": 10,
+        "paused": true
+      }
+    }
+  ],
+  "responseExamples": []
+}

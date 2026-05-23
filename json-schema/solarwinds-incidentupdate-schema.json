@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/IncidentUpdate",
+  "title": "IncidentUpdate",
+  "type": "object",
+  "required": [
+    "incident"
+  ],
+  "properties": {
+    "incident": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "assignee": {
+          "$ref": "#/components/schemas/UserRef"
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}

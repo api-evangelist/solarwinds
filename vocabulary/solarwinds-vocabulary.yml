@@ -1,0 +1,19 @@
+name: SolarWinds Domain Vocabulary
+provider: SolarWinds
+providerId: solarwinds
+description: Tag-derived vocabulary for the SolarWinds API surface; sourced from openapi/ tags.
+terms:
+- term: Checks
+  description: Manage uptime and transaction checks
+- term: Contacts
+  description: Manage alert contacts
+- term: Maintenance
+  description: Manage maintenance windows
+- term: ProbeServers
+  description: List available probe servers
+- term: Results
+  description: Retrieve check results and performance data
+- term: Summary
+  description: Retrieve performance and outage summaries
+- term: Teams
+  description: Manage alert teams

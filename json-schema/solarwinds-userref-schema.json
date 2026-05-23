@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/UserRef",
+  "title": "UserRef",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "example": "abc123"
+    },
+    "name": {
+      "type": "string",
+      "example": "Example Title"
+    },
+    "email": {
+      "type": "string",
+      "example": "user@example.com"
+    }
+  }
+}

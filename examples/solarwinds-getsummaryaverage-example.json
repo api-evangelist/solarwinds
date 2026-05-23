@@ -1,0 +1,26 @@
+{
+  "operationId": "getSummaryAverage",
+  "method": "GET",
+  "path": "/summary.average/{checkid}",
+  "summary": "Solarwinds Get Average Response Time Summary",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getsummaryaverage200Example",
+      "example": {
+        "summary": {
+          "responsetime": {
+            "avgresponse": 10
+          },
+          "status": {
+            "totalup": 10,
+            "totaldown": 10,
+            "totalunknown": 10
+          }
+        }
+      }
+    }
+  ]
+}

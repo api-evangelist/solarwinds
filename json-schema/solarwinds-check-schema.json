@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Check",
+  "title": "Check",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique check identifier",
+      "example": "abc123"
+    },
+    "name": {
+      "type": "string",
+      "description": "Check name",
+      "example": "Example Title"
+    },
+    "type": {
+      "type": "string",
+      "description": "Check type",
+      "enum": [
+        "http",
+        "httpcustom",
+        "tcp",
+        "ping",
+        "dns",
+        "udp",
+        "smtp",
+        "pop3",
+        "imap"
+      ],
+      "example": "http"
+    },
+    "hostname": {
+      "type": "string",
+      "description": "Target hostname",
+      "example": "example_value"
+    },
+    "status": {
+      "type": "string",
+      "description": "Current check status",
+      "enum": [
+        "up",
+        "down",
+        "unconfirmed_down",
+        "unknown",
+        "paused"
+      ],
+      "example": "up"
+    },
+    "resolution": {
+      "type": "integer",
+      "description": "Check interval in minutes",
+      "example": 10
+    },
+    "lastresponsetime": {
+      "type": "integer",
+      "description": "Last response time in milliseconds",
+      "example": 10
+    },
+    "lasttesttime": {
+      "type": "integer",
+      "description": "Last test timestamp (Unix)",
+      "example": 10
+    },
+    "created": {
+      "type": "integer",
+      "description": "Creation timestamp (Unix)",
+      "example": 10
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "count": {
+            "type": "integer"
+          }
+        }
+      },
+      "example": []
+    }
+  }
+}

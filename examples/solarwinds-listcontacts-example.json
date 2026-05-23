@@ -1,0 +1,23 @@
+{
+  "operationId": "listContacts",
+  "method": "GET",
+  "path": "/alerting/contacts",
+  "summary": "Solarwinds List Alert Contacts",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listcontacts200Example",
+      "example": {
+        "contacts": [
+          {
+            "id": "abc123",
+            "name": "Example Title",
+            "notification_targets": "example_value"
+          }
+        ]
+      }
+    }
+  ]
+}

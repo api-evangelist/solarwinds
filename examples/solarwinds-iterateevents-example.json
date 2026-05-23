@@ -1,0 +1,27 @@
+{
+  "operationId": "iterateEvents",
+  "method": "GET",
+  "path": "/events/iterate",
+  "summary": "Solarwinds Iterate Through Search Results",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Iterateevents200Example",
+      "example": {
+        "events": [
+          {
+            "id": "abc123",
+            "timestamp": 10,
+            "logmsg": "example_value",
+            "logtypes": {},
+            "event": "example_value",
+            "tags": {}
+          }
+        ],
+        "next": "example_value"
+      }
+    }
+  ]
+}

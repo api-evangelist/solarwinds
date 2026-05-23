@@ -1,0 +1,17 @@
+{
+  "operationId": "getCheck",
+  "method": "GET",
+  "path": "/checks/{checkid}",
+  "summary": "Solarwinds Get Detailed Check Information",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getcheck200Example",
+      "example": {
+        "check": "example_value"
+      }
+    }
+  ]
+}

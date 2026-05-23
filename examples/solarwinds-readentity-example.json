@@ -1,0 +1,15 @@
+{
+  "operationId": "readEntity",
+  "method": "GET",
+  "path": "/{entityUri}",
+  "summary": "Solarwinds Read a Swis Entity",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Readentity200Example",
+      "example": {}
+    }
+  ]
+}

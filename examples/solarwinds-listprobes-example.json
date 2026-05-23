@@ -1,0 +1,28 @@
+{
+  "operationId": "listProbes",
+  "method": "GET",
+  "path": "/probes",
+  "summary": "Solarwinds List Probe Servers",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listprobes200Example",
+      "example": {
+        "probes": [
+          {
+            "id": "abc123",
+            "country": "example_value",
+            "city": "example_value",
+            "name": "Example Title",
+            "active": true,
+            "hostname": "example_value",
+            "ip": "example_value",
+            "ipv6": "example_value"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BulkUpdateRequest",
+  "title": "BulkUpdateRequest",
+  "type": "object",
+  "required": [
+    "uris",
+    "properties"
+  ],
+  "properties": {
+    "uris": {
+      "type": "array",
+      "description": "Array of SWIS URIs to update",
+      "items": {
+        "type": "string"
+      },
+      "example": []
+    },
+    "properties": {
+      "type": "object",
+      "description": "Properties to set on all specified entities",
+      "additionalProperties": true,
+      "example": "example_value"
+    }
+  }
+}

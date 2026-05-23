@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CheckDetail",
+  "title": "CheckDetail",
+  "type": "object",
+  "properties": {
+    "check": {
+      "allOf": [
+        {
+          "$ref": "#/components/schemas/Check"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "encryption": {
+              "type": "boolean",
+              "description": "Use SSL/TLS"
+            },
+            "port": {
+              "type": "integer",
+              "description": "Target port"
+            },
+            "sendnotificationwhendown": {
+              "type": "integer",
+              "description": "Number of failed tests before notification"
+            },
+            "notifyagainevery": {
+              "type": "integer",
+              "description": "Notification repeat interval"
+            },
+            "notifywhenbackup": {
+              "type": "boolean",
+              "description": "Notify when check recovers"
+            }
+          }
+        }
+      ],
+      "example": "example_value"
+    }
+  }
+}

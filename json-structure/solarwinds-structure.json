@@ -1,0 +1,202 @@
+{
+  "provider": "SolarWinds",
+  "providerId": "solarwinds",
+  "kind": "json-structure",
+  "description": "Structural overview of the SolarWinds API surface; extracted from openapi/.",
+  "schemaCount": 13,
+  "operationCount": 12,
+  "schemas": [
+    {
+      "name": "CheckList",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Check",
+      "type": "object",
+      "propertyCount": 10,
+      "required": []
+    },
+    {
+      "name": "CheckDetail",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "CheckCreate",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "name",
+        "host",
+        "type"
+      ]
+    },
+    {
+      "name": "CheckUpdate",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ResultList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "Result",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "SummaryAverage",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "SummaryOutage",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ContactList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "TeamList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "MaintenanceList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    },
+    {
+      "name": "ProbeList",
+      "type": "object",
+      "propertyCount": 1,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/checks",
+      "operationId": "listChecks",
+      "summary": "Solarwinds List All Checks",
+      "tags": [
+        "Checks"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/checks",
+      "operationId": "createCheck",
+      "summary": "Solarwinds Create a New Check",
+      "tags": [
+        "Checks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/checks/{checkid}",
+      "operationId": "getCheck",
+      "summary": "Solarwinds Get Detailed Check Information",
+      "tags": [
+        "Checks"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/checks/{checkid}",
+      "operationId": "updateCheck",
+      "summary": "Solarwinds Update a Check",
+      "tags": [
+        "Checks"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/checks/{checkid}",
+      "operationId": "deleteCheck",
+      "summary": "Solarwinds Delete a Check",
+      "tags": [
+        "Checks"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/results/{checkid}",
+      "operationId": "getResults",
+      "summary": "Solarwinds Get Raw Check Results",
+      "tags": [
+        "Results"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/summary.average/{checkid}",
+      "operationId": "getSummaryAverage",
+      "summary": "Solarwinds Get Average Response Time Summary",
+      "tags": [
+        "Summary"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/summary.outage/{checkid}",
+      "operationId": "getSummaryOutage",
+      "summary": "Solarwinds Get Outage Summary",
+      "tags": [
+        "Summary"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/alerting/contacts",
+      "operationId": "listContacts",
+      "summary": "Solarwinds List Alert Contacts",
+      "tags": [
+        "Contacts"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/alerting/teams",
+      "operationId": "listTeams",
+      "summary": "Solarwinds List Alert Teams",
+      "tags": [
+        "Teams"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/maintenance",
+      "operationId": "listMaintenanceWindows",
+      "summary": "Solarwinds List Maintenance Windows",
+      "tags": [
+        "Maintenance"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/probes",
+      "operationId": "listProbes",
+      "summary": "Solarwinds List Probe Servers",
+      "tags": [
+        "ProbeServers"
+      ]
+    }
+  ]
+}

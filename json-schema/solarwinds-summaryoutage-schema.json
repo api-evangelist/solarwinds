@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SummaryOutage",
+  "title": "SummaryOutage",
+  "type": "object",
+  "properties": {
+    "summary": {
+      "type": "object",
+      "properties": {
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string"
+              },
+              "timefrom": {
+                "type": "integer"
+              },
+              "timeto": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}

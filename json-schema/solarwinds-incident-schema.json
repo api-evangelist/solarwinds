@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Incident",
+  "title": "Incident",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique incident identifier",
+      "example": "abc123"
+    },
+    "number": {
+      "type": "integer",
+      "description": "Human-readable incident number",
+      "example": 10
+    },
+    "name": {
+      "type": "string",
+      "description": "Incident title",
+      "example": "Example Title"
+    },
+    "description": {
+      "type": "string",
+      "description": "Incident description",
+      "example": "A sample description."
+    },
+    "state": {
+      "type": "string",
+      "description": "Current state",
+      "enum": [
+        "New",
+        "Assigned",
+        "Awaiting Input",
+        "In Progress",
+        "On Hold",
+        "Resolved",
+        "Closed"
+      ],
+      "example": "New"
+    },
+    "priority": {
+      "type": "string",
+      "description": "Priority level",
+      "enum": [
+        "None",
+        "Low",
+        "Medium",
+        "High",
+        "Critical"
+      ],
+      "example": "None"
+    },
+    "assignee": {
+      "$ref": "#/components/schemas/UserRef"
+    },
+    "requester": {
+      "$ref": "#/components/schemas/UserRef"
+    },
+    "category": {
+      "$ref": "#/components/schemas/CategoryRef"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-01-15T10:30:00Z"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "example": "2026-01-15T10:30:00Z"
+    }
+  }
+}

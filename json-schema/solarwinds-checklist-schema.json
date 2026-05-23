@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CheckList",
+  "title": "CheckList",
+  "type": "object",
+  "properties": {
+    "checks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Check"
+      },
+      "example": []
+    },
+    "counts": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer"
+        },
+        "limited": {
+          "type": "integer"
+        },
+        "filtered": {
+          "type": "integer"
+        }
+      },
+      "example": "example_value"
+    }
+  }
+}

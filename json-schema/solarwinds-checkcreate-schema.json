@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CheckCreate",
+  "title": "CheckCreate",
+  "type": "object",
+  "required": [
+    "name",
+    "host",
+    "type"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Check name",
+      "example": "Example Title"
+    },
+    "host": {
+      "type": "string",
+      "description": "Target hostname or IP",
+      "example": "example_value"
+    },
+    "type": {
+      "type": "string",
+      "description": "Check type",
+      "enum": [
+        "http",
+        "httpcustom",
+        "tcp",
+        "ping",
+        "dns",
+        "udp",
+        "smtp",
+        "pop3",
+        "imap"
+      ],
+      "example": "http"
+    },
+    "resolution": {
+      "type": "integer",
+      "description": "Check interval in minutes",
+      "enum": [
+        1,
+        5,
+        15,
+        30,
+        60
+      ],
+      "example": 1
+    },
+    "paused": {
+      "type": "boolean",
+      "description": "Whether the check is paused",
+      "example": true
+    },
+    "encryption": {
+      "type": "boolean",
+      "description": "Use SSL/TLS",
+      "example": true
+    }
+  }
+}

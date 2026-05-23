@@ -1,0 +1,23 @@
+{
+  "operationId": "invokeVerb",
+  "method": "POST",
+  "path": "/Invoke/{entityType}/{verb}",
+  "summary": "Solarwinds Invoke a Verb on an Entity Type",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "InvokeverbRequestExample",
+      "example": [
+        {}
+      ]
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Invokeverb200Example",
+      "example": {}
+    }
+  ]
+}

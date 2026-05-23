@@ -1,0 +1,25 @@
+{
+  "operationId": "listTeams",
+  "method": "GET",
+  "path": "/alerting/teams",
+  "summary": "Solarwinds List Alert Teams",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listteams200Example",
+      "example": {
+        "teams": [
+          {
+            "id": "abc123",
+            "name": "Example Title",
+            "members": [
+              {}
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

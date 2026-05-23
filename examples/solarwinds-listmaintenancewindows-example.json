@@ -1,0 +1,25 @@
+{
+  "operationId": "listMaintenanceWindows",
+  "method": "GET",
+  "path": "/maintenance",
+  "summary": "Solarwinds List Maintenance Windows",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Listmaintenancewindows200Example",
+      "example": {
+        "maintenance": [
+          {
+            "id": "abc123",
+            "description": "A sample description.",
+            "from": 10,
+            "to": 10,
+            "checks": "example_value"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "operationId": "getAccountInfo",
+  "method": "GET",
+  "path": "/customer",
+  "summary": "Solarwinds Get Account Information",
+  "requestExamples": [],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Getaccountinfo200Example",
+      "example": {
+        "id": "abc123",
+        "subdomain": "example_value",
+        "tokens": [
+          "example_value"
+        ],
+        "subscription": {
+          "plan_name": "example_value"
+        },
+        "users": [
+          {
+            "id": "abc123",
+            "email": "user@example.com"
+          }
+        ]
+      }
+    }
+  ]
+}

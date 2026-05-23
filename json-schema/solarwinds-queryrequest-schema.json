@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/QueryRequest",
+  "title": "QueryRequest",
+  "type": "object",
+  "required": [
+    "query"
+  ],
+  "properties": {
+    "query": {
+      "type": "string",
+      "description": "SWQL query string to execute",
+      "example": "SELECT NodeID, Caption, IPAddress FROM Orion.Nodes WHERE Status = 1"
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Named parameters for parameterized queries",
+      "additionalProperties": true,
+      "example": "example_value"
+    }
+  }
+}

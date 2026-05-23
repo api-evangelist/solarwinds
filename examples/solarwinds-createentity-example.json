@@ -1,0 +1,21 @@
+{
+  "operationId": "createEntity",
+  "method": "POST",
+  "path": "/Create/{entityType}",
+  "summary": "Solarwinds Create a New Swis Entity",
+  "requestExamples": [
+    {
+      "contentType": "application/json",
+      "name": "CreateentityRequestExample",
+      "example": {}
+    }
+  ],
+  "responseExamples": [
+    {
+      "status": "200",
+      "contentType": "application/json",
+      "name": "Createentity200Example",
+      "example": "example_value"
+    }
+  ]
+}

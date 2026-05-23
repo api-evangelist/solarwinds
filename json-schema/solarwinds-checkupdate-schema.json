@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CheckUpdate",
+  "title": "CheckUpdate",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "example": "Example Title"
+    },
+    "host": {
+      "type": "string",
+      "example": "example_value"
+    },
+    "resolution": {
+      "type": "integer",
+      "example": 10
+    },
+    "paused": {
+      "type": "boolean",
+      "example": true
+    }
+  }
+}
