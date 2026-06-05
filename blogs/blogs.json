@@ -2,12 +2,20 @@
   "repo": "solarwinds",
   "feeds": [
     {
-      "source": "https://www.solarwinds.com/blog",
+      "source": "https://www.solarwinds.com/blog/feed/",
       "feed_url": "https://www.solarwinds.com/blog/feed/",
-      "title": "SolarWinds Blog",
-      "saved": 26
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://support.solarwinds.com",
+      "feed_url": "https://support.solarwinds.com",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-05-17T20:20:35Z",
-  "post_count": 51
+  "fetched": "2026-06-01T23:35:02Z",
+  "post_count": 55
 }
