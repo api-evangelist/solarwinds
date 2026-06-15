@@ -1,0 +1,737 @@
+{
+  "item": [
+    {
+      "id": "cbff526f-87cc-4dcd-8391-cf5c982a2fa3",
+      "name": "Account",
+      "description": {
+        "content": "Account information and management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fdb9d0fd-e01e-4f29-9eda-6c92ef13ef16",
+          "name": "Solarwinds Get Account Information",
+          "request": {
+            "name": "Solarwinds Get Account Information",
+            "description": {
+              "content": "Returns customer account information including the customer token and a list of active Loggly users.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "customer"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Your Loggly subdomain",
+                  "type": "any",
+                  "value": "{{subdomain}}",
+                  "key": "subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "098bb5c7-24cc-498f-aa6e-fe09d342a8ee",
+              "name": "Account information",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Loggly subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"subdomain\": \"example_value\",\n  \"tokens\": [\n    \"example_value\"\n  ],\n  \"subscription\": {\n    \"plan_name\": \"example_value\"\n  },\n  \"users\": [\n    {\n      \"id\": \"abc123\",\n      \"email\": \"user@example.com\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7295dcf3-7617-4268-b4a8-753b0ed919ac",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "customer"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Your Loggly subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d0528854-5a93-4245-b8ff-5cfabc68cf14",
+      "name": "Search",
+      "description": {
+        "content": "Search and retrieve log events",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bc0c0410-b560-42ec-8f7c-9f470dacf199",
+          "name": "Solarwinds Initiate a Search Query",
+          "request": {
+            "name": "Solarwinds Initiate a Search Query",
+            "description": {
+              "content": "Initiates a search query against log events. Returns a search ID (RSID) that can be used with the events endpoint to retrieve results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Search query string using Loggly search syntax"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<string>",
+                  "description": "Start time for search (ISO 8601 or relative like -24h)"
+                },
+                {
+                  "disabled": false,
+                  "key": "until",
+                  "value": "<string>",
+                  "description": "End time for search"
+                },
+                {
+                  "disabled": false,
+                  "key": "size",
+                  "value": "10",
+                  "description": "Maximum number of events to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "order",
+                  "value": "<string>",
+                  "description": "Sort order"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Loggly subdomain",
+                  "type": "any",
+                  "value": "{{subdomain}}",
+                  "key": "subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b04ce383-d7c1-4c36-b699-545cc3791010",
+              "name": "Search initiated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "*"
+                    },
+                    {
+                      "key": "from",
+                      "value": "-2h"
+                    },
+                    {
+                      "key": "until",
+                      "value": "now"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "order",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Loggly subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"rsid\": {\n    \"id\": \"abc123\",\n    \"status\": \"example_value\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2242f5bd-05a6-471e-a133-df062462c0d0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "*"
+                    },
+                    {
+                      "key": "from",
+                      "value": "-2h"
+                    },
+                    {
+                      "key": "until",
+                      "value": "now"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    },
+                    {
+                      "key": "order",
+                      "value": "asc"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Loggly subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "323a249a-e69d-4263-bac5-0f3af815a1b7",
+          "name": "Solarwinds Retrieve Search Results",
+          "request": {
+            "name": "Solarwinds Retrieve Search Results",
+            "description": {
+              "content": "Retrieves events for a previously initiated search using the RSID returned by the search endpoint.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "rsid",
+                  "value": "<string>",
+                  "description": "(Required) Result Set ID from the search endpoint"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Loggly subdomain",
+                  "type": "any",
+                  "value": "{{subdomain}}",
+                  "key": "subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8f821b44-eadb-4775-a1d3-edb0fcb33bf6",
+              "name": "Event results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rsid",
+                      "value": "500123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Loggly subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"total_events\": 10,\n  \"page\": 10,\n  \"events\": [\n    {\n      \"id\": \"abc123\",\n      \"timestamp\": 10,\n      \"logmsg\": \"example_value\",\n      \"logtypes\": {},\n      \"event\": \"example_value\",\n      \"tags\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "91d2f6ab-b076-4fd4-8c22-2d66fc6f5cd2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rsid",
+                      "value": "500123"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Loggly subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "49bb1422-91dc-44ee-9360-4748878d539f",
+          "name": "Solarwinds Iterate Through Search Results",
+          "request": {
+            "name": "Solarwinds Iterate Through Search Results",
+            "description": {
+              "content": "Paginating event retrieval API for iterating through large result sets. Returns events and a next pointer for pagination.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "iterate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "rsid",
+                  "value": "<string>",
+                  "description": "(Required) Result Set ID from the search endpoint"
+                },
+                {
+                  "disabled": false,
+                  "key": "next",
+                  "value": "<string>",
+                  "description": "Pagination cursor for next page"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Loggly subdomain",
+                  "type": "any",
+                  "value": "{{subdomain}}",
+                  "key": "subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "581750db-21dd-4993-ab6d-6a61f90cbf8c",
+              "name": "Paginated event results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "iterate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rsid",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "next",
+                      "value": "example_value"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Loggly subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    {\n      \"id\": \"abc123\",\n      \"timestamp\": 10,\n      \"logmsg\": \"example_value\",\n      \"logtypes\": {},\n      \"event\": \"example_value\",\n      \"tags\": {}\n    }\n  ],\n  \"next\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5cfc0ef6-d7b2-444e-bb82-c396891eed34",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "iterate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "rsid",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "next",
+                      "value": "example_value"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Loggly subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Loggly subdomain",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "logs-01",
+      "key": "subdomain"
+    },
+    {
+      "type": "string",
+      "value": "https://{{subdomain}}.loggly.com/apiv2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0b192f5d-1c11-486e-b63b-036660cbf880",
+    "name": "SolarWinds Loggly API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+      "type": "text/plain"
+    }
+  }
+}

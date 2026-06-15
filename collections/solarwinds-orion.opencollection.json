@@ -1,0 +1,232 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SolarWinds Orion Platform API",
+    "version": "3"
+  },
+  "request": {
+    "auth": {
+      "type": "basic",
+      "username": "{{username}}",
+      "password": "{{password}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds Execute a Swql Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{orion-server}:17774/SolarWinds/InformationService/v3/Json/Query",
+            "params": [
+              {
+                "name": "query",
+                "value": "SELECT NodeID, Caption, IPAddress FROM Orion.Nodes",
+                "type": "query",
+                "description": "SWQL query string"
+              },
+              {
+                "name": "parameters",
+                "value": "",
+                "type": "query",
+                "description": "Parameterized query values"
+              }
+            ]
+          },
+          "docs": "Executes a SolarWinds Query Language (SWQL) query against the SolarWinds Information Service and returns the results as JSON. SWQL is a read-only SQL-like language for querying monitored entities."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Execute a Swql Query via Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{orion-server}:17774/SolarWinds/InformationService/v3/Json/Query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a SWQL query using a POST request body. Useful for longer queries that exceed URL length limits."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "CRUD",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds Create a New Swis Entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{orion-server}:17774/SolarWinds/InformationService/v3/Json/Create/:entityType",
+            "params": [
+              {
+                "name": "entityType",
+                "value": "Orion.Nodes",
+                "type": "path",
+                "description": "Fully qualified SWIS entity type name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new entity of the specified type in the SolarWinds Information Service. The request body contains the property values for the new entity."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Read a Swis Entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{orion-server}:17774/SolarWinds/InformationService/v3/Json/:entityUri",
+            "params": [
+              {
+                "name": "entityUri",
+                "value": "example_value",
+                "type": "path",
+                "description": "SWIS URI of the entity to read"
+              }
+            ]
+          },
+          "docs": "Retrieves the properties of a specific entity identified by its SWIS URI. Returns all properties of the entity as JSON."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Update a Swis Entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{orion-server}:17774/SolarWinds/InformationService/v3/Json/:entityUri",
+            "params": [
+              {
+                "name": "entityUri",
+                "value": "example_value",
+                "type": "path",
+                "description": "SWIS URI of the entity to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the properties of an existing entity identified by its SWIS URI. Only the properties included in the request body are updated."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Delete a Swis Entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{orion-server}:17774/SolarWinds/InformationService/v3/Json/:entityUri",
+            "params": [
+              {
+                "name": "entityUri",
+                "value": "example_value",
+                "type": "path",
+                "description": "SWIS URI of the entity to delete"
+              }
+            ]
+          },
+          "docs": "Deletes an entity identified by its SWIS URI from the SolarWinds Information Service."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Invoke",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds Invoke a Verb on an Entity Type",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{orion-server}:17774/SolarWinds/InformationService/v3/Json/Invoke/:entityType/:verb",
+            "params": [
+              {
+                "name": "entityType",
+                "value": "Orion.Nodes",
+                "type": "path",
+                "description": "Fully qualified SWIS entity type name"
+              },
+              {
+                "name": "verb",
+                "value": "Unmanage",
+                "type": "path",
+                "description": "Name of the verb to invoke"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Invokes a named verb (method) on the specified entity type. Verbs provide operations like Unmanage, Remanage, PollNow, and other management actions on monitored objects."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "BulkOperations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds Delete Multiple Entities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{orion-server}:17774/SolarWinds/InformationService/v3/Json/BulkDelete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes multiple SWIS entities in a single operation. Provide an array of SWIS URIs to delete."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Update Multiple Entities",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{orion-server}:17774/SolarWinds/InformationService/v3/Json/BulkUpdate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates properties on multiple SWIS entities in a single operation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

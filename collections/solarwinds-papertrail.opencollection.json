@@ -1,0 +1,258 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SolarWinds Papertrail API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Papertrail-Token",
+      "value": "{{X-Papertrail-Token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds Search Log Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://papertrailapp.com/api/v1/events/search.json",
+            "params": [
+              {
+                "name": "q",
+                "value": "example_value",
+                "type": "query",
+                "description": "Search query string"
+              },
+              {
+                "name": "system_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Limit results to a specific system"
+              },
+              {
+                "name": "group_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Limit results to a specific group"
+              },
+              {
+                "name": "min_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Return events after this event ID"
+              },
+              {
+                "name": "max_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Return events before this event ID"
+              },
+              {
+                "name": "min_time",
+                "value": "10",
+                "type": "query",
+                "description": "Start time (Unix timestamp)"
+              },
+              {
+                "name": "max_time",
+                "value": "10",
+                "type": "query",
+                "description": "End time (Unix timestamp)"
+              },
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of events to return"
+              }
+            ]
+          },
+          "docs": "Searches log events matching the specified criteria. Returns matching events sorted by timestamp."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Systems",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds List All Systems",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://papertrailapp.com/api/v1/systems.json"
+          },
+          "docs": "Returns all systems (log senders) configured in the account."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Register a New System",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://papertrailapp.com/api/v1/systems.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers a new system to send logs to Papertrail."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Get System Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://papertrailapp.com/api/v1/systems/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier"
+              }
+            ]
+          },
+          "docs": "Returns details of a specific system."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Update a System",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://papertrailapp.com/api/v1/systems/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration of a system."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Delete a System",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://papertrailapp.com/api/v1/systems/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier"
+              }
+            ]
+          },
+          "docs": "Removes a system from the account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds List All Groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://papertrailapp.com/api/v1/groups.json"
+          },
+          "docs": "Returns all system groups configured in the account."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Get Group Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://papertrailapp.com/api/v1/groups/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Resource identifier"
+              }
+            ]
+          },
+          "docs": "Returns details of a specific group including its member systems."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "SavedSearches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds List Saved Searches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://papertrailapp.com/api/v1/searches.json"
+          },
+          "docs": "Returns all saved searches configured in the account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://papertrailapp.com/api/v1/users.json"
+          },
+          "docs": "Returns all users in the account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

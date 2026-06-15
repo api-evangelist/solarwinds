@@ -1,0 +1,1960 @@
+{
+  "item": [
+    {
+      "id": "144d9bbb-9263-4885-9f88-30326fd47f2e",
+      "name": "Assets",
+      "description": {
+        "content": "Manage hardware and software assets",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "92a235f8-0056-41fb-95c8-c36635d2fe93",
+          "name": "Solarwinds List Hardware Assets",
+          "request": {
+            "name": "Solarwinds List Hardware Assets",
+            "description": {
+              "content": "Returns a paginated list of hardware assets tracked in the CMDB.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hardwares.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "25",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1a8c3d70-332d-439e-a4fc-771372eb901c",
+              "name": "List of assets",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hardwares.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"asset_type\": \"example_value\",\n    \"serial_number\": \"example_value\",\n    \"status\": \"example_value\",\n    \"user\": {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"email\": \"user@example.com\"\n    },\n    \"created_at\": \"2026-01-15T10:30:00Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14b220b6-783d-4a84-b30d-15c698cfe134",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hardwares.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "411ac9a7-231d-4d2b-99f2-e06e746cf35a",
+      "name": "Categories",
+      "description": {
+        "content": "Manage categories for incidents and requests",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "30c0c7cf-69c2-44f8-b5c8-9adb9d26304c",
+          "name": "Solarwinds List Categories",
+          "request": {
+            "name": "Solarwinds List Categories",
+            "description": {
+              "content": "Returns all categories available for incidents and requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "categories.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "11acdcb3-652b-4626-92c9-db2a8972fb19",
+              "name": "List of categories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"description\": \"A sample description.\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "76a5e477-4423-4e3f-90e6-49775fb8a077",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "categories.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9cd7ad98-ccbe-45df-a666-5870d2f4c7bf",
+      "name": "Changes",
+      "description": {
+        "content": "Manage change requests",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a8b245ec-fffa-4e5a-8580-23746ec70fec",
+          "name": "Solarwinds List Change Requests",
+          "request": {
+            "name": "Solarwinds List Change Requests",
+            "description": {
+              "content": "Returns a paginated list of change requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "changes.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "25",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "443be703-48a7-4eb0-b9ac-aa70010a568b",
+              "name": "List of changes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "changes.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"abc123\",\n    \"number\": 10,\n    \"name\": \"Example Title\",\n    \"description\": \"A sample description.\",\n    \"state\": \"example_value\",\n    \"priority\": \"example_value\",\n    \"change_type\": \"example_value\",\n    \"created_at\": \"2026-01-15T10:30:00Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e4ec2517-8d0c-4141-afa0-081b483f2059",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "changes.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7d261252-51e1-493d-a2f3-982cfc3ad526",
+      "name": "Incidents",
+      "description": {
+        "content": "Manage IT incidents",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a3c92cbc-7e37-4f23-a524-7aaf731f7165",
+          "name": "Solarwinds List Incidents",
+          "request": {
+            "name": "Solarwinds List Incidents",
+            "description": {
+              "content": "Returns a paginated list of incidents in the service desk.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "25",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "febfbdf5-0219-48e8-99ce-f7ad15bb37ea",
+              "name": "List of incidents",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"abc123\",\n    \"number\": 10,\n    \"name\": \"Example Title\",\n    \"description\": \"A sample description.\",\n    \"state\": \"New\",\n    \"priority\": \"None\",\n    \"assignee\": {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"email\": \"user@example.com\"\n    },\n    \"requester\": {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"email\": \"user@example.com\"\n    },\n    \"category\": {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\"\n    },\n    \"created_at\": \"2026-01-15T10:30:00Z\",\n    \"updated_at\": \"2026-01-15T10:30:00Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "dcd92404-6e37-4893-851c-6e711ba1f75c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8bf1632a-a71f-41a4-b8e5-3653b88948cd",
+          "name": "Solarwinds Create an Incident",
+          "request": {
+            "name": "Solarwinds Create an Incident",
+            "description": {
+              "content": "Creates a new incident in the service desk.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"incident\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"assignee\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"category\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "62a67214-0602-4087-83e7-27b324391d91",
+              "name": "Incident created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"incident\": {\n    \"name\": \"Example Title\",\n    \"description\": \"A sample description.\",\n    \"priority\": \"example_value\",\n    \"assignee\": {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"email\": \"user@example.com\"\n    },\n    \"category\": {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"number\": 10,\n  \"name\": \"Example Title\",\n  \"description\": \"A sample description.\",\n  \"state\": \"New\",\n  \"priority\": \"None\",\n  \"assignee\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\"\n  },\n  \"requester\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\"\n  },\n  \"category\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\"\n  },\n  \"created_at\": \"2026-01-15T10:30:00Z\",\n  \"updated_at\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6d76be24-998b-4087-8cc4-e0b98d0d0d70",
+              "name": "Invalid incident data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"incident\": {\n    \"name\": \"Example Title\",\n    \"description\": \"A sample description.\",\n    \"priority\": \"example_value\",\n    \"assignee\": {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"email\": \"user@example.com\"\n    },\n    \"category\": {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d77e69fe-590a-406d-adcf-1bea9674d693",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"incident\": {\n    \"name\": \"Example Title\",\n    \"description\": \"A sample description.\",\n    \"priority\": \"example_value\",\n    \"assignee\": {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"email\": \"user@example.com\"\n    },\n    \"category\": {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c957d1fa-08b0-4782-b4d8-708a5298fcab",
+          "name": "Solarwinds Get an Incident",
+          "request": {
+            "name": "Solarwinds Get an Incident",
+            "description": {
+              "content": "Returns detailed information about a specific incident.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d3c28343-d091-4755-8b94-0e7e59521d23",
+              "name": "Incident details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"number\": 10,\n  \"name\": \"Example Title\",\n  \"description\": \"A sample description.\",\n  \"state\": \"New\",\n  \"priority\": \"None\",\n  \"assignee\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\"\n  },\n  \"requester\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\"\n  },\n  \"category\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\"\n  },\n  \"created_at\": \"2026-01-15T10:30:00Z\",\n  \"updated_at\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e8f5383-38df-4ce5-9bf5-dbc530b1d278",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2922edbf-78de-4f3e-8045-f299afa0d923",
+              "name": "Incident not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ca706cf6-8958-440e-9c2e-db6940911b58",
+          "name": "Solarwinds Update an Incident",
+          "request": {
+            "name": "Solarwinds Update an Incident",
+            "description": {
+              "content": "Updates the fields of an existing incident.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"incident\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"state\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"assignee\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "446268a5-be49-4bec-ae41-367217cdb268",
+              "name": "Incident updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"incident\": {\n    \"name\": \"Example Title\",\n    \"description\": \"A sample description.\",\n    \"state\": \"example_value\",\n    \"priority\": \"example_value\",\n    \"assignee\": {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"email\": \"user@example.com\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4dd4fb3e-dd8c-43d5-9d3a-5e14cb54f685",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"incident\": {\n    \"name\": \"Example Title\",\n    \"description\": \"A sample description.\",\n    \"state\": \"example_value\",\n    \"priority\": \"example_value\",\n    \"assignee\": {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"email\": \"user@example.com\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1233d8b6-828e-4fc5-a93c-2e9846ff0de9",
+              "name": "Incident not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"incident\": {\n    \"name\": \"Example Title\",\n    \"description\": \"A sample description.\",\n    \"state\": \"example_value\",\n    \"priority\": \"example_value\",\n    \"assignee\": {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"email\": \"user@example.com\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "db6ba3f5-dad2-45ea-80fe-782ae6987d01",
+          "name": "Solarwinds Delete an Incident",
+          "request": {
+            "name": "Solarwinds Delete an Incident",
+            "description": {
+              "content": "Permanently deletes an incident.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "incidents",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0716afe3-81e4-45e5-9c34-c4cb08b4678b",
+              "name": "Incident deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "95def952-c44c-416b-83ae-0c33a87bed18",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "63139703-af6e-4eb2-9286-d8f8a4e5827b",
+              "name": "Incident not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "incidents",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e0be16dc-b03d-4050-b1be-42ad43e3ceb7",
+      "name": "Problems",
+      "description": {
+        "content": "Manage problem records",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b334a77e-ea95-4223-ba0c-78491c8ad23d",
+          "name": "Solarwinds List Problems",
+          "request": {
+            "name": "Solarwinds List Problems",
+            "description": {
+              "content": "Returns a paginated list of problem records.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "problems.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "25",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a13ceb54-cf5e-418c-9426-d0efba54a528",
+              "name": "List of problems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "problems.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"abc123\",\n    \"number\": 10,\n    \"name\": \"Example Title\",\n    \"description\": \"A sample description.\",\n    \"state\": \"example_value\",\n    \"priority\": \"example_value\",\n    \"created_at\": \"2026-01-15T10:30:00Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "db880bab-1b6b-4eb4-8b29-966462b73ae9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "problems.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7e3decff-3112-4e5c-9761-12b8f3b942e6",
+      "name": "ServiceRequests",
+      "description": {
+        "content": "Manage service requests",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b3cc9678-9b04-4957-8038-593f5c04b3d6",
+          "name": "Solarwinds List Service Requests",
+          "request": {
+            "name": "Solarwinds List Service Requests",
+            "description": {
+              "content": "Returns a paginated list of service requests.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "service_requests.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "25",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "140c1282-d4fb-49b6-ba66-7fdc0c878b74",
+              "name": "List of service requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service_requests.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"abc123\",\n    \"number\": 10,\n    \"name\": \"Example Title\",\n    \"description\": \"A sample description.\",\n    \"state\": \"example_value\",\n    \"priority\": \"example_value\",\n    \"requester\": {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"email\": \"user@example.com\"\n    },\n    \"created_at\": \"2026-01-15T10:30:00Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "94405436-ce44-441f-b762-4da812092db1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service_requests.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "58f775a1-68c3-42d1-a2fc-420de4c93af0",
+          "name": "Solarwinds Create a Service Request",
+          "request": {
+            "name": "Solarwinds Create a Service Request",
+            "description": {
+              "content": "Creates a new service request.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "service_requests.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"service_request\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f2d92e6c-616b-4ed4-ab32-f3892e965c87",
+              "name": "Service request created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service_requests.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"service_request\": {\n    \"name\": \"Example Title\",\n    \"description\": \"A sample description.\",\n    \"priority\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"number\": 10,\n  \"name\": \"Example Title\",\n  \"description\": \"A sample description.\",\n  \"state\": \"example_value\",\n  \"priority\": \"example_value\",\n  \"requester\": {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\"\n  },\n  \"created_at\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b706697-78c2-487a-92a1-6486d3012479",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "service_requests.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"service_request\": {\n    \"name\": \"Example Title\",\n    \"description\": \"A sample description.\",\n    \"priority\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ceb457e5-3942-4ab7-8778-3c7e75c7b035",
+      "name": "Users",
+      "description": {
+        "content": "Manage user accounts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "681d5ab3-df0a-4ce2-a936-b89f18c2ce33",
+          "name": "Solarwinds List Users",
+          "request": {
+            "name": "Solarwinds List Users",
+            "description": {
+              "content": "Returns a paginated list of users in the service desk.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "25",
+                  "description": "Number of results per page"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5418cd74-912b-4706-8f39-0ec22be677c3",
+              "name": "List of users",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"email\": \"user@example.com\",\n    \"role\": \"example_value\",\n    \"created_at\": \"2026-01-15T10:30:00Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8c10676-f2a4-42c3-af93-db2cd427b758",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.samanage.com",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Unique identifier of the resource",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "id"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1f3d868d-dbed-4fdc-ac8e-75f1a5253e9e",
+    "name": "SolarWinds Service Desk API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API for SolarWinds Service Desk (formerly Samanage) providing CRUD access to IT service management resources including incidents, service requests, changes, problems, releases, assets, and users.\n\nContact Support:\n Name: SolarWinds Support",
+      "type": "text/plain"
+    }
+  }
+}

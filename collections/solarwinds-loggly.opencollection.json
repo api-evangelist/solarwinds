@@ -1,0 +1,130 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SolarWinds Loggly API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds Initiate a Search Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.loggly.com/apiv2/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "*",
+                "type": "query",
+                "description": "Search query string using Loggly search syntax"
+              },
+              {
+                "name": "from",
+                "value": "-2h",
+                "type": "query",
+                "description": "Start time for search (ISO 8601 or relative like -24h)"
+              },
+              {
+                "name": "until",
+                "value": "now",
+                "type": "query",
+                "description": "End time for search"
+              },
+              {
+                "name": "size",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of events to return"
+              },
+              {
+                "name": "order",
+                "value": "asc",
+                "type": "query",
+                "description": "Sort order"
+              }
+            ]
+          },
+          "docs": "Initiates a search query against log events. Returns a search ID (RSID) that can be used with the events endpoint to retrieve results."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Retrieve Search Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.loggly.com/apiv2/events",
+            "params": [
+              {
+                "name": "rsid",
+                "value": "500123",
+                "type": "query",
+                "description": "Result Set ID from the search endpoint"
+              }
+            ]
+          },
+          "docs": "Retrieves events for a previously initiated search using the RSID returned by the search endpoint."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Iterate Through Search Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.loggly.com/apiv2/events/iterate",
+            "params": [
+              {
+                "name": "rsid",
+                "value": "500123",
+                "type": "query",
+                "description": "Result Set ID from the search endpoint"
+              },
+              {
+                "name": "next",
+                "value": "example_value",
+                "type": "query",
+                "description": "Pagination cursor for next page"
+              }
+            ]
+          },
+          "docs": "Paginating event retrieval API for iterating through large result sets. Returns events and a next pointer for pagination."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Account",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds Get Account Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.loggly.com/apiv2/customer"
+          },
+          "docs": "Returns customer account information including the customer token and a list of active Loggly users."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

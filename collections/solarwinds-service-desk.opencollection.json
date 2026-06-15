@@ -1,0 +1,324 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SolarWinds Service Desk API",
+    "version": "2.1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Incidents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds List Incidents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.samanage.com/incidents.json",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of incidents in the service desk."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Create an Incident",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.samanage.com/incidents.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new incident in the service desk."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Get an Incident",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.samanage.com/incidents/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific incident."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Update an Incident",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.samanage.com/incidents/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the fields of an existing incident."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Delete an Incident",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.samanage.com/incidents/:id.json",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier of the resource"
+              }
+            ]
+          },
+          "docs": "Permanently deletes an incident."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ServiceRequests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds List Service Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.samanage.com/service_requests.json",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of service requests."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Create a Service Request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.samanage.com/service_requests.json",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new service request."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Changes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds List Change Requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.samanage.com/changes.json",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of change requests."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Problems",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds List Problems",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.samanage.com/problems.json",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of problem records."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds List Hardware Assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.samanage.com/hardwares.json",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of hardware assets tracked in the CMDB."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds List Users",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.samanage.com/users.json",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for pagination"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page"
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of users in the service desk."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds List Categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.samanage.com/categories.json"
+          },
+          "docs": "Returns all categories available for incidents and requests."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

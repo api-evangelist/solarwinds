@@ -1,0 +1,1611 @@
+{
+  "item": [
+    {
+      "id": "5926de2b-8b49-4773-9ba8-39c39fa07cfc",
+      "name": "Events",
+      "description": {
+        "content": "Search and retrieve log events",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "58093ce3-6c37-462c-8409-19aaed347501",
+          "name": "Solarwinds Search Log Events",
+          "request": {
+            "name": "Solarwinds Search Log Events",
+            "description": {
+              "content": "Searches log events matching the specified criteria. Returns matching events sorted by timestamp.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "search.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query string"
+                },
+                {
+                  "disabled": false,
+                  "key": "system_id",
+                  "value": "<integer>",
+                  "description": "Limit results to a specific system"
+                },
+                {
+                  "disabled": false,
+                  "key": "group_id",
+                  "value": "<integer>",
+                  "description": "Limit results to a specific group"
+                },
+                {
+                  "disabled": false,
+                  "key": "min_id",
+                  "value": "<string>",
+                  "description": "Return events after this event ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_id",
+                  "value": "<string>",
+                  "description": "Return events before this event ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "min_time",
+                  "value": "<integer>",
+                  "description": "Start time (Unix timestamp)"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_time",
+                  "value": "<integer>",
+                  "description": "End time (Unix timestamp)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of events to return"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e31439d-be13-4233-80ff-cc5aac181470",
+              "name": "Search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "search.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "system_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "group_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "min_id",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "max_id",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "min_time",
+                      "value": "10"
+                    },
+                    {
+                      "key": "max_time",
+                      "value": "10"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    {\n      \"id\": \"abc123\",\n      \"received_at\": \"2026-01-15T10:30:00Z\",\n      \"generated_at\": \"2026-01-15T10:30:00Z\",\n      \"display_received_at\": \"2026-01-15T10:30:00Z\",\n      \"source_ip\": \"example_value\",\n      \"source_name\": \"example_value\",\n      \"source_id\": \"500123\",\n      \"hostname\": \"example_value\",\n      \"program\": \"example_value\",\n      \"severity\": \"example_value\",\n      \"facility\": \"example_value\",\n      \"message\": \"example_value\"\n    }\n  ],\n  \"min_id\": \"500123\",\n  \"max_id\": \"500123\",\n  \"reached_beginning\": true,\n  \"min_time_at\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0752acea-a583-481e-9a1e-0be73d47081e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "search.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "system_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "group_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "min_id",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "max_id",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "min_time",
+                      "value": "10"
+                    },
+                    {
+                      "key": "max_time",
+                      "value": "10"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "eb71bd6c-3519-4d61-8eed-b6b71426330e",
+      "name": "Groups",
+      "description": {
+        "content": "Manage system groups",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fe3a521b-f6c6-43b7-a468-dce111471a28",
+          "name": "Solarwinds List All Groups",
+          "request": {
+            "name": "Solarwinds List All Groups",
+            "description": {
+              "content": "Returns all system groups configured in the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5806e6bd-dfc3-4041-b00a-68f9726ea3a3",
+              "name": "List of groups",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"system_wildcard\": \"example_value\",\n    \"systems\": [\n      {}\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f4cb794b-663f-4bb2-83fe-54a0240b5520",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "119b815b-47ec-409f-9c33-dfdc19bf93cd",
+          "name": "Solarwinds Get Group Details",
+          "request": {
+            "name": "Solarwinds Get Group Details",
+            "description": {
+              "content": "Returns details of a specific group including its member systems.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "groups",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "383dff85-d3a2-40c7-8e31-dde948c7bc55",
+              "name": "Group details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"name\": \"Example Title\",\n  \"system_wildcard\": \"example_value\",\n  \"systems\": [\n    {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"last_event_at\": \"2026-01-15T10:30:00Z\",\n      \"auto_delete\": true,\n      \"ip_address\": \"example_value\",\n      \"hostname\": \"example_value\",\n      \"syslog\": {}\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b62c2f2-d903-438e-beb8-46c132f2a157",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9707dfef-5543-4414-b33d-7110d869de7d",
+              "name": "Group not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "groups",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "deb65cfd-5e16-40f2-a8ce-49e502ec7510",
+      "name": "SavedSearches",
+      "description": {
+        "content": "Manage saved searches",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "31d8e284-55e7-4c14-a2aa-67916ebb4553",
+          "name": "Solarwinds List Saved Searches",
+          "request": {
+            "name": "Solarwinds List Saved Searches",
+            "description": {
+              "content": "Returns all saved searches configured in the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "searches.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "01fab7b2-f538-4a0d-9721-0ad90aa029ad",
+              "name": "List of saved searches",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "searches.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"query\": \"example_value\",\n    \"group\": {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"system_wildcard\": \"example_value\",\n      \"systems\": {}\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "62bfa96d-ea42-4b84-9e61-f5946a7f1210",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "searches.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7e2dc6d8-1984-4b96-abaf-9e78d26f5bbb",
+      "name": "Systems",
+      "description": {
+        "content": "Manage log-sending systems",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "586f0854-5288-4e77-845c-25037da6323b",
+          "name": "Solarwinds List All Systems",
+          "request": {
+            "name": "Solarwinds List All Systems",
+            "description": {
+              "content": "Returns all systems (log senders) configured in the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "systems.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6519c56b-2b5d-4561-8572-df5a01cfd177",
+              "name": "List of systems",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "systems.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"abc123\",\n    \"name\": \"Example Title\",\n    \"last_event_at\": \"2026-01-15T10:30:00Z\",\n    \"auto_delete\": true,\n    \"ip_address\": \"example_value\",\n    \"hostname\": \"example_value\",\n    \"syslog\": {\n      \"hostname\": \"example_value\",\n      \"port\": 10\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7885f66f-4c3f-4108-8767-3bef7fa4594a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "systems.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3acf3155-15f3-4c85-9faf-2ce4332e802e",
+          "name": "Solarwinds Register a New System",
+          "request": {
+            "name": "Solarwinds Register a New System",
+            "description": {
+              "content": "Registers a new system to send logs to Papertrail.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "systems.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"system\": {\n    \"name\": \"<string>\",\n    \"hostname\": \"<string>\",\n    \"ip_address\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d3b17544-a678-48af-96e8-60b450db1ab6",
+              "name": "System registered",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "systems.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"system\": {\n    \"name\": \"Example Title\",\n    \"hostname\": \"example_value\",\n    \"ip_address\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"name\": \"Example Title\",\n  \"last_event_at\": \"2026-01-15T10:30:00Z\",\n  \"auto_delete\": true,\n  \"ip_address\": \"example_value\",\n  \"hostname\": \"example_value\",\n  \"syslog\": {\n    \"hostname\": \"example_value\",\n    \"port\": 10\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "608ac8fd-e3db-4704-895a-b8c53177a7e3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "systems.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"system\": {\n    \"name\": \"Example Title\",\n    \"hostname\": \"example_value\",\n    \"ip_address\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "af94b2f3-d96a-4605-8ad8-d634df8d4119",
+          "name": "Solarwinds Get System Details",
+          "request": {
+            "name": "Solarwinds Get System Details",
+            "description": {
+              "content": "Returns details of a specific system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "systems",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "59cdbf89-bbae-436f-a6de-9a5086b7abb6",
+              "name": "System details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "systems",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"name\": \"Example Title\",\n  \"last_event_at\": \"2026-01-15T10:30:00Z\",\n  \"auto_delete\": true,\n  \"ip_address\": \"example_value\",\n  \"hostname\": \"example_value\",\n  \"syslog\": {\n    \"hostname\": \"example_value\",\n    \"port\": 10\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c4bac6a-f73a-434e-b5c2-7c417b4897a1",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "systems",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2a3efb54-b2ac-4fae-856c-c346103606d6",
+              "name": "System not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "systems",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83db06e8-a179-479c-af29-4f0d62d6376f",
+          "name": "Solarwinds Update a System",
+          "request": {
+            "name": "Solarwinds Update a System",
+            "description": {
+              "content": "Updates the configuration of a system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "systems",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"system\": {\n    \"name\": \"<string>\",\n    \"hostname\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8aa94885-c81f-488d-a448-75ea9c9c3454",
+              "name": "System updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "systems",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"system\": {\n    \"name\": \"Example Title\",\n    \"hostname\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a95c1917-52e0-4699-afeb-1ae6149f34c4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "systems",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"system\": {\n    \"name\": \"Example Title\",\n    \"hostname\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "938ad844-db75-41ce-9b20-c8a547068078",
+              "name": "System not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "systems",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"system\": {\n    \"name\": \"Example Title\",\n    \"hostname\": \"example_value\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bc631b63-da31-435d-b606-ee38d57f59c8",
+          "name": "Solarwinds Delete a System",
+          "request": {
+            "name": "Solarwinds Delete a System",
+            "description": {
+              "content": "Removes a system from the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "systems",
+                "{{id}}.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a71fe51-5162-4307-bcd5-372509e41e09",
+              "name": "System deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "systems",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "509bb8d5-69f1-458b-9011-dc66abb13d82",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "systems",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "715ee818-54df-4154-bc4f-d5fce7e4cc37",
+              "name": "System not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "systems",
+                    "{{id}}.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "24be9017-d1b5-4e38-b469-f260a6ffe789",
+      "name": "Users",
+      "description": {
+        "content": "Manage user accounts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b56634b6-fc1c-4210-8600-7c9652f83cfe",
+          "name": "Solarwinds List Users",
+          "request": {
+            "name": "Solarwinds List Users",
+            "description": {
+              "content": "Returns all users in the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d90cae47-5a5d-4064-b009-4f133ce2ceca",
+              "name": "List of users",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"abc123\",\n    \"email\": \"user@example.com\",\n    \"is_admin\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f8f6ad3-d830-4c71-a694-9a83259e45e4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Papertrail-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://papertrailapp.com/api/v1",
+      "key": "baseUrl"
+    },
+    {
+      "disabled": false,
+      "description": {
+        "content": "(Required) Resource identifier",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "<integer>",
+      "key": "id"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Papertrail-Token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "296450f3-8024-403b-b6ec-eb84a5b424e1",
+    "name": "SolarWinds Papertrail API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "HTTP API for cloud-based log management including searching logs, managing systems, groups, saved searches, and user accounts. Provides endpoints for log search, settings management, and system configuration.\n\nContact Support:\n Name: SolarWinds Support",
+      "type": "text/plain"
+    }
+  }
+}

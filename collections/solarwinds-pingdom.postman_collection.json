@@ -1,0 +1,2404 @@
+{
+  "item": [
+    {
+      "id": "af13a117-a43b-4552-b938-1f27f547f78e",
+      "name": "Checks",
+      "description": {
+        "content": "Manage uptime and transaction checks",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6e8e1db5-f008-4b40-8f40-74726a0818ef",
+          "name": "Solarwinds List All Checks",
+          "request": {
+            "name": "Solarwinds List All Checks",
+            "description": {
+              "content": "Returns a list of all checks configured in the Pingdom account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "checks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25000",
+                  "description": "Maximum number of checks to return"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Offset for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "tags",
+                  "value": "<string>",
+                  "description": "Filter by comma-separated tag names"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by check type"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8f63c4d0-2080-4dff-a23e-76118f822146",
+              "name": "List of checks",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "type",
+                      "value": "http"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"checks\": [\n    {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"type\": \"http\",\n      \"hostname\": \"example_value\",\n      \"status\": \"up\",\n      \"resolution\": 10,\n      \"lastresponsetime\": 10,\n      \"lasttesttime\": 10,\n      \"created\": 10,\n      \"tags\": {}\n    }\n  ],\n  \"counts\": {\n    \"total\": 10,\n    \"limited\": 10,\n    \"filtered\": 10\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95651ac3-02e1-405d-abc6-09c3cac020b4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "tags",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "type",
+                      "value": "http"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "95ad5da9-f88d-437d-bd53-c290c52ba32b",
+          "name": "Solarwinds Create a New Check",
+          "request": {
+            "name": "Solarwinds Create a New Check",
+            "description": {
+              "content": "Creates a new uptime check with the specified configuration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "checks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"host\": \"<string>\",\n  \"type\": \"<string>\",\n  \"resolution\": \"<integer>\",\n  \"paused\": \"<boolean>\",\n  \"encryption\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f0906a4f-ad67-40e2-9c7b-28f23c1097d0",
+              "name": "Check created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"host\": \"example_value\",\n  \"type\": \"http\",\n  \"resolution\": 1,\n  \"paused\": true,\n  \"encryption\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"abc123\",\n  \"name\": \"Example Title\",\n  \"type\": \"http\",\n  \"hostname\": \"example_value\",\n  \"status\": \"up\",\n  \"resolution\": 10,\n  \"lastresponsetime\": 10,\n  \"lasttesttime\": 10,\n  \"created\": 10,\n  \"tags\": [\n    {\n      \"name\": \"Example Title\",\n      \"type\": \"example_value\",\n      \"count\": 10\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4f1b02f8-67b8-4013-bbb3-905879de07c2",
+              "name": "Invalid check configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"host\": \"example_value\",\n  \"type\": \"http\",\n  \"resolution\": 1,\n  \"paused\": true,\n  \"encryption\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "da241d1a-2155-4648-86c4-0de38c9cc1f3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"host\": \"example_value\",\n  \"type\": \"http\",\n  \"resolution\": 1,\n  \"paused\": true,\n  \"encryption\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "043829e4-9235-4d8f-9fa3-9a7997ae9e82",
+          "name": "Solarwinds Get Detailed Check Information",
+          "request": {
+            "name": "Solarwinds Get Detailed Check Information",
+            "description": {
+              "content": "Returns detailed information about a specific check including its configuration and current status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "checks",
+                ":checkid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "checkid",
+                  "description": "(Required) Unique identifier for the check"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e4ac75f0-3300-460b-afdf-bf48d424dcd6",
+              "name": "Check details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"check\": \"example_value\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "06698f78-5e62-4070-8aa4-867381ac30bc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b3bb9b78-96b4-4f96-9b7c-39cef0932f3c",
+              "name": "Check not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d06d6ee0-7ac1-412b-8177-443a12fa0569",
+          "name": "Solarwinds Update a Check",
+          "request": {
+            "name": "Solarwinds Update a Check",
+            "description": {
+              "content": "Updates the configuration of an existing check.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "checks",
+                ":checkid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "checkid",
+                  "description": "(Required) Unique identifier for the check"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"host\": \"<string>\",\n  \"resolution\": \"<integer>\",\n  \"paused\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "64b3f9f5-108e-4bd1-923d-32aac240b394",
+              "name": "Check updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"host\": \"example_value\",\n  \"resolution\": 10,\n  \"paused\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7f128421-a382-40e2-80b8-a4c088e64f2e",
+              "name": "Invalid check configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"host\": \"example_value\",\n  \"resolution\": 10,\n  \"paused\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "486bd315-33e7-4df9-88e0-e21f8ff13d8d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"host\": \"example_value\",\n  \"resolution\": 10,\n  \"paused\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a502e5ca-c078-4790-a7da-65b2c133861a",
+              "name": "Check not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"Example Title\",\n  \"host\": \"example_value\",\n  \"resolution\": 10,\n  \"paused\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "43e1315d-5337-4f53-8702-bc6a761d1808",
+          "name": "Solarwinds Delete a Check",
+          "request": {
+            "name": "Solarwinds Delete a Check",
+            "description": {
+              "content": "Permanently deletes a check and all associated data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "checks",
+                ":checkid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "checkid",
+                  "description": "(Required) Unique identifier for the check"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40f101a7-dc08-4b57-a196-946664e8141f",
+              "name": "Check deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fc0fac06-5832-46d7-8f57-9c1e400ed6ae",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "293e153d-1ae0-4dad-8efe-368292ab7157",
+              "name": "Check not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "checks",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ebc626b1-c401-4f59-b6c7-fa35eb53b813",
+      "name": "Contacts",
+      "description": {
+        "content": "Manage alert contacts",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "60d2ef11-18c3-4a95-98c0-4d3e87f22d2b",
+          "name": "Solarwinds List Alert Contacts",
+          "request": {
+            "name": "Solarwinds List Alert Contacts",
+            "description": {
+              "content": "Returns all alert contacts configured in the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alerting",
+                "contacts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "966d43bb-e391-4efd-a1c5-aa497c55716d",
+              "name": "List of contacts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contacts\": [\n    {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"notification_targets\": \"example_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "44e4dfbf-0b5c-46fb-9737-b564460045f0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "contacts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "617260f5-ce64-43c5-9e97-e276d3157c36",
+      "name": "Maintenance",
+      "description": {
+        "content": "Manage maintenance windows",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e886608e-17b0-47d6-8c55-faa6cae8cbbb",
+          "name": "Solarwinds List Maintenance Windows",
+          "request": {
+            "name": "Solarwinds List Maintenance Windows",
+            "description": {
+              "content": "Returns all maintenance windows configured in the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "maintenance"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ac2611a-9a7c-4157-a3ea-6a761839257d",
+              "name": "List of maintenance windows",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "maintenance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"maintenance\": [\n    {\n      \"id\": \"abc123\",\n      \"description\": \"A sample description.\",\n      \"from\": 10,\n      \"to\": 10,\n      \"checks\": \"example_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bf1caa56-179c-41b0-8c6b-f18c99a84d26",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "maintenance"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "87b60410-806d-4f97-a407-607ea7669d77",
+      "name": "ProbeServers",
+      "description": {
+        "content": "List available probe servers",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "725f50eb-813c-422e-81a6-29f0ff353d8e",
+          "name": "Solarwinds List Probe Servers",
+          "request": {
+            "name": "Solarwinds List Probe Servers",
+            "description": {
+              "content": "Returns a list of all Pingdom probe servers with their locations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "probes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "onlyactive",
+                  "value": "false",
+                  "description": "Return only active probes"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4994de08-e58e-4f2b-a15d-0aebbd19bee0",
+              "name": "List of probe servers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "probes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onlyactive",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"probes\": [\n    {\n      \"id\": \"abc123\",\n      \"country\": \"example_value\",\n      \"city\": \"example_value\",\n      \"name\": \"Example Title\",\n      \"active\": true,\n      \"hostname\": \"example_value\",\n      \"ip\": \"example_value\",\n      \"ipv6\": \"example_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "967ee9a7-e3d1-4193-9758-5468cb0723d2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "probes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "onlyactive",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "218c1b0e-4a4e-4ecd-aca2-37fa646de698",
+      "name": "Results",
+      "description": {
+        "content": "Retrieve check results and performance data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4dba1404-0b22-4ac2-a6ba-540cff6c6323",
+          "name": "Solarwinds Get Raw Check Results",
+          "request": {
+            "name": "Solarwinds Get Raw Check Results",
+            "description": {
+              "content": "Returns raw test results for a specific check within a time range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "results",
+                ":checkid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<integer>",
+                  "description": "End of period (Unix timestamp)"
+                },
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<integer>",
+                  "description": "Start of period (Unix timestamp)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "100",
+                  "description": "Maximum number of results"
+                },
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Offset for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "probes",
+                  "value": "<string>",
+                  "description": "Filter by comma-separated probe IDs"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter by result status"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "checkid",
+                  "description": "(Required) Unique identifier for the check"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b088d07e-22c6-4e7d-9a4e-a1abb6411aa4",
+              "name": "Check results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "results",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "to",
+                      "value": "10"
+                    },
+                    {
+                      "key": "from",
+                      "value": "10"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "probes",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "status",
+                      "value": "up"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {\n      \"probeid\": \"500123\",\n      \"time\": 10,\n      \"status\": \"example_value\",\n      \"responsetime\": 10,\n      \"statusdesc\": \"example_value\",\n      \"statusdesclong\": \"example_value\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce7f5987-ad2c-4549-a5ab-f610ca99230b",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "results",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "to",
+                      "value": "10"
+                    },
+                    {
+                      "key": "from",
+                      "value": "10"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "probes",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "status",
+                      "value": "up"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8182c2f6-33fc-4b76-b213-b4f9922af541",
+              "name": "Check not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "results",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "to",
+                      "value": "10"
+                    },
+                    {
+                      "key": "from",
+                      "value": "10"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    },
+                    {
+                      "key": "offset",
+                      "value": "10"
+                    },
+                    {
+                      "key": "probes",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "status",
+                      "value": "up"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "1a3d8f1b-213b-4a2f-b5d2-f64f6341fe2d",
+      "name": "Summary",
+      "description": {
+        "content": "Retrieve performance and outage summaries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "252c1b38-70b9-471e-ba5f-b13a5356d97d",
+          "name": "Solarwinds Get Average Response Time Summary",
+          "request": {
+            "name": "Solarwinds Get Average Response Time Summary",
+            "description": {
+              "content": "Returns average response time and uptime data for a check over a specified time period.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "summary.average",
+                ":checkid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<integer>",
+                  "description": "Start of period (Unix timestamp)"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<integer>",
+                  "description": "End of period (Unix timestamp)"
+                },
+                {
+                  "disabled": false,
+                  "key": "includeuptime",
+                  "value": "false",
+                  "description": "Include uptime information"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "checkid",
+                  "description": "(Required) Unique identifier for the check"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c2154b59-8982-4fdd-b850-74dac0ab31e2",
+              "name": "Average summary data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "summary.average",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "10"
+                    },
+                    {
+                      "key": "to",
+                      "value": "10"
+                    },
+                    {
+                      "key": "includeuptime",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"summary\": {\n    \"responsetime\": {\n      \"avgresponse\": 10\n    },\n    \"status\": {\n      \"totalup\": 10,\n      \"totaldown\": 10,\n      \"totalunknown\": 10\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c69fb74-ec87-4616-b1b8-31770cb8c2bc",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "summary.average",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "10"
+                    },
+                    {
+                      "key": "to",
+                      "value": "10"
+                    },
+                    {
+                      "key": "includeuptime",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2cd4174c-1855-487f-a11f-26b5380d4912",
+              "name": "Check not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "summary.average",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "10"
+                    },
+                    {
+                      "key": "to",
+                      "value": "10"
+                    },
+                    {
+                      "key": "includeuptime",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3f4bc685-2376-42d5-ae67-2c0e1311a7d5",
+          "name": "Solarwinds Get Outage Summary",
+          "request": {
+            "name": "Solarwinds Get Outage Summary",
+            "description": {
+              "content": "Returns a list of outage periods for a specific check.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "summary.outage",
+                ":checkid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "from",
+                  "value": "<integer>",
+                  "description": "Start of period (Unix timestamp)"
+                },
+                {
+                  "disabled": false,
+                  "key": "to",
+                  "value": "<integer>",
+                  "description": "End of period (Unix timestamp)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "checkid",
+                  "description": "(Required) Unique identifier for the check"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e1694b43-b7fb-45a1-83e0-a536fdeb19e1",
+              "name": "Outage summary",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "summary.outage",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "10"
+                    },
+                    {
+                      "key": "to",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"summary\": {\n    \"states\": [\n      {\n        \"status\": \"example_value\",\n        \"timefrom\": 10,\n        \"timeto\": 10\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cff3243f-02af-4ce2-ba43-c3ad276d7431",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "summary.outage",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "10"
+                    },
+                    {
+                      "key": "to",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5a46779f-de34-49b9-96dc-b8ec8aa4eb79",
+              "name": "Check not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "summary.outage",
+                    ":checkid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "from",
+                      "value": "10"
+                    },
+                    {
+                      "key": "to",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "checkid",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "366ef940-e555-4bab-ae4a-86511541e801",
+      "name": "Teams",
+      "description": {
+        "content": "Manage alert teams",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5a639673-f5ae-46d2-9809-2763a1738712",
+          "name": "Solarwinds List Alert Teams",
+          "request": {
+            "name": "Solarwinds List Alert Teams",
+            "description": {
+              "content": "Returns all alert teams configured in the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "alerting",
+                "teams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a95c3201-6534-49d9-8dc0-2934a73c859b",
+              "name": "List of teams",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "teams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"teams\": [\n    {\n      \"id\": \"abc123\",\n      \"name\": \"Example Title\",\n      \"members\": [\n        {}\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "729f7da6-a767-4382-b6ff-f6c870c656cb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "alerting",
+                    "teams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.pingdom.com/api/3.1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ea75b4b8-1ffe-4c90-9ecd-3a0ae76fe59f",
+    "name": "SolarWinds Pingdom API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for website uptime monitoring, performance monitoring, and transaction checks. Enables automated management of checks, contacts, teams, and reporting for Pingdom monitoring services.\n\nContact Support:\n Name: SolarWinds Support",
+      "type": "text/plain"
+    }
+  }
+}

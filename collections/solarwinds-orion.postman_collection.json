@@ -1,0 +1,2236 @@
+{
+  "item": [
+    {
+      "id": "0cb2330e-3674-4e50-a625-05fb9800fe95",
+      "name": "BulkOperations",
+      "description": {
+        "content": "Perform bulk create, update, and delete operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3b66bcf3-8dba-4e83-93ec-228043889e1f",
+          "name": "Solarwinds Delete Multiple Entities",
+          "request": {
+            "name": "Solarwinds Delete Multiple Entities",
+            "description": {
+              "content": "Deletes multiple SWIS entities in a single operation. Provide an array of SWIS URIs to delete.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "BulkDelete"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP of your Orion server",
+                  "type": "any",
+                  "value": "{{orion-server}}",
+                  "key": "orion-server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uris\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "00da8e19-b235-44b1-8020-2e04b5140be9",
+              "name": "Entities deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "BulkDelete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uris\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d8019642-f796-4a02-8d15-a9e8b4dbdb4a",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "BulkDelete"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uris\": [\n    \"example_value\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a2c9b1f-b6d2-49fd-9b1d-e6f7439bcca5",
+          "name": "Solarwinds Update Multiple Entities",
+          "request": {
+            "name": "Solarwinds Update Multiple Entities",
+            "description": {
+              "content": "Updates properties on multiple SWIS entities in a single operation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "BulkUpdate"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP of your Orion server",
+                  "type": "any",
+                  "value": "{{orion-server}}",
+                  "key": "orion-server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uris\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"properties\": {\n    \"key_0\": \"string\",\n    \"key_1\": true,\n    \"key_2\": false\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5246117a-2c37-410c-b72b-f3ffa3a19b24",
+              "name": "Entities updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "BulkUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uris\": [\n    \"example_value\"\n  ],\n  \"properties\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f4262250-7df8-4563-8f05-337cfd0d2131",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "BulkUpdate"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uris\": [\n    \"example_value\"\n  ],\n  \"properties\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "cf2aaaea-8741-4f27-9092-fcb8b70636f2",
+      "name": "CRUD",
+      "description": {
+        "content": "Create, read, update, and delete operations on SWIS entities",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6ff6ec3c-1dff-4a07-9055-8c2afe226d03",
+          "name": "Solarwinds Create a New Swis Entity",
+          "request": {
+            "name": "Solarwinds Create a New Swis Entity",
+            "description": {
+              "content": "Creates a new entity of the specified type in the SolarWinds Information Service. The request body contains the property values for the new entity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Create",
+                ":entityType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entityType",
+                  "description": "(Required) Fully qualified SWIS entity type name"
+                },
+                {
+                  "description": "Hostname or IP of your Orion server",
+                  "type": "any",
+                  "value": "{{orion-server}}",
+                  "key": "orion-server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": \"string\",\n  \"key_1\": 4030\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "76233d33-f5e9-4d10-861a-4e7e5b6ed4bc",
+              "name": "Entity created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Create",
+                    ":entityType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityType",
+                      "description": "(Required) Fully qualified SWIS entity type name"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "\"example_value\"",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cf79b1d5-37bf-44bc-acfe-4fe3f9522982",
+              "name": "Invalid entity data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Create",
+                    ":entityType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityType",
+                      "description": "(Required) Fully qualified SWIS entity type name"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4698a28d-c0be-4014-894f-ecfa16612d77",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Create",
+                    ":entityType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityType",
+                      "description": "(Required) Fully qualified SWIS entity type name"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "da65e8a7-4916-4463-af14-d35578788501",
+              "name": "Entity type not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Create",
+                    ":entityType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityType",
+                      "description": "(Required) Fully qualified SWIS entity type name"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d37b13a5-3b11-4c77-8852-98a63f880113",
+          "name": "Solarwinds Read a Swis Entity",
+          "request": {
+            "name": "Solarwinds Read a Swis Entity",
+            "description": {
+              "content": "Retrieves the properties of a specific entity identified by its SWIS URI. Returns all properties of the entity as JSON.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":entityUri"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entityUri",
+                  "description": "(Required) SWIS URI of the entity to read"
+                },
+                {
+                  "description": "Hostname or IP of your Orion server",
+                  "type": "any",
+                  "value": "{{orion-server}}",
+                  "key": "orion-server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5ad3d119-dae6-402a-96ac-0bdb6425f437",
+              "name": "Entity retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityUri",
+                      "description": "(Required) SWIS URI of the entity to read"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e8e55c98-c1bb-4f1d-be7b-ffd55542f221",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityUri",
+                      "description": "(Required) SWIS URI of the entity to read"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7611f1fe-afdd-46b5-828b-6f8110a6ae79",
+              "name": "Entity not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityUri",
+                      "description": "(Required) SWIS URI of the entity to read"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22916a54-b36e-40ce-a6a9-6ccfda6c234a",
+          "name": "Solarwinds Update a Swis Entity",
+          "request": {
+            "name": "Solarwinds Update a Swis Entity",
+            "description": {
+              "content": "Updates the properties of an existing entity identified by its SWIS URI. Only the properties included in the request body are updated.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":entityUri"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entityUri",
+                  "description": "(Required) SWIS URI of the entity to update"
+                },
+                {
+                  "description": "Hostname or IP of your Orion server",
+                  "type": "any",
+                  "value": "{{orion-server}}",
+                  "key": "orion-server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": \"string\",\n  \"key_1\": 4030\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "412fc101-6181-4af4-a23b-26df32c99366",
+              "name": "Entity updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityUri",
+                      "description": "(Required) SWIS URI of the entity to update"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "16c7b242-0194-456a-b6df-18a52899ffa2",
+              "name": "Invalid update data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityUri",
+                      "description": "(Required) SWIS URI of the entity to update"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6ad1f76f-89db-447f-9c3e-3317ebaa8c1e",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityUri",
+                      "description": "(Required) SWIS URI of the entity to update"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3e2eed2d-eed4-4292-9ee6-63847b98de53",
+              "name": "Entity not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityUri",
+                      "description": "(Required) SWIS URI of the entity to update"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "629c1ca2-efbd-4d54-b181-06e71774134e",
+          "name": "Solarwinds Delete a Swis Entity",
+          "request": {
+            "name": "Solarwinds Delete a Swis Entity",
+            "description": {
+              "content": "Deletes an entity identified by its SWIS URI from the SolarWinds Information Service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ":entityUri"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entityUri",
+                  "description": "(Required) SWIS URI of the entity to delete"
+                },
+                {
+                  "description": "Hostname or IP of your Orion server",
+                  "type": "any",
+                  "value": "{{orion-server}}",
+                  "key": "orion-server"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "690b75d4-f8d9-450a-9025-f6fd2b380ba7",
+              "name": "Entity deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityUri",
+                      "description": "(Required) SWIS URI of the entity to delete"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1581c93c-9e48-486f-b1a6-2f86cee42caf",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityUri",
+                      "description": "(Required) SWIS URI of the entity to delete"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f7c1ad13-2060-4411-96c1-c75d95c328e8",
+              "name": "Entity not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityUri",
+                      "description": "(Required) SWIS URI of the entity to delete"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "52cbc986-fbb4-48f3-a009-24465a67a0ec",
+      "name": "Invoke",
+      "description": {
+        "content": "Invoke verbs (methods) on SWIS entities",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "403663a4-9052-4b57-b22f-e6bb4dfaa382",
+          "name": "Solarwinds Invoke a Verb on an Entity Type",
+          "request": {
+            "name": "Solarwinds Invoke a Verb on an Entity Type",
+            "description": {
+              "content": "Invokes a named verb (method) on the specified entity type. Verbs provide operations like Unmanage, Remanage, PollNow, and other management actions on monitored objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Invoke",
+                ":entityType",
+                ":verb"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "entityType",
+                  "description": "(Required) Fully qualified SWIS entity type name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "verb",
+                  "description": "(Required) Name of the verb to invoke"
+                },
+                {
+                  "description": "Hostname or IP of your Orion server",
+                  "type": "any",
+                  "value": "{{orion-server}}",
+                  "key": "orion-server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "[\n  \"<object>\",\n  \"<object>\"\n]",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ec5e166f-ea1a-4cfc-be1b-c5e8234c7a2c",
+              "name": "Verb invoked successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Invoke",
+                    ":entityType",
+                    ":verb"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityType",
+                      "description": "(Required) Fully qualified SWIS entity type name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "verb",
+                      "description": "(Required) Name of the verb to invoke"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {}\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e16c21bf-4af0-4f8f-a439-5416abf618e4",
+              "name": "Invalid verb arguments",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Invoke",
+                    ":entityType",
+                    ":verb"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityType",
+                      "description": "(Required) Fully qualified SWIS entity type name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "verb",
+                      "description": "(Required) Name of the verb to invoke"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {}\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3f0cd032-6f53-4482-88f0-55031f731acc",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Invoke",
+                    ":entityType",
+                    ":verb"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityType",
+                      "description": "(Required) Fully qualified SWIS entity type name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "verb",
+                      "description": "(Required) Name of the verb to invoke"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {}\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "257402dc-b4aa-4b5f-a596-505384d4f70e",
+              "name": "Entity type or verb not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Invoke",
+                    ":entityType",
+                    ":verb"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "entityType",
+                      "description": "(Required) Fully qualified SWIS entity type name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "verb",
+                      "description": "(Required) Name of the verb to invoke"
+                    },
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "[\n  {}\n]",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c7a61213-5a91-4ca9-b6bf-0552709a9d83",
+      "name": "Query",
+      "description": {
+        "content": "Execute SWQL queries against the SolarWinds Information Service",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9d184a7b-146a-48c6-b9c9-8e8b1f7c3343",
+          "name": "Solarwinds Execute a Swql Query",
+          "request": {
+            "name": "Solarwinds Execute a Swql Query",
+            "description": {
+              "content": "Executes a SolarWinds Query Language (SWQL) query against the SolarWinds Information Service and returns the results as JSON. SWQL is a read-only SQL-like language for querying monitored entities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "query",
+                  "value": "<string>",
+                  "description": "(Required) SWQL query string"
+                },
+                {
+                  "disabled": false,
+                  "key": "parameters",
+                  "value": "<string>",
+                  "description": "Parameterized query values"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Hostname or IP of your Orion server",
+                  "type": "any",
+                  "value": "{{orion-server}}",
+                  "key": "orion-server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "44d241db-081f-45ba-9825-b1390cf57982",
+              "name": "Query executed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "SELECT NodeID, Caption, IPAddress FROM Orion.Nodes"
+                    },
+                    {
+                      "key": "parameters",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {}\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6b0e57b9-861b-4aec-93d2-6caf78c1056f",
+              "name": "Invalid SWQL query syntax",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "SELECT NodeID, Caption, IPAddress FROM Orion.Nodes"
+                    },
+                    {
+                      "key": "parameters",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7e713fb1-80ea-4dda-aa4c-143d83b5a15d",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "query",
+                      "value": "SELECT NodeID, Caption, IPAddress FROM Orion.Nodes"
+                    },
+                    {
+                      "key": "parameters",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea2d38cf-4da6-4fe4-9d07-c19666815ea6",
+          "name": "Solarwinds Execute a Swql Query via Post",
+          "request": {
+            "name": "Solarwinds Execute a Swql Query via Post",
+            "description": {
+              "content": "Executes a SWQL query using a POST request body. Useful for longer queries that exceed URL length limits.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Query"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "description": "Hostname or IP of your Orion server",
+                  "type": "any",
+                  "value": "{{orion-server}}",
+                  "key": "orion-server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"parameters\": {\n    \"key_0\": 7835,\n    \"key_1\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "531d45c6-9b0f-4f90-aeb6-92b70421d096",
+              "name": "Query executed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"example_value\",\n  \"parameters\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"results\": [\n    {}\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "89992462-0cf9-4755-8779-9fb14fecaa4e",
+              "name": "Invalid SWQL query syntax",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"example_value\",\n  \"parameters\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "55ab9311-608d-4b0d-a7df-a6ebe82c1aca",
+              "name": "Authentication required",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Query"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "description": "Hostname or IP of your Orion server",
+                      "type": "any",
+                      "value": "{{orion-server}}",
+                      "key": "orion-server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"example_value\",\n  \"parameters\": \"example_value\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Hostname or IP of your Orion server",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "localhost",
+      "key": "orion-server"
+    },
+    {
+      "type": "string",
+      "value": "https://{{orion-server}}:17774/SolarWinds/InformationService/v3/Json",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ed9c464c-105e-4112-9064-d9532278e381",
+    "name": "SolarWinds Orion Platform API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for managing and monitoring network devices, servers, and applications through the SolarWinds Orion Platform. Provides access to the SolarWinds Information Service (SWIS) using SWQL queries and CRUD operations on monitored entities via REST/JSON endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+      "type": "text/plain"
+    }
+  }
+}
