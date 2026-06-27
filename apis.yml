@@ -38,7 +38,7 @@ apis:
         url: openapi/solarwinds-orion-openapi.yml
       - type: Authentication
         url: https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
-      - type: SDK
+      - type: SDKs
         url: https://github.com/solarwinds/OrionSDK
       - type: APIReference
         url: https://github.com/solarwinds/OrionSDK/wiki/REST
@@ -93,7 +93,7 @@ apis:
         url: https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
       - type: Authentication
         url: https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
-      - type: SDK
+      - type: SDKs
         url: https://github.com/solarwinds
     contact:
       - type: Support
@@ -129,7 +129,7 @@ apis:
     properties:
       - type: Documentation
         url: https://documentation.solarwinds.com/en/success_center/npm/content/core-npm-rest-api.htm
-      - type: SDK
+      - type: SDKs
         url: https://github.com/solarwinds/OrionSDK
     contact:
       - type: Support
@@ -245,7 +245,7 @@ apis:
     properties:
       - type: Documentation
         url: https://documentation.solarwinds.com/en/success_center/ipam/content/ipam_documentation.htm
-      - type: SDK
+      - type: SDKs
         url: https://github.com/solarwinds/OrionSDK
     contact:
       - type: Support
@@ -265,7 +265,7 @@ apis:
     properties:
       - type: Documentation
         url: https://documentation.solarwinds.com/en/success_center/ncm/content/ncm_documentation.htm
-      - type: SDK
+      - type: SDKs
         url: https://github.com/solarwinds/OrionSDK
     contact:
       - type: Support
@@ -287,7 +287,7 @@ apis:
         url: https://documentation.solarwinds.com/en/success_center/sam/content/sam_documentation.htm
       - type: Documentation
         url: https://documentation.solarwinds.com/en/success_center/sam/content/sam-api-poller-methods.htm
-      - type: SDK
+      - type: SDKs
         url: https://github.com/solarwinds/OrionSDK
     contact:
       - type: Support
@@ -337,7 +337,7 @@ common:
     url: https://twitter.com/solarwinds
   - type: LinkedIn
     url: https://www.linkedin.com/company/solarwinds
-  - type: SDK
+  - type: SDKs
     url: https://github.com/solarwinds/OrionSDK
   - type: CLI
     url: https://github.com/solarwinds/OrionSDK/tree/master/Samples/PowerShell
@@ -380,7 +380,7 @@ common:
       - Splunk
   - name: Agent Skills
     url: https://github.com/solarwinds/gns3-skills
-    type: AgentSkill
+    type: AgentSkills
 integrations:
   - name: Global System Integrators & MSPs
 maintainers:
