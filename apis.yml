@@ -313,6 +313,10 @@ apis:
       - type: Support
         url: https://support.solarwinds.com
 common:
+  - type: DomainSecurity
+    url: security/solarwinds-domain-security.yml
+  - type: Authentication
+    url: authentication/solarwinds-authentication.yml
   - type: Portal
     url: https://www.solarwinds.com
   - type: Documentation

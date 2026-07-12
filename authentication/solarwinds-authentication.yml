@@ -1,0 +1,40 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/solarwinds-loggly-openapi.yml, openapi/solarwinds-orion-openapi.yml, openapi/solarwinds-papertrail-openapi.yml,
+  openapi/solarwinds-pingdom-openapi.yml, openapi/solarwinds-service-desk-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+  - path
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: API token for authentication via Authorization Bearer header
+  sources:
+  - openapi/solarwinds-loggly-openapi.yml
+  - openapi/solarwinds-pingdom-openapi.yml
+  - openapi/solarwinds-service-desk-openapi.yml
+- name: customerToken
+  type: apiKey
+  in: path
+  parameter: token
+  description: Customer token for event submission endpoints
+  sources:
+  - openapi/solarwinds-loggly-openapi.yml
+- name: basicAuth
+  type: http
+  scheme: basic
+  description: HTTP Basic authentication using Orion Platform credentials
+  sources:
+  - openapi/solarwinds-orion-openapi.yml
+- name: apiToken
+  type: apiKey
+  in: header
+  parameter: X-Papertrail-Token
+  description: Papertrail API token
+  sources:
+  - openapi/solarwinds-papertrail-openapi.yml
