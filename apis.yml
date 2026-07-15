@@ -313,6 +313,8 @@ apis:
       - type: Support
         url: https://support.solarwinds.com
 common:
+  - type: AgenticAccess
+    url: agentic-access/solarwinds-agentic-access.yml
   - type: DomainSecurity
     url: security/solarwinds-domain-security.yml
   - type: Authentication
