@@ -1,0 +1,103 @@
+openapi: 3.1.0
+info:
+  title: SolarWinds Loggly Account API
+  description: RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.
+  version: '2'
+  contact:
+    name: SolarWinds Support
+    url: https://support.solarwinds.com
+  termsOfService: https://www.solarwinds.com/legal/terms
+servers:
+- url: https://{subdomain}.loggly.com/apiv2
+  description: Loggly API Server
+  variables:
+    subdomain:
+      default: logs-01
+      description: Your Loggly subdomain
+security:
+- bearerAuth: []
+tags:
+- name: Account
+  description: Account information and management
+paths:
+  /customer:
+    get:
+      operationId: getAccountInfo
+      summary: Solarwinds Get Account Information
+      description: Returns customer account information including the customer token and a list of active Loggly users.
+      tags:
+      - Account
+      responses:
+        '200':
+          description: Account information
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountInfo'
+              examples:
+                Getaccountinfo200Example:
+                  summary: Default getAccountInfo 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    subdomain: example_value
+                    tokens:
+                    - example_value
+                    subscription:
+                      plan_name: example_value
+                    users:
+                    - id: abc123
+                      email: user@example.com
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    AccountInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Account ID
+          example: abc123
+        subdomain:
+          type: string
+          description: Account subdomain
+          example: example_value
+        tokens:
+          type: array
+          items:
+            type: string
+          description: Customer tokens
+          example: []
+        subscription:
+          type: object
+          properties:
+            plan_name:
+              type: string
+          example: example_value
+        users:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              email:
+                type: string
+          example: []
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication via Authorization Bearer header
+    customerToken:
+      type: apiKey
+      in: path
+      name: token
+      description: Customer token for event submission endpoints
+externalDocs:
+  description: Loggly API Documentation
+  url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm

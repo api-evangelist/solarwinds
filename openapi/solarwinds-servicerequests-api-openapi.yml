@@ -1,0 +1,197 @@
+openapi: 3.1.0
+info:
+  title: SolarWinds Loggly Account ServiceRequests API
+  description: RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.
+  version: '2'
+  contact:
+    name: SolarWinds Support
+    url: https://support.solarwinds.com
+  termsOfService: https://www.solarwinds.com/legal/terms
+servers:
+- url: https://{subdomain}.loggly.com/apiv2
+  description: Loggly API Server
+  variables:
+    subdomain:
+      default: logs-01
+      description: Your Loggly subdomain
+security:
+- bearerAuth: []
+tags:
+- name: ServiceRequests
+  description: Manage service requests
+paths:
+  /service_requests.json:
+    get:
+      operationId: listServiceRequests
+      summary: Solarwinds List Service Requests
+      description: Returns a paginated list of service requests.
+      tags:
+      - ServiceRequests
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: List of service requests
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ServiceRequest'
+              examples:
+                Listservicerequests200Example:
+                  summary: Default listServiceRequests 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: abc123
+                    number: 10
+                    name: Example Title
+                    description: A sample description.
+                    state: example_value
+                    priority: example_value
+                    requester:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    created_at: '2026-01-15T10:30:00Z'
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createServiceRequest
+      summary: Solarwinds Create a Service Request
+      description: Creates a new service request.
+      tags:
+      - ServiceRequests
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceRequestCreate'
+            examples:
+              CreateservicerequestRequestExample:
+                summary: Default createServiceRequest request
+                x-microcks-default: true
+                value:
+                  service_request:
+                    name: Example Title
+                    description: A sample description.
+                    priority: example_value
+      responses:
+        '200':
+          description: Service request created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceRequest'
+              examples:
+                Createservicerequest200Example:
+                  summary: Default createServiceRequest 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    number: 10
+                    name: Example Title
+                    description: A sample description.
+                    state: example_value
+                    priority: example_value
+                    requester:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    created_at: '2026-01-15T10:30:00Z'
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    ServiceRequestCreate:
+      type: object
+      required:
+      - service_request
+      properties:
+        service_request:
+          type: object
+          required:
+          - name
+          properties:
+            name:
+              type: string
+            description:
+              type: string
+            priority:
+              type: string
+          example: example_value
+    UserRef:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: abc123
+        name:
+          type: string
+          example: Example Title
+        email:
+          type: string
+          example: user@example.com
+    ServiceRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: abc123
+        number:
+          type: integer
+          example: 10
+        name:
+          type: string
+          example: Example Title
+        description:
+          type: string
+          example: A sample description.
+        state:
+          type: string
+          example: example_value
+        priority:
+          type: string
+          example: example_value
+        requester:
+          $ref: '#/components/schemas/UserRef'
+        created_at:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+  parameters:
+    PerPage:
+      name: per_page
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 25
+    Page:
+      name: page
+      in: query
+      description: Page number for pagination
+      schema:
+        type: integer
+        default: 1
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication via Authorization Bearer header
+    customerToken:
+      type: apiKey
+      in: path
+      name: token
+      description: Customer token for event submission endpoints
+externalDocs:
+  description: Loggly API Documentation
+  url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm

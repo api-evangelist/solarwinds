@@ -1,0 +1,83 @@
+openapi: 3.1.0
+info:
+  title: SolarWinds Loggly Account Teams API
+  description: RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.
+  version: '2'
+  contact:
+    name: SolarWinds Support
+    url: https://support.solarwinds.com
+  termsOfService: https://www.solarwinds.com/legal/terms
+servers:
+- url: https://{subdomain}.loggly.com/apiv2
+  description: Loggly API Server
+  variables:
+    subdomain:
+      default: logs-01
+      description: Your Loggly subdomain
+security:
+- bearerAuth: []
+tags:
+- name: Teams
+  description: Manage alert teams
+paths:
+  /alerting/teams:
+    get:
+      operationId: listTeams
+      summary: Solarwinds List Alert Teams
+      description: Returns all alert teams configured in the account.
+      tags:
+      - Teams
+      responses:
+        '200':
+          description: List of teams
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamList'
+              examples:
+                Listteams200Example:
+                  summary: Default listTeams 200 response
+                  x-microcks-default: true
+                  value:
+                    teams:
+                    - id: abc123
+                      name: Example Title
+                      members:
+                      - {}
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    TeamList:
+      type: object
+      properties:
+        teams:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+              members:
+                type: array
+                items:
+                  type: object
+          example: []
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication via Authorization Bearer header
+    customerToken:
+      type: apiKey
+      in: path
+      name: token
+      description: Customer token for event submission endpoints
+externalDocs:
+  description: Loggly API Documentation
+  url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm

@@ -1,0 +1,276 @@
+openapi: 3.1.0
+info:
+  title: SolarWinds Loggly Account Systems API
+  description: RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.
+  version: '2'
+  contact:
+    name: SolarWinds Support
+    url: https://support.solarwinds.com
+  termsOfService: https://www.solarwinds.com/legal/terms
+servers:
+- url: https://{subdomain}.loggly.com/apiv2
+  description: Loggly API Server
+  variables:
+    subdomain:
+      default: logs-01
+      description: Your Loggly subdomain
+security:
+- bearerAuth: []
+tags:
+- name: Systems
+  description: Manage log-sending systems
+paths:
+  /systems.json:
+    get:
+      operationId: listSystems
+      summary: Solarwinds List All Systems
+      description: Returns all systems (log senders) configured in the account.
+      tags:
+      - Systems
+      responses:
+        '200':
+          description: List of systems
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/System'
+              examples:
+                Listsystems200Example:
+                  summary: Default listSystems 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: abc123
+                    name: Example Title
+                    last_event_at: '2026-01-15T10:30:00Z'
+                    auto_delete: true
+                    ip_address: example_value
+                    hostname: example_value
+                    syslog:
+                      hostname: example_value
+                      port: 10
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: registerSystem
+      summary: Solarwinds Register a New System
+      description: Registers a new system to send logs to Papertrail.
+      tags:
+      - Systems
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SystemCreate'
+            examples:
+              RegistersystemRequestExample:
+                summary: Default registerSystem request
+                x-microcks-default: true
+                value:
+                  system:
+                    name: Example Title
+                    hostname: example_value
+                    ip_address: example_value
+      responses:
+        '200':
+          description: System registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/System'
+              examples:
+                Registersystem200Example:
+                  summary: Default registerSystem 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    last_event_at: '2026-01-15T10:30:00Z'
+                    auto_delete: true
+                    ip_address: example_value
+                    hostname: example_value
+                    syslog:
+                      hostname: example_value
+                      port: 10
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /systems/{id}.json:
+    get:
+      operationId: getSystem
+      summary: Solarwinds Get System Details
+      description: Returns details of a specific system.
+      tags:
+      - Systems
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: System details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/System'
+              examples:
+                Getsystem200Example:
+                  summary: Default getSystem 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    name: Example Title
+                    last_event_at: '2026-01-15T10:30:00Z'
+                    auto_delete: true
+                    ip_address: example_value
+                    hostname: example_value
+                    syslog:
+                      hostname: example_value
+                      port: 10
+        '401':
+          description: Unauthorized
+        '404':
+          description: System not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateSystem
+      summary: Solarwinds Update a System
+      description: Updates the configuration of a system.
+      tags:
+      - Systems
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SystemUpdate'
+            examples:
+              UpdatesystemRequestExample:
+                summary: Default updateSystem request
+                x-microcks-default: true
+                value:
+                  system:
+                    name: Example Title
+                    hostname: example_value
+      responses:
+        '200':
+          description: System updated
+        '401':
+          description: Unauthorized
+        '404':
+          description: System not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteSystem
+      summary: Solarwinds Delete a System
+      description: Removes a system from the account.
+      tags:
+      - Systems
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: System deleted
+        '401':
+          description: Unauthorized
+        '404':
+          description: System not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    SystemUpdate:
+      type: object
+      required:
+      - system
+      properties:
+        system:
+          type: object
+          properties:
+            name:
+              type: string
+            hostname:
+              type: string
+          example: example_value
+    System:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: System ID
+          example: abc123
+        name:
+          type: string
+          description: System name
+          example: Example Title
+        last_event_at:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+        auto_delete:
+          type: boolean
+          example: true
+        ip_address:
+          type: string
+          example: example_value
+        hostname:
+          type: string
+          example: example_value
+        syslog:
+          type: object
+          properties:
+            hostname:
+              type: string
+            port:
+              type: integer
+          example: example_value
+    SystemCreate:
+      type: object
+      required:
+      - system
+      properties:
+        system:
+          type: object
+          required:
+          - name
+          properties:
+            name:
+              type: string
+            hostname:
+              type: string
+            ip_address:
+              type: string
+          example: example_value
+  parameters:
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: integer
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication via Authorization Bearer header
+    customerToken:
+      type: apiKey
+      in: path
+      name: token
+      description: Customer token for event submission endpoints
+externalDocs:
+  description: Loggly API Documentation
+  url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm

@@ -1,0 +1,78 @@
+openapi: 3.1.0
+info:
+  title: SolarWinds Loggly Account Categories API
+  description: RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.
+  version: '2'
+  contact:
+    name: SolarWinds Support
+    url: https://support.solarwinds.com
+  termsOfService: https://www.solarwinds.com/legal/terms
+servers:
+- url: https://{subdomain}.loggly.com/apiv2
+  description: Loggly API Server
+  variables:
+    subdomain:
+      default: logs-01
+      description: Your Loggly subdomain
+security:
+- bearerAuth: []
+tags:
+- name: Categories
+  description: Manage categories for incidents and requests
+paths:
+  /categories.json:
+    get:
+      operationId: listCategories
+      summary: Solarwinds List Categories
+      description: Returns all categories available for incidents and requests.
+      tags:
+      - Categories
+      responses:
+        '200':
+          description: List of categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+              examples:
+                Listcategories200Example:
+                  summary: Default listCategories 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: abc123
+                    name: Example Title
+                    description: A sample description.
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: abc123
+        name:
+          type: string
+          example: Example Title
+        description:
+          type: string
+          example: A sample description.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication via Authorization Bearer header
+    customerToken:
+      type: apiKey
+      in: path
+      name: token
+      description: Customer token for event submission endpoints
+externalDocs:
+  description: Loggly API Documentation
+  url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm

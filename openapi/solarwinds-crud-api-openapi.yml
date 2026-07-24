@@ -1,0 +1,185 @@
+openapi: 3.1.0
+info:
+  title: SolarWinds Loggly Account CRUD API
+  description: RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.
+  version: '2'
+  contact:
+    name: SolarWinds Support
+    url: https://support.solarwinds.com
+  termsOfService: https://www.solarwinds.com/legal/terms
+servers:
+- url: https://{subdomain}.loggly.com/apiv2
+  description: Loggly API Server
+  variables:
+    subdomain:
+      default: logs-01
+      description: Your Loggly subdomain
+security:
+- bearerAuth: []
+tags:
+- name: CRUD
+  description: Create, read, update, and delete operations on SWIS entities
+paths:
+  /Create/{entityType}:
+    post:
+      operationId: createEntity
+      summary: Solarwinds Create a New Swis Entity
+      description: Creates a new entity of the specified type in the SolarWinds Information Service. The request body contains the property values for the new entity.
+      tags:
+      - CRUD
+      parameters:
+      - $ref: '#/components/parameters/EntityType'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+            examples:
+              CreateentityRequestExample:
+                summary: Default createEntity request
+                x-microcks-default: true
+                value: {}
+      responses:
+        '200':
+          description: Entity created successfully
+          content:
+            application/json:
+              schema:
+                type: string
+                description: URI of the newly created entity
+              examples:
+                Createentity200Example:
+                  summary: Default createEntity 200 response
+                  x-microcks-default: true
+                  value: example_value
+        '400':
+          description: Invalid entity data
+        '401':
+          description: Authentication required
+        '404':
+          description: Entity type not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /{entityUri}:
+    get:
+      operationId: readEntity
+      summary: Solarwinds Read a Swis Entity
+      description: Retrieves the properties of a specific entity identified by its SWIS URI. Returns all properties of the entity as JSON.
+      tags:
+      - CRUD
+      parameters:
+      - name: entityUri
+        in: path
+        required: true
+        description: SWIS URI of the entity to read
+        schema:
+          type: string
+        example: example_value
+      responses:
+        '200':
+          description: Entity retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+              examples:
+                Readentity200Example:
+                  summary: Default readEntity 200 response
+                  x-microcks-default: true
+                  value: {}
+        '401':
+          description: Authentication required
+        '404':
+          description: Entity not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: updateEntity
+      summary: Solarwinds Update a Swis Entity
+      description: Updates the properties of an existing entity identified by its SWIS URI. Only the properties included in the request body are updated.
+      tags:
+      - CRUD
+      parameters:
+      - name: entityUri
+        in: path
+        required: true
+        description: SWIS URI of the entity to update
+        schema:
+          type: string
+        example: example_value
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+            examples:
+              UpdateentityRequestExample:
+                summary: Default updateEntity request
+                x-microcks-default: true
+                value: {}
+      responses:
+        '200':
+          description: Entity updated successfully
+        '400':
+          description: Invalid update data
+        '401':
+          description: Authentication required
+        '404':
+          description: Entity not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteEntity
+      summary: Solarwinds Delete a Swis Entity
+      description: Deletes an entity identified by its SWIS URI from the SolarWinds Information Service.
+      tags:
+      - CRUD
+      parameters:
+      - name: entityUri
+        in: path
+        required: true
+        description: SWIS URI of the entity to delete
+        schema:
+          type: string
+        example: example_value
+      responses:
+        '200':
+          description: Entity deleted successfully
+        '401':
+          description: Authentication required
+        '404':
+          description: Entity not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    EntityType:
+      name: entityType
+      in: path
+      required: true
+      description: Fully qualified SWIS entity type name
+      schema:
+        type: string
+      example: Orion.Nodes
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication via Authorization Bearer header
+    customerToken:
+      type: apiKey
+      in: path
+      name: token
+      description: Customer token for event submission endpoints
+externalDocs:
+  description: Loggly API Documentation
+  url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm

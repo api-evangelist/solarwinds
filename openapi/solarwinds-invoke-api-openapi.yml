@@ -1,0 +1,98 @@
+openapi: 3.1.0
+info:
+  title: SolarWinds Loggly Account Invoke API
+  description: RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.
+  version: '2'
+  contact:
+    name: SolarWinds Support
+    url: https://support.solarwinds.com
+  termsOfService: https://www.solarwinds.com/legal/terms
+servers:
+- url: https://{subdomain}.loggly.com/apiv2
+  description: Loggly API Server
+  variables:
+    subdomain:
+      default: logs-01
+      description: Your Loggly subdomain
+security:
+- bearerAuth: []
+tags:
+- name: Invoke
+  description: Invoke verbs (methods) on SWIS entities
+paths:
+  /Invoke/{entityType}/{verb}:
+    post:
+      operationId: invokeVerb
+      summary: Solarwinds Invoke a Verb on an Entity Type
+      description: Invokes a named verb (method) on the specified entity type. Verbs provide operations like Unmanage, Remanage, PollNow, and other management actions on monitored objects.
+      tags:
+      - Invoke
+      parameters:
+      - $ref: '#/components/parameters/EntityType'
+      - name: verb
+        in: path
+        required: true
+        description: Name of the verb to invoke
+        schema:
+          type: string
+        example: Unmanage
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: object
+              description: Arguments to pass to the verb
+            examples:
+              InvokeverbRequestExample:
+                summary: Default invokeVerb request
+                x-microcks-default: true
+                value:
+                - {}
+      responses:
+        '200':
+          description: Verb invoked successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+              examples:
+                Invokeverb200Example:
+                  summary: Default invokeVerb 200 response
+                  x-microcks-default: true
+                  value: {}
+        '400':
+          description: Invalid verb arguments
+        '401':
+          description: Authentication required
+        '404':
+          description: Entity type or verb not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    EntityType:
+      name: entityType
+      in: path
+      required: true
+      description: Fully qualified SWIS entity type name
+      schema:
+        type: string
+      example: Orion.Nodes
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication via Authorization Bearer header
+    customerToken:
+      type: apiKey
+      in: path
+      name: token
+      description: Customer token for event submission endpoints
+externalDocs:
+  description: Loggly API Documentation
+  url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm

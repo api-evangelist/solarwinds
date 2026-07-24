@@ -1,0 +1,122 @@
+openapi: 3.1.0
+info:
+  title: SolarWinds Loggly Account BulkOperations API
+  description: RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.
+  version: '2'
+  contact:
+    name: SolarWinds Support
+    url: https://support.solarwinds.com
+  termsOfService: https://www.solarwinds.com/legal/terms
+servers:
+- url: https://{subdomain}.loggly.com/apiv2
+  description: Loggly API Server
+  variables:
+    subdomain:
+      default: logs-01
+      description: Your Loggly subdomain
+security:
+- bearerAuth: []
+tags:
+- name: BulkOperations
+  description: Perform bulk create, update, and delete operations
+paths:
+  /BulkDelete:
+    post:
+      operationId: bulkDelete
+      summary: Solarwinds Delete Multiple Entities
+      description: Deletes multiple SWIS entities in a single operation. Provide an array of SWIS URIs to delete.
+      tags:
+      - BulkOperations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkDeleteRequest'
+            examples:
+              BulkdeleteRequestExample:
+                summary: Default bulkDelete request
+                x-microcks-default: true
+                value:
+                  uris:
+                  - example_value
+      responses:
+        '200':
+          description: Entities deleted successfully
+        '401':
+          description: Authentication required
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /BulkUpdate:
+    post:
+      operationId: bulkUpdate
+      summary: Solarwinds Update Multiple Entities
+      description: Updates properties on multiple SWIS entities in a single operation.
+      tags:
+      - BulkOperations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkUpdateRequest'
+            examples:
+              BulkupdateRequestExample:
+                summary: Default bulkUpdate request
+                x-microcks-default: true
+                value:
+                  uris:
+                  - example_value
+                  properties: example_value
+      responses:
+        '200':
+          description: Entities updated successfully
+        '401':
+          description: Authentication required
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    BulkUpdateRequest:
+      type: object
+      required:
+      - uris
+      - properties
+      properties:
+        uris:
+          type: array
+          description: Array of SWIS URIs to update
+          items:
+            type: string
+          example: []
+        properties:
+          type: object
+          description: Properties to set on all specified entities
+          additionalProperties: true
+          example: example_value
+    BulkDeleteRequest:
+      type: object
+      required:
+      - uris
+      properties:
+        uris:
+          type: array
+          description: Array of SWIS URIs to delete
+          items:
+            type: string
+          example: []
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication via Authorization Bearer header
+    customerToken:
+      type: apiKey
+      in: path
+      name: token
+      description: Customer token for event submission endpoints
+externalDocs:
+  description: Loggly API Documentation
+  url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm

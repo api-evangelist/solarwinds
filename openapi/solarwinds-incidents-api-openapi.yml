@@ -1,0 +1,395 @@
+openapi: 3.1.0
+info:
+  title: SolarWinds Loggly Account Incidents API
+  description: RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.
+  version: '2'
+  contact:
+    name: SolarWinds Support
+    url: https://support.solarwinds.com
+  termsOfService: https://www.solarwinds.com/legal/terms
+servers:
+- url: https://{subdomain}.loggly.com/apiv2
+  description: Loggly API Server
+  variables:
+    subdomain:
+      default: logs-01
+      description: Your Loggly subdomain
+security:
+- bearerAuth: []
+tags:
+- name: Incidents
+  description: Manage IT incidents
+paths:
+  /incidents.json:
+    get:
+      operationId: listIncidents
+      summary: Solarwinds List Incidents
+      description: Returns a paginated list of incidents in the service desk.
+      tags:
+      - Incidents
+      parameters:
+      - $ref: '#/components/parameters/Page'
+      - $ref: '#/components/parameters/PerPage'
+      responses:
+        '200':
+          description: List of incidents
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Incident'
+              examples:
+                Listincidents200Example:
+                  summary: Default listIncidents 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: abc123
+                    number: 10
+                    name: Example Title
+                    description: A sample description.
+                    state: New
+                    priority: None
+                    assignee:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    requester:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    category:
+                      id: abc123
+                      name: Example Title
+                    created_at: '2026-01-15T10:30:00Z'
+                    updated_at: '2026-01-15T10:30:00Z'
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: createIncident
+      summary: Solarwinds Create an Incident
+      description: Creates a new incident in the service desk.
+      tags:
+      - Incidents
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IncidentCreate'
+            examples:
+              CreateincidentRequestExample:
+                summary: Default createIncident request
+                x-microcks-default: true
+                value:
+                  incident:
+                    name: Example Title
+                    description: A sample description.
+                    priority: example_value
+                    assignee:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    category:
+                      id: abc123
+                      name: Example Title
+      responses:
+        '200':
+          description: Incident created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Incident'
+              examples:
+                Createincident200Example:
+                  summary: Default createIncident 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    number: 10
+                    name: Example Title
+                    description: A sample description.
+                    state: New
+                    priority: None
+                    assignee:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    requester:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    category:
+                      id: abc123
+                      name: Example Title
+                    created_at: '2026-01-15T10:30:00Z'
+                    updated_at: '2026-01-15T10:30:00Z'
+        '400':
+          description: Invalid incident data
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /incidents/{id}.json:
+    get:
+      operationId: getIncident
+      summary: Solarwinds Get an Incident
+      description: Returns detailed information about a specific incident.
+      tags:
+      - Incidents
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Incident details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Incident'
+              examples:
+                Getincident200Example:
+                  summary: Default getIncident 200 response
+                  x-microcks-default: true
+                  value:
+                    id: abc123
+                    number: 10
+                    name: Example Title
+                    description: A sample description.
+                    state: New
+                    priority: None
+                    assignee:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    requester:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+                    category:
+                      id: abc123
+                      name: Example Title
+                    created_at: '2026-01-15T10:30:00Z'
+                    updated_at: '2026-01-15T10:30:00Z'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Incident not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    put:
+      operationId: updateIncident
+      summary: Solarwinds Update an Incident
+      description: Updates the fields of an existing incident.
+      tags:
+      - Incidents
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IncidentUpdate'
+            examples:
+              UpdateincidentRequestExample:
+                summary: Default updateIncident request
+                x-microcks-default: true
+                value:
+                  incident:
+                    name: Example Title
+                    description: A sample description.
+                    state: example_value
+                    priority: example_value
+                    assignee:
+                      id: abc123
+                      name: Example Title
+                      email: user@example.com
+      responses:
+        '200':
+          description: Incident updated
+        '401':
+          description: Unauthorized
+        '404':
+          description: Incident not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    delete:
+      operationId: deleteIncident
+      summary: Solarwinds Delete an Incident
+      description: Permanently deletes an incident.
+      tags:
+      - Incidents
+      parameters:
+      - $ref: '#/components/parameters/ResourceId'
+      responses:
+        '200':
+          description: Incident deleted
+        '401':
+          description: Unauthorized
+        '404':
+          description: Incident not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Incident:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique incident identifier
+          example: abc123
+        number:
+          type: integer
+          description: Human-readable incident number
+          example: 10
+        name:
+          type: string
+          description: Incident title
+          example: Example Title
+        description:
+          type: string
+          description: Incident description
+          example: A sample description.
+        state:
+          type: string
+          description: Current state
+          enum:
+          - New
+          - Assigned
+          - Awaiting Input
+          - In Progress
+          - On Hold
+          - Resolved
+          - Closed
+          example: New
+        priority:
+          type: string
+          description: Priority level
+          enum:
+          - None
+          - Low
+          - Medium
+          - High
+          - Critical
+          example: None
+        assignee:
+          $ref: '#/components/schemas/UserRef'
+        requester:
+          $ref: '#/components/schemas/UserRef'
+        category:
+          $ref: '#/components/schemas/CategoryRef'
+        created_at:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+    UserRef:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: abc123
+        name:
+          type: string
+          example: Example Title
+        email:
+          type: string
+          example: user@example.com
+    CategoryRef:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: abc123
+        name:
+          type: string
+          example: Example Title
+    IncidentUpdate:
+      type: object
+      required:
+      - incident
+      properties:
+        incident:
+          type: object
+          properties:
+            name:
+              type: string
+            description:
+              type: string
+            state:
+              type: string
+            priority:
+              type: string
+            assignee:
+              $ref: '#/components/schemas/UserRef'
+          example: example_value
+    IncidentCreate:
+      type: object
+      required:
+      - incident
+      properties:
+        incident:
+          type: object
+          required:
+          - name
+          properties:
+            name:
+              type: string
+              description: Incident title
+            description:
+              type: string
+              description: Incident description
+            priority:
+              type: string
+              description: Priority level
+            assignee:
+              $ref: '#/components/schemas/UserRef'
+            category:
+              $ref: '#/components/schemas/CategoryRef'
+          example: example_value
+  parameters:
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique identifier of the resource
+      schema:
+        type: integer
+    Page:
+      name: page
+      in: query
+      description: Page number for pagination
+      schema:
+        type: integer
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 25
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication via Authorization Bearer header
+    customerToken:
+      type: apiKey
+      in: path
+      name: token
+      description: Customer token for event submission endpoints
+externalDocs:
+  description: Loggly API Documentation
+  url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm

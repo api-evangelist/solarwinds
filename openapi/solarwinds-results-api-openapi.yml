@@ -1,0 +1,158 @@
+openapi: 3.1.0
+info:
+  title: SolarWinds Loggly Account Results API
+  description: RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.
+  version: '2'
+  contact:
+    name: SolarWinds Support
+    url: https://support.solarwinds.com
+  termsOfService: https://www.solarwinds.com/legal/terms
+servers:
+- url: https://{subdomain}.loggly.com/apiv2
+  description: Loggly API Server
+  variables:
+    subdomain:
+      default: logs-01
+      description: Your Loggly subdomain
+security:
+- bearerAuth: []
+tags:
+- name: Results
+  description: Retrieve check results and performance data
+paths:
+  /results/{checkid}:
+    get:
+      operationId: getResults
+      summary: Solarwinds Get Raw Check Results
+      description: Returns raw test results for a specific check within a time range.
+      tags:
+      - Results
+      parameters:
+      - $ref: '#/components/parameters/CheckId'
+      - name: to
+        in: query
+        description: End of period (Unix timestamp)
+        schema:
+          type: integer
+        example: 10
+      - name: from
+        in: query
+        description: Start of period (Unix timestamp)
+        schema:
+          type: integer
+        example: 10
+      - name: limit
+        in: query
+        description: Maximum number of results
+        schema:
+          type: integer
+          default: 100
+        example: 10
+      - name: offset
+        in: query
+        description: Offset for pagination
+        schema:
+          type: integer
+          default: 0
+        example: 10
+      - name: probes
+        in: query
+        description: Filter by comma-separated probe IDs
+        schema:
+          type: string
+        example: example_value
+      - name: status
+        in: query
+        description: Filter by result status
+        schema:
+          type: string
+          enum:
+          - up
+          - down
+          - unconfirmed_down
+          - unknown
+        example: up
+      responses:
+        '200':
+          description: Check results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResultList'
+              examples:
+                Getresults200Example:
+                  summary: Default getResults 200 response
+                  x-microcks-default: true
+                  value:
+                    results:
+                    - probeid: '500123'
+                      time: 10
+                      status: example_value
+                      responsetime: 10
+                      statusdesc: example_value
+                      statusdesclong: example_value
+        '401':
+          description: Unauthorized
+        '404':
+          description: Check not found
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  parameters:
+    CheckId:
+      name: checkid
+      in: path
+      required: true
+      description: Unique identifier for the check
+      schema:
+        type: integer
+  schemas:
+    ResultList:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Result'
+          example: []
+    Result:
+      type: object
+      properties:
+        probeid:
+          type: integer
+          description: Probe server ID
+          example: '500123'
+        time:
+          type: integer
+          description: Test timestamp (Unix)
+          example: 10
+        status:
+          type: string
+          description: Result status
+          example: example_value
+        responsetime:
+          type: integer
+          description: Response time in milliseconds
+          example: 10
+        statusdesc:
+          type: string
+          description: Status description
+          example: example_value
+        statusdesclong:
+          type: string
+          description: Detailed status description
+          example: example_value
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication via Authorization Bearer header
+    customerToken:
+      type: apiKey
+      in: path
+      name: token
+      description: Customer token for event submission endpoints
+externalDocs:
+  description: Loggly API Documentation
+  url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm

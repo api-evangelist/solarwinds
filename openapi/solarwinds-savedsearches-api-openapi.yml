@@ -1,0 +1,134 @@
+openapi: 3.1.0
+info:
+  title: SolarWinds Loggly Account SavedSearches API
+  description: RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.
+  version: '2'
+  contact:
+    name: SolarWinds Support
+    url: https://support.solarwinds.com
+  termsOfService: https://www.solarwinds.com/legal/terms
+servers:
+- url: https://{subdomain}.loggly.com/apiv2
+  description: Loggly API Server
+  variables:
+    subdomain:
+      default: logs-01
+      description: Your Loggly subdomain
+security:
+- bearerAuth: []
+tags:
+- name: SavedSearches
+  description: Manage saved searches
+paths:
+  /searches.json:
+    get:
+      operationId: listSavedSearches
+      summary: Solarwinds List Saved Searches
+      description: Returns all saved searches configured in the account.
+      tags:
+      - SavedSearches
+      responses:
+        '200':
+          description: List of saved searches
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SavedSearch'
+              examples:
+                Listsavedsearches200Example:
+                  summary: Default listSavedSearches 200 response
+                  x-microcks-default: true
+                  value:
+                  - id: abc123
+                    name: Example Title
+                    query: example_value
+                    group:
+                      id: abc123
+                      name: Example Title
+                      system_wildcard: example_value
+                      systems: {}
+        '401':
+          description: Unauthorized
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Group:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: abc123
+        name:
+          type: string
+          example: Example Title
+        system_wildcard:
+          type: string
+          example: example_value
+        systems:
+          type: array
+          items:
+            $ref: '#/components/schemas/System'
+          example: []
+    System:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: System ID
+          example: abc123
+        name:
+          type: string
+          description: System name
+          example: Example Title
+        last_event_at:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
+        auto_delete:
+          type: boolean
+          example: true
+        ip_address:
+          type: string
+          example: example_value
+        hostname:
+          type: string
+          example: example_value
+        syslog:
+          type: object
+          properties:
+            hostname:
+              type: string
+            port:
+              type: integer
+          example: example_value
+    SavedSearch:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: abc123
+        name:
+          type: string
+          example: Example Title
+        query:
+          type: string
+          example: example_value
+        group:
+          $ref: '#/components/schemas/Group'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: API token for authentication via Authorization Bearer header
+    customerToken:
+      type: apiKey
+      in: path
+      name: token
+      description: Customer token for event submission endpoints
+externalDocs:
+  description: Loggly API Documentation
+  url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
