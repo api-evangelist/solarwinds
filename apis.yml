@@ -1,6 +1,19 @@
 aid: solarwinds
 name: SolarWinds
 description: A collection of APIs provided by SolarWinds for IT infrastructure management, monitoring, and observability.
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 image: https://www.solarwinds.com/sites/all/themes/solarwinds_theme/logo.png
 url: https://www.solarwinds.com/apis.json
 tags:
@@ -18,301 +31,1785 @@ modified: '2026-05-19'
 specificationVersion: '0.18'
 type: Index
 apis:
-  - aid: solarwinds:solarwinds-orion-api
-    name: SolarWinds Orion API
-    description: >-
-      RESTful API for managing and monitoring network devices, servers, and applications through the Orion Platform.
-      Provides access to the SolarWinds Information Service (SWIS) using SWQL queries via REST endpoints.
-    image: https://www.solarwinds.com/sites/default/files/orion-platform-icon.png
-    humanURL: https://www.solarwinds.com/orion-platform
-    baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
-    tags:
-      - Infrastructure Management
-      - Network Monitoring
-      - Orion
-      - SWIS
-    properties:
-      - type: Documentation
-        url: https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
-      - type: OpenAPI
-        url: openapi/solarwinds-orion-openapi.yml
-      - type: Authentication
-        url: https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
-      - type: SDKs
-        url: https://github.com/solarwinds/OrionSDK
-      - type: APIReference
-        url: https://github.com/solarwinds/OrionSDK/wiki/REST
-    contact:
-      - type: Support
-        url: https://support.solarwinds.com
-  - aid: solarwinds:solarwinds-service-desk-api
-    name: SolarWinds Service Desk API
-    description: >-
-      API for IT service management, ticketing, and help desk operations. Provides CRUD access to incidents, service
-      requests, changes, problems, releases, and asset management resources.
-    humanURL: https://www.solarwinds.com/service-desk
-    baseURL: https://{instance}.samanage.com/api
-    tags:
-      - Help Desk
-      - ITSM
-      - Service Desk
-      - Ticketing
-    properties:
-      - type: Documentation
-        url: https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
-      - type: APIReference
-        url: https://apidoc.samanage.com/
-      - type: Authentication
-        url: https://help.samanage.com/s/article/API-Authentication
-      - type: GettingStarted
-        url: https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
-      - type: OpenAPI
-        url: openapi/solarwinds-service-desk-openapi.yml
-    contact:
-      - type: Support
-        url: https://support.solarwinds.com
-  - aid: solarwinds:solarwinds-observability-api
-    name: SolarWinds Observability API
-    description: Cloud-native observability API for logs, metrics, and distributed tracing.
-    humanURL: https://www.solarwinds.com/solarwinds-observability
-    baseURL: https://api.na-01.cloud.solarwinds.com
-    tags:
-      - APM
-      - Cloud
-      - Logs
-      - Metrics
-      - Monitoring
-      - Observability
-      - Tracing
-    properties:
-      - type: Documentation
-        url: https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
-      - type: OpenAPI
-        url: https://api.na-01.cloud.solarwinds.com/v1/openapi.json
-      - type: APIReference
-        url: https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
-      - type: Authentication
-        url: https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
-      - type: SDKs
-        url: https://github.com/solarwinds
-    contact:
-      - type: Support
-        url: https://support.solarwinds.com
-  - aid: solarwinds:solarwinds-dpa-api
-    name: SolarWinds Database Performance Analyzer API
-    description: API for database monitoring and performance analysis.
-    humanURL: https://www.solarwinds.com/database-performance-analyzer
-    baseURL: https://{dpa-server}:8124/iwc/api
-    tags:
-      - Database
-      - Monitoring
-      - Performance
-      - SQL
-    properties:
-      - type: Documentation
-        url: https://documentation.solarwinds.com/en/success_center/dpa/content/dpa-integrate-api.htm
-      - type: Documentation
-        url: https://documentation.solarwinds.com/en/success_center/dpa/default.htm
-    contact:
-      - type: Support
-        url: https://support.solarwinds.com
-  - aid: solarwinds:solarwinds-npm-rest-api
-    name: SolarWinds NPM REST API
-    description: Network Performance Monitor REST API for network device monitoring.
-    humanURL: https://www.solarwinds.com/network-performance-monitor
-    baseURL: https://{npm-server}:17778/SolarWinds/InformationService/v3
-    tags:
-      - Monitoring
-      - Network
-      - Performance
-      - SNMP
-    properties:
-      - type: Documentation
-        url: https://documentation.solarwinds.com/en/success_center/npm/content/core-npm-rest-api.htm
-      - type: SDKs
-        url: https://github.com/solarwinds/OrionSDK
-    contact:
-      - type: Support
-        url: https://support.solarwinds.com
-  - aid: solarwinds:solarwinds-whd-api
-    name: SolarWinds Web Help Desk API
-    description: >-
-      REST API for creating, reading, updating, and deleting data in Web Help Desk including tickets, clients, assets,
-      and locations.
-    humanURL: https://www.solarwinds.com/web-help-desk
-    baseURL: https://{whd-server}/helpdesk/WebObjects/Helpdesk.woa/ra
-    tags:
-      - Asset Management
-      - Help Desk
-      - IT Support
-      - Ticketing
-    properties:
-      - type: Documentation
-        url: https://documentation.solarwinds.com/en/success_center/whd/content/helpdeskprogrammingrestapi.htm
-      - type: Documentation
-        url: https://documentation.solarwinds.com/archive/pdf/whd/whdapiguide.pdf
-    contact:
-      - type: Support
-        url: https://support.solarwinds.com
-  - aid: solarwinds:solarwinds-pingdom-api
-    name: SolarWinds Pingdom API
-    description: >-
-      API for website uptime monitoring, performance monitoring, and transaction checks enabling automated management of
-      checks, contacts, and reporting. Uses Bearer Token authentication for secure API access.
-    humanURL: https://www.solarwinds.com/pingdom
-    baseURL: https://api.pingdom.com/api/3.1
-    tags:
-      - Performance
-      - Synthetic Monitoring
-      - Uptime Monitoring
-      - Website Monitoring
-    properties:
-      - type: Documentation
-        url: https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
-      - type: APIReference
-        url: https://docs.pingdom.com/api/
-      - type: Authentication
-        url: https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
-      - type: OpenAPI
-        url: openapi/solarwinds-pingdom-openapi.yml
-    contact:
-      - type: Support
-        url: https://support.solarwinds.com
-  - aid: solarwinds:solarwinds-loggly-api
-    name: SolarWinds Loggly API
-    description: >-
-      RESTful API for cloud-based log management including event submission, event retrieval, search, and account
-      management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.
-    humanURL: https://www.solarwinds.com/loggly
-    baseURL: https://{subdomain}.loggly.com/apiv2
-    tags:
-      - Cloud
-      - Log Management
-      - Logging
-      - Search
-    properties:
-      - type: Documentation
-        url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
-      - type: APIReference
-        url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
-      - type: Authentication
-        url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
-      - type: GettingStarted
-        url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
-      - type: OpenAPI
-        url: openapi/solarwinds-loggly-openapi.yml
-    contact:
-      - type: Support
-        url: https://support.solarwinds.com
-  - aid: solarwinds:solarwinds-papertrail-api
-    name: SolarWinds Papertrail API
-    description: >-
-      HTTP API for cloud-based log management including searching logs, managing systems, groups, saved searches, and
-      user accounts. Provides endpoints for log search, settings management, and system configuration via token-based
-      authentication.
-    humanURL: https://www.solarwinds.com/papertrail
-    baseURL: https://papertrailapp.com/api/v1
-    tags:
-      - Cloud
-      - Log Management
-      - Logging
-      - Search
-    properties:
-      - type: Documentation
-        url: https://www.papertrail.com/help/http-api/
-      - type: APIReference
-        url: https://www.papertrail.com/help/settings-api/
-      - type: Documentation
-        url: https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
-      - type: OpenAPI
-        url: openapi/solarwinds-papertrail-openapi.yml
-    contact:
-      - type: Support
-        url: https://support.solarwinds.com
-  - aid: solarwinds:solarwinds-ipam-api
-    name: SolarWinds IPAM API
-    description: >-
-      API for IP address management providing CRUD operations for subnets, IP addresses, and DNS entries through the
-      SolarWinds Information Service.
-    humanURL: https://www.solarwinds.com/ip-address-manager
-    baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
-    tags:
-      - DHCP
-      - DNS
-      - IP Address Management
-      - IPAM
-      - Network
-    properties:
-      - type: Documentation
-        url: https://documentation.solarwinds.com/en/success_center/ipam/content/ipam_documentation.htm
-      - type: SDKs
-        url: https://github.com/solarwinds/OrionSDK
-    contact:
-      - type: Support
-        url: https://support.solarwinds.com
-  - aid: solarwinds:solarwinds-ncm-api
-    name: SolarWinds NCM API
-    description: >-
-      API for network configuration management providing automation of configuration backups, change management, and
-      compliance through the SolarWinds Information Service.
-    humanURL: https://www.solarwinds.com/network-configuration-manager
-    baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
-    tags:
-      - Automation
-      - Compliance
-      - Configuration Management
-      - Network Configuration
-    properties:
-      - type: Documentation
-        url: https://documentation.solarwinds.com/en/success_center/ncm/content/ncm_documentation.htm
-      - type: SDKs
-        url: https://github.com/solarwinds/OrionSDK
-    contact:
-      - type: Support
-        url: https://support.solarwinds.com
-  - aid: solarwinds:solarwinds-sam-api
-    name: SolarWinds SAM API
-    description: >-
-      Server and Application Monitor API for monitoring application health and performance using the API Poller feature
-      and SolarWinds Information Service.
-    humanURL: https://www.solarwinds.com/server-application-monitor
-    baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
-    tags:
-      - APM
-      - Application Monitoring
-      - Performance
-      - Server Monitoring
-    properties:
-      - type: Documentation
-        url: https://documentation.solarwinds.com/en/success_center/sam/content/sam_documentation.htm
-      - type: Documentation
-        url: https://documentation.solarwinds.com/en/success_center/sam/content/sam-api-poller-methods.htm
-      - type: SDKs
-        url: https://github.com/solarwinds/OrionSDK
-    contact:
-      - type: Support
-        url: https://support.solarwinds.com
-  - aid: solarwinds:solarwinds-appoptics-api
-    name: SolarWinds AppOptics API
-    description: >-
-      REST API for application performance monitoring providing CRUD access to metrics, dashboards, alerts, and traces.
-      Supports custom metrics submission and distributed tracing for cloud-native applications. Note: AppOptics reached
-      End of Service Life on November 30, 2025.
-    humanURL: https://documentation.solarwinds.com/en/success_center/appoptics/content/kb/custom_metrics/api.htm
-    baseURL: https://api.appoptics.com/v1
-    tags:
-      - APM
-      - Deprecated
-      - Metrics
-      - Monitoring
-      - Tracing
-    properties:
-      - type: Documentation
-        url: https://documentation.solarwinds.com/en/success_center/appoptics/content/kb/custom_metrics/api.htm
-    contact:
-      - type: Support
-        url: https://support.solarwinds.com
+- aid: solarwinds:solarwinds-dpa-api
+  name: SolarWinds Database Performance Analyzer API
+  description: API for database monitoring and performance analysis.
+  humanURL: https://www.solarwinds.com/database-performance-analyzer
+  baseURL: https://{dpa-server}:8124/iwc/api
+  tags:
+  - Database
+  - Monitoring
+  - Performance
+  - SQL
+  properties:
+  - type: Documentation
+    url: https://documentation.solarwinds.com/en/success_center/dpa/content/dpa-integrate-api.htm
+  - type: Documentation
+    url: https://documentation.solarwinds.com/en/success_center/dpa/default.htm
+  contact:
+  - type: Support
+    url: https://support.solarwinds.com
+- aid: solarwinds:solarwinds-npm-rest-api
+  name: SolarWinds NPM REST API
+  description: Network Performance Monitor REST API for network device monitoring.
+  humanURL: https://www.solarwinds.com/network-performance-monitor
+  baseURL: https://{npm-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Monitoring
+  - Network
+  - Performance
+  - SNMP
+  properties:
+  - type: Documentation
+    url: https://documentation.solarwinds.com/en/success_center/npm/content/core-npm-rest-api.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  contact:
+  - type: Support
+    url: https://support.solarwinds.com
+- aid: solarwinds:solarwinds-whd-api
+  name: SolarWinds Web Help Desk API
+  description: >-
+    REST API for creating, reading, updating, and deleting data in Web Help Desk including tickets, clients,
+    assets, and locations.
+  humanURL: https://www.solarwinds.com/web-help-desk
+  baseURL: https://{whd-server}/helpdesk/WebObjects/Helpdesk.woa/ra
+  tags:
+  - Asset Management
+  - Help Desk
+  - IT Support
+  - Ticketing
+  properties:
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/whd/content/helpdeskprogrammingrestapi.htm
+  - type: Documentation
+    url: https://documentation.solarwinds.com/archive/pdf/whd/whdapiguide.pdf
+  contact:
+  - type: Support
+    url: https://support.solarwinds.com
+- aid: solarwinds:solarwinds-ipam-api
+  name: SolarWinds IPAM API
+  description: >-
+    API for IP address management providing CRUD operations for subnets, IP addresses, and DNS entries
+    through the SolarWinds Information Service.
+  humanURL: https://www.solarwinds.com/ip-address-manager
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - DHCP
+  - DNS
+  - IP Address Management
+  - IPAM
+  - Network
+  properties:
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/ipam/content/ipam_documentation.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  contact:
+  - type: Support
+    url: https://support.solarwinds.com
+- aid: solarwinds:solarwinds-ncm-api
+  name: SolarWinds NCM API
+  description: >-
+    API for network configuration management providing automation of configuration backups, change management,
+    and compliance through the SolarWinds Information Service.
+  humanURL: https://www.solarwinds.com/network-configuration-manager
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Automation
+  - Compliance
+  - Configuration Management
+  - Network Configuration
+  properties:
+  - type: Documentation
+    url: https://documentation.solarwinds.com/en/success_center/ncm/content/ncm_documentation.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  contact:
+  - type: Support
+    url: https://support.solarwinds.com
+- aid: solarwinds:solarwinds-sam-api
+  name: SolarWinds SAM API
+  description: >-
+    Server and Application Monitor API for monitoring application health and performance using the API
+    Poller feature and SolarWinds Information Service.
+  humanURL: https://www.solarwinds.com/server-application-monitor
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - APM
+  - Application Monitoring
+  - Performance
+  - Server Monitoring
+  properties:
+  - type: Documentation
+    url: https://documentation.solarwinds.com/en/success_center/sam/content/sam_documentation.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/sam/content/sam-api-poller-methods.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  contact:
+  - type: Support
+    url: https://support.solarwinds.com
+- aid: solarwinds:solarwinds-appoptics-api
+  name: SolarWinds AppOptics API
+  description: >-
+    REST API for application performance monitoring providing CRUD access to metrics, dashboards, alerts,
+    and traces. Supports custom metrics submission and distributed tracing for cloud-native applications.
+    Note: AppOptics reached End of Service Life on November 30, 2025.
+  humanURL: >-
+    https://documentation.solarwinds.com/en/success_center/appoptics/content/kb/custom_metrics/api.htm
+  baseURL: https://api.appoptics.com/v1
+  tags:
+  - APM
+  - Deprecated
+  - Metrics
+  - Monitoring
+  - Tracing
+  properties:
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/appoptics/content/kb/custom_metrics/api.htm
+  contact:
+  - type: Support
+    url: https://support.solarwinds.com
+- aid: solarwinds:solarwinds-account-api
+  name: SolarWinds Account API
+  description: Account information and management
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Account
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-account-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-assets-api
+  name: SolarWinds Assets API
+  description: Manage hardware and software assets
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-assets-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-bulkoperations-api
+  name: SolarWinds BulkOperations API
+  description: Perform bulk create, update, and delete operations
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - BulkOperations
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-bulkoperations-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-categories-api
+  name: SolarWinds Categories API
+  description: Manage categories for incidents and requests
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-categories-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-changes-api
+  name: SolarWinds Changes API
+  description: Manage change requests
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Changes
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-changes-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-checks-api
+  name: SolarWinds Checks API
+  description: Manage uptime and transaction checks
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Checks
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-checks-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-contacts-api
+  name: SolarWinds Contacts API
+  description: Manage alert contacts
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Contacts
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-contacts-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-crud-api
+  name: SolarWinds CRUD API
+  description: Create, read, update, and delete operations on SWIS entities
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - CRUD
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-crud-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-events-api
+  name: SolarWinds Events API
+  description: Search and retrieve log events
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Events
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-events-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-groups-api
+  name: SolarWinds Groups API
+  description: Manage system groups
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-groups-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-incidents-api
+  name: SolarWinds Incidents API
+  description: Manage IT incidents
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Incidents
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-incidents-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-invoke-api
+  name: SolarWinds Invoke API
+  description: Invoke verbs (methods) on SWIS entities
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Invoke
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-invoke-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-maintenance-api
+  name: SolarWinds Maintenance API
+  description: Manage maintenance windows
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Maintenance
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-maintenance-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-probeservers-api
+  name: SolarWinds ProbeServers API
+  description: List available probe servers
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - ProbeServers
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-probeservers-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-problems-api
+  name: SolarWinds Problems API
+  description: Manage problem records
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Problems
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-problems-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-query-api
+  name: SolarWinds Query API
+  description: Execute SWQL queries against the SolarWinds Information Service
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Query
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-query-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-results-api
+  name: SolarWinds Results API
+  description: Retrieve check results and performance data
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Results
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-results-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-savedsearches-api
+  name: SolarWinds SavedSearches API
+  description: Manage saved searches
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - SavedSearches
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-savedsearches-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-search-api
+  name: SolarWinds Search API
+  description: Search and retrieve log events
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-search-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-servicerequests-api
+  name: SolarWinds ServiceRequests API
+  description: Manage service requests
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - ServiceRequests
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-servicerequests-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-summary-api
+  name: SolarWinds Summary API
+  description: Retrieve performance and outage summaries
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Summary
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-summary-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-systems-api
+  name: SolarWinds Systems API
+  description: Manage log-sending systems
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Systems
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-systems-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-teams-api
+  name: SolarWinds Teams API
+  description: Manage alert teams
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Teams
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-teams-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+- aid: solarwinds:solarwinds-users-api
+  name: SolarWinds Users API
+  description: Manage user accounts
+  humanURL: https://www.solarwinds.com/orion-platform
+  baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/solarwinds-users-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/orionplatform/content/core-swis-api-authentication.htm
+  - type: SDKs
+    url: https://github.com/solarwinds/OrionSDK
+  - type: APIReference
+    url: https://github.com/solarwinds/OrionSDK/wiki/REST
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_documentation.htm
+  - type: APIReference
+    url: https://apidoc.samanage.com/
+  - type: Authentication
+    url: https://help.samanage.com/s/article/API-Authentication
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/swsd/content/swsd_getting_started_guide.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/default.htm#cshid=api-overview
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/api/api-swagger.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/observability/content/system/api-tokens.htm
+  - type: SDKs
+    url: https://github.com/solarwinds
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/topics/the-pingdom-api.htm
+  - type: APIReference
+    url: https://docs.pingdom.com/api/
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/pingdom/content/shared/sw-unified-login.htm
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  - type: APIReference
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-retrieving-data.htm
+  - type: Authentication
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/token-based-api-authentication.htm
+  - type: GettingStarted
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-sending-data.htm
+  - type: Documentation
+    url: https://www.papertrail.com/help/http-api/
+  - type: APIReference
+    url: https://www.papertrail.com/help/settings-api/
+  - type: Documentation
+    url: >-
+      https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/solarwinds/overview
   - type: AgenticAccess
     url: agentic-access/solarwinds-agentic-access.yml
   - type: DomainSecurity
