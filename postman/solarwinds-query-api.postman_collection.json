@@ -1,0 +1,425 @@
+{
+  "info": {
+    "_postman_id": "3a3d4b9f-1550-4632-90cb-6b820ddba202",
+    "name": "SolarWinds Loggly Account Query API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:58:47.000Z",
+    "updatedAt": "2026-07-28T02:58:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-3a3d4b9f-1550-4632-90cb-6b820ddba202"
+  },
+  "item": [
+    {
+      "name": "Query",
+      "item": [
+        {
+          "name": "Solarwinds Execute a Swql Query",
+          "id": "d976ada5-4ec7-41ac-9cd7-8ffe51701e71",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/Query?query=<string>&parameters=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Query"
+              ],
+              "query": [
+                {
+                  "description": "(Required) SWQL query string",
+                  "key": "query",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Parameterized query values",
+                  "key": "parameters",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Executes a SolarWinds Query Language (SWQL) query against the SolarWinds Information Service and returns the results as JSON. SWQL is a read-only SQL-like language for querying monitored entities."
+          },
+          "response": [
+            {
+              "id": "eb1f000e-675e-4926-939e-26cd29d524a7",
+              "name": "Query executed successfully",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Query?query=<string>&parameters=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Query"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) SWQL query string",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Parameterized query values",
+                      "key": "parameters",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"results\": [\n    {\n      \"qui_d52\": \"ex irure aliquip dolore\",\n      \"enim_5fc\": 89997251.04982081,\n      \"ullamco_648\": 46420045,\n      \"amet_e\": -83065161\n    },\n    {\n      \"fugiat_ac\": false,\n      \"est_b_8\": -54918356.30287447,\n      \"ullamcoe\": -4540676\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:58:48.000Z",
+              "updatedAt": "2026-07-28T02:58:48.000Z",
+              "uid": "35240-eb1f000e-675e-4926-939e-26cd29d524a7"
+            },
+            {
+              "id": "3bd4cd09-bf38-4905-877d-b368c812606f",
+              "name": "Invalid SWQL query syntax",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Query?query=<string>&parameters=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Query"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) SWQL query string",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Parameterized query values",
+                      "key": "parameters",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:48.000Z",
+              "updatedAt": "2026-07-28T02:58:48.000Z",
+              "uid": "35240-3bd4cd09-bf38-4905-877d-b368c812606f"
+            },
+            {
+              "id": "8dd18928-8f94-4b6b-bf71-5e66f3ef904a",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/Query?query=<string>&parameters=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Query"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) SWQL query string",
+                      "key": "query",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Parameterized query values",
+                      "key": "parameters",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:48.000Z",
+              "updatedAt": "2026-07-28T02:58:48.000Z",
+              "uid": "35240-8dd18928-8f94-4b6b-bf71-5e66f3ef904a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:58:48.000Z",
+          "updatedAt": "2026-07-28T02:58:48.000Z",
+          "uid": "35240-d976ada5-4ec7-41ac-9cd7-8ffe51701e71"
+        },
+        {
+          "name": "Solarwinds Execute a Swql Query via Post",
+          "id": "3579b366-2179-429f-a569-5615965c64bc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"query\": \"<string>\",\n  \"parameters\": {\n    \"nulla_80\": -93199765.3947429,\n    \"deserunt_6\": \"ut et\",\n    \"ut_ca\": true\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/Query",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "Query"
+              ]
+            },
+            "description": "Executes a SWQL query using a POST request body. Useful for longer queries that exceed URL length limits."
+          },
+          "response": [
+            {
+              "id": "6772f6b8-b78d-4d03-af48-83bbb79b4875",
+              "name": "Query executed successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"parameters\": {\n    \"nulla_80\": -93199765.3947429,\n    \"deserunt_6\": \"ut et\",\n    \"ut_ca\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Query",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Query"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"results\": [\n    {\n      \"qui_d52\": \"ex irure aliquip dolore\",\n      \"enim_5fc\": 89997251.04982081,\n      \"ullamco_648\": 46420045,\n      \"amet_e\": -83065161\n    },\n    {\n      \"fugiat_ac\": false,\n      \"est_b_8\": -54918356.30287447,\n      \"ullamcoe\": -4540676\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:58:48.000Z",
+              "updatedAt": "2026-07-28T02:58:48.000Z",
+              "uid": "35240-6772f6b8-b78d-4d03-af48-83bbb79b4875"
+            },
+            {
+              "id": "d89bc6fd-a6a8-4363-b5a6-83d88674eca9",
+              "name": "Invalid SWQL query syntax",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"parameters\": {\n    \"nulla_80\": -93199765.3947429,\n    \"deserunt_6\": \"ut et\",\n    \"ut_ca\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Query",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Query"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:48.000Z",
+              "updatedAt": "2026-07-28T02:58:48.000Z",
+              "uid": "35240-d89bc6fd-a6a8-4363-b5a6-83d88674eca9"
+            },
+            {
+              "id": "4bcdc1da-d8ae-49d1-af6c-cc7a040bc455",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"query\": \"<string>\",\n  \"parameters\": {\n    \"nulla_80\": -93199765.3947429,\n    \"deserunt_6\": \"ut et\",\n    \"ut_ca\": true\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Query",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Query"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:48.000Z",
+              "updatedAt": "2026-07-28T02:58:48.000Z",
+              "uid": "35240-4bcdc1da-d8ae-49d1-af6c-cc7a040bc455"
+            }
+          ],
+          "createdAt": "2026-07-28T02:58:48.000Z",
+          "updatedAt": "2026-07-28T02:58:48.000Z",
+          "uid": "35240-3579b366-2179-429f-a569-5615965c64bc"
+        }
+      ],
+      "id": "cc3ff01b-aa5c-4336-a2e3-17d5567d3921",
+      "createdAt": "2026-07-28T02:58:48.000Z",
+      "updatedAt": "2026-07-28T02:58:48.000Z",
+      "uid": "35240-cc3ff01b-aa5c-4336-a2e3-17d5567d3921"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    }
+  ]
+}

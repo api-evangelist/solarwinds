@@ -1,0 +1,333 @@
+{
+  "info": {
+    "_postman_id": "6d723fb6-c673-4695-9e44-1ab02bde08fa",
+    "name": "SolarWinds Loggly Account ServiceRequests API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:58:56.000Z",
+    "updatedAt": "2026-07-28T02:58:56.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-6d723fb6-c673-4695-9e44-1ab02bde08fa"
+  },
+  "item": [
+    {
+      "name": "service_requests.json",
+      "item": [
+        {
+          "name": "Solarwinds List Service Requests",
+          "id": "94f972c1-e104-4c3c-852e-fd541d304286",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/service_requests.json?page=1&per_page=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "service_requests.json"
+              ],
+              "query": [
+                {
+                  "description": "Page number for pagination",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "Number of results per page",
+                  "key": "per_page",
+                  "value": "25"
+                }
+              ]
+            },
+            "description": "Returns a paginated list of service requests."
+          },
+          "response": [
+            {
+              "id": "43f4bf5b-8e56-4554-9426-faa5366fe90f",
+              "name": "List of service requests",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/service_requests.json?page=1&per_page=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "service_requests.json"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of results per page",
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"state\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"requester\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"created_at\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"state\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"requester\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"created_at\": \"<dateTime>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:58:56.000Z",
+              "updatedAt": "2026-07-28T02:58:56.000Z",
+              "uid": "35240-43f4bf5b-8e56-4554-9426-faa5366fe90f"
+            },
+            {
+              "id": "114cfac9-5e03-4974-9805-4d409f344149",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/service_requests.json?page=1&per_page=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "service_requests.json"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of results per page",
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:56.000Z",
+              "updatedAt": "2026-07-28T02:58:56.000Z",
+              "uid": "35240-114cfac9-5e03-4974-9805-4d409f344149"
+            }
+          ],
+          "createdAt": "2026-07-28T02:58:56.000Z",
+          "updatedAt": "2026-07-28T02:58:56.000Z",
+          "uid": "35240-94f972c1-e104-4c3c-852e-fd541d304286"
+        },
+        {
+          "name": "Solarwinds Create a Service Request",
+          "id": "c336138e-8fde-46a6-84bf-5d2731f918a8",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"service_request\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/service_requests.json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "service_requests.json"
+              ]
+            },
+            "description": "Creates a new service request."
+          },
+          "response": [
+            {
+              "id": "171b73f1-522d-4feb-8cb1-732ceec4f6bd",
+              "name": "Service request created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"service_request\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/service_requests.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "service_requests.json"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<integer>\",\n  \"number\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"requester\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"created_at\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T02:58:56.000Z",
+              "updatedAt": "2026-07-28T02:58:56.000Z",
+              "uid": "35240-171b73f1-522d-4feb-8cb1-732ceec4f6bd"
+            },
+            {
+              "id": "fbeffc83-9cc9-4993-b220-5babe3054306",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"service_request\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/service_requests.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "service_requests.json"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:56.000Z",
+              "updatedAt": "2026-07-28T02:58:56.000Z",
+              "uid": "35240-fbeffc83-9cc9-4993-b220-5babe3054306"
+            }
+          ],
+          "createdAt": "2026-07-28T02:58:56.000Z",
+          "updatedAt": "2026-07-28T02:58:56.000Z",
+          "uid": "35240-c336138e-8fde-46a6-84bf-5d2731f918a8"
+        }
+      ],
+      "id": "af5b216d-9f4e-4b29-a44d-837f831cd712",
+      "createdAt": "2026-07-28T02:58:56.000Z",
+      "updatedAt": "2026-07-28T02:58:56.000Z",
+      "uid": "35240-af5b216d-9f4e-4b29-a44d-837f831cd712"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    }
+  ]
+}

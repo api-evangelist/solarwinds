@@ -1,0 +1,314 @@
+{
+  "info": {
+    "_postman_id": "f4e7b0b0-a6c7-41c8-97a6-4b9b44a22563",
+    "name": "SolarWinds Loggly Account Groups API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:58:38.000Z",
+    "updatedAt": "2026-07-28T02:58:38.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f4e7b0b0-a6c7-41c8-97a6-4b9b44a22563"
+  },
+  "item": [
+    {
+      "name": "groups.json",
+      "item": [
+        {
+          "name": "Solarwinds List All Groups",
+          "id": "f7afbee0-bb0f-486b-a564-02741ee1f27a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/groups.json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "groups.json"
+              ]
+            },
+            "description": "Returns all system groups configured in the account."
+          },
+          "response": [
+            {
+              "id": "95e768e0-456f-4698-a1a4-c2cfda4f7153",
+              "name": "List of groups",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/groups.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups.json"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"system_wildcard\": \"<string>\",\n    \"systems\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"last_event_at\": \"<dateTime>\",\n        \"auto_delete\": \"<boolean>\",\n        \"ip_address\": \"<string>\",\n        \"hostname\": \"<string>\",\n        \"syslog\": {\n          \"hostname\": \"<string>\",\n          \"port\": \"<integer>\"\n        }\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"last_event_at\": \"<dateTime>\",\n        \"auto_delete\": \"<boolean>\",\n        \"ip_address\": \"<string>\",\n        \"hostname\": \"<string>\",\n        \"syslog\": {\n          \"hostname\": \"<string>\",\n          \"port\": \"<integer>\"\n        }\n      }\n    ]\n  },\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"system_wildcard\": \"<string>\",\n    \"systems\": [\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"last_event_at\": \"<dateTime>\",\n        \"auto_delete\": \"<boolean>\",\n        \"ip_address\": \"<string>\",\n        \"hostname\": \"<string>\",\n        \"syslog\": {\n          \"hostname\": \"<string>\",\n          \"port\": \"<integer>\"\n        }\n      },\n      {\n        \"id\": \"<integer>\",\n        \"name\": \"<string>\",\n        \"last_event_at\": \"<dateTime>\",\n        \"auto_delete\": \"<boolean>\",\n        \"ip_address\": \"<string>\",\n        \"hostname\": \"<string>\",\n        \"syslog\": {\n          \"hostname\": \"<string>\",\n          \"port\": \"<integer>\"\n        }\n      }\n    ]\n  }\n]",
+              "createdAt": "2026-07-28T02:58:38.000Z",
+              "updatedAt": "2026-07-28T02:58:38.000Z",
+              "uid": "35240-95e768e0-456f-4698-a1a4-c2cfda4f7153"
+            },
+            {
+              "id": "a05c0133-aadd-4d9e-976f-2bd69076ca0c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/groups.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups.json"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:38.000Z",
+              "updatedAt": "2026-07-28T02:58:38.000Z",
+              "uid": "35240-a05c0133-aadd-4d9e-976f-2bd69076ca0c"
+            }
+          ],
+          "createdAt": "2026-07-28T02:58:38.000Z",
+          "updatedAt": "2026-07-28T02:58:38.000Z",
+          "uid": "35240-f7afbee0-bb0f-486b-a564-02741ee1f27a"
+        }
+      ],
+      "id": "1d1b3f6a-b0c7-4747-9d37-567bbc31374f",
+      "createdAt": "2026-07-28T02:58:38.000Z",
+      "updatedAt": "2026-07-28T02:58:38.000Z",
+      "uid": "35240-1d1b3f6a-b0c7-4747-9d37-567bbc31374f"
+    },
+    {
+      "name": "groups",
+      "item": [
+        {
+          "name": "{id}.json",
+          "item": [
+            {
+              "name": "Solarwinds Get Group Details",
+              "id": "42375e38-2e6a-4c94-a3f6-8a0164d6607c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/groups/{{id}}.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "groups",
+                    "{{id}}.json"
+                  ]
+                },
+                "description": "Returns details of a specific group including its member systems."
+              },
+              "response": [
+                {
+                  "id": "a503a9c0-6e35-4d4e-87ee-a092bb3a367f",
+                  "name": "Group details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"system_wildcard\": \"<string>\",\n  \"systems\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"last_event_at\": \"<dateTime>\",\n      \"auto_delete\": \"<boolean>\",\n      \"ip_address\": \"<string>\",\n      \"hostname\": \"<string>\",\n      \"syslog\": {\n        \"hostname\": \"<string>\",\n        \"port\": \"<integer>\"\n      }\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"last_event_at\": \"<dateTime>\",\n      \"auto_delete\": \"<boolean>\",\n      \"ip_address\": \"<string>\",\n      \"hostname\": \"<string>\",\n      \"syslog\": {\n        \"hostname\": \"<string>\",\n        \"port\": \"<integer>\"\n      }\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:58:38.000Z",
+                  "updatedAt": "2026-07-28T02:58:38.000Z",
+                  "uid": "35240-a503a9c0-6e35-4d4e-87ee-a092bb3a367f"
+                },
+                {
+                  "id": "9b558007-f82b-4045-a9b7-aad059c7fc00",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:38.000Z",
+                  "updatedAt": "2026-07-28T02:58:38.000Z",
+                  "uid": "35240-9b558007-f82b-4045-a9b7-aad059c7fc00"
+                },
+                {
+                  "id": "bf3b8ba7-430b-4a47-bbe3-62b83a04d5aa",
+                  "name": "Group not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/groups/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "groups",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:38.000Z",
+                  "updatedAt": "2026-07-28T02:58:38.000Z",
+                  "uid": "35240-bf3b8ba7-430b-4a47-bbe3-62b83a04d5aa"
+                }
+              ],
+              "createdAt": "2026-07-28T02:58:38.000Z",
+              "updatedAt": "2026-07-28T02:58:38.000Z",
+              "uid": "35240-42375e38-2e6a-4c94-a3f6-8a0164d6607c"
+            }
+          ],
+          "id": "879fccb8-188b-45b8-9f78-0dd34cc40984",
+          "createdAt": "2026-07-28T02:58:38.000Z",
+          "updatedAt": "2026-07-28T02:58:38.000Z",
+          "uid": "35240-879fccb8-188b-45b8-9f78-0dd34cc40984"
+        }
+      ],
+      "id": "26e1029a-31db-45c2-ab0e-06d81c1326f9",
+      "createdAt": "2026-07-28T02:58:38.000Z",
+      "updatedAt": "2026-07-28T02:58:38.000Z",
+      "uid": "35240-26e1029a-31db-45c2-ab0e-06d81c1326f9"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    },
+    {
+      "key": "id",
+      "value": "<integer>"
+    }
+  ]
+}

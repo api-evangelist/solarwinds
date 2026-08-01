@@ -1,0 +1,518 @@
+{
+  "info": {
+    "_postman_id": "b55027c1-47af-44d7-827b-8ac33e697b5c",
+    "name": "SolarWinds Loggly Account Summary API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:58:57.000Z",
+    "updatedAt": "2026-07-28T02:58:57.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-b55027c1-47af-44d7-827b-8ac33e697b5c"
+  },
+  "item": [
+    {
+      "name": "summary.average",
+      "item": [
+        {
+          "name": "{checkid}",
+          "item": [
+            {
+              "name": "Solarwinds Get Average Response Time Summary",
+              "id": "3c557be8-9bc8-480c-8aba-81ac5f4644bf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/summary.average/:checkid?from=<integer>&to=<integer>&includeuptime=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "summary.average",
+                    ":checkid"
+                  ],
+                  "query": [
+                    {
+                      "description": "Start of period (Unix timestamp)",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "End of period (Unix timestamp)",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Include uptime information",
+                      "key": "includeuptime",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "1507ebf4-d0ae-43ee-92ff-c64f4cceea11",
+                      "key": "checkid",
+                      "value": "<integer>",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "description": "Returns average response time and uptime data for a check over a specified time period."
+              },
+              "response": [
+                {
+                  "id": "4739f49d-2bbf-4687-989c-7bbeb8ab1a14",
+                  "name": "Average summary data",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/summary.average/:checkid?from=<integer>&to=<integer>&includeuptime=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "summary.average",
+                        ":checkid"
+                      ],
+                      "query": [
+                        {
+                          "description": "Start of period (Unix timestamp)",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "End of period (Unix timestamp)",
+                          "key": "to",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Include uptime information",
+                          "key": "includeuptime",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "checkid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"summary\": {\n    \"responsetime\": {\n      \"avgresponse\": \"<integer>\"\n    },\n    \"status\": {\n      \"totalup\": \"<integer>\",\n      \"totaldown\": \"<integer>\",\n      \"totalunknown\": \"<integer>\"\n    }\n  }\n}",
+                  "createdAt": "2026-07-28T02:58:57.000Z",
+                  "updatedAt": "2026-07-28T02:58:57.000Z",
+                  "uid": "35240-4739f49d-2bbf-4687-989c-7bbeb8ab1a14"
+                },
+                {
+                  "id": "b522f540-d57b-4d15-a178-efbbf245d08f",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/summary.average/:checkid?from=<integer>&to=<integer>&includeuptime=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "summary.average",
+                        ":checkid"
+                      ],
+                      "query": [
+                        {
+                          "description": "Start of period (Unix timestamp)",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "End of period (Unix timestamp)",
+                          "key": "to",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Include uptime information",
+                          "key": "includeuptime",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "checkid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:57.000Z",
+                  "updatedAt": "2026-07-28T02:58:57.000Z",
+                  "uid": "35240-b522f540-d57b-4d15-a178-efbbf245d08f"
+                },
+                {
+                  "id": "aef0326c-d13b-4b3d-94e9-47adabdfe896",
+                  "name": "Check not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/summary.average/:checkid?from=<integer>&to=<integer>&includeuptime=false",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "summary.average",
+                        ":checkid"
+                      ],
+                      "query": [
+                        {
+                          "description": "Start of period (Unix timestamp)",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "End of period (Unix timestamp)",
+                          "key": "to",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Include uptime information",
+                          "key": "includeuptime",
+                          "value": "false"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "checkid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:57.000Z",
+                  "updatedAt": "2026-07-28T02:58:57.000Z",
+                  "uid": "35240-aef0326c-d13b-4b3d-94e9-47adabdfe896"
+                }
+              ],
+              "createdAt": "2026-07-28T02:58:57.000Z",
+              "updatedAt": "2026-07-28T02:58:57.000Z",
+              "uid": "35240-3c557be8-9bc8-480c-8aba-81ac5f4644bf"
+            }
+          ],
+          "id": "4e2d8ff9-ba22-4f34-9ac5-a1d6d51484c2",
+          "createdAt": "2026-07-28T02:58:57.000Z",
+          "updatedAt": "2026-07-28T02:58:57.000Z",
+          "uid": "35240-4e2d8ff9-ba22-4f34-9ac5-a1d6d51484c2"
+        }
+      ],
+      "id": "08130b72-5f7d-411b-a52d-79015ed4c630",
+      "createdAt": "2026-07-28T02:58:57.000Z",
+      "updatedAt": "2026-07-28T02:58:57.000Z",
+      "uid": "35240-08130b72-5f7d-411b-a52d-79015ed4c630"
+    },
+    {
+      "name": "summary.outage",
+      "item": [
+        {
+          "name": "{checkid}",
+          "item": [
+            {
+              "name": "Solarwinds Get Outage Summary",
+              "id": "a915c98c-ad24-42c1-8ea9-e1488e212942",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/summary.outage/:checkid?from=<integer>&to=<integer>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "summary.outage",
+                    ":checkid"
+                  ],
+                  "query": [
+                    {
+                      "description": "Start of period (Unix timestamp)",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "End of period (Unix timestamp)",
+                      "key": "to",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "1604dfdf-f7dd-4346-af83-4c86acd27f8d",
+                      "key": "checkid",
+                      "value": "<integer>",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "description": "Returns a list of outage periods for a specific check."
+              },
+              "response": [
+                {
+                  "id": "a8e7e510-5599-4ab2-b3ff-02203c8edbef",
+                  "name": "Outage summary",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/summary.outage/:checkid?from=<integer>&to=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "summary.outage",
+                        ":checkid"
+                      ],
+                      "query": [
+                        {
+                          "description": "Start of period (Unix timestamp)",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "End of period (Unix timestamp)",
+                          "key": "to",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "checkid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"summary\": {\n    \"states\": [\n      {\n        \"status\": \"<string>\",\n        \"timefrom\": \"<integer>\",\n        \"timeto\": \"<integer>\"\n      },\n      {\n        \"status\": \"<string>\",\n        \"timefrom\": \"<integer>\",\n        \"timeto\": \"<integer>\"\n      }\n    ]\n  }\n}",
+                  "createdAt": "2026-07-28T02:58:57.000Z",
+                  "updatedAt": "2026-07-28T02:58:57.000Z",
+                  "uid": "35240-a8e7e510-5599-4ab2-b3ff-02203c8edbef"
+                },
+                {
+                  "id": "21885824-4d69-4a2f-acbc-86a9a84df03d",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/summary.outage/:checkid?from=<integer>&to=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "summary.outage",
+                        ":checkid"
+                      ],
+                      "query": [
+                        {
+                          "description": "Start of period (Unix timestamp)",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "End of period (Unix timestamp)",
+                          "key": "to",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "checkid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:57.000Z",
+                  "updatedAt": "2026-07-28T02:58:57.000Z",
+                  "uid": "35240-21885824-4d69-4a2f-acbc-86a9a84df03d"
+                },
+                {
+                  "id": "960ad2c1-4f14-4605-bb36-e181d2065e9b",
+                  "name": "Check not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/summary.outage/:checkid?from=<integer>&to=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "summary.outage",
+                        ":checkid"
+                      ],
+                      "query": [
+                        {
+                          "description": "Start of period (Unix timestamp)",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "End of period (Unix timestamp)",
+                          "key": "to",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "checkid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:57.000Z",
+                  "updatedAt": "2026-07-28T02:58:57.000Z",
+                  "uid": "35240-960ad2c1-4f14-4605-bb36-e181d2065e9b"
+                }
+              ],
+              "createdAt": "2026-07-28T02:58:57.000Z",
+              "updatedAt": "2026-07-28T02:58:57.000Z",
+              "uid": "35240-a915c98c-ad24-42c1-8ea9-e1488e212942"
+            }
+          ],
+          "id": "ff955627-43f3-4dec-827f-400d999d2ef6",
+          "createdAt": "2026-07-28T02:58:57.000Z",
+          "updatedAt": "2026-07-28T02:58:57.000Z",
+          "uid": "35240-ff955627-43f3-4dec-827f-400d999d2ef6"
+        }
+      ],
+      "id": "7597ab2a-894c-42a6-b1bb-1d0665b68536",
+      "createdAt": "2026-07-28T02:58:57.000Z",
+      "updatedAt": "2026-07-28T02:58:57.000Z",
+      "uid": "35240-7597ab2a-894c-42a6-b1bb-1d0665b68536"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    }
+  ]
+}

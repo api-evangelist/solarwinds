@@ -1,0 +1,520 @@
+{
+  "info": {
+    "_postman_id": "0198ae9b-454e-4e2a-a618-11a2dc946f87",
+    "name": "SolarWinds Loggly Account Search API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:58:50.000Z",
+    "updatedAt": "2026-07-28T02:58:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0198ae9b-454e-4e2a-a618-11a2dc946f87"
+  },
+  "item": [
+    {
+      "name": "search",
+      "item": [
+        {
+          "name": "Solarwinds Initiate a Search Query",
+          "id": "95719165-79ef-4c13-a233-93413d28542a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/search?q=<string>&from=<string>&until=<string>&size=10&order=desc",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "search"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Search query string using Loggly search syntax",
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Start time for search (ISO 8601 or relative like -24h)",
+                  "key": "from",
+                  "value": "<string>"
+                },
+                {
+                  "description": "End time for search",
+                  "key": "until",
+                  "value": "<string>"
+                },
+                {
+                  "description": "Maximum number of events to return",
+                  "key": "size",
+                  "value": "10"
+                },
+                {
+                  "description": "Sort order",
+                  "key": "order",
+                  "value": "desc"
+                }
+              ]
+            },
+            "description": "Initiates a search query against log events. Returns a search ID (RSID) that can be used with the events endpoint to retrieve results."
+          },
+          "response": [
+            {
+              "id": "03fccac7-187a-40d0-87a4-f3e77176b6d1",
+              "name": "Search initiated",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/search?q=<string>&from=<string>&until=<string>&size=10&order=desc",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Search query string using Loggly search syntax",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Start time for search (ISO 8601 or relative like -24h)",
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "End time for search",
+                      "key": "until",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of events to return",
+                      "key": "size",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Sort order",
+                      "key": "order",
+                      "value": "desc"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"rsid\": {\n    \"id\": \"<string>\",\n    \"status\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:58:50.000Z",
+              "updatedAt": "2026-07-28T02:58:50.000Z",
+              "uid": "35240-03fccac7-187a-40d0-87a4-f3e77176b6d1"
+            },
+            {
+              "id": "cb296998-9caf-4854-a5d2-ec6731f2315a",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/search?q=<string>&from=<string>&until=<string>&size=10&order=desc",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "search"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Search query string using Loggly search syntax",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Start time for search (ISO 8601 or relative like -24h)",
+                      "key": "from",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "End time for search",
+                      "key": "until",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Maximum number of events to return",
+                      "key": "size",
+                      "value": "10"
+                    },
+                    {
+                      "description": "Sort order",
+                      "key": "order",
+                      "value": "desc"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:50.000Z",
+              "updatedAt": "2026-07-28T02:58:50.000Z",
+              "uid": "35240-cb296998-9caf-4854-a5d2-ec6731f2315a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:58:50.000Z",
+          "updatedAt": "2026-07-28T02:58:50.000Z",
+          "uid": "35240-95719165-79ef-4c13-a233-93413d28542a"
+        }
+      ],
+      "id": "0ebbfc40-062d-4373-892c-f4b3d3edc7f7",
+      "createdAt": "2026-07-28T02:58:50.000Z",
+      "updatedAt": "2026-07-28T02:58:50.000Z",
+      "uid": "35240-0ebbfc40-062d-4373-892c-f4b3d3edc7f7"
+    },
+    {
+      "name": "events",
+      "item": [
+        {
+          "name": "iterate",
+          "item": [
+            {
+              "name": "Solarwinds Iterate Through Search Results",
+              "id": "910f9536-ccd8-41f0-ae93-3540e1c0aec1",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events/iterate?rsid=<string>&next=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events",
+                    "iterate"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Result Set ID from the search endpoint",
+                      "key": "rsid",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Pagination cursor for next page",
+                      "key": "next",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Paginating event retrieval API for iterating through large result sets. Returns events and a next pointer for pagination."
+              },
+              "response": [
+                {
+                  "id": "a5eb25dc-17d4-489c-afc7-2c5c6b94c0bb",
+                  "name": "Paginated event results",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/iterate?rsid=<string>&next=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        "iterate"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Result Set ID from the search endpoint",
+                          "key": "rsid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Pagination cursor for next page",
+                          "key": "next",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"events\": [\n    {\n      \"id\": \"<string>\",\n      \"timestamp\": \"<integer>\",\n      \"logmsg\": \"<string>\",\n      \"logtypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"event\": {\n        \"et_0\": false,\n        \"commodo_2e\": 19921845,\n        \"officia7e\": \"labore\",\n        \"cillum_9_d\": -25193002\n      },\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"timestamp\": \"<integer>\",\n      \"logmsg\": \"<string>\",\n      \"logtypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"event\": {\n        \"tempor_f1f\": false\n      },\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ],\n  \"next\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T02:58:50.000Z",
+                  "updatedAt": "2026-07-28T02:58:50.000Z",
+                  "uid": "35240-a5eb25dc-17d4-489c-afc7-2c5c6b94c0bb"
+                },
+                {
+                  "id": "0d18c39c-d261-466d-a4f1-e6be3275743b",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/iterate?rsid=<string>&next=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        "iterate"
+                      ],
+                      "query": [
+                        {
+                          "description": "(Required) Result Set ID from the search endpoint",
+                          "key": "rsid",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Pagination cursor for next page",
+                          "key": "next",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:50.000Z",
+                  "updatedAt": "2026-07-28T02:58:50.000Z",
+                  "uid": "35240-0d18c39c-d261-466d-a4f1-e6be3275743b"
+                }
+              ],
+              "createdAt": "2026-07-28T02:58:50.000Z",
+              "updatedAt": "2026-07-28T02:58:50.000Z",
+              "uid": "35240-910f9536-ccd8-41f0-ae93-3540e1c0aec1"
+            }
+          ],
+          "id": "191bb224-516e-46de-a0ee-1e32bf106bdc",
+          "createdAt": "2026-07-28T02:58:50.000Z",
+          "updatedAt": "2026-07-28T02:58:50.000Z",
+          "uid": "35240-191bb224-516e-46de-a0ee-1e32bf106bdc"
+        },
+        {
+          "name": "Solarwinds Retrieve Search Results",
+          "id": "4bf6a41a-9878-485b-a741-eaff92bf1b24",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/events?rsid=<string>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "events"
+              ],
+              "query": [
+                {
+                  "description": "(Required) Result Set ID from the search endpoint",
+                  "key": "rsid",
+                  "value": "<string>"
+                }
+              ]
+            },
+            "description": "Retrieves events for a previously initiated search using the RSID returned by the search endpoint."
+          },
+          "response": [
+            {
+              "id": "0c7c06d0-5252-4229-b191-0bb31c3f4e68",
+              "name": "Event results",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events?rsid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Result Set ID from the search endpoint",
+                      "key": "rsid",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"total_events\": \"<integer>\",\n  \"page\": \"<integer>\",\n  \"events\": [\n    {\n      \"id\": \"<string>\",\n      \"timestamp\": \"<integer>\",\n      \"logmsg\": \"<string>\",\n      \"logtypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"event\": {\n        \"sed0d\": false\n      },\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"timestamp\": \"<integer>\",\n      \"logmsg\": \"<string>\",\n      \"logtypes\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"event\": {\n        \"enim60\": 32836295.65836534,\n        \"ipsum_3db\": 15739570.8918235,\n        \"ipsum286\": -97893851,\n        \"sit_11a\": -17491165,\n        \"est_e7e\": true\n      },\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:58:50.000Z",
+              "updatedAt": "2026-07-28T02:58:50.000Z",
+              "uid": "35240-0c7c06d0-5252-4229-b191-0bb31c3f4e68"
+            },
+            {
+              "id": "d1b6a222-84aa-4304-91d4-ae644aa53880",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events?rsid=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events"
+                  ],
+                  "query": [
+                    {
+                      "description": "(Required) Result Set ID from the search endpoint",
+                      "key": "rsid",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:50.000Z",
+              "updatedAt": "2026-07-28T02:58:50.000Z",
+              "uid": "35240-d1b6a222-84aa-4304-91d4-ae644aa53880"
+            }
+          ],
+          "createdAt": "2026-07-28T02:58:50.000Z",
+          "updatedAt": "2026-07-28T02:58:50.000Z",
+          "uid": "35240-4bf6a41a-9878-485b-a741-eaff92bf1b24"
+        }
+      ],
+      "id": "c1f3bd43-9764-42e8-95fd-c0c3a397a250",
+      "createdAt": "2026-07-28T02:58:50.000Z",
+      "updatedAt": "2026-07-28T02:58:50.000Z",
+      "uid": "35240-c1f3bd43-9764-42e8-95fd-c0c3a397a250"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "info": {
+    "_postman_id": "45d405de-7f97-48c2-9c91-f0d6c08066c6",
+    "name": "SolarWinds Loggly Account Contacts API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:58:35.000Z",
+    "updatedAt": "2026-07-28T02:58:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-45d405de-7f97-48c2-9c91-f0d6c08066c6"
+  },
+  "item": [
+    {
+      "name": "alerting",
+      "item": [
+        {
+          "name": "contacts",
+          "item": [
+            {
+              "name": "Solarwinds List Alert Contacts",
+              "id": "bac33c0e-3bba-4590-b5de-23432228161f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/alerting/contacts",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "alerting",
+                    "contacts"
+                  ]
+                },
+                "description": "Returns all alert contacts configured in the account."
+              },
+              "response": [
+                {
+                  "id": "a76b167d-5ad7-4b9c-a979-68497c943667",
+                  "name": "List of contacts",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/alerting/contacts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alerting",
+                        "contacts"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"contacts\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"notification_targets\": {}\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"notification_targets\": {}\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:58:35.000Z",
+                  "updatedAt": "2026-07-28T02:58:35.000Z",
+                  "uid": "35240-a76b167d-5ad7-4b9c-a979-68497c943667"
+                },
+                {
+                  "id": "50f5efda-eba2-4e5f-90ec-8458e1d13c85",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/alerting/contacts",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alerting",
+                        "contacts"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:35.000Z",
+                  "updatedAt": "2026-07-28T02:58:35.000Z",
+                  "uid": "35240-50f5efda-eba2-4e5f-90ec-8458e1d13c85"
+                }
+              ],
+              "createdAt": "2026-07-28T02:58:35.000Z",
+              "updatedAt": "2026-07-28T02:58:35.000Z",
+              "uid": "35240-bac33c0e-3bba-4590-b5de-23432228161f"
+            }
+          ],
+          "id": "5ffa4d4c-41b7-468c-a3ad-7cf1ae13095a",
+          "createdAt": "2026-07-28T02:58:35.000Z",
+          "updatedAt": "2026-07-28T02:58:35.000Z",
+          "uid": "35240-5ffa4d4c-41b7-468c-a3ad-7cf1ae13095a"
+        }
+      ],
+      "id": "2c2dc3e9-1b72-40de-929e-7e0d52d4b41e",
+      "createdAt": "2026-07-28T02:58:35.000Z",
+      "updatedAt": "2026-07-28T02:58:35.000Z",
+      "uid": "35240-2c2dc3e9-1b72-40de-929e-7e0d52d4b41e"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    }
+  ]
+}

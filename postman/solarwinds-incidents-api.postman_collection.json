@@ -1,0 +1,860 @@
+{
+  "info": {
+    "_postman_id": "1ecddcc7-143f-4d82-a75e-904198cb9e94",
+    "name": "SolarWinds Loggly Account Incidents API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:58:39.000Z",
+    "updatedAt": "2026-07-28T02:58:39.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1ecddcc7-143f-4d82-a75e-904198cb9e94"
+  },
+  "item": [
+    {
+      "name": "incidents.json",
+      "item": [
+        {
+          "name": "Solarwinds List Incidents",
+          "id": "4095499c-fd97-4757-b277-68c86c8309cb",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/incidents.json?page=1&per_page=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "incidents.json"
+              ],
+              "query": [
+                {
+                  "description": "Page number for pagination",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "Number of results per page",
+                  "key": "per_page",
+                  "value": "25"
+                }
+              ]
+            },
+            "description": "Returns a paginated list of incidents in the service desk."
+          },
+          "response": [
+            {
+              "id": "ddf43967-59b9-4f96-8ce9-384d9f66bed5",
+              "name": "List of incidents",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/incidents.json?page=1&per_page=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "incidents.json"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of results per page",
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"state\": \"Resolved\",\n    \"priority\": \"None\",\n    \"assignee\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"requester\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"category\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"state\": \"Awaiting Input\",\n    \"priority\": \"High\",\n    \"assignee\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"requester\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"category\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    \"created_at\": \"<dateTime>\",\n    \"updated_at\": \"<dateTime>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:58:40.000Z",
+              "updatedAt": "2026-07-28T02:58:40.000Z",
+              "uid": "35240-ddf43967-59b9-4f96-8ce9-384d9f66bed5"
+            },
+            {
+              "id": "52c4b231-6703-492c-bc9e-c1f7dde088b0",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/incidents.json?page=1&per_page=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "incidents.json"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of results per page",
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:40.000Z",
+              "updatedAt": "2026-07-28T02:58:40.000Z",
+              "uid": "35240-52c4b231-6703-492c-bc9e-c1f7dde088b0"
+            }
+          ],
+          "createdAt": "2026-07-28T02:58:39.000Z",
+          "updatedAt": "2026-07-28T02:58:39.000Z",
+          "uid": "35240-4095499c-fd97-4757-b277-68c86c8309cb"
+        },
+        {
+          "name": "Solarwinds Create an Incident",
+          "id": "faacb724-507e-4df2-9021-6669a5b4609c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"incident\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"assignee\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"category\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/incidents.json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "incidents.json"
+              ]
+            },
+            "description": "Creates a new incident in the service desk."
+          },
+          "response": [
+            {
+              "id": "35e8e744-a75e-4057-af80-af0072c1e80d",
+              "name": "Incident created",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"incident\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"assignee\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"category\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/incidents.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "incidents.json"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<integer>\",\n  \"number\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"Closed\",\n  \"priority\": \"Critical\",\n  \"assignee\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"requester\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"category\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\"\n  },\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+              "createdAt": "2026-07-28T02:58:40.000Z",
+              "updatedAt": "2026-07-28T02:58:40.000Z",
+              "uid": "35240-35e8e744-a75e-4057-af80-af0072c1e80d"
+            },
+            {
+              "id": "8fea14db-24c4-4664-b9b3-c65dfd6fdf8b",
+              "name": "Invalid incident data",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"incident\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"assignee\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"category\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/incidents.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "incidents.json"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:40.000Z",
+              "updatedAt": "2026-07-28T02:58:40.000Z",
+              "uid": "35240-8fea14db-24c4-4664-b9b3-c65dfd6fdf8b"
+            },
+            {
+              "id": "c7aaa0d6-8662-4163-97e7-0d28a0f42f7f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"incident\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"assignee\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    },\n    \"category\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/incidents.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "incidents.json"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:40.000Z",
+              "updatedAt": "2026-07-28T02:58:40.000Z",
+              "uid": "35240-c7aaa0d6-8662-4163-97e7-0d28a0f42f7f"
+            }
+          ],
+          "createdAt": "2026-07-28T02:58:39.000Z",
+          "updatedAt": "2026-07-28T02:58:39.000Z",
+          "uid": "35240-faacb724-507e-4df2-9021-6669a5b4609c"
+        }
+      ],
+      "id": "3c8fdd81-32d7-4caf-8b35-0d724fa2acd8",
+      "createdAt": "2026-07-28T02:58:39.000Z",
+      "updatedAt": "2026-07-28T02:58:39.000Z",
+      "uid": "35240-3c8fdd81-32d7-4caf-8b35-0d724fa2acd8"
+    },
+    {
+      "name": "incidents",
+      "item": [
+        {
+          "name": "{id}.json",
+          "item": [
+            {
+              "name": "Solarwinds Get an Incident",
+              "id": "8d6dedf6-84ae-4179-a476-a36486670292",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/incidents/{{id}}.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "incidents",
+                    "{{id}}.json"
+                  ]
+                },
+                "description": "Returns detailed information about a specific incident."
+              },
+              "response": [
+                {
+                  "id": "fa53799c-cb44-4f8b-975c-ad9dcccfab2e",
+                  "name": "Incident details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/incidents/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "incidents",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"number\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"state\": \"Closed\",\n  \"priority\": \"Critical\",\n  \"assignee\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"requester\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"email\": \"<string>\"\n  },\n  \"category\": {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\"\n  },\n  \"created_at\": \"<dateTime>\",\n  \"updated_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:58:40.000Z",
+                  "updatedAt": "2026-07-28T02:58:40.000Z",
+                  "uid": "35240-fa53799c-cb44-4f8b-975c-ad9dcccfab2e"
+                },
+                {
+                  "id": "0f4c84a9-96ea-4f04-893d-9004dbfed354",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/incidents/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "incidents",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:40.000Z",
+                  "updatedAt": "2026-07-28T02:58:40.000Z",
+                  "uid": "35240-0f4c84a9-96ea-4f04-893d-9004dbfed354"
+                },
+                {
+                  "id": "04283e75-77b5-4b3d-9e19-04f1b45b98cd",
+                  "name": "Incident not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/incidents/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "incidents",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:40.000Z",
+                  "updatedAt": "2026-07-28T02:58:40.000Z",
+                  "uid": "35240-04283e75-77b5-4b3d-9e19-04f1b45b98cd"
+                }
+              ],
+              "createdAt": "2026-07-28T02:58:39.000Z",
+              "updatedAt": "2026-07-28T02:58:39.000Z",
+              "uid": "35240-8d6dedf6-84ae-4179-a476-a36486670292"
+            },
+            {
+              "name": "Solarwinds Update an Incident",
+              "id": "a4dc0c0b-a18d-4be1-8769-011425103945",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"incident\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"state\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"assignee\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/incidents/{{id}}.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "incidents",
+                    "{{id}}.json"
+                  ]
+                },
+                "description": "Updates the fields of an existing incident."
+              },
+              "response": [
+                {
+                  "id": "ba7d9d13-b74e-460d-b598-e73c6f331841",
+                  "name": "Incident updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"incident\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"state\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"assignee\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/incidents/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "incidents",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:40.000Z",
+                  "updatedAt": "2026-07-28T02:58:40.000Z",
+                  "uid": "35240-ba7d9d13-b74e-460d-b598-e73c6f331841"
+                },
+                {
+                  "id": "93c6ee34-5477-4aa0-b625-7291869dc7ba",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"incident\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"state\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"assignee\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/incidents/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "incidents",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:40.000Z",
+                  "updatedAt": "2026-07-28T02:58:40.000Z",
+                  "uid": "35240-93c6ee34-5477-4aa0-b625-7291869dc7ba"
+                },
+                {
+                  "id": "b577dde7-944a-4049-ab40-276c0974c2ff",
+                  "name": "Incident not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"incident\": {\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"state\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"assignee\": {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\",\n      \"email\": \"<string>\"\n    }\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/incidents/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "incidents",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:40.000Z",
+                  "updatedAt": "2026-07-28T02:58:40.000Z",
+                  "uid": "35240-b577dde7-944a-4049-ab40-276c0974c2ff"
+                }
+              ],
+              "createdAt": "2026-07-28T02:58:39.000Z",
+              "updatedAt": "2026-07-28T02:58:39.000Z",
+              "uid": "35240-a4dc0c0b-a18d-4be1-8769-011425103945"
+            },
+            {
+              "name": "Solarwinds Delete an Incident",
+              "id": "ae781ecd-5b02-410b-aa37-f8c5759a7170",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/incidents/{{id}}.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "incidents",
+                    "{{id}}.json"
+                  ]
+                },
+                "description": "Permanently deletes an incident."
+              },
+              "response": [
+                {
+                  "id": "b5483ea1-38f1-4157-953f-004880069472",
+                  "name": "Incident deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/incidents/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "incidents",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:40.000Z",
+                  "updatedAt": "2026-07-28T02:58:40.000Z",
+                  "uid": "35240-b5483ea1-38f1-4157-953f-004880069472"
+                },
+                {
+                  "id": "5bb185b7-d740-4221-bb3d-d920e81c8783",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/incidents/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "incidents",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:40.000Z",
+                  "updatedAt": "2026-07-28T02:58:40.000Z",
+                  "uid": "35240-5bb185b7-d740-4221-bb3d-d920e81c8783"
+                },
+                {
+                  "id": "51cd4a94-7d10-4f35-bf54-73421fa4b198",
+                  "name": "Incident not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/incidents/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "incidents",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:40.000Z",
+                  "updatedAt": "2026-07-28T02:58:40.000Z",
+                  "uid": "35240-51cd4a94-7d10-4f35-bf54-73421fa4b198"
+                }
+              ],
+              "createdAt": "2026-07-28T02:58:39.000Z",
+              "updatedAt": "2026-07-28T02:58:39.000Z",
+              "uid": "35240-ae781ecd-5b02-410b-aa37-f8c5759a7170"
+            }
+          ],
+          "id": "5f3cd89d-7d2e-4039-ba7d-52c1d73d294a",
+          "createdAt": "2026-07-28T02:58:39.000Z",
+          "updatedAt": "2026-07-28T02:58:39.000Z",
+          "uid": "35240-5f3cd89d-7d2e-4039-ba7d-52c1d73d294a"
+        }
+      ],
+      "id": "3b040d8e-104b-4d33-b7ff-88e5279cb602",
+      "createdAt": "2026-07-28T02:58:39.000Z",
+      "updatedAt": "2026-07-28T02:58:39.000Z",
+      "uid": "35240-3b040d8e-104b-4d33-b7ff-88e5279cb602"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    },
+    {
+      "key": "id",
+      "value": "<integer>"
+    }
+  ]
+}

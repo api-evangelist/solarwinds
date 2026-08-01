@@ -1,0 +1,346 @@
+{
+  "info": {
+    "_postman_id": "de14e031-c6a0-41ad-90c9-3030ce9a647d",
+    "name": "SolarWinds Loggly Account Results API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:58:48.000Z",
+    "updatedAt": "2026-07-28T02:58:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-de14e031-c6a0-41ad-90c9-3030ce9a647d"
+  },
+  "item": [
+    {
+      "name": "results",
+      "item": [
+        {
+          "name": "{checkid}",
+          "item": [
+            {
+              "name": "Solarwinds Get Raw Check Results",
+              "id": "9ec7dcd0-1857-4ac1-a88f-b9c82fe0e0cf",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/results/:checkid?to=<integer>&from=<integer>&limit=100&offset=0&probes=<string>&status=unknown",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "results",
+                    ":checkid"
+                  ],
+                  "query": [
+                    {
+                      "description": "End of period (Unix timestamp)",
+                      "key": "to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Start of period (Unix timestamp)",
+                      "key": "from",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Maximum number of results",
+                      "key": "limit",
+                      "value": "100"
+                    },
+                    {
+                      "description": "Offset for pagination",
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "description": "Filter by comma-separated probe IDs",
+                      "key": "probes",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Filter by result status",
+                      "key": "status",
+                      "value": "unknown"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "50657f20-029b-45f6-8b2a-15a1b18d8c92",
+                      "key": "checkid",
+                      "value": "<integer>",
+                      "description": "(Required) Unique identifier for the check"
+                    }
+                  ]
+                },
+                "description": "Returns raw test results for a specific check within a time range."
+              },
+              "response": [
+                {
+                  "id": "b4a4aac6-4e34-43ed-b00e-49df54874e6c",
+                  "name": "Check results",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/results/:checkid?to=<integer>&from=<integer>&limit=100&offset=0&probes=<string>&status=unknown",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "results",
+                        ":checkid"
+                      ],
+                      "query": [
+                        {
+                          "description": "End of period (Unix timestamp)",
+                          "key": "to",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Start of period (Unix timestamp)",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of results",
+                          "key": "limit",
+                          "value": "100"
+                        },
+                        {
+                          "description": "Offset for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Filter by comma-separated probe IDs",
+                          "key": "probes",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by result status",
+                          "key": "status",
+                          "value": "unknown"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "checkid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"results\": [\n    {\n      \"probeid\": \"<integer>\",\n      \"time\": \"<integer>\",\n      \"status\": \"<string>\",\n      \"responsetime\": \"<integer>\",\n      \"statusdesc\": \"<string>\",\n      \"statusdesclong\": \"<string>\"\n    },\n    {\n      \"probeid\": \"<integer>\",\n      \"time\": \"<integer>\",\n      \"status\": \"<string>\",\n      \"responsetime\": \"<integer>\",\n      \"statusdesc\": \"<string>\",\n      \"statusdesclong\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:58:49.000Z",
+                  "updatedAt": "2026-07-28T02:58:49.000Z",
+                  "uid": "35240-b4a4aac6-4e34-43ed-b00e-49df54874e6c"
+                },
+                {
+                  "id": "33bdd4f4-92b9-4ac7-a2b1-3cd6aa0e9605",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/results/:checkid?to=<integer>&from=<integer>&limit=100&offset=0&probes=<string>&status=unknown",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "results",
+                        ":checkid"
+                      ],
+                      "query": [
+                        {
+                          "description": "End of period (Unix timestamp)",
+                          "key": "to",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Start of period (Unix timestamp)",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of results",
+                          "key": "limit",
+                          "value": "100"
+                        },
+                        {
+                          "description": "Offset for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Filter by comma-separated probe IDs",
+                          "key": "probes",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by result status",
+                          "key": "status",
+                          "value": "unknown"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "checkid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:49.000Z",
+                  "updatedAt": "2026-07-28T02:58:49.000Z",
+                  "uid": "35240-33bdd4f4-92b9-4ac7-a2b1-3cd6aa0e9605"
+                },
+                {
+                  "id": "b55a9b2c-38f0-4a56-a5e1-1861e7d0aa29",
+                  "name": "Check not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/results/:checkid?to=<integer>&from=<integer>&limit=100&offset=0&probes=<string>&status=unknown",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "results",
+                        ":checkid"
+                      ],
+                      "query": [
+                        {
+                          "description": "End of period (Unix timestamp)",
+                          "key": "to",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Start of period (Unix timestamp)",
+                          "key": "from",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of results",
+                          "key": "limit",
+                          "value": "100"
+                        },
+                        {
+                          "description": "Offset for pagination",
+                          "key": "offset",
+                          "value": "0"
+                        },
+                        {
+                          "description": "Filter by comma-separated probe IDs",
+                          "key": "probes",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Filter by result status",
+                          "key": "status",
+                          "value": "unknown"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "checkid"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:49.000Z",
+                  "updatedAt": "2026-07-28T02:58:49.000Z",
+                  "uid": "35240-b55a9b2c-38f0-4a56-a5e1-1861e7d0aa29"
+                }
+              ],
+              "createdAt": "2026-07-28T02:58:49.000Z",
+              "updatedAt": "2026-07-28T02:58:49.000Z",
+              "uid": "35240-9ec7dcd0-1857-4ac1-a88f-b9c82fe0e0cf"
+            }
+          ],
+          "id": "5bec3dc0-044d-4c6e-a2ea-ad662d6f6be4",
+          "createdAt": "2026-07-28T02:58:49.000Z",
+          "updatedAt": "2026-07-28T02:58:49.000Z",
+          "uid": "35240-5bec3dc0-044d-4c6e-a2ea-ad662d6f6be4"
+        }
+      ],
+      "id": "4d0aa11d-d6d3-4e0b-b9fd-19bffbf498e5",
+      "createdAt": "2026-07-28T02:58:49.000Z",
+      "updatedAt": "2026-07-28T02:58:49.000Z",
+      "uid": "35240-4d0aa11d-d6d3-4e0b-b9fd-19bffbf498e5"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    }
+  ]
+}

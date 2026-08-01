@@ -1,0 +1,185 @@
+{
+  "info": {
+    "_postman_id": "bae8c2c1-a132-4d40-8793-e3038c5b3ae5",
+    "name": "SolarWinds Loggly Account Problems API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:58:46.000Z",
+    "updatedAt": "2026-07-28T02:58:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bae8c2c1-a132-4d40-8793-e3038c5b3ae5"
+  },
+  "item": [
+    {
+      "name": "problems.json",
+      "item": [
+        {
+          "name": "Solarwinds List Problems",
+          "id": "b3b0a2af-d0a8-4278-bc46-47a172ed2469",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/problems.json?page=1&per_page=25",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "problems.json"
+              ],
+              "query": [
+                {
+                  "description": "Page number for pagination",
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "description": "Number of results per page",
+                  "key": "per_page",
+                  "value": "25"
+                }
+              ]
+            },
+            "description": "Returns a paginated list of problem records."
+          },
+          "response": [
+            {
+              "id": "eacb1078-b6ed-4ea1-a85c-f4b0dc6a8eb8",
+              "name": "List of problems",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/problems.json?page=1&per_page=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "problems.json"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of results per page",
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"state\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"created_at\": \"<dateTime>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"number\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"state\": \"<string>\",\n    \"priority\": \"<string>\",\n    \"created_at\": \"<dateTime>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:58:47.000Z",
+              "updatedAt": "2026-07-28T02:58:47.000Z",
+              "uid": "35240-eacb1078-b6ed-4ea1-a85c-f4b0dc6a8eb8"
+            },
+            {
+              "id": "06ee68db-ea5b-44f5-ab9c-e93da90feb0f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/problems.json?page=1&per_page=25",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "problems.json"
+                  ],
+                  "query": [
+                    {
+                      "description": "Page number for pagination",
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "description": "Number of results per page",
+                      "key": "per_page",
+                      "value": "25"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:47.000Z",
+              "updatedAt": "2026-07-28T02:58:47.000Z",
+              "uid": "35240-06ee68db-ea5b-44f5-ab9c-e93da90feb0f"
+            }
+          ],
+          "createdAt": "2026-07-28T02:58:47.000Z",
+          "updatedAt": "2026-07-28T02:58:47.000Z",
+          "uid": "35240-b3b0a2af-d0a8-4278-bc46-47a172ed2469"
+        }
+      ],
+      "id": "6c53def8-2aec-446c-9b0b-08b95090a8e0",
+      "createdAt": "2026-07-28T02:58:47.000Z",
+      "updatedAt": "2026-07-28T02:58:47.000Z",
+      "uid": "35240-6c53def8-2aec-446c-9b0b-08b95090a8e0"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    }
+  ]
+}

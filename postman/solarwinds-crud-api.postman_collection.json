@@ -1,0 +1,903 @@
+{
+  "info": {
+    "_postman_id": "20fd6d59-93f8-4e41-acd6-3e298ca6d606",
+    "name": "SolarWinds Loggly Account CRUD API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:58:36.000Z",
+    "updatedAt": "2026-07-28T02:58:36.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-20fd6d59-93f8-4e41-acd6-3e298ca6d606"
+  },
+  "item": [
+    {
+      "name": "Create",
+      "item": [
+        {
+          "name": "{entityType}",
+          "item": [
+            {
+              "name": "Solarwinds Create a New Swis Entity",
+              "id": "81ad9e20-be6b-442c-994b-d60d27cb17c9",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mollit8\": 13907550.429936454,\n  \"ipsum_b\": 41842380,\n  \"dolor_7e\": true\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/Create/:entityType",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "Create",
+                    ":entityType"
+                  ],
+                  "variable": [
+                    {
+                      "id": "436080d0-b8f5-4cff-92aa-35645921a944",
+                      "key": "entityType",
+                      "value": "<string>",
+                      "description": "(Required) Fully qualified SWIS entity type name"
+                    }
+                  ]
+                },
+                "description": "Creates a new entity of the specified type in the SolarWinds Information Service. The request body contains the property values for the new entity."
+              },
+              "response": [
+                {
+                  "id": "610a0978-454c-433b-9885-ed04e5e17155",
+                  "name": "Entity created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"mollit8\": 13907550.429936454,\n  \"ipsum_b\": 41842380,\n  \"dolor_7e\": true\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Create/:entityType",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Create",
+                        ":entityType"
+                      ],
+                      "variable": [
+                        {
+                          "key": "entityType"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "<string>",
+                  "createdAt": "2026-07-28T02:58:37.000Z",
+                  "updatedAt": "2026-07-28T02:58:37.000Z",
+                  "uid": "35240-610a0978-454c-433b-9885-ed04e5e17155"
+                },
+                {
+                  "id": "6e30b5b4-c770-4d9b-aa7b-3d784540bb81",
+                  "name": "Invalid entity data",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"mollit8\": 13907550.429936454,\n  \"ipsum_b\": 41842380,\n  \"dolor_7e\": true\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Create/:entityType",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Create",
+                        ":entityType"
+                      ],
+                      "variable": [
+                        {
+                          "key": "entityType"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:37.000Z",
+                  "updatedAt": "2026-07-28T02:58:37.000Z",
+                  "uid": "35240-6e30b5b4-c770-4d9b-aa7b-3d784540bb81"
+                },
+                {
+                  "id": "e7d060e3-388e-4833-96d7-dddc6da997a6",
+                  "name": "Authentication required",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"mollit8\": 13907550.429936454,\n  \"ipsum_b\": 41842380,\n  \"dolor_7e\": true\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Create/:entityType",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Create",
+                        ":entityType"
+                      ],
+                      "variable": [
+                        {
+                          "key": "entityType"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:37.000Z",
+                  "updatedAt": "2026-07-28T02:58:37.000Z",
+                  "uid": "35240-e7d060e3-388e-4833-96d7-dddc6da997a6"
+                },
+                {
+                  "id": "719c9ce0-cef0-4d92-88b0-e6be43d73015",
+                  "name": "Entity type not found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"mollit8\": 13907550.429936454,\n  \"ipsum_b\": 41842380,\n  \"dolor_7e\": true\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/Create/:entityType",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "Create",
+                        ":entityType"
+                      ],
+                      "variable": [
+                        {
+                          "key": "entityType"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:37.000Z",
+                  "updatedAt": "2026-07-28T02:58:37.000Z",
+                  "uid": "35240-719c9ce0-cef0-4d92-88b0-e6be43d73015"
+                }
+              ],
+              "createdAt": "2026-07-28T02:58:37.000Z",
+              "updatedAt": "2026-07-28T02:58:37.000Z",
+              "uid": "35240-81ad9e20-be6b-442c-994b-d60d27cb17c9"
+            }
+          ],
+          "id": "b8e4daae-1695-4b73-9cf6-f7ba2e5d8fb8",
+          "createdAt": "2026-07-28T02:58:37.000Z",
+          "updatedAt": "2026-07-28T02:58:37.000Z",
+          "uid": "35240-b8e4daae-1695-4b73-9cf6-f7ba2e5d8fb8"
+        }
+      ],
+      "id": "db037b9c-f6bd-47d4-84d5-5ff945700610",
+      "createdAt": "2026-07-28T02:58:37.000Z",
+      "updatedAt": "2026-07-28T02:58:37.000Z",
+      "uid": "35240-db037b9c-f6bd-47d4-84d5-5ff945700610"
+    },
+    {
+      "name": "{entityUri}",
+      "item": [
+        {
+          "name": "Solarwinds Read a Swis Entity",
+          "id": "8f06f70c-e462-4899-83a3-aa3f2d4a5d04",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/:entityUri",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":entityUri"
+              ],
+              "variable": [
+                {
+                  "id": "c8e7c5f8-3ef5-4595-829f-ac647a1ac938",
+                  "key": "entityUri",
+                  "value": "<string>",
+                  "description": "(Required) SWIS URI of the entity to read"
+                }
+              ]
+            },
+            "description": "Retrieves the properties of a specific entity identified by its SWIS URI. Returns all properties of the entity as JSON."
+          },
+          "response": [
+            {
+              "id": "ad31f6ac-2acd-4633-baac-cefeb3ba6dd7",
+              "name": "Entity retrieved successfully",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:entityUri",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "variable": [
+                    {
+                      "key": "entityUri"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"mollit8\": 13907550.429936454,\n  \"ipsum_b\": 41842380,\n  \"dolor_7e\": true\n}",
+              "createdAt": "2026-07-28T02:58:37.000Z",
+              "updatedAt": "2026-07-28T02:58:37.000Z",
+              "uid": "35240-ad31f6ac-2acd-4633-baac-cefeb3ba6dd7"
+            },
+            {
+              "id": "4c3214dc-2923-4f01-a48c-8bf685166d93",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:entityUri",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "variable": [
+                    {
+                      "key": "entityUri"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:37.000Z",
+              "updatedAt": "2026-07-28T02:58:37.000Z",
+              "uid": "35240-4c3214dc-2923-4f01-a48c-8bf685166d93"
+            },
+            {
+              "id": "29c591d9-a388-4cd3-aeda-0e18d3d84190",
+              "name": "Entity not found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:entityUri",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "variable": [
+                    {
+                      "key": "entityUri"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:37.000Z",
+              "updatedAt": "2026-07-28T02:58:37.000Z",
+              "uid": "35240-29c591d9-a388-4cd3-aeda-0e18d3d84190"
+            }
+          ],
+          "createdAt": "2026-07-28T02:58:37.000Z",
+          "updatedAt": "2026-07-28T02:58:37.000Z",
+          "uid": "35240-8f06f70c-e462-4899-83a3-aa3f2d4a5d04"
+        },
+        {
+          "name": "Solarwinds Update a Swis Entity",
+          "id": "758e9b74-b885-45ef-969a-2ef2485c0ebc",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"mollit8\": 13907550.429936454,\n  \"ipsum_b\": 41842380,\n  \"dolor_7e\": true\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/:entityUri",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":entityUri"
+              ],
+              "variable": [
+                {
+                  "id": "e7f7c655-59de-4d45-b1ba-20d9c7644090",
+                  "key": "entityUri",
+                  "value": "<string>",
+                  "description": "(Required) SWIS URI of the entity to update"
+                }
+              ]
+            },
+            "description": "Updates the properties of an existing entity identified by its SWIS URI. Only the properties included in the request body are updated."
+          },
+          "response": [
+            {
+              "id": "682c066d-cad6-4f7c-a4d8-e0ef4945b7ee",
+              "name": "Entity updated successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mollit8\": 13907550.429936454,\n  \"ipsum_b\": 41842380,\n  \"dolor_7e\": true\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:entityUri",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "variable": [
+                    {
+                      "key": "entityUri"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:37.000Z",
+              "updatedAt": "2026-07-28T02:58:37.000Z",
+              "uid": "35240-682c066d-cad6-4f7c-a4d8-e0ef4945b7ee"
+            },
+            {
+              "id": "0ae7a1bf-12c5-45ef-861e-7c721d5400fd",
+              "name": "Invalid update data",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mollit8\": 13907550.429936454,\n  \"ipsum_b\": 41842380,\n  \"dolor_7e\": true\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:entityUri",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "variable": [
+                    {
+                      "key": "entityUri"
+                    }
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:37.000Z",
+              "updatedAt": "2026-07-28T02:58:37.000Z",
+              "uid": "35240-0ae7a1bf-12c5-45ef-861e-7c721d5400fd"
+            },
+            {
+              "id": "d7248e62-df02-423b-90ac-c1304738092f",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mollit8\": 13907550.429936454,\n  \"ipsum_b\": 41842380,\n  \"dolor_7e\": true\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:entityUri",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "variable": [
+                    {
+                      "key": "entityUri"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:37.000Z",
+              "updatedAt": "2026-07-28T02:58:37.000Z",
+              "uid": "35240-d7248e62-df02-423b-90ac-c1304738092f"
+            },
+            {
+              "id": "f96f8c54-f4fb-4a42-af23-a37928c740f6",
+              "name": "Entity not found",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"mollit8\": 13907550.429936454,\n  \"ipsum_b\": 41842380,\n  \"dolor_7e\": true\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/:entityUri",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "variable": [
+                    {
+                      "key": "entityUri"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:37.000Z",
+              "updatedAt": "2026-07-28T02:58:37.000Z",
+              "uid": "35240-f96f8c54-f4fb-4a42-af23-a37928c740f6"
+            }
+          ],
+          "createdAt": "2026-07-28T02:58:37.000Z",
+          "updatedAt": "2026-07-28T02:58:37.000Z",
+          "uid": "35240-758e9b74-b885-45ef-969a-2ef2485c0ebc"
+        },
+        {
+          "name": "Solarwinds Delete a Swis Entity",
+          "id": "211abf23-1cfd-4807-8622-69eba678770c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/:entityUri",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                ":entityUri"
+              ],
+              "variable": [
+                {
+                  "id": "e3732c7b-06f6-4e41-a55e-4f1813b2284d",
+                  "key": "entityUri",
+                  "value": "<string>",
+                  "description": "(Required) SWIS URI of the entity to delete"
+                }
+              ]
+            },
+            "description": "Deletes an entity identified by its SWIS URI from the SolarWinds Information Service."
+          },
+          "response": [
+            {
+              "id": "5537f8d2-0bef-4fa8-9a3c-324d9f1137c3",
+              "name": "Entity deleted successfully",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:entityUri",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "variable": [
+                    {
+                      "key": "entityUri"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:37.000Z",
+              "updatedAt": "2026-07-28T02:58:37.000Z",
+              "uid": "35240-5537f8d2-0bef-4fa8-9a3c-324d9f1137c3"
+            },
+            {
+              "id": "ec23361a-8904-4c8b-88b8-b6feacaa9acf",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:entityUri",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "variable": [
+                    {
+                      "key": "entityUri"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:37.000Z",
+              "updatedAt": "2026-07-28T02:58:37.000Z",
+              "uid": "35240-ec23361a-8904-4c8b-88b8-b6feacaa9acf"
+            },
+            {
+              "id": "0dcdc280-dd3a-49c9-aff2-910f18326f6a",
+              "name": "Entity not found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/:entityUri",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    ":entityUri"
+                  ],
+                  "variable": [
+                    {
+                      "key": "entityUri"
+                    }
+                  ]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:37.000Z",
+              "updatedAt": "2026-07-28T02:58:37.000Z",
+              "uid": "35240-0dcdc280-dd3a-49c9-aff2-910f18326f6a"
+            }
+          ],
+          "createdAt": "2026-07-28T02:58:37.000Z",
+          "updatedAt": "2026-07-28T02:58:37.000Z",
+          "uid": "35240-211abf23-1cfd-4807-8622-69eba678770c"
+        }
+      ],
+      "id": "88451157-66f3-4815-b510-600743ca51cf",
+      "createdAt": "2026-07-28T02:58:37.000Z",
+      "updatedAt": "2026-07-28T02:58:37.000Z",
+      "uid": "35240-88451157-66f3-4815-b510-600743ca51cf"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    }
+  ]
+}

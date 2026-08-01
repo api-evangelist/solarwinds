@@ -1,0 +1,170 @@
+{
+  "info": {
+    "_postman_id": "27da3cc8-69ab-4a8d-afa0-d822b49b2248",
+    "name": "SolarWinds Loggly Account ProbeServers API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:58:45.000Z",
+    "updatedAt": "2026-07-28T02:58:45.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-27da3cc8-69ab-4a8d-afa0-d822b49b2248"
+  },
+  "item": [
+    {
+      "name": "probes",
+      "item": [
+        {
+          "name": "Solarwinds List Probe Servers",
+          "id": "53f9edc7-641a-4a64-87b5-b8317dd8d99d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/probes?onlyactive=false",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "probes"
+              ],
+              "query": [
+                {
+                  "description": "Return only active probes",
+                  "key": "onlyactive",
+                  "value": "false"
+                }
+              ]
+            },
+            "description": "Returns a list of all Pingdom probe servers with their locations."
+          },
+          "response": [
+            {
+              "id": "3968a3b5-668c-4494-870a-e2aceddadbb7",
+              "name": "List of probe servers",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/probes?onlyactive=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "probes"
+                  ],
+                  "query": [
+                    {
+                      "description": "Return only active probes",
+                      "key": "onlyactive",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"probes\": [\n    {\n      \"id\": \"<integer>\",\n      \"country\": \"<string>\",\n      \"city\": \"<string>\",\n      \"name\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"hostname\": \"<string>\",\n      \"ip\": \"<string>\",\n      \"ipv6\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"country\": \"<string>\",\n      \"city\": \"<string>\",\n      \"name\": \"<string>\",\n      \"active\": \"<boolean>\",\n      \"hostname\": \"<string>\",\n      \"ip\": \"<string>\",\n      \"ipv6\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-07-28T02:58:46.000Z",
+              "updatedAt": "2026-07-28T02:58:46.000Z",
+              "uid": "35240-3968a3b5-668c-4494-870a-e2aceddadbb7"
+            },
+            {
+              "id": "87b2747c-76fd-42a4-a6b1-88c13f99b308",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/probes?onlyactive=false",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "probes"
+                  ],
+                  "query": [
+                    {
+                      "description": "Return only active probes",
+                      "key": "onlyactive",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:58:46.000Z",
+              "updatedAt": "2026-07-28T02:58:46.000Z",
+              "uid": "35240-87b2747c-76fd-42a4-a6b1-88c13f99b308"
+            }
+          ],
+          "createdAt": "2026-07-28T02:58:46.000Z",
+          "updatedAt": "2026-07-28T02:58:46.000Z",
+          "uid": "35240-53f9edc7-641a-4a64-87b5-b8317dd8d99d"
+        }
+      ],
+      "id": "04a48340-fe2e-4c35-92c8-e7f152280c82",
+      "createdAt": "2026-07-28T02:58:46.000Z",
+      "updatedAt": "2026-07-28T02:58:46.000Z",
+      "uid": "35240-04a48340-fe2e-4c35-92c8-e7f152280c82"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    }
+  ]
+}

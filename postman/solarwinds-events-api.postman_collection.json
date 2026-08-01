@@ -1,0 +1,287 @@
+{
+  "info": {
+    "_postman_id": "52ac2ebe-1355-4ad2-a4dd-5b778e62ea13",
+    "name": "SolarWinds Loggly Account Events API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:58:37.000Z",
+    "updatedAt": "2026-07-28T02:58:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-52ac2ebe-1355-4ad2-a4dd-5b778e62ea13"
+  },
+  "item": [
+    {
+      "name": "events",
+      "item": [
+        {
+          "name": "search.json",
+          "item": [
+            {
+              "name": "Solarwinds Search Log Events",
+              "id": "4ef783e8-af8c-4002-a2f0-500bd32ee033",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/events/search.json?q=<string>&system_id=<integer>&group_id=<integer>&min_id=<string>&max_id=<string>&min_time=<integer>&max_time=<integer>&limit=50",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "events",
+                    "search.json"
+                  ],
+                  "query": [
+                    {
+                      "description": "Search query string",
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Limit results to a specific system",
+                      "key": "system_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Limit results to a specific group",
+                      "key": "group_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Return events after this event ID",
+                      "key": "min_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Return events before this event ID",
+                      "key": "max_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "Start time (Unix timestamp)",
+                      "key": "min_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "End time (Unix timestamp)",
+                      "key": "max_time",
+                      "value": "<integer>"
+                    },
+                    {
+                      "description": "Maximum number of events to return",
+                      "key": "limit",
+                      "value": "50"
+                    }
+                  ]
+                },
+                "description": "Searches log events matching the specified criteria. Returns matching events sorted by timestamp."
+              },
+              "response": [
+                {
+                  "id": "b2fbe221-c215-4e08-8329-21d61bd69ec9",
+                  "name": "Search results",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/search.json?q=<string>&system_id=<integer>&group_id=<integer>&min_id=<string>&max_id=<string>&min_time=<integer>&max_time=<integer>&limit=50",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        "search.json"
+                      ],
+                      "query": [
+                        {
+                          "description": "Search query string",
+                          "key": "q",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit results to a specific system",
+                          "key": "system_id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Limit results to a specific group",
+                          "key": "group_id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Return events after this event ID",
+                          "key": "min_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Return events before this event ID",
+                          "key": "max_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Start time (Unix timestamp)",
+                          "key": "min_time",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "End time (Unix timestamp)",
+                          "key": "max_time",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of events to return",
+                          "key": "limit",
+                          "value": "50"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"events\": [\n    {\n      \"id\": \"<string>\",\n      \"received_at\": \"<dateTime>\",\n      \"generated_at\": \"<dateTime>\",\n      \"display_received_at\": \"<string>\",\n      \"source_ip\": \"<string>\",\n      \"source_name\": \"<string>\",\n      \"source_id\": \"<integer>\",\n      \"hostname\": \"<string>\",\n      \"program\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"facility\": \"<string>\",\n      \"message\": \"<string>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"received_at\": \"<dateTime>\",\n      \"generated_at\": \"<dateTime>\",\n      \"display_received_at\": \"<string>\",\n      \"source_ip\": \"<string>\",\n      \"source_name\": \"<string>\",\n      \"source_id\": \"<integer>\",\n      \"hostname\": \"<string>\",\n      \"program\": \"<string>\",\n      \"severity\": \"<string>\",\n      \"facility\": \"<string>\",\n      \"message\": \"<string>\"\n    }\n  ],\n  \"min_id\": \"<string>\",\n  \"max_id\": \"<string>\",\n  \"reached_beginning\": \"<boolean>\",\n  \"min_time_at\": \"<dateTime>\"\n}",
+                  "createdAt": "2026-07-28T02:58:38.000Z",
+                  "updatedAt": "2026-07-28T02:58:38.000Z",
+                  "uid": "35240-b2fbe221-c215-4e08-8329-21d61bd69ec9"
+                },
+                {
+                  "id": "9cf52f4e-eeaf-450c-980f-b7dc1e08c196",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/events/search.json?q=<string>&system_id=<integer>&group_id=<integer>&min_id=<string>&max_id=<string>&min_time=<integer>&max_time=<integer>&limit=50",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "events",
+                        "search.json"
+                      ],
+                      "query": [
+                        {
+                          "description": "Search query string",
+                          "key": "q",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Limit results to a specific system",
+                          "key": "system_id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Limit results to a specific group",
+                          "key": "group_id",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Return events after this event ID",
+                          "key": "min_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Return events before this event ID",
+                          "key": "max_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Start time (Unix timestamp)",
+                          "key": "min_time",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "End time (Unix timestamp)",
+                          "key": "max_time",
+                          "value": "<integer>"
+                        },
+                        {
+                          "description": "Maximum number of events to return",
+                          "key": "limit",
+                          "value": "50"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:58:38.000Z",
+                  "updatedAt": "2026-07-28T02:58:38.000Z",
+                  "uid": "35240-9cf52f4e-eeaf-450c-980f-b7dc1e08c196"
+                }
+              ],
+              "createdAt": "2026-07-28T02:58:38.000Z",
+              "updatedAt": "2026-07-28T02:58:38.000Z",
+              "uid": "35240-4ef783e8-af8c-4002-a2f0-500bd32ee033"
+            }
+          ],
+          "id": "63ed3f1d-053f-40c6-a6c7-6b318927a43a",
+          "createdAt": "2026-07-28T02:58:38.000Z",
+          "updatedAt": "2026-07-28T02:58:38.000Z",
+          "uid": "35240-63ed3f1d-053f-40c6-a6c7-6b318927a43a"
+        }
+      ],
+      "id": "3d3906f3-92ef-4d9f-bf03-ec1ef9738233",
+      "createdAt": "2026-07-28T02:58:38.000Z",
+      "updatedAt": "2026-07-28T02:58:38.000Z",
+      "uid": "35240-3d3906f3-92ef-4d9f-bf03-ec1ef9738233"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    }
+  ]
+}

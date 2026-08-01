@@ -1,0 +1,777 @@
+{
+  "info": {
+    "_postman_id": "689db8a2-a045-4f00-a31f-c5ef9b0ad4c5",
+    "name": "SolarWinds Loggly Account Systems API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:59:04.000Z",
+    "updatedAt": "2026-07-28T02:59:05.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-689db8a2-a045-4f00-a31f-c5ef9b0ad4c5"
+  },
+  "item": [
+    {
+      "name": "systems.json",
+      "item": [
+        {
+          "name": "Solarwinds List All Systems",
+          "id": "0a042305-eebd-4302-ac63-4e0256ab3446",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/systems.json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "systems.json"
+              ]
+            },
+            "description": "Returns all systems (log senders) configured in the account."
+          },
+          "response": [
+            {
+              "id": "0209ee78-90b7-42c2-a541-840cbfcc2381",
+              "name": "List of systems",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/systems.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "systems.json"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"last_event_at\": \"<dateTime>\",\n    \"auto_delete\": \"<boolean>\",\n    \"ip_address\": \"<string>\",\n    \"hostname\": \"<string>\",\n    \"syslog\": {\n      \"hostname\": \"<string>\",\n      \"port\": \"<integer>\"\n    }\n  },\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"last_event_at\": \"<dateTime>\",\n    \"auto_delete\": \"<boolean>\",\n    \"ip_address\": \"<string>\",\n    \"hostname\": \"<string>\",\n    \"syslog\": {\n      \"hostname\": \"<string>\",\n      \"port\": \"<integer>\"\n    }\n  }\n]",
+              "createdAt": "2026-07-28T02:59:04.000Z",
+              "updatedAt": "2026-07-28T02:59:04.000Z",
+              "uid": "35240-0209ee78-90b7-42c2-a541-840cbfcc2381"
+            },
+            {
+              "id": "221a8827-7d74-4d6a-b7dc-f1884123c878",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/systems.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "systems.json"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:59:04.000Z",
+              "updatedAt": "2026-07-28T02:59:04.000Z",
+              "uid": "35240-221a8827-7d74-4d6a-b7dc-f1884123c878"
+            }
+          ],
+          "createdAt": "2026-07-28T02:59:04.000Z",
+          "updatedAt": "2026-07-28T02:59:04.000Z",
+          "uid": "35240-0a042305-eebd-4302-ac63-4e0256ab3446"
+        },
+        {
+          "name": "Solarwinds Register a New System",
+          "id": "bd2411eb-d248-4a45-9c59-8235567fd395",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"system\": {\n    \"name\": \"<string>\",\n    \"hostname\": \"<string>\",\n    \"ip_address\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/systems.json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "systems.json"
+              ]
+            },
+            "description": "Registers a new system to send logs to Papertrail."
+          },
+          "response": [
+            {
+              "id": "ba6a1330-231b-4389-b0af-84ce62e4cd05",
+              "name": "System registered",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"system\": {\n    \"name\": \"<string>\",\n    \"hostname\": \"<string>\",\n    \"ip_address\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/systems.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "systems.json"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"last_event_at\": \"<dateTime>\",\n  \"auto_delete\": \"<boolean>\",\n  \"ip_address\": \"<string>\",\n  \"hostname\": \"<string>\",\n  \"syslog\": {\n    \"hostname\": \"<string>\",\n    \"port\": \"<integer>\"\n  }\n}",
+              "createdAt": "2026-07-28T02:59:04.000Z",
+              "updatedAt": "2026-07-28T02:59:04.000Z",
+              "uid": "35240-ba6a1330-231b-4389-b0af-84ce62e4cd05"
+            },
+            {
+              "id": "fb58b0a9-3fd3-4715-a150-feab2c1b0629",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"system\": {\n    \"name\": \"<string>\",\n    \"hostname\": \"<string>\",\n    \"ip_address\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/systems.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "systems.json"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:59:04.000Z",
+              "updatedAt": "2026-07-28T02:59:04.000Z",
+              "uid": "35240-fb58b0a9-3fd3-4715-a150-feab2c1b0629"
+            }
+          ],
+          "createdAt": "2026-07-28T02:59:04.000Z",
+          "updatedAt": "2026-07-28T02:59:04.000Z",
+          "uid": "35240-bd2411eb-d248-4a45-9c59-8235567fd395"
+        }
+      ],
+      "id": "2790730a-da96-4af4-b22c-dcde5537135f",
+      "createdAt": "2026-07-28T02:59:04.000Z",
+      "updatedAt": "2026-07-28T02:59:04.000Z",
+      "uid": "35240-2790730a-da96-4af4-b22c-dcde5537135f"
+    },
+    {
+      "name": "systems",
+      "item": [
+        {
+          "name": "{id}.json",
+          "item": [
+            {
+              "name": "Solarwinds Get System Details",
+              "id": "8d247fe2-81a7-4eed-b6cb-32a640d81297",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/systems/{{id}}.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "systems",
+                    "{{id}}.json"
+                  ]
+                },
+                "description": "Returns details of a specific system."
+              },
+              "response": [
+                {
+                  "id": "055bc264-721f-471b-92eb-7751c4876970",
+                  "name": "System details",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/systems/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "systems",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<integer>\",\n  \"name\": \"<string>\",\n  \"last_event_at\": \"<dateTime>\",\n  \"auto_delete\": \"<boolean>\",\n  \"ip_address\": \"<string>\",\n  \"hostname\": \"<string>\",\n  \"syslog\": {\n    \"hostname\": \"<string>\",\n    \"port\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-07-28T02:59:04.000Z",
+                  "updatedAt": "2026-07-28T02:59:04.000Z",
+                  "uid": "35240-055bc264-721f-471b-92eb-7751c4876970"
+                },
+                {
+                  "id": "015afc04-467f-46b2-a754-4c32292bf7e2",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/systems/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "systems",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:59:04.000Z",
+                  "updatedAt": "2026-07-28T02:59:04.000Z",
+                  "uid": "35240-015afc04-467f-46b2-a754-4c32292bf7e2"
+                },
+                {
+                  "id": "1a319eb5-1f7e-4a69-8568-72ad7c0b5886",
+                  "name": "System not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/systems/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "systems",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:59:04.000Z",
+                  "updatedAt": "2026-07-28T02:59:04.000Z",
+                  "uid": "35240-1a319eb5-1f7e-4a69-8568-72ad7c0b5886"
+                }
+              ],
+              "createdAt": "2026-07-28T02:59:04.000Z",
+              "updatedAt": "2026-07-28T02:59:04.000Z",
+              "uid": "35240-8d247fe2-81a7-4eed-b6cb-32a640d81297"
+            },
+            {
+              "name": "Solarwinds Update a System",
+              "id": "dd1aec5c-95f9-4786-8b16-eb1f1eafed88",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"system\": {\n    \"name\": \"<string>\",\n    \"hostname\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/systems/{{id}}.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "systems",
+                    "{{id}}.json"
+                  ]
+                },
+                "description": "Updates the configuration of a system."
+              },
+              "response": [
+                {
+                  "id": "4e7240fe-226a-4a7b-8af9-d10a6cc011c1",
+                  "name": "System updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"system\": {\n    \"name\": \"<string>\",\n    \"hostname\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/systems/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "systems",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:59:04.000Z",
+                  "updatedAt": "2026-07-28T02:59:04.000Z",
+                  "uid": "35240-4e7240fe-226a-4a7b-8af9-d10a6cc011c1"
+                },
+                {
+                  "id": "07f5e12b-55fa-4a22-9378-0170be9fad23",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"system\": {\n    \"name\": \"<string>\",\n    \"hostname\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/systems/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "systems",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:59:04.000Z",
+                  "updatedAt": "2026-07-28T02:59:04.000Z",
+                  "uid": "35240-07f5e12b-55fa-4a22-9378-0170be9fad23"
+                },
+                {
+                  "id": "2b12d8c5-7fba-483e-9aa1-126068693bcc",
+                  "name": "System not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"system\": {\n    \"name\": \"<string>\",\n    \"hostname\": \"<string>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/systems/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "systems",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:59:04.000Z",
+                  "updatedAt": "2026-07-28T02:59:04.000Z",
+                  "uid": "35240-2b12d8c5-7fba-483e-9aa1-126068693bcc"
+                }
+              ],
+              "createdAt": "2026-07-28T02:59:04.000Z",
+              "updatedAt": "2026-07-28T02:59:04.000Z",
+              "uid": "35240-dd1aec5c-95f9-4786-8b16-eb1f1eafed88"
+            },
+            {
+              "name": "Solarwinds Delete a System",
+              "id": "75e49868-d4cb-481d-8888-2f5e54e64a47",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseUrl}}/systems/{{id}}.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "systems",
+                    "{{id}}.json"
+                  ]
+                },
+                "description": "Removes a system from the account."
+              },
+              "response": [
+                {
+                  "id": "6574d620-3e52-4675-886d-699ba2ee37ff",
+                  "name": "System deleted",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/systems/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "systems",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:59:04.000Z",
+                  "updatedAt": "2026-07-28T02:59:04.000Z",
+                  "uid": "35240-6574d620-3e52-4675-886d-699ba2ee37ff"
+                },
+                {
+                  "id": "afff0528-a538-4590-9b62-d3aad25120fc",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/systems/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "systems",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:59:04.000Z",
+                  "updatedAt": "2026-07-28T02:59:04.000Z",
+                  "uid": "35240-afff0528-a538-4590-9b62-d3aad25120fc"
+                },
+                {
+                  "id": "d7b97991-c6e3-48b6-9522-fd1cd3c62e74",
+                  "name": "System not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/systems/{{id}}.json",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "systems",
+                        "{{id}}.json"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:59:04.000Z",
+                  "updatedAt": "2026-07-28T02:59:04.000Z",
+                  "uid": "35240-d7b97991-c6e3-48b6-9522-fd1cd3c62e74"
+                }
+              ],
+              "createdAt": "2026-07-28T02:59:04.000Z",
+              "updatedAt": "2026-07-28T02:59:04.000Z",
+              "uid": "35240-75e49868-d4cb-481d-8888-2f5e54e64a47"
+            }
+          ],
+          "id": "383f6378-86e6-4025-8492-35011d6c7f4a",
+          "createdAt": "2026-07-28T02:59:04.000Z",
+          "updatedAt": "2026-07-28T02:59:04.000Z",
+          "uid": "35240-383f6378-86e6-4025-8492-35011d6c7f4a"
+        }
+      ],
+      "id": "5c9be40e-dec1-4258-9a85-012dde145637",
+      "createdAt": "2026-07-28T02:59:04.000Z",
+      "updatedAt": "2026-07-28T02:59:04.000Z",
+      "uid": "35240-5c9be40e-dec1-4258-9a85-012dde145637"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    },
+    {
+      "key": "id",
+      "value": "<integer>"
+    }
+  ]
+}

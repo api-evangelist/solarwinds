@@ -1,0 +1,322 @@
+{
+  "info": {
+    "_postman_id": "c392459c-e74c-4d47-acc6-dcdf9b122886",
+    "name": "SolarWinds Loggly Account BulkOperations API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:57:27.000Z",
+    "updatedAt": "2026-07-28T02:57:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c392459c-e74c-4d47-acc6-dcdf9b122886"
+  },
+  "item": [
+    {
+      "name": "BulkDelete",
+      "item": [
+        {
+          "name": "Solarwinds Delete Multiple Entities",
+          "id": "d780e893-b3b9-4ca6-8010-a111152aa76d",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uris\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/BulkDelete",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "BulkDelete"
+              ]
+            },
+            "description": "Deletes multiple SWIS entities in a single operation. Provide an array of SWIS URIs to delete."
+          },
+          "response": [
+            {
+              "id": "a457cf64-6436-453a-bd9e-56a2c6874a59",
+              "name": "Entities deleted successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uris\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/BulkDelete",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "BulkDelete"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:57:27.000Z",
+              "updatedAt": "2026-07-28T02:57:27.000Z",
+              "uid": "35240-a457cf64-6436-453a-bd9e-56a2c6874a59"
+            },
+            {
+              "id": "158c8b78-49cf-4c02-94d5-48330ea7a868",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uris\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/BulkDelete",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "BulkDelete"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:57:27.000Z",
+              "updatedAt": "2026-07-28T02:57:27.000Z",
+              "uid": "35240-158c8b78-49cf-4c02-94d5-48330ea7a868"
+            }
+          ],
+          "createdAt": "2026-07-28T02:57:27.000Z",
+          "updatedAt": "2026-07-28T02:57:27.000Z",
+          "uid": "35240-d780e893-b3b9-4ca6-8010-a111152aa76d"
+        }
+      ],
+      "id": "2dc9209e-d91e-43e5-b919-1bb8b3d954b1",
+      "createdAt": "2026-07-28T02:57:27.000Z",
+      "updatedAt": "2026-07-28T02:57:27.000Z",
+      "uid": "35240-2dc9209e-d91e-43e5-b919-1bb8b3d954b1"
+    },
+    {
+      "name": "BulkUpdate",
+      "item": [
+        {
+          "name": "Solarwinds Update Multiple Entities",
+          "id": "ad4985b0-9790-4bdb-9a51-f4e7db1ad6d5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uris\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"properties\": {\n    \"deserunt_ba\": \"qui\",\n    \"adipisicing1\": -1718534.7997602224,\n    \"eu_a6c\": false,\n    \"doloref\": \"nisi sunt\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/BulkUpdate",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "BulkUpdate"
+              ]
+            },
+            "description": "Updates properties on multiple SWIS entities in a single operation."
+          },
+          "response": [
+            {
+              "id": "09d4ba46-9084-410d-bcd0-137e5d8973cc",
+              "name": "Entities updated successfully",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uris\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"properties\": {\n    \"deserunt_ba\": \"qui\",\n    \"adipisicing1\": -1718534.7997602224,\n    \"eu_a6c\": false,\n    \"doloref\": \"nisi sunt\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/BulkUpdate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "BulkUpdate"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:57:27.000Z",
+              "updatedAt": "2026-07-28T02:57:27.000Z",
+              "uid": "35240-09d4ba46-9084-410d-bcd0-137e5d8973cc"
+            },
+            {
+              "id": "e12c9d74-00dc-425a-bbc5-8b33fe4b8066",
+              "name": "Authentication required",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uris\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"properties\": {\n    \"deserunt_ba\": \"qui\",\n    \"adipisicing1\": -1718534.7997602224,\n    \"eu_a6c\": false,\n    \"doloref\": \"nisi sunt\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/BulkUpdate",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "BulkUpdate"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:57:27.000Z",
+              "updatedAt": "2026-07-28T02:57:27.000Z",
+              "uid": "35240-e12c9d74-00dc-425a-bbc5-8b33fe4b8066"
+            }
+          ],
+          "createdAt": "2026-07-28T02:57:27.000Z",
+          "updatedAt": "2026-07-28T02:57:27.000Z",
+          "uid": "35240-ad4985b0-9790-4bdb-9a51-f4e7db1ad6d5"
+        }
+      ],
+      "id": "4a3296d5-2e9a-49b7-862a-c32d6ee4dc7c",
+      "createdAt": "2026-07-28T02:57:27.000Z",
+      "updatedAt": "2026-07-28T02:57:27.000Z",
+      "uid": "35240-4a3296d5-2e9a-49b7-862a-c32d6ee4dc7c"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    }
+  ]
+}

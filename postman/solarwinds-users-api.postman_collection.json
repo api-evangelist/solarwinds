@@ -1,0 +1,149 @@
+{
+  "info": {
+    "_postman_id": "818de37c-a646-4b0e-a39f-dc604f3a72f0",
+    "name": "SolarWinds Loggly Account Users API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:59:24.000Z",
+    "updatedAt": "2026-07-28T02:59:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-818de37c-a646-4b0e-a39f-dc604f3a72f0"
+  },
+  "item": [
+    {
+      "name": "users.json",
+      "item": [
+        {
+          "name": "Solarwinds List Users",
+          "id": "b4c9fa26-da0b-45e2-b034-20cb30e185f5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/users.json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "users.json"
+              ]
+            },
+            "description": "Returns all users in the account."
+          },
+          "response": [
+            {
+              "id": "0fe4c0bf-84d4-47c8-b9be-c6a9a358bbbf",
+              "name": "List of users",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users.json"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"email\": \"<email>\",\n    \"is_admin\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"email\": \"<email>\",\n    \"is_admin\": \"<boolean>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:59:24.000Z",
+              "updatedAt": "2026-07-28T02:59:24.000Z",
+              "uid": "35240-0fe4c0bf-84d4-47c8-b9be-c6a9a358bbbf"
+            },
+            {
+              "id": "16fd49e6-9dfb-4588-9c14-d28a76650b61",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/users.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "users.json"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:59:24.000Z",
+              "updatedAt": "2026-07-28T02:59:24.000Z",
+              "uid": "35240-16fd49e6-9dfb-4588-9c14-d28a76650b61"
+            }
+          ],
+          "createdAt": "2026-07-28T02:59:24.000Z",
+          "updatedAt": "2026-07-28T02:59:24.000Z",
+          "uid": "35240-b4c9fa26-da0b-45e2-b034-20cb30e185f5"
+        }
+      ],
+      "id": "c8a92878-a8e4-457d-9ff4-83da2d3a2691",
+      "createdAt": "2026-07-28T02:59:24.000Z",
+      "updatedAt": "2026-07-28T02:59:24.000Z",
+      "uid": "35240-c8a92878-a8e4-457d-9ff4-83da2d3a2691"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    }
+  ]
+}

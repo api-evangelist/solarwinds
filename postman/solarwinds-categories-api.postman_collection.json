@@ -1,0 +1,149 @@
+{
+  "info": {
+    "_postman_id": "d9099ff9-8330-4307-95a9-883362507b80",
+    "name": "SolarWinds Loggly Account Categories API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:57:28.000Z",
+    "updatedAt": "2026-07-28T02:57:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d9099ff9-8330-4307-95a9-883362507b80"
+  },
+  "item": [
+    {
+      "name": "categories.json",
+      "item": [
+        {
+          "name": "Solarwinds List Categories",
+          "id": "629e9ce1-f31e-46a3-a617-5abf1846fba5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/categories.json",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "categories.json"
+              ]
+            },
+            "description": "Returns all categories available for incidents and requests."
+          },
+          "response": [
+            {
+              "id": "b68af8de-d891-4fbb-8863-2384473affb4",
+              "name": "List of categories",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/categories.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "categories.json"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  {\n    \"id\": \"<integer>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T02:57:28.000Z",
+              "updatedAt": "2026-07-28T02:57:28.000Z",
+              "uid": "35240-b68af8de-d891-4fbb-8863-2384473affb4"
+            },
+            {
+              "id": "8ef2f8b6-e0cb-46b8-9c6a-69b2ad44e4b7",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/categories.json",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "categories.json"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T02:57:28.000Z",
+              "updatedAt": "2026-07-28T02:57:28.000Z",
+              "uid": "35240-8ef2f8b6-e0cb-46b8-9c6a-69b2ad44e4b7"
+            }
+          ],
+          "createdAt": "2026-07-28T02:57:28.000Z",
+          "updatedAt": "2026-07-28T02:57:28.000Z",
+          "uid": "35240-629e9ce1-f31e-46a3-a617-5abf1846fba5"
+        }
+      ],
+      "id": "39180426-aa07-4860-bd3d-17bd8ad73203",
+      "createdAt": "2026-07-28T02:57:28.000Z",
+      "updatedAt": "2026-07-28T02:57:28.000Z",
+      "uid": "35240-39180426-aa07-4860-bd3d-17bd8ad73203"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    }
+  ]
+}

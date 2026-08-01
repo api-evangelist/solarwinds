@@ -1,0 +1,161 @@
+{
+  "info": {
+    "_postman_id": "1efd7cb5-888c-4c37-a098-932b858934be",
+    "name": "SolarWinds Loggly Account Teams API",
+    "description": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T02:59:23.000Z",
+    "updatedAt": "2026-07-28T02:59:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-1efd7cb5-888c-4c37-a098-932b858934be"
+  },
+  "item": [
+    {
+      "name": "alerting",
+      "item": [
+        {
+          "name": "teams",
+          "item": [
+            {
+              "name": "Solarwinds List Alert Teams",
+              "id": "5a3dc2f4-a471-44cf-9f70-119479a27d0e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/alerting/teams",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "alerting",
+                    "teams"
+                  ]
+                },
+                "description": "Returns all alert teams configured in the account."
+              },
+              "response": [
+                {
+                  "id": "c09402b8-005d-4f18-8a2d-b7dd40e817b8",
+                  "name": "List of teams",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/alerting/teams",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alerting",
+                        "teams"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"teams\": [\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    },\n    {\n      \"id\": \"<integer>\",\n      \"name\": \"<string>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T02:59:23.000Z",
+                  "updatedAt": "2026-07-28T02:59:23.000Z",
+                  "uid": "35240-c09402b8-005d-4f18-8a2d-b7dd40e817b8"
+                },
+                {
+                  "id": "347e8404-4bfd-4816-8c6f-18e61292249c",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/alerting/teams",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alerting",
+                        "teams"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T02:59:23.000Z",
+                  "updatedAt": "2026-07-28T02:59:23.000Z",
+                  "uid": "35240-347e8404-4bfd-4816-8c6f-18e61292249c"
+                }
+              ],
+              "createdAt": "2026-07-28T02:59:23.000Z",
+              "updatedAt": "2026-07-28T02:59:23.000Z",
+              "uid": "35240-5a3dc2f4-a471-44cf-9f70-119479a27d0e"
+            }
+          ],
+          "id": "b08c156d-9c0a-402d-94f2-e6f1cbecc751",
+          "createdAt": "2026-07-28T02:59:23.000Z",
+          "updatedAt": "2026-07-28T02:59:23.000Z",
+          "uid": "35240-b08c156d-9c0a-402d-94f2-e6f1cbecc751"
+        }
+      ],
+      "id": "2ef44f38-1794-4074-8515-a6a0c98193d1",
+      "createdAt": "2026-07-28T02:59:23.000Z",
+      "updatedAt": "2026-07-28T02:59:23.000Z",
+      "uid": "35240-2ef44f38-1794-4074-8515-a6a0c98193d1"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "subdomain",
+      "value": "logs-01"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://{{subdomain}}.loggly.com/apiv2"
+    }
+  ]
+}
