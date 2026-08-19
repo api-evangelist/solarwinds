@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SolarWinds Loggly Account CRUD API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CRUD",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds Create a New Swis Entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{subdomain}.loggly.com/apiv2/Create/:entityType",
+            "params": [
+              {
+                "name": "entityType",
+                "value": "Orion.Nodes",
+                "type": "path",
+                "description": "Fully qualified SWIS entity type name"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new entity of the specified type in the SolarWinds Information Service. The request body contains the property values for the new entity."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Read a Swis Entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.loggly.com/apiv2/:entityUri",
+            "params": [
+              {
+                "name": "entityUri",
+                "value": "example_value",
+                "type": "path",
+                "description": "SWIS URI of the entity to read"
+              }
+            ]
+          },
+          "docs": "Retrieves the properties of a specific entity identified by its SWIS URI. Returns all properties of the entity as JSON."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Update a Swis Entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{subdomain}.loggly.com/apiv2/:entityUri",
+            "params": [
+              {
+                "name": "entityUri",
+                "value": "example_value",
+                "type": "path",
+                "description": "SWIS URI of the entity to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the properties of an existing entity identified by its SWIS URI. Only the properties included in the request body are updated."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Delete a Swis Entity",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{subdomain}.loggly.com/apiv2/:entityUri",
+            "params": [
+              {
+                "name": "entityUri",
+                "value": "example_value",
+                "type": "path",
+                "description": "SWIS URI of the entity to delete"
+              }
+            ]
+          },
+          "docs": "Deletes an entity identified by its SWIS URI from the SolarWinds Information Service."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

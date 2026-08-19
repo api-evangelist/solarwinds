@@ -1,0 +1,79 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SolarWinds Loggly Account Results API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Results",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds Get Raw Check Results",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.loggly.com/apiv2/results/:checkid",
+            "params": [
+              {
+                "name": "checkid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the check"
+              },
+              {
+                "name": "to",
+                "value": "10",
+                "type": "query",
+                "description": "End of period (Unix timestamp)"
+              },
+              {
+                "name": "from",
+                "value": "10",
+                "type": "query",
+                "description": "Start of period (Unix timestamp)"
+              },
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of results"
+              },
+              {
+                "name": "offset",
+                "value": "10",
+                "type": "query",
+                "description": "Offset for pagination"
+              },
+              {
+                "name": "probes",
+                "value": "example_value",
+                "type": "query",
+                "description": "Filter by comma-separated probe IDs"
+              },
+              {
+                "name": "status",
+                "value": "up",
+                "type": "query",
+                "description": "Filter by result status"
+              }
+            ]
+          },
+          "docs": "Returns raw test results for a specific check within a time range."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,92 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SolarWinds Loggly Account Summary API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Summary",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds Get Average Response Time Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.loggly.com/apiv2/summary.average/:checkid",
+            "params": [
+              {
+                "name": "checkid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the check"
+              },
+              {
+                "name": "from",
+                "value": "10",
+                "type": "query",
+                "description": "Start of period (Unix timestamp)"
+              },
+              {
+                "name": "to",
+                "value": "10",
+                "type": "query",
+                "description": "End of period (Unix timestamp)"
+              },
+              {
+                "name": "includeuptime",
+                "value": "true",
+                "type": "query",
+                "description": "Include uptime information"
+              }
+            ]
+          },
+          "docs": "Returns average response time and uptime data for a check over a specified time period."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Get Outage Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.loggly.com/apiv2/summary.outage/:checkid",
+            "params": [
+              {
+                "name": "checkid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the check"
+              },
+              {
+                "name": "from",
+                "value": "10",
+                "type": "query",
+                "description": "Start of period (Unix timestamp)"
+              },
+              {
+                "name": "to",
+                "value": "10",
+                "type": "query",
+                "description": "End of period (Unix timestamp)"
+              }
+            ]
+          },
+          "docs": "Returns a list of outage periods for a specific check."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

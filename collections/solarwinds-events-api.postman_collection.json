@@ -1,0 +1,306 @@
+{
+  "item": [
+    {
+      "id": "e7ccecd5-b191-4db4-96f9-8a5bb72ae9ae",
+      "name": "Events",
+      "description": {
+        "content": "Search and retrieve log events",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "688d64a2-6412-4362-94e9-0fd8d1a45276",
+          "name": "Solarwinds Search Log Events",
+          "request": {
+            "name": "Solarwinds Search Log Events",
+            "description": {
+              "content": "Searches log events matching the specified criteria. Returns matching events sorted by timestamp.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "events",
+                "search.json"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search query string"
+                },
+                {
+                  "disabled": false,
+                  "key": "system_id",
+                  "value": "<integer>",
+                  "description": "Limit results to a specific system"
+                },
+                {
+                  "disabled": false,
+                  "key": "group_id",
+                  "value": "<integer>",
+                  "description": "Limit results to a specific group"
+                },
+                {
+                  "disabled": false,
+                  "key": "min_id",
+                  "value": "<string>",
+                  "description": "Return events after this event ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_id",
+                  "value": "<string>",
+                  "description": "Return events before this event ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "min_time",
+                  "value": "<integer>",
+                  "description": "Start time (Unix timestamp)"
+                },
+                {
+                  "disabled": false,
+                  "key": "max_time",
+                  "value": "<integer>",
+                  "description": "End time (Unix timestamp)"
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "50",
+                  "description": "Maximum number of events to return"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "Your Loggly subdomain",
+                  "type": "any",
+                  "value": "{{subdomain}}",
+                  "key": "subdomain"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db75ede2-da36-48db-8dc6-bb0afbb0586c",
+              "name": "Search results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "search.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "system_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "group_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "min_id",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "max_id",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "min_time",
+                      "value": "10"
+                    },
+                    {
+                      "key": "max_time",
+                      "value": "10"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Loggly subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"events\": [\n    {\n      \"id\": \"abc123\",\n      \"received_at\": \"2026-01-15T10:30:00Z\",\n      \"generated_at\": \"2026-01-15T10:30:00Z\",\n      \"display_received_at\": \"2026-01-15T10:30:00Z\",\n      \"source_ip\": \"example_value\",\n      \"source_name\": \"example_value\",\n      \"source_id\": \"500123\",\n      \"hostname\": \"example_value\",\n      \"program\": \"example_value\",\n      \"severity\": \"example_value\",\n      \"facility\": \"example_value\",\n      \"message\": \"example_value\"\n    }\n  ],\n  \"min_id\": \"500123\",\n  \"max_id\": \"500123\",\n  \"reached_beginning\": true,\n  \"min_time_at\": \"2026-01-15T10:30:00Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2aa97afc-77f9-48d0-890b-4f63ebb39503",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "events",
+                    "search.json"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "example_value"
+                    },
+                    {
+                      "key": "system_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "group_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "min_id",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "max_id",
+                      "value": "500123"
+                    },
+                    {
+                      "key": "min_time",
+                      "value": "10"
+                    },
+                    {
+                      "key": "max_time",
+                      "value": "10"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "Your Loggly subdomain",
+                      "type": "any",
+                      "value": "{{subdomain}}",
+                      "key": "subdomain"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "Your Loggly subdomain",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "logs-01",
+      "key": "subdomain"
+    },
+    {
+      "type": "string",
+      "value": "https://{{subdomain}}.loggly.com/apiv2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2aa0c819-f23e-4ec6-bbc0-f33b9e96ad3a",
+    "name": "SolarWinds Loggly Account Events API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.\n\nContact Support:\n Name: SolarWinds Support",
+      "type": "text/plain"
+    }
+  }
+}

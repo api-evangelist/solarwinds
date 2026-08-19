@@ -1,0 +1,64 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SolarWinds Loggly Account Query API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Query",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds Execute a Swql Query",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.loggly.com/apiv2/Query",
+            "params": [
+              {
+                "name": "query",
+                "value": "SELECT NodeID, Caption, IPAddress FROM Orion.Nodes",
+                "type": "query",
+                "description": "SWQL query string"
+              },
+              {
+                "name": "parameters",
+                "value": "",
+                "type": "query",
+                "description": "Parameterized query values"
+              }
+            ]
+          },
+          "docs": "Executes a SolarWinds Query Language (SWQL) query against the SolarWinds Information Service and returns the results as JSON. SWQL is a read-only SQL-like language for querying monitored entities."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Execute a Swql Query via Post",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{subdomain}.loggly.com/apiv2/Query",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Executes a SWQL query using a POST request body. Useful for longer queries that exceed URL length limits."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

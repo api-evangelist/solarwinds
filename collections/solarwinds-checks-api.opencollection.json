@@ -1,0 +1,137 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SolarWinds Loggly Account Checks API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Checks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds List All Checks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.loggly.com/apiv2/checks",
+            "params": [
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of checks to return"
+              },
+              {
+                "name": "offset",
+                "value": "10",
+                "type": "query",
+                "description": "Offset for pagination"
+              },
+              {
+                "name": "tags",
+                "value": "example_value",
+                "type": "query",
+                "description": "Filter by comma-separated tag names"
+              },
+              {
+                "name": "type",
+                "value": "http",
+                "type": "query",
+                "description": "Filter by check type"
+              }
+            ]
+          },
+          "docs": "Returns a list of all checks configured in the Pingdom account."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Create a New Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://{subdomain}.loggly.com/apiv2/checks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new uptime check with the specified configuration."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Get Detailed Check Information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.loggly.com/apiv2/checks/:checkid",
+            "params": [
+              {
+                "name": "checkid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the check"
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific check including its configuration and current status."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Update a Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://{subdomain}.loggly.com/apiv2/checks/:checkid",
+            "params": [
+              {
+                "name": "checkid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the check"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the configuration of an existing check."
+        },
+        {
+          "info": {
+            "name": "Solarwinds Delete a Check",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://{subdomain}.loggly.com/apiv2/checks/:checkid",
+            "params": [
+              {
+                "name": "checkid",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the check"
+              }
+            ]
+          },
+          "docs": "Permanently deletes a check and all associated data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,85 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "SolarWinds Loggly Account Events API",
+    "version": "2"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Events",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Solarwinds Search Log Events",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://{subdomain}.loggly.com/apiv2/events/search.json",
+            "params": [
+              {
+                "name": "q",
+                "value": "example_value",
+                "type": "query",
+                "description": "Search query string"
+              },
+              {
+                "name": "system_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Limit results to a specific system"
+              },
+              {
+                "name": "group_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Limit results to a specific group"
+              },
+              {
+                "name": "min_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Return events after this event ID"
+              },
+              {
+                "name": "max_id",
+                "value": "500123",
+                "type": "query",
+                "description": "Return events before this event ID"
+              },
+              {
+                "name": "min_time",
+                "value": "10",
+                "type": "query",
+                "description": "Start time (Unix timestamp)"
+              },
+              {
+                "name": "max_time",
+                "value": "10",
+                "type": "query",
+                "description": "End time (Unix timestamp)"
+              },
+              {
+                "name": "limit",
+                "value": "10",
+                "type": "query",
+                "description": "Maximum number of events to return"
+              }
+            ]
+          },
+          "docs": "Searches log events matching the specified criteria. Returns matching events sorted by timestamp."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
