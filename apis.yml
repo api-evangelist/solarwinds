@@ -317,6 +317,8 @@ apis:
   humanURL: https://www.solarwinds.com/orion-platform
   baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
   tags:
+  - Bulk Operations
+  tags_raw:
   - BulkOperations
   properties:
   - type: OpenAPI
@@ -725,6 +727,8 @@ apis:
   humanURL: https://www.solarwinds.com/orion-platform
   baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
   tags:
+  - Event
+  tags_raw:
   - Events
   properties:
   - type: OpenAPI
@@ -793,6 +797,8 @@ apis:
   humanURL: https://www.solarwinds.com/orion-platform
   baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
   tags:
+  - Group
+  tags_raw:
   - Groups
   properties:
   - type: OpenAPI
@@ -1337,6 +1343,8 @@ apis:
   humanURL: https://www.solarwinds.com/orion-platform
   baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
   tags:
+  - Saved Searches
+  tags_raw:
   - SavedSearches
   properties:
   - type: OpenAPI
@@ -1473,6 +1481,8 @@ apis:
   humanURL: https://www.solarwinds.com/orion-platform
   baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
   tags:
+  - Service Requests
+  tags_raw:
   - ServiceRequests
   properties:
   - type: OpenAPI
@@ -1677,6 +1687,8 @@ apis:
   humanURL: https://www.solarwinds.com/orion-platform
   baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
   tags:
+  - Team
+  tags_raw:
   - Teams
   properties:
   - type: OpenAPI
@@ -1745,6 +1757,8 @@ apis:
   humanURL: https://www.solarwinds.com/orion-platform
   baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
