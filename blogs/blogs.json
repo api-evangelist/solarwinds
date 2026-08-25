@@ -5,7 +5,7 @@
       "source": "https://www.solarwinds.com/blog/feed/",
       "feed_url": "https://www.solarwinds.com/blog/feed/",
       "title": "",
-      "saved": 4,
+      "saved": 0,
       "method": "feed"
     },
     {
@@ -13,10 +13,9 @@
       "feed_url": "https://support.solarwinds.com",
       "title": "",
       "saved": 0,
-      "method": "none",
-      "error": "parse_failed"
+      "method": "none"
     }
   ],
-  "post_count": 85,
-  "fetched": "2026-08-15T12:11:08Z"
+  "post_count": 86,
+  "fetched": "2026-08-22T20:20:02Z"
 }
