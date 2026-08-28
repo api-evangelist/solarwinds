@@ -1,6 +1,18 @@
 aid: solarwinds
 name: SolarWinds
 description: A collection of APIs provided by SolarWinds for IT infrastructure management, monitoring, and observability.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: enterprise
   onboarding: self-serve
@@ -1822,6 +1834,9 @@ apis:
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
 common:
+  - type: CapabilityMap
+    url: capabilities/solarwinds-capability-edges.yml
+    name: SolarWinds Business Capability Map
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/solarwinds/overview
   - type: AgenticAccess
