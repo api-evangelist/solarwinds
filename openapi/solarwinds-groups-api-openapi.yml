@@ -1,21 +1,17 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: SolarWinds Loggly Account Groups API
-  description: RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.
-  version: '2'
+  title: SolarWinds Papertrail Groups API
+  description: HTTP API for cloud-based log management including searching logs, managing systems, groups, saved searches, and user accounts. Provides endpoints for log search, settings management, and system configuration.
+  version: '1'
   contact:
     name: SolarWinds Support
     url: https://support.solarwinds.com
   termsOfService: https://www.solarwinds.com/legal/terms
 servers:
-- url: https://{subdomain}.loggly.com/apiv2
-  description: Loggly API Server
-  variables:
-    subdomain:
-      default: logs-01
-      description: Your Loggly subdomain
+- url: https://papertrailapp.com/api/v1
+  description: Papertrail API Server
 security:
-- bearerAuth: []
+- apiToken: []
 tags:
 - name: Groups
   description: Manage system groups
@@ -150,15 +146,11 @@ components:
       schema:
         type: integer
   securitySchemes:
-    bearerAuth:
-      type: http
-      scheme: bearer
-      description: API token for authentication via Authorization Bearer header
-    customerToken:
+    apiToken:
       type: apiKey
-      in: path
-      name: token
-      description: Customer token for event submission endpoints
+      in: header
+      name: X-Papertrail-Token
+      description: Papertrail API token
 externalDocs:
-  description: Loggly API Documentation
-  url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  description: Papertrail HTTP API Documentation
+  url: https://www.papertrail.com/help/http-api/

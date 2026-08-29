@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: SolarWinds Loggly Account Search API
+  title: SolarWinds Loggly Search API
   description: RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.
   version: '2'
   contact:
@@ -173,6 +173,18 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    IterateResponse:
+      type: object
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/LogEvent'
+          example: []
+        next:
+          type: string
+          description: Cursor for next page of results
+          example: example_value
     EventsResponse:
       type: object
       properties:
@@ -189,19 +201,6 @@ components:
           items:
             $ref: '#/components/schemas/LogEvent'
           example: []
-    SearchResponse:
-      type: object
-      properties:
-        rsid:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Result Set ID for retrieving events
-            status:
-              type: string
-              description: Search status
-          example: '500123'
     LogEvent:
       type: object
       properties:
@@ -234,18 +233,19 @@ components:
           items:
             type: string
           example: []
-    IterateResponse:
+    SearchResponse:
       type: object
       properties:
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/LogEvent'
-          example: []
-        next:
-          type: string
-          description: Cursor for next page of results
-          example: example_value
+        rsid:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Result Set ID for retrieving events
+            status:
+              type: string
+              description: Search status
+          example: '500123'
   securitySchemes:
     bearerAuth:
       type: http

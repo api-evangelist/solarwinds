@@ -1,19 +1,15 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: SolarWinds Loggly Account ServiceRequests API
-  description: RESTful API for cloud-based log management including event submission, event retrieval, search, and account management. Supports sending events over HTTP/S and retrieving log data via paginating event retrieval endpoints.
-  version: '2'
+  title: SolarWinds Service Desk Service Requests API
+  description: REST API for SolarWinds Service Desk (formerly Samanage) providing CRUD access to IT service management resources including incidents, service requests, changes, problems, releases, assets, and users.
+  version: '2.1'
   contact:
     name: SolarWinds Support
     url: https://support.solarwinds.com
   termsOfService: https://www.solarwinds.com/legal/terms
 servers:
-- url: https://{subdomain}.loggly.com/apiv2
-  description: Loggly API Server
-  variables:
-    subdomain:
-      default: logs-01
-      description: Your Loggly subdomain
+- url: https://api.samanage.com
+  description: SolarWinds Service Desk API Server
 security:
 - bearerAuth: []
 tags:
@@ -110,6 +106,21 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: Page number for pagination
+      schema:
+        type: integer
+        default: 1
+    PerPage:
+      name: per_page
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 25
   schemas:
     ServiceRequestCreate:
       type: object
@@ -167,31 +178,11 @@ components:
           type: string
           format: date-time
           example: '2026-01-15T10:30:00Z'
-  parameters:
-    PerPage:
-      name: per_page
-      in: query
-      description: Number of results per page
-      schema:
-        type: integer
-        default: 25
-    Page:
-      name: page
-      in: query
-      description: Page number for pagination
-      schema:
-        type: integer
-        default: 1
   securitySchemes:
     bearerAuth:
       type: http
       scheme: bearer
-      description: API token for authentication via Authorization Bearer header
-    customerToken:
-      type: apiKey
-      in: path
-      name: token
-      description: Customer token for event submission endpoints
+      description: API token authentication via X-Samanage-Authorization header with Bearer prefix
 externalDocs:
-  description: Loggly API Documentation
-  url: https://documentation.solarwinds.com/en/success_center/loggly/content/admin/api-overview.htm
+  description: SolarWinds Service Desk API Documentation
+  url: https://apidoc.samanage.com/
