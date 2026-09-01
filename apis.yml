@@ -329,7 +329,7 @@ apis:
   humanURL: https://www.solarwinds.com/orion-platform
   baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
   tags:
-  - BulkOperations
+  - Bulk Operations
   tags_raw:
   - BulkOperations
   properties:
@@ -1493,7 +1493,7 @@ apis:
   humanURL: https://www.solarwinds.com/orion-platform
   baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
   tags:
-  - ServiceRequests
+  - Service Requests
   tags_raw:
   - ServiceRequests
   properties:
