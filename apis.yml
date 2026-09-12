@@ -1834,6 +1834,8 @@ apis:
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
 common:
+  - type: Website
+    url: https://www.solarwinds.com/
   - type: CapabilityMap
     url: capabilities/solarwinds-capability-edges.yml
     name: SolarWinds Business Capability Map
