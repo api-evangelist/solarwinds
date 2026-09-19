@@ -68,6 +68,11 @@ apis:
   baseURL: https://{npm-server}:17778/SolarWinds/InformationService/v3
   tags:
   - Monitoring
+  - Networks
+  - Performance
+  - SNMP
+  tags_raw:
+  - Monitoring
   - Network
   - Performance
   - SNMP
@@ -108,6 +113,12 @@ apis:
   humanURL: https://www.solarwinds.com/ip-address-manager
   baseURL: https://{orion-server}:17778/SolarWinds/InformationService/v3
   tags:
+  - DHCP
+  - DNS
+  - IP Address Management
+  - IPAM
+  - Networks
+  tags_raw:
   - DHCP
   - DNS
   - IP Address Management
