@@ -65,7 +65,8 @@ edges:
   reason: '''Problems'' sitting alongside Incidents and Change Requests is the ITIL problem-management
     record type, mapping to IT Service Management. Only one read operation, so confidence is moderate.'
 - tag: ServiceRequests
-  spec_file: solarwinds-servicerequests-api-openapi.yml
+  spec_file: solarwinds-service-requests-api-openapi.yml
+  reanchored_from: solarwinds-servicerequests-api-openapi.yml
   capability_id: BC-600.30
   capability_id_l1: BC-600
   capability_name: IT Service Management
