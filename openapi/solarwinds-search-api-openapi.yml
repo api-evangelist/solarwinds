@@ -173,34 +173,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    IterateResponse:
-      type: object
-      properties:
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/LogEvent'
-          example: []
-        next:
-          type: string
-          description: Cursor for next page of results
-          example: example_value
-    EventsResponse:
-      type: object
-      properties:
-        total_events:
-          type: integer
-          description: Total number of matching events
-          example: 10
-        page:
-          type: integer
-          description: Current page number
-          example: 10
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/LogEvent'
-          example: []
     LogEvent:
       type: object
       properties:
@@ -233,6 +205,34 @@ components:
           items:
             type: string
           example: []
+    EventsResponse:
+      type: object
+      properties:
+        total_events:
+          type: integer
+          description: Total number of matching events
+          example: 10
+        page:
+          type: integer
+          description: Current page number
+          example: 10
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/LogEvent'
+          example: []
+    IterateResponse:
+      type: object
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/LogEvent'
+          example: []
+        next:
+          type: string
+          description: Cursor for next page of results
+          example: example_value
     SearchResponse:
       type: object
       properties:

@@ -95,15 +95,15 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    CheckId:
-      name: checkid
-      in: path
-      required: true
-      description: Unique identifier for the check
-      schema:
-        type: integer
   schemas:
+    ResultList:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Result'
+          example: []
     Result:
       type: object
       properties:
@@ -131,14 +131,14 @@ components:
           type: string
           description: Detailed status description
           example: example_value
-    ResultList:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Result'
-          example: []
+  parameters:
+    CheckId:
+      name: checkid
+      in: path
+      required: true
+      description: Unique identifier for the check
+      schema:
+        type: integer
   securitySchemes:
     bearerAuth:
       type: http

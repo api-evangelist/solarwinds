@@ -1,0 +1,30 @@
+# Front Door AI Index — solarwinds — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: solarwinds
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.solarwinds.com
+  final_host: www.solarwinds.com
+  ownership: own
+  owner: solarwinds
+  shares_host_with:
+  - loggly
+  inherited_from: null
+  verdict: scored
+  score: 22
+  host_score: 22
+  density: 13.84
+  words: 1590
+  tiers:
+    agentic: 2
+    core: 20
+    model: 0
+  ambiguous: 2
+  top_terms:
+    AI: 20
+    agent: 1
+    agentic: 1
+    automation: 1
+    fine-tune: 1

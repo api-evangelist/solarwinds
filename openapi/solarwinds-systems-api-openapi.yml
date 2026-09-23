@@ -186,15 +186,20 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    ResourceId:
-      name: id
-      in: path
-      required: true
-      description: Resource identifier
-      schema:
-        type: integer
   schemas:
+    SystemUpdate:
+      type: object
+      required:
+      - system
+      properties:
+        system:
+          type: object
+          properties:
+            name:
+              type: string
+            hostname:
+              type: string
+          example: example_value
     System:
       type: object
       properties:
@@ -227,19 +232,6 @@ components:
             port:
               type: integer
           example: example_value
-    SystemUpdate:
-      type: object
-      required:
-      - system
-      properties:
-        system:
-          type: object
-          properties:
-            name:
-              type: string
-            hostname:
-              type: string
-          example: example_value
     SystemCreate:
       type: object
       required:
@@ -257,6 +249,14 @@ components:
             ip_address:
               type: string
           example: example_value
+  parameters:
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: Resource identifier
+      schema:
+        type: integer
   securitySchemes:
     apiToken:
       type: apiKey

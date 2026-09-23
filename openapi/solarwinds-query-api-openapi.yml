@@ -92,22 +92,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    SwqlParameters:
-      name: parameters
-      in: query
-      required: false
-      description: Parameterized query values
-      schema:
-        type: string
-    SwqlQuery:
-      name: query
-      in: query
-      required: true
-      description: SWQL query string
-      schema:
-        type: string
-      example: SELECT NodeID, Caption, IPAddress FROM Orion.Nodes
   schemas:
     QueryRequest:
       type: object
@@ -133,6 +117,22 @@ components:
             type: object
             additionalProperties: true
           example: []
+  parameters:
+    SwqlQuery:
+      name: query
+      in: query
+      required: true
+      description: SWQL query string
+      schema:
+        type: string
+      example: SELECT NodeID, Caption, IPAddress FROM Orion.Nodes
+    SwqlParameters:
+      name: parameters
+      in: query
+      required: false
+      description: Parameterized query values
+      schema:
+        type: string
   securitySchemes:
     basicAuth:
       type: http

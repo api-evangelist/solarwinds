@@ -86,13 +86,6 @@ components:
           format: date-time
           example: '2026-01-15T10:30:00Z'
   parameters:
-    Page:
-      name: page
-      in: query
-      description: Page number for pagination
-      schema:
-        type: integer
-        default: 1
     PerPage:
       name: per_page
       in: query
@@ -100,6 +93,13 @@ components:
       schema:
         type: integer
         default: 25
+    Page:
+      name: page
+      in: query
+      description: Page number for pagination
+      schema:
+        type: integer
+        default: 1
   securitySchemes:
     apiToken:
       type: apiKey

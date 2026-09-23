@@ -13,7 +13,7 @@ servers:
 security:
 - bearerAuth: []
 tags:
-- name: ServiceRequests
+- name: Service Requests
   description: Manage service requests
 paths:
   /service_requests.json:
@@ -22,7 +22,7 @@ paths:
       summary: Solarwinds List Service Requests
       description: Returns a paginated list of service requests.
       tags:
-      - ServiceRequests
+      - Service Requests
       parameters:
       - $ref: '#/components/parameters/Page'
       - $ref: '#/components/parameters/PerPage'
@@ -61,7 +61,7 @@ paths:
       summary: Solarwinds Create a Service Request
       description: Creates a new service request.
       tags:
-      - ServiceRequests
+      - Service Requests
       requestBody:
         required: true
         content:
@@ -106,39 +106,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    Page:
-      name: page
-      in: query
-      description: Page number for pagination
-      schema:
-        type: integer
-        default: 1
-    PerPage:
-      name: per_page
-      in: query
-      description: Number of results per page
-      schema:
-        type: integer
-        default: 25
   schemas:
-    ServiceRequestCreate:
-      type: object
-      required:
-      - service_request
-      properties:
-        service_request:
-          type: object
-          required:
-          - name
-          properties:
-            name:
-              type: string
-            description:
-              type: string
-            priority:
-              type: string
-          example: example_value
     UserRef:
       type: object
       properties:
@@ -178,6 +146,38 @@ components:
           type: string
           format: date-time
           example: '2026-01-15T10:30:00Z'
+    ServiceRequestCreate:
+      type: object
+      required:
+      - service_request
+      properties:
+        service_request:
+          type: object
+          required:
+          - name
+          properties:
+            name:
+              type: string
+            description:
+              type: string
+            priority:
+              type: string
+          example: example_value
+  parameters:
+    PerPage:
+      name: per_page
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 25
+    Page:
+      name: page
+      in: query
+      description: Page number for pagination
+      schema:
+        type: integer
+        default: 1
   securitySchemes:
     bearerAuth:
       type: http

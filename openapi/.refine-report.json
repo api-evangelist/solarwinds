@@ -33,7 +33,9 @@
     "solarwinds-problems-api-openapi.yml",
     "solarwinds-servicerequests-api-openapi.yml"
   ],
-  "archived": [],
+  "archived": [
+    "deleted 3 superseded output(s) from the previous generation"
+  ],
   "errors": [],
   "warnings": [],
   "notes": [
@@ -43,12 +45,14 @@
     "solarwinds-papertrail-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "solarwinds-pingdom-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "solarwinds-service-desk-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "tag 'Users' spans 2 source specs (solarwinds-papertrail-openapi.yml, solarwinds-service-desk-openapi.yml): per-path servers applied"
+    "tag 'Users' spans 2 source specs (solarwinds-papertrail-openapi.yml, solarwinds-service-desk-openapi.yml): per-path servers applied",
+    "superseded outputs removed: solarwinds-bulk-operations-api-openapi.yml, solarwinds-saved-searches-api-openapi.yml, solarwinds-service-requests-api-openapi.yml",
+    "apis.yml register: written (+3 apis, 31 total)"
   ],
   "skipped": [
     "solarwinds-account-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "solarwinds-assets-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "solarwinds-bulkoperations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "solarwinds-bulk-operations-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "solarwinds-categories-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "solarwinds-changes-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "solarwinds-checks-api-openapi.yml: previously refined output, superseded by openapi/_original/",
@@ -63,9 +67,9 @@
     "solarwinds-problems-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "solarwinds-query-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "solarwinds-results-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "solarwinds-savedsearches-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "solarwinds-saved-searches-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "solarwinds-search-api-openapi.yml: previously refined output, superseded by openapi/_original/",
-    "solarwinds-servicerequests-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "solarwinds-service-requests-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "solarwinds-summary-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "solarwinds-systems-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "solarwinds-teams-api-openapi.yml: previously refined output, superseded by openapi/_original/",

@@ -17,7 +17,7 @@ servers:
 security:
 - basicAuth: []
 tags:
-- name: BulkOperations
+- name: Bulk Operations
   description: Perform bulk create, update, and delete operations
 paths:
   /BulkDelete:
@@ -26,7 +26,7 @@ paths:
       summary: Solarwinds Delete Multiple Entities
       description: Deletes multiple SWIS entities in a single operation. Provide an array of SWIS URIs to delete.
       tags:
-      - BulkOperations
+      - Bulk Operations
       requestBody:
         required: true
         content:
@@ -54,7 +54,7 @@ paths:
       summary: Solarwinds Update Multiple Entities
       description: Updates properties on multiple SWIS entities in a single operation.
       tags:
-      - BulkOperations
+      - Bulk Operations
       requestBody:
         required: true
         content:
