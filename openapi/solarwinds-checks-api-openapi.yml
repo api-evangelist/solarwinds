@@ -230,22 +230,39 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
+  parameters:
+    CheckId:
+      name: checkid
+      in: path
+      required: true
+      description: Unique identifier for the check
+      schema:
+        type: integer
   schemas:
-    CheckUpdate:
+    CheckDetail:
       type: object
       properties:
-        name:
-          type: string
-          example: Example Title
-        host:
-          type: string
+        check:
+          allOf:
+          - $ref: '#/components/schemas/Check'
+          - type: object
+            properties:
+              encryption:
+                type: boolean
+                description: Use SSL/TLS
+              port:
+                type: integer
+                description: Target port
+              sendnotificationwhendown:
+                type: integer
+                description: Number of failed tests before notification
+              notifyagainevery:
+                type: integer
+                description: Notification repeat interval
+              notifywhenbackup:
+                type: boolean
+                description: Notify when check recovers
           example: example_value
-        resolution:
-          type: integer
-          example: 10
-        paused:
-          type: boolean
-          example: true
     CheckCreate:
       type: object
       required:
@@ -293,30 +310,21 @@ components:
           type: boolean
           description: Use SSL/TLS
           example: true
-    CheckDetail:
+    CheckUpdate:
       type: object
       properties:
-        check:
-          allOf:
-          - $ref: '#/components/schemas/Check'
-          - type: object
-            properties:
-              encryption:
-                type: boolean
-                description: Use SSL/TLS
-              port:
-                type: integer
-                description: Target port
-              sendnotificationwhendown:
-                type: integer
-                description: Number of failed tests before notification
-              notifyagainevery:
-                type: integer
-                description: Notification repeat interval
-              notifywhenbackup:
-                type: boolean
-                description: Notify when check recovers
+        name:
+          type: string
+          example: Example Title
+        host:
+          type: string
           example: example_value
+        resolution:
+          type: integer
+          example: 10
+        paused:
+          type: boolean
+          example: true
     Check:
       type: object
       properties:
@@ -402,14 +410,6 @@ components:
             filtered:
               type: integer
           example: example_value
-  parameters:
-    CheckId:
-      name: checkid
-      in: path
-      required: true
-      description: Unique identifier for the check
-      schema:
-        type: integer
   securitySchemes:
     bearerAuth:
       type: http

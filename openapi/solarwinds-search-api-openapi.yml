@@ -173,6 +173,18 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    IterateResponse:
+      type: object
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/LogEvent'
+          example: []
+        next:
+          type: string
+          description: Cursor for next page of results
+          example: example_value
     LogEvent:
       type: object
       properties:
@@ -205,6 +217,19 @@ components:
           items:
             type: string
           example: []
+    SearchResponse:
+      type: object
+      properties:
+        rsid:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Result Set ID for retrieving events
+            status:
+              type: string
+              description: Search status
+          example: '500123'
     EventsResponse:
       type: object
       properties:
@@ -221,31 +246,6 @@ components:
           items:
             $ref: '#/components/schemas/LogEvent'
           example: []
-    IterateResponse:
-      type: object
-      properties:
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/LogEvent'
-          example: []
-        next:
-          type: string
-          description: Cursor for next page of results
-          example: example_value
-    SearchResponse:
-      type: object
-      properties:
-        rsid:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Result Set ID for retrieving events
-            status:
-              type: string
-              description: Search status
-          example: '500123'
   securitySchemes:
     bearerAuth:
       type: http

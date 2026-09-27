@@ -53,21 +53,6 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    PerPage:
-      name: per_page
-      in: query
-      description: Number of results per page
-      schema:
-        type: integer
-        default: 25
-    Page:
-      name: page
-      in: query
-      description: Page number for pagination
-      schema:
-        type: integer
-        default: 1
   schemas:
     Problem:
       type: object
@@ -94,6 +79,21 @@ components:
           type: string
           format: date-time
           example: '2026-01-15T10:30:00Z'
+  parameters:
+    PerPage:
+      name: per_page
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 25
+    Page:
+      name: page
+      in: query
+      description: Page number for pagination
+      schema:
+        type: integer
+        default: 1
   securitySchemes:
     bearerAuth:
       type: http

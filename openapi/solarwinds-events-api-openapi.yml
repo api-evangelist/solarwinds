@@ -109,6 +109,30 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    EventSearchResult:
+      type: object
+      properties:
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/Event'
+          example: []
+        min_id:
+          type: string
+          description: Minimum event ID in results
+          example: '500123'
+        max_id:
+          type: string
+          description: Maximum event ID in results
+          example: '500123'
+        reached_beginning:
+          type: boolean
+          description: Whether results include the earliest matching event
+          example: true
+        min_time_at:
+          type: string
+          format: date-time
+          example: '2026-01-15T10:30:00Z'
     Event:
       type: object
       properties:
@@ -162,30 +186,6 @@ components:
           type: string
           description: Log message content
           example: example_value
-    EventSearchResult:
-      type: object
-      properties:
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/Event'
-          example: []
-        min_id:
-          type: string
-          description: Minimum event ID in results
-          example: '500123'
-        max_id:
-          type: string
-          description: Maximum event ID in results
-          example: '500123'
-        reached_beginning:
-          type: boolean
-          description: Whether results include the earliest matching event
-          example: true
-        min_time_at:
-          type: string
-          format: date-time
-          example: '2026-01-15T10:30:00Z'
   securitySchemes:
     apiToken:
       type: apiKey

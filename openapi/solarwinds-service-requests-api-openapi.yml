@@ -107,18 +107,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    UserRef:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: abc123
-        name:
-          type: string
-          example: Example Title
-        email:
-          type: string
-          example: user@example.com
     ServiceRequest:
       type: object
       properties:
@@ -163,14 +151,19 @@ components:
             priority:
               type: string
           example: example_value
+    UserRef:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: abc123
+        name:
+          type: string
+          example: Example Title
+        email:
+          type: string
+          example: user@example.com
   parameters:
-    PerPage:
-      name: per_page
-      in: query
-      description: Number of results per page
-      schema:
-        type: integer
-        default: 25
     Page:
       name: page
       in: query
@@ -178,6 +171,13 @@ components:
       schema:
         type: integer
         default: 1
+    PerPage:
+      name: per_page
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 25
   securitySchemes:
     bearerAuth:
       type: http
