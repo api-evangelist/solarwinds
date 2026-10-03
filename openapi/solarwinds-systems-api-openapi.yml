@@ -187,6 +187,23 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    SystemCreate:
+      type: object
+      required:
+      - system
+      properties:
+        system:
+          type: object
+          required:
+          - name
+          properties:
+            name:
+              type: string
+            hostname:
+              type: string
+            ip_address:
+              type: string
+          example: example_value
     SystemUpdate:
       type: object
       required:
@@ -231,23 +248,6 @@ components:
               type: string
             port:
               type: integer
-          example: example_value
-    SystemCreate:
-      type: object
-      required:
-      - system
-      properties:
-        system:
-          type: object
-          required:
-          - name
-          properties:
-            name:
-              type: string
-            hostname:
-              type: string
-            ip_address:
-              type: string
           example: example_value
   parameters:
     ResourceId:

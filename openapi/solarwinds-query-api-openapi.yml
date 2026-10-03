@@ -93,16 +93,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    QueryResult:
-      type: object
-      properties:
-        results:
-          type: array
-          description: Array of result rows
-          items:
-            type: object
-            additionalProperties: true
-          example: []
     QueryRequest:
       type: object
       required:
@@ -117,6 +107,16 @@ components:
           description: Named parameters for parameterized queries
           additionalProperties: true
           example: example_value
+    QueryResult:
+      type: object
+      properties:
+        results:
+          type: array
+          description: Array of result rows
+          items:
+            type: object
+            additionalProperties: true
+          example: []
   parameters:
     SwqlQuery:
       name: query

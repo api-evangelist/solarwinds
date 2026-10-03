@@ -173,6 +173,35 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    SearchResponse:
+      type: object
+      properties:
+        rsid:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Result Set ID for retrieving events
+            status:
+              type: string
+              description: Search status
+          example: '500123'
+    EventsResponse:
+      type: object
+      properties:
+        total_events:
+          type: integer
+          description: Total number of matching events
+          example: 10
+        page:
+          type: integer
+          description: Current page number
+          example: 10
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/LogEvent'
+          example: []
     IterateResponse:
       type: object
       properties:
@@ -216,35 +245,6 @@ components:
           description: Tags associated with the event
           items:
             type: string
-          example: []
-    SearchResponse:
-      type: object
-      properties:
-        rsid:
-          type: object
-          properties:
-            id:
-              type: string
-              description: Result Set ID for retrieving events
-            status:
-              type: string
-              description: Search status
-          example: '500123'
-    EventsResponse:
-      type: object
-      properties:
-        total_events:
-          type: integer
-          description: Total number of matching events
-          example: 10
-        page:
-          type: integer
-          description: Current page number
-          example: 10
-        events:
-          type: array
-          items:
-            $ref: '#/components/schemas/LogEvent'
           example: []
   securitySchemes:
     bearerAuth:
