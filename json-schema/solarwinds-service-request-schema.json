@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/solarwinds/main/json-schema/solarwinds-service-request-schema.json",
+  "title": "ServiceRequest",
+  "x-generated": "2026-10-03",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/solarwinds-service-requests-api-openapi.yml#/components/schemas/ServiceRequest",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "number": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "string"
+    },
+    "requester": {
+      "$ref": "#/$defs/UserRef"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "$defs": {
+    "UserRef": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

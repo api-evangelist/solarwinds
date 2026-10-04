@@ -52,6 +52,37 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    Group:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: abc123
+        name:
+          type: string
+          example: Example Title
+        system_wildcard:
+          type: string
+          example: example_value
+        systems:
+          type: array
+          items:
+            $ref: '#/components/schemas/System'
+          example: []
+    SavedSearch:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: abc123
+        name:
+          type: string
+          example: Example Title
+        query:
+          type: string
+          example: example_value
+        group:
+          $ref: '#/components/schemas/Group'
     System:
       type: object
       properties:
@@ -84,37 +115,6 @@ components:
             port:
               type: integer
           example: example_value
-    SavedSearch:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: abc123
-        name:
-          type: string
-          example: Example Title
-        query:
-          type: string
-          example: example_value
-        group:
-          $ref: '#/components/schemas/Group'
-    Group:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: abc123
-        name:
-          type: string
-          example: Example Title
-        system_wildcard:
-          type: string
-          example: example_value
-        systems:
-          type: array
-          items:
-            $ref: '#/components/schemas/System'
-          example: []
   securitySchemes:
     apiToken:
       type: apiKey

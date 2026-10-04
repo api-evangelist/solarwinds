@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/solarwinds/main/json-schema/solarwinds-check-list-schema.json",
+  "title": "CheckList",
+  "x-generated": "2026-10-03",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/solarwinds-checks-api-openapi.yml#/components/schemas/CheckList",
+  "type": "object",
+  "properties": {
+    "checks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Check"
+      }
+    },
+    "counts": {
+      "type": "object",
+      "properties": {
+        "total": {
+          "type": "integer"
+        },
+        "limited": {
+          "type": "integer"
+        },
+        "filtered": {
+          "type": "integer"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "Check": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "Unique check identifier"
+        },
+        "name": {
+          "type": "string",
+          "description": "Check name"
+        },
+        "type": {
+          "type": "string",
+          "description": "Check type",
+          "enum": [
+            "http",
+            "httpcustom",
+            "tcp",
+            "ping",
+            "dns",
+            "udp",
+            "smtp",
+            "pop3",
+            "imap"
+          ]
+        },
+        "hostname": {
+          "type": "string",
+          "description": "Target hostname"
+        },
+        "status": {
+          "type": "string",
+          "description": "Current check status",
+          "enum": [
+            "up",
+            "down",
+            "unconfirmed_down",
+            "unknown",
+            "paused"
+          ]
+        },
+        "resolution": {
+          "type": "integer",
+          "description": "Check interval in minutes"
+        },
+        "lastresponsetime": {
+          "type": "integer",
+          "description": "Last response time in milliseconds"
+        },
+        "lasttesttime": {
+          "type": "integer",
+          "description": "Last test timestamp (Unix)"
+        },
+        "created": {
+          "type": "integer",
+          "description": "Creation timestamp (Unix)"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string"
+              },
+              "count": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

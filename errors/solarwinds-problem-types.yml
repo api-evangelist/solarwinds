@@ -1,0 +1,42 @@
+generated: '2026-10-03'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/solarwinds-account-api-openapi.yml
+- openapi/solarwinds-assets-api-openapi.yml
+- openapi/solarwinds-bulk-operations-api-openapi.yml
+- openapi/solarwinds-categories-api-openapi.yml
+- openapi/solarwinds-changes-api-openapi.yml
+- openapi/solarwinds-checks-api-openapi.yml
+- openapi/solarwinds-contacts-api-openapi.yml
+- openapi/solarwinds-crud-api-openapi.yml
+- openapi/solarwinds-events-api-openapi.yml
+- openapi/solarwinds-groups-api-openapi.yml
+- openapi/solarwinds-incidents-api-openapi.yml
+- openapi/solarwinds-invoke-api-openapi.yml
+format: custom
+envelope:
+  media_type: null
+  schema: null
+coverage:
+  operations: 46
+  statuses_declared: 3
+problems:
+- status: 400
+  title: Bad Request
+  description: Invalid check configuration
+  operations: 8
+  media_types: []
+  schema: null
+- status: 401
+  title: Unauthorized
+  description: Unauthorized
+  operations: 46
+  media_types: []
+  schema: null
+- status: 404
+  title: Not Found
+  description: Check not found
+  operations: 18
+  media_types: []
+  schema: null

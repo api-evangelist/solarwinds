@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/solarwinds/main/json-schema/solarwinds-saved-search-schema.json",
+  "title": "SavedSearch",
+  "x-generated": "2026-10-03",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/solarwinds-saved-searches-api-openapi.yml#/components/schemas/SavedSearch",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "query": {
+      "type": "string"
+    },
+    "group": {
+      "$ref": "#/$defs/Group"
+    }
+  },
+  "$defs": {
+    "Group": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "system_wildcard": {
+          "type": "string"
+        },
+        "systems": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/System"
+          }
+        }
+      }
+    },
+    "System": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "description": "System ID"
+        },
+        "name": {
+          "type": "string",
+          "description": "System name"
+        },
+        "last_event_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "auto_delete": {
+          "type": "boolean"
+        },
+        "ip_address": {
+          "type": "string"
+        },
+        "hostname": {
+          "type": "string"
+        },
+        "syslog": {
+          "type": "object",
+          "properties": {
+            "hostname": {
+              "type": "string"
+            },
+            "port": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    }
+  }
+}

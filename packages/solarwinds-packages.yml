@@ -1,0 +1,25 @@
+generated: '2026-10-03'
+method: probed
+generator: harvest-packages.py
+source: registry metadata endpoints (registry.npmjs.org, pypi.org, rubygems.org, api.nuget.org, packagist.org, crates.io)
+ownership_rule: 'official: true only when the registry metadata (homepage, repository, author, URLs) names the provider''s domain (agentic-access/solarwinds-agentic-access.yml,
+  appoptics.com, authentication/solarwinds-authentication.yml, capabilities/solarwinds-capability-edges.yml, json-ld/solarwinds-context.jsonld,
+  json-schema/solarwinds-alert-schema.json, json-schema/solarwinds-node-schema.json, linkedin.com, postman.com, security/solarwinds-domain-security.yml,
+  solarwinds.com, twitter.com) or its accepted GitHub org.'
+packages:
+- name: solarwinds
+  registry: rubygems
+  url: https://rubygems.org/gems/solarwinds
+  language: Ruby
+  official: true
+  version: 0.0.0
+  published: '2021-10-13'
+  evidence: metadata names solarwinds.com
+- name: solarwinds
+  registry: npm
+  url: https://www.npmjs.com/package/solarwinds
+  language: JavaScript
+  official: false
+  version: 0.3.2
+  published: '2016-07-07'
+  evidence: 'name match only: the metadata names neither the provider''s domain nor its GitHub org'

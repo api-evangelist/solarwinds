@@ -234,65 +234,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    ResourceId:
-      name: id
-      in: path
-      required: true
-      description: Unique identifier of the resource
-      schema:
-        type: integer
-    PerPage:
-      name: per_page
-      in: query
-      description: Number of results per page
-      schema:
-        type: integer
-        default: 25
-    Page:
-      name: page
-      in: query
-      description: Page number for pagination
-      schema:
-        type: integer
-        default: 1
   schemas:
-    UserRef:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: abc123
-        name:
-          type: string
-          example: Example Title
-        email:
-          type: string
-          example: user@example.com
-    IncidentCreate:
-      type: object
-      required:
-      - incident
-      properties:
-        incident:
-          type: object
-          required:
-          - name
-          properties:
-            name:
-              type: string
-              description: Incident title
-            description:
-              type: string
-              description: Incident description
-            priority:
-              type: string
-              description: Priority level
-            assignee:
-              $ref: '#/components/schemas/UserRef'
-            category:
-              $ref: '#/components/schemas/CategoryRef'
-          example: example_value
     Incident:
       type: object
       properties:
@@ -348,6 +290,30 @@ components:
           type: string
           format: date-time
           example: '2026-01-15T10:30:00Z'
+    IncidentCreate:
+      type: object
+      required:
+      - incident
+      properties:
+        incident:
+          type: object
+          required:
+          - name
+          properties:
+            name:
+              type: string
+              description: Incident title
+            description:
+              type: string
+              description: Incident description
+            priority:
+              type: string
+              description: Priority level
+            assignee:
+              $ref: '#/components/schemas/UserRef'
+            category:
+              $ref: '#/components/schemas/CategoryRef'
+          example: example_value
     CategoryRef:
       type: object
       properties:
@@ -357,6 +323,18 @@ components:
         name:
           type: string
           example: Example Title
+    UserRef:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: abc123
+        name:
+          type: string
+          example: Example Title
+        email:
+          type: string
+          example: user@example.com
     IncidentUpdate:
       type: object
       required:
@@ -376,6 +354,28 @@ components:
             assignee:
               $ref: '#/components/schemas/UserRef'
           example: example_value
+  parameters:
+    Page:
+      name: page
+      in: query
+      description: Page number for pagination
+      schema:
+        type: integer
+        default: 1
+    ResourceId:
+      name: id
+      in: path
+      required: true
+      description: Unique identifier of the resource
+      schema:
+        type: integer
+    PerPage:
+      name: per_page
+      in: query
+      description: Number of results per page
+      schema:
+        type: integer
+        default: 25
   securitySchemes:
     bearerAuth:
       type: http

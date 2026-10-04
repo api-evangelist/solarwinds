@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/solarwinds/main/json-schema/solarwinds-search-response-schema.json",
+  "title": "SearchResponse",
+  "x-generated": "2026-10-03",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/solarwinds-search-api-openapi.yml#/components/schemas/SearchResponse",
+  "type": "object",
+  "properties": {
+    "rsid": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Result Set ID for retrieving events"
+        },
+        "status": {
+          "type": "string",
+          "description": "Search status"
+        }
+      }
+    }
+  }
+}

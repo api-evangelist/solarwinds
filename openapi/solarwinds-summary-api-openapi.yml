@@ -116,33 +116,7 @@ paths:
         delay: 0
         dispatcher: FALLBACK
 components:
-  parameters:
-    CheckId:
-      name: checkid
-      in: path
-      required: true
-      description: Unique identifier for the check
-      schema:
-        type: integer
   schemas:
-    SummaryOutage:
-      type: object
-      properties:
-        summary:
-          type: object
-          properties:
-            states:
-              type: array
-              items:
-                type: object
-                properties:
-                  status:
-                    type: string
-                  timefrom:
-                    type: integer
-                  timeto:
-                    type: integer
-          example: example_value
     SummaryAverage:
       type: object
       properties:
@@ -168,6 +142,32 @@ components:
                   type: integer
                   description: Total unknown time in seconds
           example: example_value
+    SummaryOutage:
+      type: object
+      properties:
+        summary:
+          type: object
+          properties:
+            states:
+              type: array
+              items:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  timefrom:
+                    type: integer
+                  timeto:
+                    type: integer
+          example: example_value
+  parameters:
+    CheckId:
+      name: checkid
+      in: path
+      required: true
+      description: Unique identifier for the check
+      schema:
+        type: integer
   securitySchemes:
     bearerAuth:
       type: http

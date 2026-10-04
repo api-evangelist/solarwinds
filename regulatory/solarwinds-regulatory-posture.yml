@@ -1,0 +1,36 @@
+generated: '2026-10-03'
+method: probed
+source: https://www.solarwinds.com/legal/privacy
+signals:
+  data_subject_request:
+    evidence:
+      - source: https://www.solarwinds.com/legal/privacy
+        http_status: 200
+        fetched: "true"
+        quote: "In this Privacy Policy, we explain how we collect, use, and disclose Personal Data as a “controller” or a “business” and the choices individuals have regarding their Personal Data. We also explain your rights as a data subject (or consumer) and how to get in touch with us regarding our processing of your Personal Data."
+        section: "Scope of this Privacy Policy/Overview"
+        note: Describes data subject rights and how to exercise them.
+  data_retention:
+    evidence:
+      - source: https://www.solarwinds.com/legal/privacy
+        http_status: 200
+        fetched: "true"
+        quote: "We generally keep Personal Data for as long as necessary to fulfill the purposes for which it was collected as outlined in this Privacy Policy unless a longer retention period is required or permitted by applicable law. The criteria used to determine our retention periods include: ... The length of time we have an ongoing relationship with you and provide offerings to you ... Whether there is a legal obligation ... Whether retention is advisable in light of our legal position ..."
+        section: "Data Retention"
+        note: Outlines retention periods and criteria.
+  subprocessors:
+    evidence:
+      - source: https://www.solarwinds.com/legal/privacy
+        http_status: 200
+        fetched: "true"
+        quote: "Further information about SolarWinds’ efforts and commitment to data privacy and security can be found on the SolarWinds Trust Center. For a list of our affiliated companies please refer to the Processor, Sub-Processor and Material Subcontractors Lists."
+        section: "Processor Information"
+        note: Links to sub-processor list.
+  incident_notification:
+    evidence:
+      - source: https://www.solarwinds.com/legal/privacy
+        http_status: 200
+        fetched: "true"
+        quote: "SolarWinds helps teams respond faster through AI-Powered observability, database performance, incident response, and ITSM solutions."
+        section: "Incident Response"
+        note: Mentions incident response capabilities.

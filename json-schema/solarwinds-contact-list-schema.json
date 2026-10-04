@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/solarwinds/main/json-schema/solarwinds-contact-list-schema.json",
+  "title": "ContactList",
+  "x-generated": "2026-10-03",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/solarwinds-contacts-api-openapi.yml#/components/schemas/ContactList",
+  "type": "object",
+  "properties": {
+    "contacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "notification_targets": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

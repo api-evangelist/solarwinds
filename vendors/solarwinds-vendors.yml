@@ -1,0 +1,48 @@
+generated: '2026-10-03'
+method: probed
+source: pre-flight dossier (docs platform, portal detections) + CNAME chains and response headers of the hosts apis.yml names
+registry: all/0-working/vendors.yml
+areas_vocabulary:
+- documentation
+- developer-portal
+- api-gateway
+- cdn
+- hosting
+- sdk-generation
+- api-collections
+- status-page
+- support
+- community
+- identity
+- mcp-hosting
+vendors:
+- vendor: netlify
+  name: Netlify
+  area: hosting
+  host: www.solarwinds.com
+  evidence: header:x-nf-request-id
+  signal: header
+  confidence: high
+  kin_score: []
+reliance:
+  areas_vendor_served:
+  - hosting
+  vendor_count: 1
+  areas_observed: 12
+  share_of_observable_areas: 0.083
+  note: areas where a third party was DETECTED serving this provider; an area absent here was either self-run or not observed, and this script
+    cannot tell those apart
+checked:
+- 'docs-platform: custom'
+- www.solarwinds.com (GettingStarted)
+- www.solarwinds.com (Website)
+- www.solarwinds.com (Portal)
+- documentation.solarwinds.com (Documentation)
+- support.solarwinds.com (Support)
+- status.solarwinds.com (StatusPage)
+- customerportal.solarwinds.com (Login)
+- '{dpa-server}:8124 (baseURL)'
+- '{npm-server}:17778 (baseURL)'
+- '{whd-server} (baseURL)'
+- '{orion-server}:17778 (baseURL)'
+- api.appoptics.com (baseURL)

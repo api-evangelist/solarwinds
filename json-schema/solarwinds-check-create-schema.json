@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/solarwinds/main/json-schema/solarwinds-check-create-schema.json",
+  "title": "CheckCreate",
+  "x-generated": "2026-10-03",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/solarwinds-checks-api-openapi.yml#/components/schemas/CheckCreate",
+  "type": "object",
+  "required": [
+    "name",
+    "host",
+    "type"
+  ],
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Check name"
+    },
+    "host": {
+      "type": "string",
+      "description": "Target hostname or IP"
+    },
+    "type": {
+      "type": "string",
+      "description": "Check type",
+      "enum": [
+        "http",
+        "httpcustom",
+        "tcp",
+        "ping",
+        "dns",
+        "udp",
+        "smtp",
+        "pop3",
+        "imap"
+      ]
+    },
+    "resolution": {
+      "type": "integer",
+      "description": "Check interval in minutes",
+      "enum": [
+        1,
+        5,
+        15,
+        30,
+        60
+      ]
+    },
+    "paused": {
+      "type": "boolean",
+      "description": "Whether the check is paused"
+    },
+    "encryption": {
+      "type": "boolean",
+      "description": "Use SSL/TLS"
+    }
+  }
+}

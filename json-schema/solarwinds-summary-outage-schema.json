@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/solarwinds/main/json-schema/solarwinds-summary-outage-schema.json",
+  "title": "SummaryOutage",
+  "x-generated": "2026-10-03",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/solarwinds-summary-api-openapi.yml#/components/schemas/SummaryOutage",
+  "type": "object",
+  "properties": {
+    "summary": {
+      "type": "object",
+      "properties": {
+        "states": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string"
+              },
+              "timefrom": {
+                "type": "integer"
+              },
+              "timeto": {
+                "type": "integer"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,237 @@
+generated: '2026-10-03'
+method: derived
+generator: derive-mcp-candidate.py
+source:
+- openapi/solarwinds-account-api-openapi.yml
+- openapi/solarwinds-assets-api-openapi.yml
+- openapi/solarwinds-bulk-operations-api-openapi.yml
+- openapi/solarwinds-categories-api-openapi.yml
+- openapi/solarwinds-changes-api-openapi.yml
+- openapi/solarwinds-checks-api-openapi.yml
+- openapi/solarwinds-contacts-api-openapi.yml
+- openapi/solarwinds-crud-api-openapi.yml
+- openapi/solarwinds-events-api-openapi.yml
+- openapi/solarwinds-groups-api-openapi.yml
+- openapi/solarwinds-incidents-api-openapi.yml
+- openapi/solarwinds-invoke-api-openapi.yml
+- openapi/solarwinds-maintenance-api-openapi.yml
+- openapi/solarwinds-probeservers-api-openapi.yml
+- openapi/solarwinds-problems-api-openapi.yml
+- openapi/solarwinds-query-api-openapi.yml
+- openapi/solarwinds-results-api-openapi.yml
+- openapi/solarwinds-saved-searches-api-openapi.yml
+- openapi/solarwinds-search-api-openapi.yml
+- openapi/solarwinds-service-requests-api-openapi.yml
+- openapi/solarwinds-summary-api-openapi.yml
+- openapi/solarwinds-systems-api-openapi.yml
+- openapi/solarwinds-teams-api-openapi.yml
+- openapi/solarwinds-users-api-openapi.yml
+status: candidate
+deployment:
+  mode: none
+  auth: unknown
+  verified: probed
+note: No MCP server was found. The pre-flight posted tools/list to /mcp on api.samanage.com, api.pingdom.com, papertrailapp.com, api.appoptics.com;
+  verdict absent. Candidate tools below are derived from the 45 operation(s) in the provider's own OpenAPI (40 listed); they describe what a server
+  WOULD expose, not one that exists.
+tools:
+- name: get_account_info
+  operationId: getAccountInfo
+  method: GET
+  path: /customer
+  description: Solarwinds Get Account Information
+- name: list_assets
+  operationId: listAssets
+  method: GET
+  path: /hardwares.json
+  description: Solarwinds List Hardware Assets
+- name: bulk_delete
+  operationId: bulkDelete
+  method: POST
+  path: /BulkDelete
+  description: Solarwinds Delete Multiple Entities
+- name: list_categories
+  operationId: listCategories
+  method: GET
+  path: /categories.json
+  description: Solarwinds List Categories
+- name: list_changes
+  operationId: listChanges
+  method: GET
+  path: /changes.json
+  description: Solarwinds List Change Requests
+- name: list_checks
+  operationId: listChecks
+  method: GET
+  path: /checks
+  description: Solarwinds List All Checks
+- name: list_contacts
+  operationId: listContacts
+  method: GET
+  path: /alerting/contacts
+  description: Solarwinds List Alert Contacts
+- name: create_entity
+  operationId: createEntity
+  method: POST
+  path: /Create/{entityType}
+  description: Solarwinds Create a New Swis Entity
+- name: search_events
+  operationId: searchEvents
+  method: GET
+  path: /events/search.json
+  description: Solarwinds Search Log Events
+- name: list_groups
+  operationId: listGroups
+  method: GET
+  path: /groups.json
+  description: Solarwinds List All Groups
+- name: list_incidents
+  operationId: listIncidents
+  method: GET
+  path: /incidents.json
+  description: Solarwinds List Incidents
+- name: invoke_verb
+  operationId: invokeVerb
+  method: POST
+  path: /Invoke/{entityType}/{verb}
+  description: Solarwinds Invoke a Verb on an Entity Type
+- name: list_maintenance_windows
+  operationId: listMaintenanceWindows
+  method: GET
+  path: /maintenance
+  description: Solarwinds List Maintenance Windows
+- name: list_probes
+  operationId: listProbes
+  method: GET
+  path: /probes
+  description: Solarwinds List Probe Servers
+- name: list_problems
+  operationId: listProblems
+  method: GET
+  path: /problems.json
+  description: Solarwinds List Problems
+- name: query_swis
+  operationId: querySwis
+  method: GET
+  path: /Query
+  description: Solarwinds Execute a Swql Query
+- name: get_results
+  operationId: getResults
+  method: GET
+  path: /results/{checkid}
+  description: Solarwinds Get Raw Check Results
+- name: list_saved_searches
+  operationId: listSavedSearches
+  method: GET
+  path: /searches.json
+  description: Solarwinds List Saved Searches
+- name: get_events
+  operationId: getEvents
+  method: GET
+  path: /events
+  description: Solarwinds Retrieve Search Results
+- name: list_service_requests
+  operationId: listServiceRequests
+  method: GET
+  path: /service_requests.json
+  description: Solarwinds List Service Requests
+- name: get_summary_average
+  operationId: getSummaryAverage
+  method: GET
+  path: /summary.average/{checkid}
+  description: Solarwinds Get Average Response Time Summary
+- name: list_systems
+  operationId: listSystems
+  method: GET
+  path: /systems.json
+  description: Solarwinds List All Systems
+- name: list_teams
+  operationId: listTeams
+  method: GET
+  path: /alerting/teams
+  description: Solarwinds List Alert Teams
+- name: list_users
+  operationId: listUsers
+  method: GET
+  path: /users.json
+  description: Solarwinds List Users
+- name: bulk_update
+  operationId: bulkUpdate
+  method: POST
+  path: /BulkUpdate
+  description: Solarwinds Update Multiple Entities
+- name: create_check
+  operationId: createCheck
+  method: POST
+  path: /checks
+  description: Solarwinds Create a New Check
+- name: read_entity
+  operationId: readEntity
+  method: GET
+  path: /{entityUri}
+  description: Solarwinds Read a Swis Entity
+- name: get_group
+  operationId: getGroup
+  method: GET
+  path: /groups/{id}.json
+  description: Solarwinds Get Group Details
+- name: create_incident
+  operationId: createIncident
+  method: POST
+  path: /incidents.json
+  description: Solarwinds Create an Incident
+- name: query_swis_post
+  operationId: querySwisPost
+  method: POST
+  path: /Query
+  description: Solarwinds Execute a Swql Query via Post
+- name: iterate_events
+  operationId: iterateEvents
+  method: GET
+  path: /events/iterate
+  description: Solarwinds Iterate Through Search Results
+- name: create_service_request
+  operationId: createServiceRequest
+  method: POST
+  path: /service_requests.json
+  description: Solarwinds Create a Service Request
+- name: get_summary_outage
+  operationId: getSummaryOutage
+  method: GET
+  path: /summary.outage/{checkid}
+  description: Solarwinds Get Outage Summary
+- name: register_system
+  operationId: registerSystem
+  method: POST
+  path: /systems.json
+  description: Solarwinds Register a New System
+- name: get_check
+  operationId: getCheck
+  method: GET
+  path: /checks/{checkid}
+  description: Solarwinds Get Detailed Check Information
+- name: update_entity
+  operationId: updateEntity
+  method: POST
+  path: /{entityUri}
+  description: Solarwinds Update a Swis Entity
+- name: get_incident
+  operationId: getIncident
+  method: GET
+  path: /incidents/{id}.json
+  description: Solarwinds Get an Incident
+- name: get_system
+  operationId: getSystem
+  method: GET
+  path: /systems/{id}.json
+  description: Solarwinds Get System Details
+- name: update_check
+  operationId: updateCheck
+  method: PUT
+  path: /checks/{checkid}
+  description: Solarwinds Update a Check
+- name: delete_entity
+  operationId: deleteEntity
+  method: DELETE
+  path: /{entityUri}
+  description: Solarwinds Delete a Swis Entity

@@ -1,6 +1,12 @@
 aid: solarwinds
+
 name: SolarWinds
-description: A collection of APIs provided by SolarWinds for IT infrastructure management, monitoring, and observability.
+
+description: SolarWinds provides a comprehensive suite of APIs enabling programmatic access to its IT infrastructure management, monitoring, and
+  observability solutions. These APIs cover database performance analysis, network performance monitoring, web help desk, IP address management,
+  network configuration management, server and application monitoring, and more, allowing customers to integrate SolarWinds capabilities into
+  their own tools and workflows.
+
 deliveryModel:
   model: saas
   open_source: false
@@ -13,6 +19,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: enterprise
   onboarding: self-serve
@@ -26,23 +33,167 @@ accessModel:
   - authentication
   generated: '2026-07-22'
   method: derived
+
 image: https://www.solarwinds.com/sites/all/themes/solarwinds_theme/logo.png
+
 url: https://www.solarwinds.com/apis.json
+
 tags:
-  - Application Monitoring
-  - Database Monitoring
-  - Infrastructure
-  - IP Address Management
-  - IT Management
-  - ITSM
-  - Log Management
-  - Network Monitoring
-  - Observability
-  - Monitoring
+- Application Monitoring
+- Database Monitoring
+- Infrastructure
+- IP Address Management
+- IT Management
+- ITSM
+- Log Management
+- Network Monitoring
+- Observability
+- Monitoring
+
 created: '2024-01-15'
+
 modified: '2026-05-19'
+
 specificationVersion: '0.23'
+
 type: Index
+
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
+  url: https://apievangelist.com
+
+common:
+- type: FinOps
+  url: finops/solarwinds-finops.yml
+- type: RateLimits
+  url: rate-limits/solarwinds-rate-limits.yml
+- type: Plans
+  url: plans/solarwinds-plans-pricing.yml
+- type: Spectral
+  url: rules/solarwinds-spectral-rules.yml
+- type: Spectral
+  url: rules/solarwinds-rules.yml
+- type: Spectral
+  url: rules/solarwinds-jsonschema-spectral-rules.yml
+- type: JSONLD
+  url: json-ld/solarwinds-service-desk-context.jsonld
+- type: JSONLD
+  url: json-ld/solarwinds-pingdom-context.jsonld
+- type: JSONLD
+  url: json-ld/solarwinds-papertrail-context.jsonld
+- type: JSONLD
+  url: json-ld/solarwinds-orion-context.jsonld
+- type: JSONLD
+  url: json-ld/solarwinds-loggly-context.jsonld
+- type: Vocabulary
+  url: vocabulary/solarwinds-vocabulary.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DataModel
+  url: data-model/solarwinds-data-model.yml
+- type: ErrorCatalog
+  url: errors/solarwinds-problem-types.yml
+- type: Conformance
+  url: conformance/solarwinds-conformance.yml
+- type: Hosts
+  url: hosts/solarwinds-hosts.yml
+- type: Vendors
+  url: vendors/solarwinds-vendors.yml
+- type: Packages
+  url: packages/solarwinds-packages.yml
+- type: TrustCenter
+  url: https://www.solarwinds.com/trust-center
+- type: Pricing
+  url: https://www.solarwinds.com/pricing
+- type: Newsroom
+  url: https://www.solarwinds.com/company/newsroom
+- type: ChangeLog
+  url: https://www.solarwinds.com/legal/changelog
+- type: GettingStarted
+  url: https://www.solarwinds.com/resources/video/getting-started-with-network-topology-mapper
+- type: Website
+  url: https://www.solarwinds.com/
+- type: CapabilityMap
+  url: capabilities/solarwinds-capability-edges.yml
+  name: SolarWinds Business Capability Map
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/solarwinds/overview
+- type: AgenticAccess
+  url: agentic-access/solarwinds-agentic-access.yml
+- type: DomainSecurity
+  url: security/solarwinds-domain-security.yml
+- type: Authentication
+  url: authentication/solarwinds-authentication.yml
+- type: Portal
+  url: https://www.solarwinds.com
+- type: Documentation
+  url: https://documentation.solarwinds.com
+- type: Support
+  url: https://support.solarwinds.com
+- type: Blog
+  url: https://www.solarwinds.com/blog
+- type: GitHubOrganization
+  url: https://github.com/solarwinds
+- type: StatusPage
+  url: https://status.solarwinds.com
+- type: PrivacyPolicy
+  url: https://www.solarwinds.com/legal/privacy
+- type: TermsOfService
+  url: https://www.solarwinds.com/legal/terms
+- type: Login
+  url: https://customerportal.solarwinds.com
+- type: Security
+  url: https://www.solarwinds.com/information-security
+- type: X
+  url: https://twitter.com/solarwinds
+- type: LinkedIn
+  url: https://www.linkedin.com/company/solarwinds
+- type: SDKs
+  url: https://github.com/solarwinds/OrionSDK
+- type: CLI
+  url: https://github.com/solarwinds/OrionSDK/tree/master/Samples/PowerShell
+- type: JSONLD
+  url: json-ld/solarwinds-context.jsonld
+- type: JSONSchema
+  url: json-schema/solarwinds-node-schema.json
+- type: JSONSchema
+  url: json-schema/solarwinds-alert-schema.json
+- type: Features
+  url: https://www.solarwinds.com
+  data:
+  - Network Device Monitoring via SWIS/SWQL
+  - IT Service Management and Ticketing
+  - Cloud-Native Observability (Logs, Metrics, Traces)
+  - Website Uptime and Synthetic Monitoring
+  - Cloud-Based Log Aggregation and Search
+  - Database Performance Analysis
+  - IP Address Management
+  - Network Configuration Compliance
+- type: UseCases
+  url: https://www.solarwinds.com
+  data:
+  - Network Infrastructure Monitoring and Alerting
+  - IT Incident Management and Ticketing Workflows
+  - Cloud Application Performance Monitoring
+  - Centralized Log Management and Search
+  - Website and API Uptime Monitoring
+  - Database Query Performance Tuning
+- type: Integrations
+  url: https://www.solarwinds.com
+  data:
+  - Slack
+  - PagerDuty
+  - Microsoft Teams
+  - ServiceNow
+  - Jira
+  - AWS CloudWatch
+  - Azure Monitor
+  - Splunk
+- name: Agent Skills
+  url: https://github.com/solarwinds/gns3-skills
+  type: AgentSkills
+
 apis:
 - aid: solarwinds:solarwinds-dpa-api
   name: SolarWinds Database Performance Analyzer API
@@ -267,6 +418,8 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-account-info-schema.json
 - aid: solarwinds:solarwinds-assets-api
   name: SolarWinds Assets API
   description: Manage hardware and software assets
@@ -335,6 +488,8 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-asset-schema.json
 - aid: solarwinds:solarwinds-categories-api
   name: SolarWinds Categories API
   description: Manage categories for incidents and requests
@@ -403,6 +558,8 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-category-schema.json
 - aid: solarwinds:solarwinds-changes-api
   name: SolarWinds Changes API
   description: Manage change requests
@@ -471,6 +628,8 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-change-schema.json
 - aid: solarwinds:solarwinds-checks-api
   name: SolarWinds Checks API
   description: Manage uptime and transaction checks
@@ -539,6 +698,16 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-check-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-check-create-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-check-detail-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-check-list-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-check-update-schema.json
 - aid: solarwinds:solarwinds-contacts-api
   name: SolarWinds Contacts API
   description: Manage alert contacts
@@ -607,6 +776,8 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-contact-list-schema.json
 - aid: solarwinds:solarwinds-crud-api
   name: SolarWinds CRUD API
   description: Create, read, update, and delete operations on SWIS entities
@@ -745,6 +916,8 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-event-search-result-schema.json
 - aid: solarwinds:solarwinds-groups-api
   name: SolarWinds Groups API
   description: Manage system groups
@@ -815,6 +988,8 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-group-schema.json
 - aid: solarwinds:solarwinds-incidents-api
   name: SolarWinds Incidents API
   description: Manage IT incidents
@@ -883,6 +1058,12 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-incident-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-incident-create-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-incident-update-schema.json
 - aid: solarwinds:solarwinds-invoke-api
   name: SolarWinds Invoke API
   description: Invoke verbs (methods) on SWIS entities
@@ -1019,6 +1200,8 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-maintenance-list-schema.json
 - aid: solarwinds:solarwinds-probeservers-api
   name: SolarWinds ProbeServers API
   description: List available probe servers
@@ -1087,6 +1270,8 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-probe-list-schema.json
 - aid: solarwinds:solarwinds-problems-api
   name: SolarWinds Problems API
   description: Manage problem records
@@ -1155,6 +1340,8 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-problem-schema.json
 - aid: solarwinds:solarwinds-query-api
   name: SolarWinds Query API
   description: Execute SWQL queries against the SolarWinds Information Service
@@ -1223,6 +1410,10 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-query-request-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-query-result-schema.json
 - aid: solarwinds:solarwinds-results-api
   name: SolarWinds Results API
   description: Retrieve check results and performance data
@@ -1291,6 +1482,8 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-result-list-schema.json
 - aid: solarwinds:solarwinds-search-api
   name: SolarWinds Search API
   description: Search and retrieve log events
@@ -1359,6 +1552,12 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-events-response-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-search-response-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-iterate-response-schema.json
 - aid: solarwinds:solarwinds-summary-api
   name: SolarWinds Summary API
   description: Retrieve performance and outage summaries
@@ -1427,6 +1626,10 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-summary-average-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-summary-outage-schema.json
 - aid: solarwinds:solarwinds-systems-api
   name: SolarWinds Systems API
   description: Manage log-sending systems
@@ -1495,6 +1698,12 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-system-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-system-create-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-system-update-schema.json
 - aid: solarwinds:solarwinds-teams-api
   name: SolarWinds Teams API
   description: Manage alert teams
@@ -1565,6 +1774,8 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-team-list-schema.json
 - aid: solarwinds:solarwinds-users-api
   name: SolarWinds Users API
   description: Manage user accounts
@@ -1635,6 +1846,8 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-user-schema.json
 - aid: solarwinds:solarwinds-bulk-operations-api
   name: SolarWinds Bulk Operations API
   description: Perform bulk create, update, and delete operations
@@ -1703,6 +1916,16 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-bulk-update-request-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-bulk-delete-request-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-saved-search-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-service-request-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-service-request-create-schema.json
 - aid: solarwinds:solarwinds-saved-searches-api
   name: SolarWinds Saved Searches API
   description: Manage saved searches
@@ -1771,6 +1994,16 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
+  - type: JSONSchema
+    url: json-schema/solarwinds-bulk-update-request-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-bulk-delete-request-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-saved-search-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-service-request-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-service-request-create-schema.json
 - aid: solarwinds:solarwinds-service-requests-api
   name: SolarWinds Service Requests API
   description: Manage service requests
@@ -1839,91 +2072,21 @@ apis:
   - type: Documentation
     url: >-
       https://documentation.solarwinds.com/en/success_center/papertrail/content/kb/how-it-works/search-api.htm
-common:
-  - type: Website
-    url: https://www.solarwinds.com/
-  - type: CapabilityMap
-    url: capabilities/solarwinds-capability-edges.yml
-    name: SolarWinds Business Capability Map
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/solarwinds/overview
-  - type: AgenticAccess
-    url: agentic-access/solarwinds-agentic-access.yml
-  - type: DomainSecurity
-    url: security/solarwinds-domain-security.yml
-  - type: Authentication
-    url: authentication/solarwinds-authentication.yml
-  - type: Portal
-    url: https://www.solarwinds.com
-  - type: Documentation
-    url: https://documentation.solarwinds.com
-  - type: Support
-    url: https://support.solarwinds.com
-  - type: Blog
-    url: https://www.solarwinds.com/blog
-  - type: GitHubOrganization
-    url: https://github.com/solarwinds
-  - type: StatusPage
-    url: https://status.solarwinds.com
-  - type: PrivacyPolicy
-    url: https://www.solarwinds.com/legal/privacy
-  - type: TermsOfService
-    url: https://www.solarwinds.com/legal/terms
-  - type: Login
-    url: https://customerportal.solarwinds.com
-  - type: Security
-    url: https://www.solarwinds.com/information-security
-  - type: X
-    url: https://twitter.com/solarwinds
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/solarwinds
-  - type: SDKs
-    url: https://github.com/solarwinds/OrionSDK
-  - type: CLI
-    url: https://github.com/solarwinds/OrionSDK/tree/master/Samples/PowerShell
-  - type: JSONLD
-    url: json-ld/solarwinds-context.jsonld
   - type: JSONSchema
-    url: json-schema/solarwinds-node-schema.json
+    url: json-schema/solarwinds-bulk-update-request-schema.json
   - type: JSONSchema
-    url: json-schema/solarwinds-alert-schema.json
-  - type: Features
-    url: https://www.solarwinds.com
-    data:
-      - Network Device Monitoring via SWIS/SWQL
-      - IT Service Management and Ticketing
-      - Cloud-Native Observability (Logs, Metrics, Traces)
-      - Website Uptime and Synthetic Monitoring
-      - Cloud-Based Log Aggregation and Search
-      - Database Performance Analysis
-      - IP Address Management
-      - Network Configuration Compliance
-  - type: UseCases
-    url: https://www.solarwinds.com
-    data:
-      - Network Infrastructure Monitoring and Alerting
-      - IT Incident Management and Ticketing Workflows
-      - Cloud Application Performance Monitoring
-      - Centralized Log Management and Search
-      - Website and API Uptime Monitoring
-      - Database Query Performance Tuning
-  - type: Integrations
-    url: https://www.solarwinds.com
-    data:
-      - Slack
-      - PagerDuty
-      - Microsoft Teams
-      - ServiceNow
-      - Jira
-      - AWS CloudWatch
-      - Azure Monitor
-      - Splunk
-  - name: Agent Skills
-    url: https://github.com/solarwinds/gns3-skills
-    type: AgentSkills
+    url: json-schema/solarwinds-bulk-delete-request-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-saved-search-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-service-request-schema.json
+  - type: JSONSchema
+    url: json-schema/solarwinds-service-request-create-schema.json
 integrations:
-  - name: Global System Integrators & MSPs
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
-    url: https://apievangelist.com
+- name: Global System Integrators & MSPs
+x-enrichment:
+  date: '2026-10-03'
+  status: enriched
+  artifacts_added: 41
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

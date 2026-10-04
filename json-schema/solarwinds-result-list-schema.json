@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/solarwinds/main/json-schema/solarwinds-result-list-schema.json",
+  "title": "ResultList",
+  "x-generated": "2026-10-03",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/solarwinds-results-api-openapi.yml#/components/schemas/ResultList",
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Result"
+      }
+    }
+  },
+  "$defs": {
+    "Result": {
+      "type": "object",
+      "properties": {
+        "probeid": {
+          "type": "integer",
+          "description": "Probe server ID"
+        },
+        "time": {
+          "type": "integer",
+          "description": "Test timestamp (Unix)"
+        },
+        "status": {
+          "type": "string",
+          "description": "Result status"
+        },
+        "responsetime": {
+          "type": "integer",
+          "description": "Response time in milliseconds"
+        },
+        "statusdesc": {
+          "type": "string",
+          "description": "Status description"
+        },
+        "statusdesclong": {
+          "type": "string",
+          "description": "Detailed status description"
+        }
+      }
+    }
+  }
+}

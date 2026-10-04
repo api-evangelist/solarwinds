@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/solarwinds/main/json-schema/solarwinds-events-response-schema.json",
+  "title": "EventsResponse",
+  "x-generated": "2026-10-03",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/solarwinds-search-api-openapi.yml#/components/schemas/EventsResponse",
+  "type": "object",
+  "properties": {
+    "total_events": {
+      "type": "integer",
+      "description": "Total number of matching events"
+    },
+    "page": {
+      "type": "integer",
+      "description": "Current page number"
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LogEvent"
+      }
+    }
+  },
+  "$defs": {
+    "LogEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique event identifier"
+        },
+        "timestamp": {
+          "type": "integer",
+          "description": "Event timestamp in milliseconds"
+        },
+        "logmsg": {
+          "type": "string",
+          "description": "Raw log message"
+        },
+        "logtypes": {
+          "type": "array",
+          "description": "Detected log types",
+          "items": {
+            "type": "string"
+          }
+        },
+        "event": {
+          "type": "object",
+          "description": "Parsed event fields",
+          "additionalProperties": true
+        },
+        "tags": {
+          "type": "array",
+          "description": "Tags associated with the event",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

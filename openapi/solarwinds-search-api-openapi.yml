@@ -173,6 +173,38 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    LogEvent:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique event identifier
+          example: abc123
+        timestamp:
+          type: integer
+          description: Event timestamp in milliseconds
+          example: 10
+        logmsg:
+          type: string
+          description: Raw log message
+          example: example_value
+        logtypes:
+          type: array
+          description: Detected log types
+          items:
+            type: string
+          example: []
+        event:
+          type: object
+          description: Parsed event fields
+          additionalProperties: true
+          example: example_value
+        tags:
+          type: array
+          description: Tags associated with the event
+          items:
+            type: string
+          example: []
     SearchResponse:
       type: object
       properties:
@@ -214,38 +246,6 @@ components:
           type: string
           description: Cursor for next page of results
           example: example_value
-    LogEvent:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique event identifier
-          example: abc123
-        timestamp:
-          type: integer
-          description: Event timestamp in milliseconds
-          example: 10
-        logmsg:
-          type: string
-          description: Raw log message
-          example: example_value
-        logtypes:
-          type: array
-          description: Detected log types
-          items:
-            type: string
-          example: []
-        event:
-          type: object
-          description: Parsed event fields
-          additionalProperties: true
-          example: example_value
-        tags:
-          type: array
-          description: Tags associated with the event
-          items:
-            type: string
-          example: []
   securitySchemes:
     bearerAuth:
       type: http

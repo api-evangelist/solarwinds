@@ -96,14 +96,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    ResultList:
-      type: object
-      properties:
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/Result'
-          example: []
     Result:
       type: object
       properties:
@@ -131,6 +123,14 @@ components:
           type: string
           description: Detailed status description
           example: example_value
+    ResultList:
+      type: object
+      properties:
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Result'
+          example: []
   parameters:
     CheckId:
       name: checkid

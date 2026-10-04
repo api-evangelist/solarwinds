@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/solarwinds/main/json-schema/solarwinds-system-create-schema.json",
+  "title": "SystemCreate",
+  "x-generated": "2026-10-03",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/solarwinds-systems-api-openapi.yml#/components/schemas/SystemCreate",
+  "type": "object",
+  "required": [
+    "system"
+  ],
+  "properties": {
+    "system": {
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "hostname": {
+          "type": "string"
+        },
+        "ip_address": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

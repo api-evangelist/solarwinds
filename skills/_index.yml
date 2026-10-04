@@ -1,0 +1,25 @@
+generated: '2026-10-03'
+method: generated
+generator: extract-docs-artifacts.py skills (local)
+source: openapi/solarwinds-crud-api-openapi.yml
+skills:
+- file: skills/solarwinds-crud-entity.md
+  name: solarwinds-crud-entity
+  api: openapi/solarwinds-crud-api-openapi.yml
+  operations:
+  - createEntity
+  - readEntity
+  - updateEntity
+  - deleteEntity
+- file: skills/solarwinds-execute-sql-query.md
+  name: solarwinds-execute-sql-query
+  api: openapi/solarwinds-query-api-openapi.yml
+  operations:
+  - querySwis
+  - querySwisPost
+- file: skills/solarwinds-service-requests-create.md
+  name: solarwinds-service-requests-create
+  api: openapi/solarwinds-service-requests-api-openapi.yml
+  operations:
+  - listServiceRequests
+  - createServiceRequest

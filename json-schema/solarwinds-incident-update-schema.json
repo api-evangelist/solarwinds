@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/solarwinds/main/json-schema/solarwinds-incident-update-schema.json",
+  "title": "IncidentUpdate",
+  "x-generated": "2026-10-03",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/solarwinds-incidents-api-openapi.yml#/components/schemas/IncidentUpdate",
+  "type": "object",
+  "required": [
+    "incident"
+  ],
+  "properties": {
+    "incident": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "string"
+        },
+        "assignee": {
+          "$ref": "#/$defs/UserRef"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "UserRef": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

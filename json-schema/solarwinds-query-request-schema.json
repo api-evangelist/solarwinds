@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/solarwinds/main/json-schema/solarwinds-query-request-schema.json",
+  "title": "QueryRequest",
+  "x-generated": "2026-10-03",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/solarwinds-query-api-openapi.yml#/components/schemas/QueryRequest",
+  "type": "object",
+  "required": [
+    "query"
+  ],
+  "properties": {
+    "query": {
+      "type": "string",
+      "description": "SWQL query string to execute"
+    },
+    "parameters": {
+      "type": "object",
+      "description": "Named parameters for parameterized queries",
+      "additionalProperties": true
+    }
+  }
+}
