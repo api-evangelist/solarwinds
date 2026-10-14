@@ -3,6 +3,7 @@ method: searched
 checked:
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/ecosystem/vendors.yaml
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/registry/
+- https://marketplace.atlassian.com/
 marketplace_apps: []
 edges:
 - partner_name: OpenTelemetry
@@ -28,6 +29,23 @@ edges:
     detected: '2026-10-13'
   detected_by: sweep-observability.py
   detected: '2026-10-13'
+- partner_name: Atlassian Marketplace
+  partner: atlassian
+  partner_match: aggregator
+  type: marketplace
+  marketplace: atlassian
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://marketplace.atlassian.com/vendors/954795229/solarwinds-worldwide-llc
+  listing_count: 3
+  apps:
+  - SolarWinds Incident Response (Squadcast) for Jira
+  - SolarWinds Incident Response (Squadcast) for Jira (EU)
+  - SolarWinds Incident Response (Squadcast) for Jira DC
+  publisher_name: SolarWinds Worldwide LLC
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
 source:
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/ecosystem/vendors.yaml
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/registry/
