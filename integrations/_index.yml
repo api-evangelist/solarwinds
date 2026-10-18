@@ -67,7 +67,7 @@
     - alpha
     in_cloud: true
     builder: unknown (community connector; contributor not in the record)
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: solarwinds-fivetran
   label: Fivetran
@@ -93,7 +93,7 @@
     - connectors/applications/solarwinds-service-desk
     vendor_link: https://www.solarwinds.com/service-desk
     builder: Fivetran
-  status: pending-generation
+  status: not-a-workflow
   arazzo: null
 - slug: solarwinds-microsoft-teams-own
   label: Microsoft Teams (own)
