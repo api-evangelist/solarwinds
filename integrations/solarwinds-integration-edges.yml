@@ -9,7 +9,9 @@ checked:
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/registry/
 - https://marketplace.atlassian.com/
 - microsoft-teams/integrations/microsoft-teams-integration-edges.yml
+- power-bi/integrations/power-bi-integration-edges.yml
 - slack/integrations/slack-integration-edges.yml
+- zendesk/integrations/zendesk-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: OpenTelemetry
@@ -127,6 +129,23 @@ edges:
   category: Microsoft Teams app
   publisher_verified:
   - Microsoft 365 Publisher Attestation
+- partner_name: Power BI (own)
+  partner: power-bi
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/solarwinds-service-desk
+  mirror_of: power-bi/integrations/power-bi-integration-edges.yml
+  apps:
+  - SolarWinds Service Desk
+  listing_count: 1
+  detected: '2026-10-19'
+  detected_by: mirror-platform-listings.py
+  category: Other
 - partner_name: Slack (own)
   partner: slack
   partner_match: mirror
@@ -144,6 +163,23 @@ edges:
   detected: '2026-10-18'
   detected_by: mirror-platform-listings.py
   category: Slack app
+- partner_name: Zendesk (own)
+  partner: zendesk
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.zendesk.com/marketplace/apps/support/6389/solarwinds-service-desk/
+  mirror_of: zendesk/integrations/zendesk-integration-edges.yml
+  apps:
+  - SolarWinds® Service Desk
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: IT and HR
 source:
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/ecosystem/vendors.yaml
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/registry/

@@ -108,6 +108,19 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: solarwinds-power-bi-own
+  label: Power BI (own)
+  partner: power-bi
+  partner_name: Power BI (own)
+  category: Other
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://learn.microsoft.com/en-us/power-query/connectors/solarwinds-service-desk
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
 - slug: solarwinds-slack-own
   label: Slack (own)
   partner: slack
@@ -117,6 +130,19 @@
   marketplace: own
   channel: partner-built
   evidence: https://slack.com/marketplace/A031V1FKWG7-solarwinds-incident-response-eu
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: solarwinds-zendesk-own
+  label: Zendesk (own)
+  partner: zendesk
+  partner_name: Zendesk (own)
+  category: IT and HR
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://www.zendesk.com/marketplace/apps/support/6389/solarwinds-service-desk/
   source: edge
   relationship: platform-app
   status: not-a-workflow
