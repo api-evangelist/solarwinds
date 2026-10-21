@@ -12,6 +12,7 @@ checked:
 - power-bi/integrations/power-bi-integration-edges.yml
 - slack/integrations/slack-integration-edges.yml
 - zendesk/integrations/zendesk-integration-edges.yml
+- docker-hub/integrations/docker-hub-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: OpenTelemetry
@@ -180,6 +181,39 @@ edges:
   detected: '2026-10-20'
   detected_by: mirror-platform-listings.py
   category: IT and HR
+- partner_name: Docker Hub (docker-verified-publisher)
+  partner: docker-hub
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: docker-verified-publisher
+  evidence: https://hub.docker.com/u/solarwinds
+  mirror_of: docker-hub/integrations/docker-hub-integration-edges.yml
+  apps:
+  - solarwinds/fluentd-papertrail
+  - solarwinds/orion
+  - solarwinds/solarwinds-snap-agent-docker
+  - solarwinds/autoinstrumentation-python
+  - solarwinds/solarwinds-otel-collector
+  - solarwinds/prometheus2appoptics
+  - solarwinds/loggly-mcp-server
+  - solarwinds/swo-agent
+  - solarwinds/cman
+  - solarwinds/opentelemetry-ebpf-kernel-collector
+  - solarwinds/autoinstrumentation-java
+  - solarwinds/swo-agent-bundle
+  - solarwinds/opentelemetry-ebpf-k8s-relay
+  - solarwinds/opentelemetry-ebpf-k8s-watcher
+  - solarwinds/opentelemetry-ebpf-reducer
+  listing_count: 1
+  detected: '2026-10-20'
+  detected_by: mirror-platform-listings.py
+  category: Docker Verified Publisher
+  badges:
+  - Docker Verified Publisher
 source:
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/ecosystem/vendors.yaml
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/registry/
