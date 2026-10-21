@@ -13,6 +13,8 @@ checked:
 - slack/integrations/slack-integration-edges.yml
 - zendesk/integrations/zendesk-integration-edges.yml
 - docker-hub/integrations/docker-hub-integration-edges.yml
+- cisco-meraki/integrations/cisco-meraki-integration-edges.yml
+- cisco/integrations/cisco-integration-edges.yml
 marketplace_apps: []
 edges:
 - partner_name: OpenTelemetry
@@ -214,6 +216,40 @@ edges:
   category: Docker Verified Publisher
   badges:
   - Docker Verified Publisher
+- partner_name: Cisco (own)
+  partner: cisco
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.cisco.com/en-US/apps/381483
+  mirror_of: cisco/integrations/cisco-integration-edges.yml
+  apps:
+  - SolarWinds NTA
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: Monitoring & Performance
+- partner_name: Cisco Meraki (own)
+  partner: cisco-meraki
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.cisco.com/en-US/apps/380766
+  mirror_of: cisco-meraki/integrations/cisco-meraki-integration-edges.yml
+  apps:
+  - SolarWinds NPM
+  listing_count: 1
+  detected: '2026-10-21'
+  detected_by: mirror-platform-listings.py
+  category: Monitoring & Performance
 source:
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/ecosystem/vendors.yaml
 - https://github.com/open-telemetry/opentelemetry.io/blob/main/data/registry/
